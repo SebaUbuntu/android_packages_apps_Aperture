@@ -11,6 +11,7 @@ class SharedPreferencesUtils {
         private const val PHOTO_CAPTURE_MODE_KEY = "photo_capture_mode"
         private const val PHOTO_CAPTURE_MODE_DEFAULT = "maximize_quality"
 
+        @androidx.camera.core.ExperimentalZeroShutterLag
         public fun getPhotoCaptureMode(sharedPreferences: SharedPreferences): Int {
             return when (sharedPreferences.getString(
                 PHOTO_CAPTURE_MODE_KEY, PHOTO_CAPTURE_MODE_DEFAULT)) {
