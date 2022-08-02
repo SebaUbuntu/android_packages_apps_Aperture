@@ -28,8 +28,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
 import androidx.preference.PreferenceManager
 import org.lineageos.aperture.databinding.ActivityMainBinding
-import org.lineageos.aperture.utils.PhotoUtils
-import org.lineageos.aperture.utils.VideoUtils
+import org.lineageos.aperture.utils.SharedPreferencesUtils
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
@@ -207,12 +206,12 @@ class MainActivity : AppCompatActivity() {
                 }
 
             imageCapture = ImageCapture.Builder()
-                .setCaptureMode(PhotoUtils.getCaptureMode(sharedPreferences))
+                .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
                 .build()
 
             val recorder = Recorder.Builder()
                 .setQualitySelector(QualitySelector.from(
-                    VideoUtils.getVideoQuality(sharedPreferences),
+                    SharedPreferencesUtils.getVideoQuality(sharedPreferences),
                     FallbackStrategy.higherQualityOrLowerThan(Quality.SD)))
                 .build()
             videoCapture = VideoCapture.withOutput(recorder)
