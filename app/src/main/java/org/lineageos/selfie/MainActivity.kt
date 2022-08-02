@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var cameraExecutor: ExecutorService
 
+    @androidx.camera.core.ExperimentalZeroShutterLag
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
+    @androidx.camera.core.ExperimentalZeroShutterLag
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
         IntArray) {
@@ -190,6 +192,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    @androidx.camera.core.ExperimentalZeroShutterLag
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
