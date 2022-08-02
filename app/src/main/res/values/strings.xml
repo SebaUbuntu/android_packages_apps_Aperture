@@ -9,4 +9,13 @@
     <!-- Button descriptions -->
     <string name="flip_camera_button_description">Flip camera</string>
     <string name="shutter_button_description">Shutter</string>
+
+    <!-- Settings title -->
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="videos_header">Videos</string>
+
+    <!-- Videos Preferences -->
+    <string name="video_quality_title">Video quality</string>
 </resources>
