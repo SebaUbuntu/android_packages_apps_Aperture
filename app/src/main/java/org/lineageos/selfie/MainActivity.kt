@@ -59,6 +59,8 @@ class MainActivity : AppCompatActivity() {
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
 
+        viewBinding.flashButton.setOnClickListener { cycleFlashMode() }
+
         // Set up the listeners for take photo and video capture buttons
         viewBinding.imageCaptureButton.setOnClickListener { takePhoto() }
         viewBinding.videoCaptureButton.setOnClickListener { captureVideo() }
@@ -207,7 +209,9 @@ class MainActivity : AppCompatActivity() {
 
             imageCapture = ImageCapture.Builder()
                 .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
+                .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
                 .build()
+            updateFlashModeIcon()
 
             val recorder = Recorder.Builder()
                 .setQualitySelector(QualitySelector.from(
@@ -232,6 +236,48 @@ class MainActivity : AppCompatActivity() {
             }
 
         }, ContextCompat.getMainExecutor(this))
+    }
+
+    /**
+     * Update the flash mode button icon based on the value set in imageCapture
+     */
+    private fun updateFlashModeIcon() {
+        val imageCapture = this.imageCapture ?: return
+
+        viewBinding.flashButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                when (imageCapture.flashMode) {
+                    ImageCapture.FLASH_MODE_AUTO -> R.drawable.ic_flash_auto
+                    ImageCapture.FLASH_MODE_ON -> R.drawable.ic_flash_on
+                    ImageCapture.FLASH_MODE_OFF -> R.drawable.ic_flash_off
+                    else -> R.drawable.ic_flash_off
+                }
+            )
+        )
+    }
+
+    /**
+     * Set the specified flash mode, saving the value to shared prefs and updating the icon
+     */
+    private fun setFlashMode(flashMode: Int) {
+        val imageCapture = this.imageCapture ?: return
+
+        imageCapture.flashMode = flashMode
+        updateFlashModeIcon()
+
+        SharedPreferencesUtils.setPhotoFlashMode(getSharedPreferences(), flashMode)
+    }
+
+    /**
+     * Cycle flash mode between auto, on and off
+     */
+    private fun cycleFlashMode() {
+        val imageCapture = this.imageCapture ?: return
+
+        setFlashMode(
+            if (imageCapture.flashMode >= ImageCapture.FLASH_MODE_OFF) ImageCapture.FLASH_MODE_AUTO
+            else imageCapture.flashMode + 1)
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {

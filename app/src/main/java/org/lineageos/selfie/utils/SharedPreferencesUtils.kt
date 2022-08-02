@@ -3,6 +3,7 @@ package org.lineageos.selfie.utils
 import android.content.SharedPreferences
 import androidx.camera.core.ImageCapture
 import androidx.camera.video.Quality
+import androidx.core.content.edit
 
 class SharedPreferencesUtils {
     companion object {
@@ -18,6 +19,32 @@ class SharedPreferencesUtils {
                 "zero_shutter_lag" -> ImageCapture.CAPTURE_MODE_ZERO_SHUTTER_LAG
                 // Default to maximize quality
                 else -> ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY
+            }
+        }
+
+        private const val PHOTO_FLASH_MODE_KEY = "photo_flash_mode"
+        private const val PHOTO_FLASH_MODE_DEFAULT = "auto"
+
+        public fun getPhotoFlashMode(sharedPreferences: SharedPreferences): Int {
+            return when (sharedPreferences.getString(
+                PHOTO_FLASH_MODE_KEY, PHOTO_FLASH_MODE_DEFAULT)) {
+                "auto" -> ImageCapture.FLASH_MODE_AUTO
+                "on" -> ImageCapture.FLASH_MODE_ON
+                "off" -> ImageCapture.FLASH_MODE_OFF
+                // Default to auto
+                else -> ImageCapture.FLASH_MODE_AUTO
+            }
+        }
+
+        public fun setPhotoFlashMode(sharedPreferences: SharedPreferences, value: Int) {
+            sharedPreferences.edit {
+                putString(PHOTO_FLASH_MODE_KEY, when (value) {
+                    ImageCapture.FLASH_MODE_AUTO -> "auto"
+                    ImageCapture.FLASH_MODE_ON -> "on"
+                    ImageCapture.FLASH_MODE_OFF -> "off"
+                    // Default to auto
+                    else -> PHOTO_FLASH_MODE_DEFAULT
+                })
             }
         }
 
