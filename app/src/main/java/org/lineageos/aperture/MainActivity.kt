@@ -2,6 +2,8 @@ package org.lineageos.aperture
 
 import android.Manifest
 import android.content.ContentValues
+import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.MediaStore
@@ -24,7 +26,9 @@ import androidx.camera.video.VideoRecordEvent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
+import androidx.preference.PreferenceManager
 import org.lineageos.aperture.databinding.ActivityMainBinding
+import org.lineageos.aperture.utils.VideoUtils
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
@@ -44,6 +48,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        viewBinding.settingsButton.setOnClickListener { openSettings() }
 
         // Request camera permissions
         if (allPermissionsGranted()) {
@@ -189,6 +195,9 @@ class MainActivity : AppCompatActivity() {
             // Used to bind the lifecycle of cameras to the lifecycle owner
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
+            // Get shared preferences
+            val sharedPreferences = getSharedPreferences()
+
             // Preview
             val preview = Preview.Builder()
                 .build()
@@ -199,7 +208,8 @@ class MainActivity : AppCompatActivity() {
             imageCapture = ImageCapture.Builder().build()
 
             val recorder = Recorder.Builder()
-                .setQualitySelector(QualitySelector.from(Quality.HIGHEST,
+                .setQualitySelector(QualitySelector.from(
+                    VideoUtils.getVideoQuality(sharedPreferences),
                     FallbackStrategy.higherQualityOrLowerThan(Quality.SD)))
                 .build()
             videoCapture = VideoCapture.withOutput(recorder)
@@ -225,6 +235,15 @@ class MainActivity : AppCompatActivity() {
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
             baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun getSharedPreferences(): SharedPreferences {
+        return PreferenceManager.getDefaultSharedPreferences(this)
+    }
+
+    private fun openSettings() {
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onDestroy() {
