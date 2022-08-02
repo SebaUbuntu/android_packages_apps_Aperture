@@ -1,5 +1,17 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <PreferenceCategory app:title="@string/photos_header">
+
+        <ListPreference
+            app:defaultValue="maximize_quality"
+            app:entries="@array/photo_capture_mode_entries"
+            app:entryValues="@array/photo_capture_mode_values"
+            app:key="photo_capture_mode"
+            app:title="@string/photo_capture_mode_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/videos_header">
 
         <ListPreference

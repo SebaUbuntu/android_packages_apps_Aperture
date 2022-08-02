@@ -14,7 +14,11 @@
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
+    <string name="photos_header">Photos</string>
     <string name="videos_header">Videos</string>
+
+    <!-- Photo Preferences -->
+    <string name="photo_capture_mode_title">Capture mode</string>
 
     <!-- Videos Preferences -->
     <string name="video_quality_title">Video quality</string>

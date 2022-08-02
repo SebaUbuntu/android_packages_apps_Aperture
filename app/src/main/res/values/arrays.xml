@@ -1,4 +1,17 @@
 <resources>
+    <!-- Photo capture mode Preference -->
+    <string-array name="photo_capture_mode_entries">
+        <item>Maximize quality</item>
+        <item>Minimize latency</item>
+        <item>Zero shutter lag (experimental)</item>
+    </string-array>
+
+    <string-array name="photo_capture_mode_values">
+        <item>maximize_quality</item>
+        <item>minimize_latency</item>
+        <item>zero_shutter_lag</item>
+    </string-array>
+
     <!-- Video quality Preference -->
     <string-array name="video_quality_entries">
         <item>Lowest</item>
