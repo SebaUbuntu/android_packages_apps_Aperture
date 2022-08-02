@@ -28,6 +28,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
 import androidx.preference.PreferenceManager
 import org.lineageos.aperture.databinding.ActivityMainBinding
+import org.lineageos.aperture.utils.CameraMode
 import org.lineageos.aperture.utils.SharedPreferencesUtils
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -200,6 +201,15 @@ class MainActivity : AppCompatActivity() {
             // Used to bind the lifecycle of cameras to the lifecycle owner
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
+            // Unbind previous use cases
+            try {
+                cameraProvider.unbindAll()
+            } catch(exc: Exception) {
+                Log.e(LOG_TAG, "Use case unbinding failed", exc)
+            }
+            imageCapture = null
+            videoCapture = null
+
             // Get shared preferences
             val sharedPreferences = getSharedPreferences()
 
@@ -210,30 +220,38 @@ class MainActivity : AppCompatActivity() {
                     it.setSurfaceProvider(viewBinding.viewFinder.surfaceProvider)
                 }
 
-            imageCapture = ImageCapture.Builder()
-                .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
-                .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
-                .build()
-            updateFlashModeIcon()
+            // Initialize the use case we want
+            val cameraMode = SharedPreferencesUtils.getLastCameraMode(sharedPreferences)
+            if (cameraMode == CameraMode.PHOTO) {
+                imageCapture = ImageCapture.Builder()
+                    .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
+                    .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
+                    .build()
+            } else if (cameraMode == CameraMode.VIDEO) {
+                val recorder = Recorder.Builder()
+                    .setQualitySelector(
+                        QualitySelector.from(
+                            SharedPreferencesUtils.getVideoQuality(sharedPreferences),
+                            FallbackStrategy.higherQualityOrLowerThan(Quality.SD)
+                        )
+                    )
+                    .build()
+                videoCapture = VideoCapture.withOutput(recorder)
+            }
 
-            val recorder = Recorder.Builder()
-                .setQualitySelector(QualitySelector.from(
-                    SharedPreferencesUtils.getVideoQuality(sharedPreferences),
-                    FallbackStrategy.higherQualityOrLowerThan(Quality.SD)))
-                .build()
-            videoCapture = VideoCapture.withOutput(recorder)
+            // Update icons from last state
+            updateFlashModeIcon()
 
             // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
             try {
-                // Unbind use cases before rebinding
-                cameraProvider.unbindAll()
-
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageCapture, videoCapture)
-
+                    this, cameraSelector, preview, when (cameraMode) {
+                        CameraMode.PHOTO -> imageCapture
+                        CameraMode.VIDEO -> videoCapture
+                    })
             } catch(exc: Exception) {
                 Log.e(LOG_TAG, "Use case binding failed", exc)
             }
