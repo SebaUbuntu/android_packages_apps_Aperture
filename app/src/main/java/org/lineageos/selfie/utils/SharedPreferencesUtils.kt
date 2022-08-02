@@ -7,6 +7,29 @@ import androidx.core.content.edit
 
 class SharedPreferencesUtils {
     companion object {
+        // Generic prefs
+        private const val LAST_CAMERA_MODE_KEY = "last_camera_mode"
+        private const val LAST_CAMERA_MODE_DEFAULT = "photo"
+
+        public fun getLastCameraMode(sharedPreferences: SharedPreferences): CameraMode {
+            return when (sharedPreferences.getString(
+                LAST_CAMERA_MODE_KEY, LAST_CAMERA_MODE_DEFAULT)) {
+                "photo" -> CameraMode.PHOTO
+                "video" -> CameraMode.VIDEO
+                // Default to photo
+                else -> CameraMode.PHOTO
+            }
+        }
+
+        public fun setLastCameraMode(sharedPreferences: SharedPreferences, value: CameraMode) {
+            sharedPreferences.edit {
+                putString(LAST_CAMERA_MODE_KEY, when (value) {
+                    CameraMode.PHOTO -> "photo"
+                    CameraMode.VIDEO -> "video"
+                })
+            }
+        }
+
         // Photos prefs
         private const val PHOTO_CAPTURE_MODE_KEY = "photo_capture_mode"
         private const val PHOTO_CAPTURE_MODE_DEFAULT = "maximize_quality"
