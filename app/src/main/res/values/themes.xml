@@ -29,4 +29,10 @@
         <item name="android:padding">0dp</item>
         <item name="android:scaleType">fitXY</item>
     </style>
+
+    <!-- Camera mode selector button theme -->
+    <style name="SelfieCameraModeButton">
+        <item name="tint">@color/camera_mode_selector_icon</item>
+        <item name="android:background">@drawable/camera_mode_button</item>
+    </style>
 </resources>
