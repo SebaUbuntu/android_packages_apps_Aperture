@@ -38,6 +38,8 @@ import java.util.concurrent.Executors
 class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
 
+    private lateinit var cameraMode: CameraMode
+
     private var imageCapture: ImageCapture? = null
 
     private var videoCapture: VideoCapture<Recorder>? = null
@@ -62,6 +64,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewBinding.flashButton.setOnClickListener { cycleFlashMode() }
+
+        viewBinding.photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
+        viewBinding.videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
 
         // Set up the listeners for take photo and video capture buttons
         viewBinding.imageCaptureButton.setOnClickListener { takePhoto() }
@@ -226,7 +231,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
             // Initialize the use case we want
-            val cameraMode = SharedPreferencesUtils.getLastCameraMode(sharedPreferences)
+            cameraMode = SharedPreferencesUtils.getLastCameraMode(sharedPreferences)
             if (cameraMode == CameraMode.PHOTO) {
                 imageCapture = ImageCapture.Builder()
                     .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
@@ -245,6 +250,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             // Update icons from last state
+            updateCameraModeButtons()
             updateFlashModeIcon()
 
             // Select back camera as a default
@@ -262,6 +268,26 @@ class MainActivity : AppCompatActivity() {
             }
 
         }, ContextCompat.getMainExecutor(this))
+    }
+
+    /**
+     * Change the current camera mode and restarts the stream
+     */
+    @androidx.camera.core.ExperimentalZeroShutterLag
+    private fun changeCameraMode(cameraMode: CameraMode) {
+        if (cameraMode == this.cameraMode)
+            return
+
+        SharedPreferencesUtils.setLastCameraMode(getSharedPreferences(), cameraMode)
+        startCamera()
+    }
+
+    /**
+     * Update the camera mode buttons reflecting the current mode
+     */
+    private fun updateCameraModeButtons() {
+        viewBinding.photoModeButton.isEnabled = cameraMode != CameraMode.PHOTO
+        viewBinding.videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
     }
 
     /**
