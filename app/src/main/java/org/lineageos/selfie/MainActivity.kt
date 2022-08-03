@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraFacing: CameraFacing
 
     private var imageCapture: ImageCapture? = null
+    private var isTakingPhoto: Boolean = false
 
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
@@ -108,6 +109,11 @@ class MainActivity : AppCompatActivity() {
         // Get a stable reference of the modifiable image capture use case
         val imageCapture = imageCapture ?: return
 
+        // Bail out if a photo is already being taken
+        if (isTakingPhoto)
+            return
+
+        isTakingPhoto = true
         viewBinding.shutterButton.isEnabled = false
 
         // Create time stamped name and MediaStore entry.
@@ -134,6 +140,7 @@ class MainActivity : AppCompatActivity() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
                     Log.e(LOG_TAG, "Photo capture failed: ${exc.message}", exc)
+                    isTakingPhoto = false
                     viewBinding.shutterButton.isEnabled = true
                 }
 
@@ -142,6 +149,7 @@ class MainActivity : AppCompatActivity() {
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(LOG_TAG, msg)
+                    isTakingPhoto = false
                     viewBinding.shutterButton.isEnabled = true
                 }
             }
@@ -206,6 +214,32 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+    }
+
+    /**
+     * Check if we can reinitialize the camera use cases
+     */
+    private fun canRestartCamera(): Boolean {
+        if (cameraMode == CameraMode.PHOTO) {
+            // If imageCapture is null, we definitely need a restart
+            if (imageCapture == null)
+                return true
+
+            // Check if we're taking a photo
+            if (isTakingPhoto)
+                return false
+        } else if (cameraMode == CameraMode.VIDEO) {
+            // If videoCapture is null, we definitely need a restart
+            if (videoCapture == null)
+                return true
+
+            // Check for a recording in progress
+            val curRecording = recording
+            if (curRecording != null)
+                return false
+        }
+
+        return true
     }
 
     @androidx.camera.core.ExperimentalZeroShutterLag
@@ -284,6 +318,9 @@ class MainActivity : AppCompatActivity() {
      */
     @androidx.camera.core.ExperimentalZeroShutterLag
     private fun changeCameraMode(cameraMode: CameraMode) {
+        if (!canRestartCamera())
+            return
+
         if (cameraMode == this.cameraMode)
             return
 
@@ -296,6 +333,9 @@ class MainActivity : AppCompatActivity() {
      */
     @androidx.camera.core.ExperimentalZeroShutterLag
     private fun flipCamera() {
+        if (!canRestartCamera())
+            return
+
         SharedPreferencesUtils.setLastCameraFacing(getSharedPreferences(), when(cameraFacing) {
             // We can definitely do it better
             CameraFacing.FRONT -> CameraFacing.BACK
