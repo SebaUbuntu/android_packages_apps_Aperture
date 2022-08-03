@@ -275,6 +275,7 @@ class MainActivity : AppCompatActivity() {
                 imageCapture = ImageCapture.Builder()
                     .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
                     .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
+                    .setTargetRotation(viewBinding.root.display.rotation)
                     .build()
             } else if (cameraMode == CameraMode.VIDEO) {
                 val recorder = Recorder.Builder()
