@@ -72,9 +72,12 @@ class MainActivity : AppCompatActivity() {
 
         viewBinding.flipCameraButton.setOnClickListener { flipCamera() }
 
-        // Set up the listeners for take photo and video capture buttons
-        viewBinding.imageCaptureButton.setOnClickListener { takePhoto() }
-        viewBinding.videoCaptureButton.setOnClickListener { captureVideo() }
+        viewBinding.shutterButton.setOnClickListener {
+            when (cameraMode) {
+                CameraMode.PHOTO -> takePhoto()
+                CameraMode.VIDEO -> captureVideo()
+            }
+        }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
@@ -105,6 +108,8 @@ class MainActivity : AppCompatActivity() {
         // Get a stable reference of the modifiable image capture use case
         val imageCapture = imageCapture ?: return
 
+        viewBinding.shutterButton.isEnabled = false
+
         // Create time stamped name and MediaStore entry.
         val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
             .format(System.currentTimeMillis())
@@ -129,6 +134,7 @@ class MainActivity : AppCompatActivity() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
                     Log.e(LOG_TAG, "Photo capture failed: ${exc.message}", exc)
+                    viewBinding.shutterButton.isEnabled = true
                 }
 
                 override fun
@@ -136,6 +142,7 @@ class MainActivity : AppCompatActivity() {
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(LOG_TAG, msg)
+                    viewBinding.shutterButton.isEnabled = true
                 }
             }
         )
@@ -144,7 +151,7 @@ class MainActivity : AppCompatActivity() {
     private fun captureVideo() {
         val videoCapture = this.videoCapture ?: return
 
-        viewBinding.videoCaptureButton.isEnabled = false
+        viewBinding.shutterButton.isEnabled = false
 
         val curRecording = recording
         if (curRecording != null) {
@@ -180,10 +187,7 @@ class MainActivity : AppCompatActivity() {
             .start(ContextCompat.getMainExecutor(this)) { recordEvent ->
                 when(recordEvent) {
                     is VideoRecordEvent.Start -> {
-                        viewBinding.videoCaptureButton.apply {
-                            text = getString(R.string.stop_capture)
-                            isEnabled = true
-                        }
+                        viewBinding.shutterButton.isEnabled = true
                     }
                     is VideoRecordEvent.Finalize -> {
                         if (!recordEvent.hasError()) {
@@ -198,10 +202,7 @@ class MainActivity : AppCompatActivity() {
                             Log.e(LOG_TAG, "Video capture ends with error: " +
                                     "${recordEvent.error}")
                         }
-                        viewBinding.videoCaptureButton.apply {
-                            text = getString(R.string.start_capture)
-                            isEnabled = true
-                        }
+                        viewBinding.shutterButton.isEnabled = true
                     }
                 }
             }

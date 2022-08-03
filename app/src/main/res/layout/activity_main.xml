@@ -125,20 +125,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/image_capture_button"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="2dp"
-            android:text="@string/take_photo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.404"
-            app:layout_constraintStart_toEndOf="@+id/shutterButton"
-            app:layout_constraintTop_toBottomOf="@+id/video_capture_button"
-            app:layout_constraintVertical_bias="0.388" />
-
         <ImageButton
             android:id="@+id/shutterButton"
             style="@style/ApertureBottomBarButton"
@@ -151,18 +137,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_circle" />
-
-        <Button
-            android:id="@+id/video_capture_button"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="2dp"
-            android:text="@string/start_capture"
-            app:layout_constraintBottom_toTopOf="@+id/image_capture_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/shutterButton"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
