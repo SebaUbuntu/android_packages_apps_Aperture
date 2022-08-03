@@ -174,11 +174,11 @@
 
             <ImageButton
                 android:id="@+id/flipCameraButton"
-                style="@style/ApertureBottomBarButton"
+                style="@style/ApertureFlipCameraButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:contentDescription="@string/flip_camera_button_description"
-                android:scaleType="fitXY"
+                android:scaleType="center"
                 android:src="@drawable/ic_flip_camera"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
