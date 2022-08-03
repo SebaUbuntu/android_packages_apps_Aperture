@@ -11,7 +11,7 @@ class SharedPreferencesUtils {
         private const val LAST_CAMERA_FACING_KEY = "last_camera_facing"
         private const val LAST_CAMERA_FACING_DEFAULT = "back"
 
-        public fun getLastCameraFacing(sharedPreferences: SharedPreferences): CameraFacing {
+        fun getLastCameraFacing(sharedPreferences: SharedPreferences): CameraFacing {
             return when (sharedPreferences.getString(
                 LAST_CAMERA_FACING_KEY, LAST_CAMERA_FACING_DEFAULT)) {
                 "front" -> CameraFacing.FRONT
@@ -21,7 +21,7 @@ class SharedPreferencesUtils {
             }
         }
 
-        public fun setLastCameraFacing(sharedPreferences: SharedPreferences, value: CameraFacing) {
+        fun setLastCameraFacing(sharedPreferences: SharedPreferences, value: CameraFacing) {
             sharedPreferences.edit {
                 putString(LAST_CAMERA_FACING_KEY, when (value) {
                     CameraFacing.FRONT -> "front"
@@ -33,7 +33,7 @@ class SharedPreferencesUtils {
         private const val LAST_CAMERA_MODE_KEY = "last_camera_mode"
         private const val LAST_CAMERA_MODE_DEFAULT = "photo"
 
-        public fun getLastCameraMode(sharedPreferences: SharedPreferences): CameraMode {
+        fun getLastCameraMode(sharedPreferences: SharedPreferences): CameraMode {
             return when (sharedPreferences.getString(
                 LAST_CAMERA_MODE_KEY, LAST_CAMERA_MODE_DEFAULT)) {
                 "photo" -> CameraMode.PHOTO
@@ -43,7 +43,7 @@ class SharedPreferencesUtils {
             }
         }
 
-        public fun setLastCameraMode(sharedPreferences: SharedPreferences, value: CameraMode) {
+        fun setLastCameraMode(sharedPreferences: SharedPreferences, value: CameraMode) {
             sharedPreferences.edit {
                 putString(LAST_CAMERA_MODE_KEY, when (value) {
                     CameraMode.PHOTO -> "photo"
@@ -57,7 +57,7 @@ class SharedPreferencesUtils {
         private const val PHOTO_CAPTURE_MODE_DEFAULT = "maximize_quality"
 
         @androidx.camera.core.ExperimentalZeroShutterLag
-        public fun getPhotoCaptureMode(sharedPreferences: SharedPreferences): Int {
+        fun getPhotoCaptureMode(sharedPreferences: SharedPreferences): Int {
             return when (sharedPreferences.getString(
                 PHOTO_CAPTURE_MODE_KEY, PHOTO_CAPTURE_MODE_DEFAULT)) {
                 "maximize_quality" -> ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY
@@ -71,7 +71,7 @@ class SharedPreferencesUtils {
         private const val PHOTO_FLASH_MODE_KEY = "photo_flash_mode"
         private const val PHOTO_FLASH_MODE_DEFAULT = "auto"
 
-        public fun getPhotoFlashMode(sharedPreferences: SharedPreferences): Int {
+        fun getPhotoFlashMode(sharedPreferences: SharedPreferences): Int {
             return when (sharedPreferences.getString(
                 PHOTO_FLASH_MODE_KEY, PHOTO_FLASH_MODE_DEFAULT)) {
                 "auto" -> ImageCapture.FLASH_MODE_AUTO
@@ -82,7 +82,7 @@ class SharedPreferencesUtils {
             }
         }
 
-        public fun setPhotoFlashMode(sharedPreferences: SharedPreferences, value: Int) {
+        fun setPhotoFlashMode(sharedPreferences: SharedPreferences, value: Int) {
             sharedPreferences.edit {
                 putString(PHOTO_FLASH_MODE_KEY, when (value) {
                     ImageCapture.FLASH_MODE_AUTO -> "auto"
@@ -98,7 +98,7 @@ class SharedPreferencesUtils {
         private const val VIDEO_QUALITY_KEY = "video_quality"
         private const val VIDEO_QUALITY_DEFAULT = "highest"
 
-        public fun getVideoQuality(sharedPreferences: SharedPreferences): Quality {
+        fun getVideoQuality(sharedPreferences: SharedPreferences): Quality {
             return when (sharedPreferences.getString(VIDEO_QUALITY_KEY, VIDEO_QUALITY_DEFAULT)) {
                 "lowest" -> Quality.LOWEST
                 "hd" -> Quality.HD
