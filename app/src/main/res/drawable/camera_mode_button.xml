@@ -16,10 +16,8 @@
 
     <item android:state_enabled="false" >
         <shape>
-            <gradient
-                android:startColor="?attr/colorPrimary"
-                android:endColor="?attr/colorPrimary"
-                android:angle="270" />
+            <solid
+                android:color="?attr/colorPrimary" />
             <corners
                 android:radius="25dp" />
             <padding
