@@ -8,6 +8,28 @@ import androidx.core.content.edit
 class SharedPreferencesUtils {
     companion object {
         // Generic prefs
+        private const val LAST_CAMERA_FACING_KEY = "last_camera_facing"
+        private const val LAST_CAMERA_FACING_DEFAULT = "back"
+
+        public fun getLastCameraFacing(sharedPreferences: SharedPreferences): CameraFacing {
+            return when (sharedPreferences.getString(
+                LAST_CAMERA_FACING_KEY, LAST_CAMERA_FACING_DEFAULT)) {
+                "front" -> CameraFacing.FRONT
+                "back" -> CameraFacing.BACK
+                // Default to back
+                else -> CameraFacing.BACK
+            }
+        }
+
+        public fun setLastCameraFacing(sharedPreferences: SharedPreferences, value: CameraFacing) {
+            sharedPreferences.edit {
+                putString(LAST_CAMERA_FACING_KEY, when (value) {
+                    CameraFacing.FRONT -> "front"
+                    CameraFacing.BACK -> "back"
+                })
+            }
+        }
+
         private const val LAST_CAMERA_MODE_KEY = "last_camera_mode"
         private const val LAST_CAMERA_MODE_DEFAULT = "photo"
 

@@ -28,6 +28,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
 import androidx.preference.PreferenceManager
 import org.lineageos.selfie.databinding.ActivityMainBinding
+import org.lineageos.selfie.utils.CameraFacing
 import org.lineageos.selfie.utils.CameraMode
 import org.lineageos.selfie.utils.SharedPreferencesUtils
 import java.text.SimpleDateFormat
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
 
     private lateinit var cameraMode: CameraMode
+    private lateinit var cameraFacing: CameraFacing
 
     private var imageCapture: ImageCapture? = null
 
@@ -67,6 +69,8 @@ class MainActivity : AppCompatActivity() {
 
         viewBinding.photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
         viewBinding.videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
+
+        viewBinding.flipCameraButton.setOnClickListener { flipCamera() }
 
         // Set up the listeners for take photo and video capture buttons
         viewBinding.imageCaptureButton.setOnClickListener { takePhoto() }
@@ -253,8 +257,12 @@ class MainActivity : AppCompatActivity() {
             updateCameraModeButtons()
             updateFlashModeIcon()
 
-            // Select back camera as a default
-            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+            // Select front/back camera
+            cameraFacing = SharedPreferencesUtils.getLastCameraFacing(sharedPreferences)
+            val cameraSelector = when (cameraFacing) {
+                CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
+                CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
+            }
 
             try {
                 // Bind use cases to camera
@@ -279,6 +287,20 @@ class MainActivity : AppCompatActivity() {
             return
 
         SharedPreferencesUtils.setLastCameraMode(getSharedPreferences(), cameraMode)
+        startCamera()
+    }
+
+    /**
+     * Cycle between cameras
+     */
+    @androidx.camera.core.ExperimentalZeroShutterLag
+    private fun flipCamera() {
+        SharedPreferencesUtils.setLastCameraFacing(getSharedPreferences(), when(cameraFacing) {
+            // We can definitely do it better
+            CameraFacing.FRONT -> CameraFacing.BACK
+            CameraFacing.BACK -> CameraFacing.FRONT
+        })
+
         startCamera()
     }
 
