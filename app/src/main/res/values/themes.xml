@@ -35,4 +35,10 @@
         <item name="tint">@color/camera_mode_selector_icon</item>
         <item name="android:background">@drawable/camera_mode_button</item>
     </style>
+
+    <!-- Flip camera button theme -->
+    <style name="SelfieFlipCameraButton">
+        <item name="tint">?attr/colorOnPrimary</item>
+        <item name="android:background">@drawable/flip_camera_button_background</item>
+    </style>
 </resources>
