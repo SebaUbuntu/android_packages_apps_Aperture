@@ -2,6 +2,7 @@ package org.lineageos.aperture.utils
 
 import android.content.SharedPreferences
 import androidx.camera.core.ImageCapture
+import androidx.camera.extensions.ExtensionMode
 import androidx.camera.video.Quality
 import androidx.core.content.edit
 
@@ -90,6 +91,38 @@ class SharedPreferencesUtils {
                     ImageCapture.FLASH_MODE_OFF -> "off"
                     // Default to auto
                     else -> PHOTO_FLASH_MODE_DEFAULT
+                })
+            }
+        }
+
+        private const val PHOTO_EFFECT_KEY = "photo_effect"
+        private const val PHOTO_EFFECT_DEFAULT = "none"
+
+        fun getPhotoEffect(sharedPreferences: SharedPreferences): Int {
+            return when (sharedPreferences.getString(
+                PHOTO_EFFECT_KEY, PHOTO_EFFECT_DEFAULT)) {
+                "none" -> ExtensionMode.NONE
+                "bokeh" -> ExtensionMode.BOKEH
+                "hdr" -> ExtensionMode.HDR
+                "night" -> ExtensionMode.NIGHT
+                "face_retouch" -> ExtensionMode.FACE_RETOUCH
+                "auto" -> ExtensionMode.AUTO
+                // Default to none
+                else -> ExtensionMode.NONE
+            }
+        }
+
+        fun setPhotoEffect(sharedPreferences: SharedPreferences, value: Int) {
+            sharedPreferences.edit {
+                putString(PHOTO_EFFECT_KEY, when (value) {
+                    ExtensionMode.NONE -> "none"
+                    ExtensionMode.BOKEH -> "bokeh"
+                    ExtensionMode.HDR -> "hdr"
+                    ExtensionMode.NIGHT -> "night"
+                    ExtensionMode.FACE_RETOUCH -> "face_retouch"
+                    ExtensionMode.AUTO -> "auto"
+                    // Default to none
+                    else -> PHOTO_EFFECT_DEFAULT
                 })
             }
         }

@@ -14,6 +14,8 @@ import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
+import androidx.camera.extensions.ExtensionMode
+import androidx.camera.extensions.ExtensionsManager
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.video.FallbackStrategy
 import androidx.camera.video.Quality
@@ -42,6 +44,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraMode: CameraMode
     private lateinit var cameraFacing: CameraFacing
 
+    private lateinit var extensionsManager: ExtensionsManager
+    private var extensionMode: Int = ExtensionMode.NONE
+
     private var imageCapture: ImageCapture? = null
     private var isTakingPhoto: Boolean = false
 
@@ -66,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
 
+        viewBinding.effectButton.setOnClickListener { cyclePhotoEffects() }
         viewBinding.flashButton.setOnClickListener { cycleFlashMode() }
 
         viewBinding.photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
@@ -250,6 +256,10 @@ class MainActivity : AppCompatActivity() {
             // Used to bind the lifecycle of cameras to the lifecycle owner
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
+            // Get vendor extensions manager
+            extensionsManager =
+                ExtensionsManager.getInstanceAsync(this, cameraProvider).get()
+
             // Unbind previous use cases
             try {
                 cameraProvider.unbindAll()
@@ -261,6 +271,16 @@ class MainActivity : AppCompatActivity() {
 
             // Get shared preferences
             val sharedPreferences = getSharedPreferences()
+
+            // Select front/back camera
+            cameraFacing = SharedPreferencesUtils.getLastCameraFacing(sharedPreferences)
+            var cameraSelector = when (cameraFacing) {
+                CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
+                CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
+            }
+
+            // Get the user selected effect
+            extensionMode = SharedPreferencesUtils.getPhotoEffect(sharedPreferences)
 
             // Preview
             val preview = Preview.Builder()
@@ -277,6 +297,17 @@ class MainActivity : AppCompatActivity() {
                     .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
                     .setTargetRotation(viewBinding.root.display.rotation)
                     .build()
+
+                // Select the extension
+                if (extensionsManager.isExtensionAvailable(cameraSelector, extensionMode)) {
+                    cameraSelector = extensionsManager.getExtensionEnabledCameraSelector(
+                        cameraSelector, extensionMode)
+                } else {
+                    val msg = "Extension $extensionMode is not supported"
+                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT)
+                        .show()
+                    Log.e(LOG_TAG, msg)
+                }
             } else if (cameraMode == CameraMode.VIDEO) {
                 val recorder = Recorder.Builder()
                     .setQualitySelector(
@@ -291,14 +322,8 @@ class MainActivity : AppCompatActivity() {
 
             // Update icons from last state
             updateCameraModeButtons()
+            updatePhotoEffectIcon()
             updateFlashModeIcon()
-
-            // Select front/back camera
-            cameraFacing = SharedPreferencesUtils.getLastCameraFacing(sharedPreferences)
-            val cameraSelector = when (cameraFacing) {
-                CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
-                CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
-            }
 
             try {
                 // Bind use cases to camera
@@ -394,6 +419,52 @@ class MainActivity : AppCompatActivity() {
         setFlashMode(
             if (imageCapture.flashMode >= ImageCapture.FLASH_MODE_OFF) ImageCapture.FLASH_MODE_AUTO
             else imageCapture.flashMode + 1)
+    }
+
+    /**
+     * Set a photo effect and restart the camera
+     */
+    @androidx.camera.core.ExperimentalZeroShutterLag
+    private fun setExtensionMode(extensionMode: Int) {
+        if (!canRestartCamera())
+            return
+
+        SharedPreferencesUtils.setPhotoEffect(getSharedPreferences(), extensionMode)
+
+        startCamera()
+    }
+
+    /**
+     * Update the photo effect icon based on the current value of extensionMode
+     */
+    private fun updatePhotoEffectIcon() {
+        viewBinding.effectButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                when (extensionMode) {
+                    ExtensionMode.NONE -> R.drawable.ic_effect_none
+                    ExtensionMode.BOKEH -> R.drawable.ic_effect_bokeh
+                    ExtensionMode.HDR -> R.drawable.ic_effect_hdr
+                    ExtensionMode.NIGHT -> R.drawable.ic_effect_night
+                    ExtensionMode.FACE_RETOUCH -> R.drawable.ic_effect_face_retouch
+                    ExtensionMode.AUTO -> R.drawable.ic_effect_auto
+                    else -> R.drawable.ic_effect_none
+                }
+            )
+        )
+    }
+
+    /**
+     * Cycle between supported photo camera effects
+     */
+    @androidx.camera.core.ExperimentalZeroShutterLag
+    private fun cyclePhotoEffects() {
+        if (!canRestartCamera())
+            return
+
+        setExtensionMode(
+            if (extensionMode >= ExtensionMode.AUTO) ExtensionMode.NONE
+            else extensionMode + 1)
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
