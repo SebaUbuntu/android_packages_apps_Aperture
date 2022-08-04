@@ -29,19 +29,19 @@
             android:contentDescription="@string/flip_camera_button_description"
             android:src="@drawable/ic_timer_off"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/hdrButton"
+            app:layout_constraintEnd_toStartOf="@+id/effectButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageButton
-            android:id="@+id/hdrButton"
+            android:id="@+id/effectButton"
             style="@style/SelfieTopBarButton"
             android:layout_width="@dimen/top_view_buttons_size"
             android:layout_height="@dimen/top_view_buttons_size"
             android:contentDescription="@string/flip_camera_button_description"
-            android:src="@drawable/ic_hdr_on"
+            android:src="@drawable/ic_effect_none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/gridButton"
             app:layout_constraintHorizontal_bias="0.5"
@@ -58,7 +58,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/torchButton"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/hdrButton"
+            app:layout_constraintStart_toEndOf="@+id/effectButton"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
