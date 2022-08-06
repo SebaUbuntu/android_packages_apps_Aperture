@@ -338,16 +338,12 @@ class MainActivity : AppCompatActivity() {
         updatePhotoEffectIcon()
         updateFlashModeIcon()
 
-        try {
-            // Bind use cases to camera
-            camera = cameraProvider.bindToLifecycle(
-                this, cameraSelector, preview, when (cameraMode) {
-                    CameraMode.PHOTO -> imageCapture
-                    CameraMode.VIDEO -> videoCapture
-                })
-        } catch(exc: Exception) {
-            Log.e(LOG_TAG, "Use case binding failed", exc)
-        }
+        // Bind use cases to camera
+        camera = cameraProvider.bindToLifecycle(
+            this, cameraSelector, preview, when (cameraMode) {
+                CameraMode.PHOTO -> imageCapture
+                CameraMode.VIDEO -> videoCapture
+            })
     }
 
     /**
