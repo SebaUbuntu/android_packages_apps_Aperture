@@ -287,7 +287,10 @@ class MainActivity : AppCompatActivity() {
         cameraProvider.unbindAll()
 
         imageCapture = null
+        isTakingPhoto = false
+
         videoCapture = null
+        recording = null
 
         // Get shared preferences
         val sharedPreferences = getSharedPreferences()
