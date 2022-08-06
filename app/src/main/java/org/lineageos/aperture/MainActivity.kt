@@ -67,8 +67,6 @@ class MainActivity : AppCompatActivity() {
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        viewBinding.settingsButton.setOnClickListener { openSettings() }
-
         // Request camera permissions
         if (allPermissionsGranted()) {
             initCamera()
@@ -80,6 +78,7 @@ class MainActivity : AppCompatActivity() {
         viewBinding.effectButton.setOnClickListener { cyclePhotoEffects() }
         viewBinding.torchButton.setOnClickListener { toggleTorchMode() }
         viewBinding.flashButton.setOnClickListener { cycleFlashMode() }
+        viewBinding.settingsButton.setOnClickListener { openSettings() }
 
         viewBinding.photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
         viewBinding.videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
