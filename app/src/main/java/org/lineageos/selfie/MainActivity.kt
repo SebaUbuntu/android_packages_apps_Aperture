@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.OrientationEventListener
+import android.view.ScaleGestureDetector
 import android.view.Surface
 import android.view.View
 import android.widget.Toast
@@ -98,6 +99,36 @@ class MainActivity : AppCompatActivity() {
         } else {
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+        }
+
+        // Zoom gesture handler
+        val scaleGestureDetector = ScaleGestureDetector(
+            this,
+            object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+                override fun onScale(detector: ScaleGestureDetector): Boolean {
+                    val minZoomRatio = camera.cameraInfo.zoomState.value?.minZoomRatio ?: 0f
+                    val maxZoomRatio = camera.cameraInfo.zoomState.value?.maxZoomRatio ?: 0f
+
+                    fun speedUpZoomBy2X(scaleFactor: Float): Float {
+                        return if (scaleFactor > 1f) {
+                            1.0f + (scaleFactor - 1.0f) * 2
+                        } else {
+                            1.0f - (1.0f - scaleFactor) * 2
+                        }
+                    }
+
+                    var zoomRatio = camera.cameraInfo.zoomState.value?.zoomRatio ?: 0f
+                    zoomRatio *= speedUpZoomBy2X(detector.scaleFactor)
+                    zoomRatio = zoomRatio.coerceIn(minZoomRatio, maxZoomRatio)
+
+                    camera.cameraControl.setZoomRatio(zoomRatio)
+                    return true
+                }
+            })
+
+        viewBinding.viewFinder.setOnTouchListener { _, event ->
+            scaleGestureDetector.onTouchEvent(event)
+            return@setOnTouchListener true
         }
 
         viewBinding.effectButton.setOnClickListener { cyclePhotoEffects() }
