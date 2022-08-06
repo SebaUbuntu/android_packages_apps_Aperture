@@ -15,6 +15,7 @@ import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
+import androidx.camera.core.TorchState
 import androidx.camera.extensions.ExtensionMode
 import androidx.camera.extensions.ExtensionsManager
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -78,6 +79,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewBinding.effectButton.setOnClickListener { cyclePhotoEffects() }
+        viewBinding.torchButton.setOnClickListener { toggleTorchMode() }
         viewBinding.flashButton.setOnClickListener { cycleFlashMode() }
 
         viewBinding.photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
@@ -338,11 +340,6 @@ class MainActivity : AppCompatActivity() {
             videoCapture = VideoCapture.withOutput(recorder)
         }
 
-        // Update icons from last state
-        updateCameraModeButtons()
-        updatePhotoEffectIcon()
-        updateFlashModeIcon()
-
         // Bind use cases to camera
         camera = cameraProvider.bindToLifecycle(
             this, cameraSelector, preview, when (cameraMode) {
@@ -350,6 +347,12 @@ class MainActivity : AppCompatActivity() {
                 CameraMode.VIDEO -> videoCapture
             })
         physicalCamera = PhysicalCamera(camera.cameraInfo)
+
+        // Update icons from last state
+        updateCameraModeButtons()
+        updatePhotoEffectIcon()
+        updateTorchModeIcon()
+        updateFlashModeIcon()
     }
 
     /**
@@ -394,6 +397,41 @@ class MainActivity : AppCompatActivity() {
     private fun updateCameraModeButtons() {
         viewBinding.photoModeButton.isEnabled = cameraMode != CameraMode.PHOTO
         viewBinding.videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
+    }
+
+    /**
+     * Update the torch mode button icon based on the value set in camera
+     */
+    private fun updateTorchModeIcon() {
+        viewBinding.torchButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                when (camera.cameraInfo.torchState.value) {
+                    TorchState.OFF -> R.drawable.ic_torch_off
+                    TorchState.ON -> R.drawable.ic_torch_on
+                    else -> R.drawable.ic_torch_off
+                }
+            )
+        )
+    }
+
+    /**
+     * Set the specified torch mode, also updating the icon
+     */
+    private fun setTorchMode(value: Boolean) {
+        camera.cameraControl.enableTorch(value).get()
+        updateTorchModeIcon()
+    }
+
+    /**
+     * Toggle torch mode
+     */
+    private fun toggleTorchMode() {
+        setTorchMode(when (camera.cameraInfo.torchState.value) {
+            TorchState.OFF -> true
+            TorchState.ON -> false
+            else -> false
+        })
     }
 
     /**
