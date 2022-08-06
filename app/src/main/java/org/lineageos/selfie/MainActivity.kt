@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -44,6 +45,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraProvider: ProcessCameraProvider
 
     private lateinit var cameraMode: CameraMode
+
+    private lateinit var camera: Camera
     private lateinit var cameraFacing: CameraFacing
 
     private lateinit var extensionsManager: ExtensionsManager
@@ -338,7 +341,7 @@ class MainActivity : AppCompatActivity() {
 
         try {
             // Bind use cases to camera
-            cameraProvider.bindToLifecycle(
+            camera = cameraProvider.bindToLifecycle(
                 this, cameraSelector, preview, when (cameraMode) {
                     CameraMode.PHOTO -> imageCapture
                     CameraMode.VIDEO -> videoCapture
