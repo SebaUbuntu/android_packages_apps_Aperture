@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.Surface.ROTATION_0
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.Camera
@@ -302,7 +303,7 @@ class MainActivity : AppCompatActivity() {
             imageCapture = ImageCapture.Builder()
                 .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
                 .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
-                .setTargetRotation(viewBinding.root.display.rotation)
+                .setTargetRotation(viewBinding.root.display.let { it?.rotation ?: ROTATION_0 })
                 .build()
 
             // Select the extension
