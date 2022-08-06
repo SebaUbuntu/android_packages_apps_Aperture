@@ -33,6 +33,7 @@ import androidx.preference.PreferenceManager
 import org.lineageos.selfie.databinding.ActivityMainBinding
 import org.lineageos.selfie.utils.CameraFacing
 import org.lineageos.selfie.utils.CameraMode
+import org.lineageos.selfie.utils.PhysicalCamera
 import org.lineageos.selfie.utils.SharedPreferencesUtils
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraExecutor: ExecutorService
 
     private lateinit var camera: Camera
-    private lateinit var cameraFacing: CameraFacing
+    private lateinit var physicalCamera: PhysicalCamera
 
     private lateinit var cameraMode: CameraMode
     private var extensionMode: Int = ExtensionMode.NONE
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity() {
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
 
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,6 +100,7 @@ class MainActivity : AppCompatActivity() {
         cameraExecutor.shutdown()
     }
 
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
@@ -255,6 +258,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Prepare CameraProvider and other one-time init objects, must only be called from onCreate
      */
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     private fun initCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
@@ -274,6 +278,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Rebind cameraProvider use cases
      */
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     private fun bindCameraUseCases() {
         // Unbind previous use cases
@@ -286,10 +291,10 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences()
 
         // Select front/back camera
-        cameraFacing = SharedPreferencesUtils.getLastCameraFacing(sharedPreferences)
-        var cameraSelector = when (cameraFacing) {
+        var cameraSelector = when (SharedPreferencesUtils.getLastCameraFacing(sharedPreferences)) {
             CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
             CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
+            else -> CameraSelector.DEFAULT_BACK_CAMERA
         }
 
         // Get the user selected effect
@@ -344,11 +349,13 @@ class MainActivity : AppCompatActivity() {
                 CameraMode.PHOTO -> imageCapture
                 CameraMode.VIDEO -> videoCapture
             })
+        physicalCamera = PhysicalCamera(camera.cameraInfo)
     }
 
     /**
      * Change the current camera mode and restarts the stream
      */
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     private fun changeCameraMode(cameraMode: CameraMode) {
         if (!canRestartCamera())
@@ -364,16 +371,19 @@ class MainActivity : AppCompatActivity() {
     /**
      * Cycle between cameras
      */
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     private fun flipCamera() {
         if (!canRestartCamera())
             return
 
-        SharedPreferencesUtils.setLastCameraFacing(getSharedPreferences(), when(cameraFacing) {
-            // We can definitely do it better
-            CameraFacing.FRONT -> CameraFacing.BACK
-            CameraFacing.BACK -> CameraFacing.FRONT
-        })
+        SharedPreferencesUtils.setLastCameraFacing(
+            getSharedPreferences(), when(physicalCamera.getCameraFacing()) {
+                // We can definitely do it better
+                CameraFacing.FRONT -> CameraFacing.BACK
+                CameraFacing.BACK -> CameraFacing.FRONT
+                else -> CameraFacing.BACK
+            })
 
         bindCameraUseCases()
     }
@@ -431,6 +441,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Set a photo effect and restart the camera
      */
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     private fun setExtensionMode(extensionMode: Int) {
         if (!canRestartCamera())
@@ -464,6 +475,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Cycle between supported photo camera effects
      */
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     private fun cyclePhotoEffects() {
         if (!canRestartCamera())
