@@ -41,6 +41,8 @@ import java.util.concurrent.Executors
 class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
 
+    private lateinit var cameraProvider: ProcessCameraProvider
+
     private lateinit var cameraMode: CameraMode
     private lateinit var cameraFacing: CameraFacing
 
@@ -65,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
         // Request camera permissions
         if (allPermissionsGranted()) {
-            startCamera()
+            initCamera()
         } else {
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
@@ -101,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
-                startCamera()
+                initCamera()
             } else {
                 Toast.makeText(this,
                     "Permissions not granted by the user.",
@@ -248,92 +250,102 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    /**
+     * Prepare CameraProvider and other one-time init objects, must only be called from onCreate
+     */
     @androidx.camera.core.ExperimentalZeroShutterLag
-    private fun startCamera() {
+    private fun initCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
         cameraProviderFuture.addListener({
             // Used to bind the lifecycle of cameras to the lifecycle owner
-            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+            cameraProvider = cameraProviderFuture.get()
 
             // Get vendor extensions manager
             extensionsManager =
                 ExtensionsManager.getInstanceAsync(this, cameraProvider).get()
 
-            // Unbind previous use cases
-            cameraProvider.unbindAll()
-
-            imageCapture = null
-            videoCapture = null
-
-            // Get shared preferences
-            val sharedPreferences = getSharedPreferences()
-
-            // Select front/back camera
-            cameraFacing = SharedPreferencesUtils.getLastCameraFacing(sharedPreferences)
-            var cameraSelector = when (cameraFacing) {
-                CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
-                CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
-            }
-
-            // Get the user selected effect
-            extensionMode = SharedPreferencesUtils.getPhotoEffect(sharedPreferences)
-
-            // Preview
-            val preview = Preview.Builder()
-                .build()
-                .also {
-                    it.setSurfaceProvider(viewBinding.viewFinder.surfaceProvider)
-                }
-
-            // Initialize the use case we want
-            cameraMode = SharedPreferencesUtils.getLastCameraMode(sharedPreferences)
-            if (cameraMode == CameraMode.PHOTO) {
-                imageCapture = ImageCapture.Builder()
-                    .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
-                    .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
-                    .setTargetRotation(viewBinding.root.display.rotation)
-                    .build()
-
-                // Select the extension
-                if (extensionsManager.isExtensionAvailable(cameraSelector, extensionMode)) {
-                    cameraSelector = extensionsManager.getExtensionEnabledCameraSelector(
-                        cameraSelector, extensionMode)
-                } else {
-                    val msg = "Extension $extensionMode is not supported"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT)
-                        .show()
-                    Log.e(LOG_TAG, msg)
-                }
-            } else if (cameraMode == CameraMode.VIDEO) {
-                val recorder = Recorder.Builder()
-                    .setQualitySelector(
-                        QualitySelector.from(
-                            SharedPreferencesUtils.getVideoQuality(sharedPreferences),
-                            FallbackStrategy.higherQualityOrLowerThan(Quality.SD)
-                        )
-                    )
-                    .build()
-                videoCapture = VideoCapture.withOutput(recorder)
-            }
-
-            // Update icons from last state
-            updateCameraModeButtons()
-            updatePhotoEffectIcon()
-            updateFlashModeIcon()
-
-            try {
-                // Bind use cases to camera
-                cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, when (cameraMode) {
-                        CameraMode.PHOTO -> imageCapture
-                        CameraMode.VIDEO -> videoCapture
-                    })
-            } catch(exc: Exception) {
-                Log.e(LOG_TAG, "Use case binding failed", exc)
-            }
-
+            bindCameraUseCases()
         }, ContextCompat.getMainExecutor(this))
+    }
+
+    /**
+     * Rebind cameraProvider use cases
+     */
+    @androidx.camera.core.ExperimentalZeroShutterLag
+    private fun bindCameraUseCases() {
+        // Unbind previous use cases
+        cameraProvider.unbindAll()
+
+        imageCapture = null
+        videoCapture = null
+
+        // Get shared preferences
+        val sharedPreferences = getSharedPreferences()
+
+        // Select front/back camera
+        cameraFacing = SharedPreferencesUtils.getLastCameraFacing(sharedPreferences)
+        var cameraSelector = when (cameraFacing) {
+            CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
+            CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
+        }
+
+        // Get the user selected effect
+        extensionMode = SharedPreferencesUtils.getPhotoEffect(sharedPreferences)
+
+        // Preview
+        val preview = Preview.Builder()
+            .build()
+            .also {
+                it.setSurfaceProvider(viewBinding.viewFinder.surfaceProvider)
+            }
+
+        // Initialize the use case we want
+        cameraMode = SharedPreferencesUtils.getLastCameraMode(sharedPreferences)
+        if (cameraMode == CameraMode.PHOTO) {
+            imageCapture = ImageCapture.Builder()
+                .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
+                .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
+                .setTargetRotation(viewBinding.root.display.rotation)
+                .build()
+
+            // Select the extension
+            if (extensionsManager.isExtensionAvailable(cameraSelector, extensionMode)) {
+                cameraSelector = extensionsManager.getExtensionEnabledCameraSelector(
+                    cameraSelector, extensionMode)
+            } else {
+                val msg = "Extension $extensionMode is not supported"
+                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT)
+                    .show()
+                Log.e(LOG_TAG, msg)
+            }
+        } else if (cameraMode == CameraMode.VIDEO) {
+            val recorder = Recorder.Builder()
+                .setQualitySelector(
+                    QualitySelector.from(
+                        SharedPreferencesUtils.getVideoQuality(sharedPreferences),
+                        FallbackStrategy.higherQualityOrLowerThan(Quality.SD)
+                    )
+                )
+                .build()
+            videoCapture = VideoCapture.withOutput(recorder)
+        }
+
+        // Update icons from last state
+        updateCameraModeButtons()
+        updatePhotoEffectIcon()
+        updateFlashModeIcon()
+
+        try {
+            // Bind use cases to camera
+            cameraProvider.bindToLifecycle(
+                this, cameraSelector, preview, when (cameraMode) {
+                    CameraMode.PHOTO -> imageCapture
+                    CameraMode.VIDEO -> videoCapture
+                })
+        } catch(exc: Exception) {
+            Log.e(LOG_TAG, "Use case binding failed", exc)
+        }
     }
 
     /**
@@ -348,7 +360,7 @@ class MainActivity : AppCompatActivity() {
             return
 
         SharedPreferencesUtils.setLastCameraMode(getSharedPreferences(), cameraMode)
-        startCamera()
+        bindCameraUseCases()
     }
 
     /**
@@ -365,7 +377,7 @@ class MainActivity : AppCompatActivity() {
             CameraFacing.BACK -> CameraFacing.FRONT
         })
 
-        startCamera()
+        bindCameraUseCases()
     }
 
     /**
@@ -428,7 +440,7 @@ class MainActivity : AppCompatActivity() {
 
         SharedPreferencesUtils.setPhotoEffect(getSharedPreferences(), extensionMode)
 
-        startCamera()
+        bindCameraUseCases()
     }
 
     /**
