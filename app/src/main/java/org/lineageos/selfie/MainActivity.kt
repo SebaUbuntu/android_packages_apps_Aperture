@@ -609,6 +609,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openSettings() {
+        if (!canRestartCamera())
+            return
+
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
