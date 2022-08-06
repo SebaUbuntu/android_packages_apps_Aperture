@@ -2,14 +2,12 @@ package org.lineageos.aperture
 
 import android.Manifest
 import android.animation.ObjectAnimator
-import android.content.ContentValues
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +23,6 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.video.FallbackStrategy
 import androidx.camera.video.Quality
 import androidx.camera.video.QualitySelector
-import androidx.camera.video.MediaStoreOutputOptions
 import androidx.camera.video.Recorder
 import androidx.camera.video.Recording
 import androidx.camera.video.VideoCapture
@@ -39,8 +36,7 @@ import org.lineageos.aperture.utils.CameraFacing
 import org.lineageos.aperture.utils.CameraMode
 import org.lineageos.aperture.utils.PhysicalCamera
 import org.lineageos.aperture.utils.SharedPreferencesUtils
-import java.text.SimpleDateFormat
-import java.util.Locale
+import org.lineageos.aperture.utils.StorageUtils
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -134,21 +130,8 @@ class MainActivity : AppCompatActivity() {
         isTakingPhoto = true
         viewBinding.shutterButton.isEnabled = false
 
-        // Create time stamped name and MediaStore entry.
-        val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
-            .format(System.currentTimeMillis())
-        val contentValues = ContentValues().apply {
-            put(MediaStore.MediaColumns.DISPLAY_NAME, name)
-            put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-            put(MediaStore.Images.Media.RELATIVE_PATH, STORAGE_DESTINATION)
-        }
-
         // Create output options object which contains file + metadata
-        val outputOptions = ImageCapture.OutputFileOptions
-            .Builder(contentResolver,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                contentValues)
-            .build()
+        val outputOptions = StorageUtils.getPhotoMediaStoreOutputOptions(contentResolver)
 
         // Set up image capture listener, which is triggered after photo has
         // been taken
@@ -196,21 +179,11 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        // create and start a new recording session
-        val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
-            .format(System.currentTimeMillis())
-        val contentValues = ContentValues().apply {
-            put(MediaStore.MediaColumns.DISPLAY_NAME, name)
-            put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4")
-            put(MediaStore.Video.Media.RELATIVE_PATH, STORAGE_DESTINATION)
-        }
+        // Create output options object which contains file + metadata
+        val outputOptions = StorageUtils.getVideoMediaStoreOutputOptions(contentResolver)
 
-        val mediaStoreOutputOptions = MediaStoreOutputOptions
-            .Builder(contentResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
-            .setContentValues(contentValues)
-            .build()
         recording = videoCapture.output
-            .prepareRecording(this, mediaStoreOutputOptions)
+            .prepareRecording(this, outputOptions)
             .apply {
                 if (PermissionChecker.checkSelfPermission(this@MainActivity,
                         Manifest.permission.RECORD_AUDIO) ==
@@ -555,7 +528,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val LOG_TAG = "Aperture"
-        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
 
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS =
@@ -563,7 +535,5 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.CAMERA,
                 Manifest.permission.RECORD_AUDIO
             ).toTypedArray()
-
-        private const val STORAGE_DESTINATION = "DCIM/Aperture"
     }
 }
