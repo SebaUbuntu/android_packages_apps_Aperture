@@ -56,6 +56,28 @@ object SharedPreferencesUtils {
         }
     }
 
+    private const val LAST_GRID_MODE_KEY = "last_grid_mode"
+    private const val LAST_GRID_MODE_DEFAULT = "off"
+
+    fun getLastGridMode(sharedPreferences: SharedPreferences): GridMode {
+        return when (sharedPreferences.getString(
+            LAST_GRID_MODE_KEY, LAST_GRID_MODE_DEFAULT)) {
+            "off" -> GridMode.OFF
+            "on_3" -> GridMode.ON_3
+            // Default to off
+            else -> GridMode.OFF
+        }
+    }
+
+    fun setLastGridMode(sharedPreferences: SharedPreferences, value: GridMode) {
+        sharedPreferences.edit {
+            putString(LAST_GRID_MODE_KEY, when (value) {
+                GridMode.OFF -> "off"
+                GridMode.ON_3 -> "on_3"
+            })
+        }
+    }
+
     // Photos prefs
     private const val PHOTO_CAPTURE_MODE_KEY = "photo_capture_mode"
     private const val PHOTO_CAPTURE_MODE_DEFAULT = "maximize_quality"

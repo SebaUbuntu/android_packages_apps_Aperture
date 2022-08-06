@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.OrientationEventListener
 import android.view.Surface
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.Camera
@@ -36,6 +37,7 @@ import androidx.preference.PreferenceManager
 import org.lineageos.selfie.databinding.ActivityMainBinding
 import org.lineageos.selfie.utils.CameraFacing
 import org.lineageos.selfie.utils.CameraMode
+import org.lineageos.selfie.utils.GridMode
 import org.lineageos.selfie.utils.PhysicalCamera
 import org.lineageos.selfie.utils.SharedPreferencesUtils
 import org.lineageos.selfie.utils.StorageUtils
@@ -98,6 +100,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewBinding.effectButton.setOnClickListener { cyclePhotoEffects() }
+        viewBinding.gridButton.setOnClickListener { toggleGrid() }
         viewBinding.torchButton.setOnClickListener { toggleTorchMode() }
         viewBinding.flashButton.setOnClickListener { cycleFlashMode() }
         viewBinding.settingsButton.setOnClickListener { openSettings() }
@@ -376,9 +379,13 @@ class MainActivity : AppCompatActivity() {
             })
         physicalCamera = PhysicalCamera(camera.cameraInfo)
 
+        // Set grid mode from last state
+        setGridMode(SharedPreferencesUtils.getLastGridMode(sharedPreferences))
+
         // Update icons from last state
         updateCameraModeButtons()
         updatePhotoEffectIcon()
+        updateGridIcon()
         updateTorchModeIcon()
         updateFlashModeIcon()
     }
@@ -425,6 +432,46 @@ class MainActivity : AppCompatActivity() {
     private fun updateCameraModeButtons() {
         viewBinding.photoModeButton.isEnabled = cameraMode != CameraMode.PHOTO
         viewBinding.videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
+    }
+
+    /**
+     * Update the grid button icon based on the value set in grid view
+     */
+    private fun updateGridIcon() {
+        viewBinding.gridButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                when (viewBinding.gridView.visibility) {
+                    View.VISIBLE -> R.drawable.ic_grid_on
+                    View.INVISIBLE -> R.drawable.ic_grid_off
+                    else -> R.drawable.ic_grid_off
+                }
+            )
+        )
+    }
+
+    /**
+     * Set the specified grid mode, also updating the icon
+     */
+    private fun setGridMode(value: GridMode) {
+        viewBinding.gridView.visibility = when (value) {
+            GridMode.OFF -> View.INVISIBLE
+            GridMode.ON_3 -> View.VISIBLE
+        }
+        updateGridIcon()
+
+        SharedPreferencesUtils.setLastGridMode(getSharedPreferences(), value)
+    }
+
+    /**
+     * Toggle grid
+     */
+    private fun toggleGrid() {
+        setGridMode(when (viewBinding.gridView.visibility) {
+            View.VISIBLE -> GridMode.OFF
+            View.INVISIBLE -> GridMode.ON_3
+            else -> GridMode.ON_3
+        })
     }
 
     /**
