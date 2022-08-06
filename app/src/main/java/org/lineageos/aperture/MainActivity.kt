@@ -520,12 +520,12 @@ class MainActivity : AppCompatActivity() {
      * Update the flash mode button icon based on the value set in imageCapture
      */
     private fun updateFlashModeIcon() {
-        val imageCapture = this.imageCapture ?: return
+        val flashMode = imageCapture?.flashMode ?: ImageCapture.FLASH_MODE_OFF
 
         viewBinding.flashButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
-                when (imageCapture.flashMode) {
+                when (flashMode) {
                     ImageCapture.FLASH_MODE_AUTO -> R.drawable.ic_flash_auto
                     ImageCapture.FLASH_MODE_ON -> R.drawable.ic_flash_on
                     ImageCapture.FLASH_MODE_OFF -> R.drawable.ic_flash_off
