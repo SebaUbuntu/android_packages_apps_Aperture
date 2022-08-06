@@ -9,41 +9,34 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import android.view.OrientationEventListener
-import android.view.Surface
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
-import androidx.camera.core.Preview
 import androidx.camera.core.TorchState
 import androidx.camera.extensions.ExtensionMode
 import androidx.camera.extensions.ExtensionsManager
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.video.FallbackStrategy
-import androidx.camera.video.Quality
-import androidx.camera.video.QualitySelector
-import androidx.camera.video.Recorder
-import androidx.camera.video.Recording
-import androidx.camera.video.VideoCapture
-import androidx.camera.video.VideoRecordEvent
+import androidx.camera.view.CameraController
+import androidx.camera.view.LifecycleCameraController
+import androidx.camera.view.video.OnVideoSavedCallback
+import androidx.camera.view.video.OutputFileResults
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.PermissionChecker
 import androidx.preference.PreferenceManager
 import org.lineageos.selfie.databinding.ActivityMainBinding
 import org.lineageos.selfie.utils.CameraFacing
 import org.lineageos.selfie.utils.CameraMode
 import org.lineageos.selfie.utils.GridMode
-import org.lineageos.selfie.utils.PhysicalCamera
 import org.lineageos.selfie.utils.SharedPreferencesUtils
 import org.lineageos.selfie.utils.StorageUtils
 import org.lineageos.selfie.utils.TimeUtils
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import java.util.Timer
+import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
@@ -53,40 +46,23 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var cameraExecutor: ExecutorService
 
-    private lateinit var camera: Camera
-    private lateinit var physicalCamera: PhysicalCamera
+    private lateinit var cameraController: LifecycleCameraController
 
     private lateinit var cameraMode: CameraMode
     private var extensionMode: Int = ExtensionMode.NONE
 
-    private var imageCapture: ImageCapture? = null
     private var isTakingPhoto: Boolean = false
 
-    private var videoCapture: VideoCapture<Recorder>? = null
-    private var recording: Recording? = null
-
-    private val orientationEventListener by lazy {
-        object : OrientationEventListener(this) {
-            override fun onOrientationChanged(orientation: Int) {
-                if (orientation == ORIENTATION_UNKNOWN) {
-                    return
-                }
-
-                val rotation = when (orientation) {
-                    in 45 until 135 -> Surface.ROTATION_270
-                    in 135 until 225 -> Surface.ROTATION_180
-                    in 225 until 315 -> Surface.ROTATION_90
-                    else -> Surface.ROTATION_0
-                }
-
-                imageCapture?.targetRotation = rotation
-                videoCapture?.targetRotation = rotation
-            }
+    private var recordingTime = 0L
+        set(value) {
+            field = value
+            viewBinding.recordChip.text = TimeUtils.convertSecondsToString(recordingTime)
         }
-    }
+    private lateinit var recordingTimer: Timer
 
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
+    @androidx.camera.view.video.ExperimentalVideo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -121,26 +97,6 @@ class MainActivity : AppCompatActivity() {
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
-    override fun onStart() {
-        super.onStart()
-        orientationEventListener.enable()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        orientationEventListener.disable()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        orientationEventListener.enable()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        orientationEventListener.disable()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         cameraExecutor.shutdown()
@@ -165,9 +121,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun takePhoto() {
-        // Get a stable reference of the modifiable image capture use case
-        val imageCapture = imageCapture ?: return
-
         // Bail out if a photo is already being taken
         if (isTakingPhoto)
             return
@@ -178,9 +131,12 @@ class MainActivity : AppCompatActivity() {
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getPhotoMediaStoreOutputOptions(contentResolver)
 
+        // Set camera usecases
+        cameraController.setEnabledUseCases(CameraController.IMAGE_CAPTURE)
+
         // Set up image capture listener, which is triggered after photo has
         // been taken
-        imageCapture.takePicture(
+        cameraController.takePicture(
             outputOptions,
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
@@ -211,81 +167,57 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    @androidx.camera.view.video.ExperimentalVideo
     private fun captureVideo() {
-        val videoCapture = this.videoCapture ?: return
-
-        viewBinding.shutterButton.isEnabled = false
-
-        val curRecording = recording
-        if (curRecording != null) {
+        if (cameraController.isRecording) {
             // Stop the current recording session.
-            curRecording.stop()
-            recording = null
+            cameraController.stopRecording()
+            cameraController.setEnabledUseCases(CameraController.IMAGE_CAPTURE)
             return
         }
 
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getVideoMediaStoreOutputOptions(contentResolver)
 
-        recording = videoCapture.output
-            .prepareRecording(this, outputOptions)
-            .apply {
-                if (PermissionChecker.checkSelfPermission(this@MainActivity,
-                        Manifest.permission.RECORD_AUDIO) ==
-                    PermissionChecker.PERMISSION_GRANTED)
-                {
-                    withAudioEnabled()
-                }
-            }
-            .start(ContextCompat.getMainExecutor(this)) { recordEvent ->
-                when(recordEvent) {
-                    is VideoRecordEvent.Start -> {
-                        viewBinding.shutterButton.isEnabled = true
-                    }
-                    is VideoRecordEvent.Status -> {
-                        viewBinding.recordChip.text = TimeUtils.convertNanosToString(
-                            recordEvent.recordingStats.recordedDurationNanos)
-                    }
-                    is VideoRecordEvent.Finalize -> {
-                        if (!recordEvent.hasError()) {
-                            val msg = "Video capture succeeded: " +
-                                    "${recordEvent.outputResults.outputUri}"
-                            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT)
-                                .show()
-                            Log.d(LOG_TAG, msg)
-                        } else {
-                            recording?.close()
-                            recording = null
-                            Log.e(LOG_TAG, "Video capture ends with error: " +
-                                    "${recordEvent.error}")
+        // Set camera usecases
+        cameraController.setEnabledUseCases(CameraController.VIDEO_CAPTURE)
+
+        // Start recording
+        cameraController.startRecording(
+                outputOptions,
+                cameraExecutor,
+                object : OnVideoSavedCallback {
+                    override fun onVideoSaved(outputFileResults: OutputFileResults) {
+                        stopRecordingTimer()
+                        val msg = "Video capture succeeded: ${outputFileResults.savedUri}"
+                        runOnUiThread {
+                            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                         }
-                        viewBinding.recordChip.text = getString(R.string.record_chip_default_text)
-                        viewBinding.shutterButton.isEnabled = true
+                        Log.d(LOG_TAG, msg)
+                    }
+
+                    override fun onError(videoCaptureError: Int, message: String, cause: Throwable?) {
+                        stopRecordingTimer()
+                        Log.e(LOG_TAG, "Video capture ends with error: $message")
                     }
                 }
-            }
+        )
+
+        startRecordingTimer()
     }
 
     /**
      * Check if we can reinitialize the camera use cases
      */
+    @androidx.camera.view.video.ExperimentalVideo
     private fun canRestartCamera(): Boolean {
         if (cameraMode == CameraMode.PHOTO) {
-            // If imageCapture is null, we definitely need a restart
-            if (imageCapture == null)
-                return true
-
             // Check if we're taking a photo
             if (isTakingPhoto)
                 return false
         } else if (cameraMode == CameraMode.VIDEO) {
-            // If videoCapture is null, we definitely need a restart
-            if (videoCapture == null)
-                return true
-
             // Check for a recording in progress
-            val curRecording = recording
-            if (curRecording != null)
+            if (cameraController.isRecording)
                 return false
         }
 
@@ -317,15 +249,12 @@ class MainActivity : AppCompatActivity() {
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
+    @androidx.camera.view.video.ExperimentalVideo
     private fun bindCameraUseCases() {
         // Unbind previous use cases
         cameraProvider.unbindAll()
 
-        imageCapture = null
         isTakingPhoto = false
-
-        videoCapture = null
-        recording = null
 
         // Get shared preferences
         val sharedPreferences = getSharedPreferences()
@@ -340,21 +269,9 @@ class MainActivity : AppCompatActivity() {
         // Get the user selected effect
         extensionMode = SharedPreferencesUtils.getPhotoEffect(sharedPreferences)
 
-        // Preview
-        val preview = Preview.Builder()
-            .build()
-            .also {
-                it.setSurfaceProvider(viewBinding.viewFinder.surfaceProvider)
-            }
-
         // Initialize the use case we want
         cameraMode = SharedPreferencesUtils.getLastCameraMode(sharedPreferences)
         if (cameraMode == CameraMode.PHOTO) {
-            imageCapture = ImageCapture.Builder()
-                .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
-                .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
-                .build()
-
             // Select the extension
             if (extensionsManager.isExtensionAvailable(cameraSelector, extensionMode)) {
                 cameraSelector = extensionsManager.getExtensionEnabledCameraSelector(
@@ -365,25 +282,15 @@ class MainActivity : AppCompatActivity() {
                     .show()
                 Log.e(LOG_TAG, msg)
             }
-        } else if (cameraMode == CameraMode.VIDEO) {
-            val recorder = Recorder.Builder()
-                .setQualitySelector(
-                    QualitySelector.from(
-                        SharedPreferencesUtils.getVideoQuality(sharedPreferences),
-                        FallbackStrategy.higherQualityOrLowerThan(Quality.SD)
-                    )
-                )
-                .build()
-            videoCapture = VideoCapture.withOutput(recorder)
         }
 
         // Bind use cases to camera
-        camera = cameraProvider.bindToLifecycle(
-            this, cameraSelector, preview, when (cameraMode) {
-                CameraMode.PHOTO -> imageCapture
-                CameraMode.VIDEO -> videoCapture
-            })
-        physicalCamera = PhysicalCamera(camera.cameraInfo)
+        cameraController = LifecycleCameraController(this)
+        cameraController.cameraSelector = cameraSelector
+        cameraController.imageCaptureMode =
+                SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences)
+        cameraController.bindToLifecycle(this)
+        viewBinding.viewFinder.controller = cameraController
 
         // Set grid mode from last state
         setGridMode(SharedPreferencesUtils.getLastGridMode(sharedPreferences))
@@ -402,6 +309,7 @@ class MainActivity : AppCompatActivity() {
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
+    @androidx.camera.view.video.ExperimentalVideo
     private fun changeCameraMode(cameraMode: CameraMode) {
         if (!canRestartCamera())
             return
@@ -418,12 +326,13 @@ class MainActivity : AppCompatActivity() {
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
+    @androidx.camera.view.video.ExperimentalVideo
     private fun flipCamera() {
         if (!canRestartCamera())
             return
 
         SharedPreferencesUtils.setLastCameraFacing(
-            getSharedPreferences(), when(physicalCamera.getCameraFacing()) {
+            getSharedPreferences(), when(cameraController.cameraFacing()) {
                 // We can definitely do it better
                 CameraFacing.FRONT -> CameraFacing.BACK
                 CameraFacing.BACK -> CameraFacing.FRONT
@@ -488,7 +397,7 @@ class MainActivity : AppCompatActivity() {
         viewBinding.torchButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
-                when (camera.cameraInfo.torchState.value) {
+                when (cameraController.torchState.value) {
                     TorchState.OFF -> R.drawable.ic_torch_off
                     TorchState.ON -> R.drawable.ic_torch_on
                     else -> R.drawable.ic_torch_off
@@ -501,7 +410,7 @@ class MainActivity : AppCompatActivity() {
      * Set the specified torch mode, also updating the icon
      */
     private fun setTorchMode(value: Boolean) {
-        camera.cameraControl.enableTorch(value).get()
+        cameraController.enableTorch(value)
         updateTorchModeIcon()
     }
 
@@ -509,7 +418,7 @@ class MainActivity : AppCompatActivity() {
      * Toggle torch mode
      */
     private fun toggleTorchMode() {
-        setTorchMode(when (camera.cameraInfo.torchState.value) {
+        setTorchMode(when (cameraController.torchState.value) {
             TorchState.OFF -> true
             TorchState.ON -> false
             else -> false
@@ -520,12 +429,10 @@ class MainActivity : AppCompatActivity() {
      * Update the flash mode button icon based on the value set in imageCapture
      */
     private fun updateFlashModeIcon() {
-        val flashMode = imageCapture?.flashMode ?: ImageCapture.FLASH_MODE_OFF
-
         viewBinding.flashButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
-                when (flashMode) {
+                when (cameraController.imageCaptureFlashMode) {
                     ImageCapture.FLASH_MODE_AUTO -> R.drawable.ic_flash_auto
                     ImageCapture.FLASH_MODE_ON -> R.drawable.ic_flash_on
                     ImageCapture.FLASH_MODE_OFF -> R.drawable.ic_flash_off
@@ -539,9 +446,7 @@ class MainActivity : AppCompatActivity() {
      * Set the specified flash mode, saving the value to shared prefs and updating the icon
      */
     private fun setFlashMode(flashMode: Int) {
-        val imageCapture = this.imageCapture ?: return
-
-        imageCapture.flashMode = flashMode
+        cameraController.imageCaptureFlashMode = flashMode
         updateFlashModeIcon()
 
         SharedPreferencesUtils.setPhotoFlashMode(getSharedPreferences(), flashMode)
@@ -551,16 +456,38 @@ class MainActivity : AppCompatActivity() {
      * Cycle flash mode between auto, on and off
      */
     private fun cycleFlashMode() {
-        val imageCapture = this.imageCapture ?: return
-
         setFlashMode(
-            if (imageCapture.flashMode >= ImageCapture.FLASH_MODE_OFF) ImageCapture.FLASH_MODE_AUTO
-            else imageCapture.flashMode + 1)
+            if (cameraController.imageCaptureFlashMode >= ImageCapture.FLASH_MODE_OFF) ImageCapture.FLASH_MODE_AUTO
+            else cameraController.imageCaptureFlashMode + 1)
     }
 
+    @androidx.camera.view.video.ExperimentalVideo
     private fun toggleRecordingChipVisibility() {
-        viewBinding.recordChip.visibility = if (cameraMode == CameraMode.VIDEO) View.VISIBLE else
+        viewBinding.recordChip.visibility = if (cameraController.isRecording) View.VISIBLE else
             View.GONE
+    }
+
+    @androidx.camera.view.video.ExperimentalVideo
+    private fun startRecordingTimer() {
+        recordingTime = 0
+        toggleRecordingChipVisibility()
+
+        recordingTimer = Timer("${hashCode()}", false)
+        recordingTimer.scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                runOnUiThread {
+                    recordingTime++
+                }
+            }
+        }, 1000, 1000)
+    }
+
+    @androidx.camera.view.video.ExperimentalVideo
+    private fun stopRecordingTimer() {
+        recordingTimer.cancel()
+        runOnUiThread {
+            toggleRecordingChipVisibility()
+        }
     }
 
     /**
@@ -568,6 +495,7 @@ class MainActivity : AppCompatActivity() {
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
+    @androidx.camera.view.video.ExperimentalVideo
     private fun setExtensionMode(extensionMode: Int) {
         if (!canRestartCamera())
             return
@@ -602,6 +530,7 @@ class MainActivity : AppCompatActivity() {
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
+    @androidx.camera.view.video.ExperimentalVideo
     private fun cyclePhotoEffects() {
         if (!canRestartCamera())
             return
@@ -620,6 +549,7 @@ class MainActivity : AppCompatActivity() {
         return PreferenceManager.getDefaultSharedPreferences(this)
     }
 
+    @androidx.camera.view.video.ExperimentalVideo
     private fun openSettings() {
         if (!canRestartCamera())
             return
