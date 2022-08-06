@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.provider.MediaStore
 import androidx.camera.core.ImageCapture
 import androidx.camera.video.MediaStoreOutputOptions
+import androidx.camera.view.video.OutputFileOptions
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -32,16 +33,16 @@ object StorageUtils {
     /**
      * Returns a new MediaStoreOutputOptions to use to store a MP4 video
      */
-    fun getVideoMediaStoreOutputOptions(contentResolver: ContentResolver): MediaStoreOutputOptions {
+    @androidx.camera.view.video.ExperimentalVideo
+    fun getVideoMediaStoreOutputOptions(contentResolver: ContentResolver): OutputFileOptions {
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, getCurrentTimeString())
             put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4")
             put(MediaStore.Video.Media.RELATIVE_PATH, STORAGE_DESTINATION)
         }
 
-        return MediaStoreOutputOptions
-            .Builder(contentResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
-            .setContentValues(contentValues)
+        return OutputFileOptions
+            .builder(contentResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI, contentValues)
             .build()
     }
 
