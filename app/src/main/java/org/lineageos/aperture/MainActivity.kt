@@ -261,11 +261,8 @@ class MainActivity : AppCompatActivity() {
                 ExtensionsManager.getInstanceAsync(this, cameraProvider).get()
 
             // Unbind previous use cases
-            try {
-                cameraProvider.unbindAll()
-            } catch(exc: Exception) {
-                Log.e(LOG_TAG, "Use case unbinding failed", exc)
-            }
+            cameraProvider.unbindAll()
+
             imageCapture = null
             videoCapture = null
 
