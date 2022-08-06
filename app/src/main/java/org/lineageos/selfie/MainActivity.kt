@@ -41,6 +41,7 @@ import org.lineageos.selfie.utils.GridMode
 import org.lineageos.selfie.utils.PhysicalCamera
 import org.lineageos.selfie.utils.SharedPreferencesUtils
 import org.lineageos.selfie.utils.StorageUtils
+import org.lineageos.selfie.utils.TimeUtils
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -241,6 +242,10 @@ class MainActivity : AppCompatActivity() {
                     is VideoRecordEvent.Start -> {
                         viewBinding.shutterButton.isEnabled = true
                     }
+                    is VideoRecordEvent.Status -> {
+                        viewBinding.recordChip.text = TimeUtils.convertNanosToString(
+                            recordEvent.recordingStats.recordedDurationNanos)
+                    }
                     is VideoRecordEvent.Finalize -> {
                         if (!recordEvent.hasError()) {
                             val msg = "Video capture succeeded: " +
@@ -254,6 +259,7 @@ class MainActivity : AppCompatActivity() {
                             Log.e(LOG_TAG, "Video capture ends with error: " +
                                     "${recordEvent.error}")
                         }
+                        viewBinding.recordChip.text = getString(R.string.record_chip_default_text)
                         viewBinding.shutterButton.isEnabled = true
                     }
                 }
@@ -384,6 +390,7 @@ class MainActivity : AppCompatActivity() {
 
         // Update icons from last state
         updateCameraModeButtons()
+        toggleRecordingChipVisibility()
         updatePhotoEffectIcon()
         updateGridIcon()
         updateTorchModeIcon()
@@ -549,6 +556,11 @@ class MainActivity : AppCompatActivity() {
         setFlashMode(
             if (imageCapture.flashMode >= ImageCapture.FLASH_MODE_OFF) ImageCapture.FLASH_MODE_AUTO
             else imageCapture.flashMode + 1)
+    }
+
+    private fun toggleRecordingChipVisibility() {
+        viewBinding.recordChip.visibility = if (cameraMode == CameraMode.VIDEO) View.VISIBLE else
+            View.GONE
     }
 
     /**

@@ -7,6 +7,9 @@
     <string name="shutter_button_description">Shutter</string>
     <string name="video_mode_button_description">Switch to video mode</string>
 
+    <!-- Record chip -->
+    <string translatable="false" name="record_chip_default_text">00:00:00</string>
+
     <!-- Settings title -->
     <string name="title_activity_settings">Settings</string>
 
