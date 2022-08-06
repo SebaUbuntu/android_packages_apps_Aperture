@@ -1,10 +1,13 @@
 package org.lineageos.aperture
 
 import android.Manifest
+import android.animation.ObjectAnimator
 import android.content.ContentValues
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -161,6 +164,15 @@ class MainActivity : AppCompatActivity() {
 
                 override fun
                         onImageSaved(output: ImageCapture.OutputFileResults) {
+                    viewBinding.root.foreground = ColorDrawable(Color.WHITE)
+                    val colorFade: ObjectAnimator = ObjectAnimator.ofInt(
+                        viewBinding.root.foreground,
+                        "alpha",
+                        255,
+                        0,
+                    )
+                    colorFade.duration = 500
+                    colorFade.start()
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(LOG_TAG, msg)
