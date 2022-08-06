@@ -43,13 +43,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
 
     private lateinit var cameraProvider: ProcessCameraProvider
+    private lateinit var extensionsManager: ExtensionsManager
 
-    private lateinit var cameraMode: CameraMode
+    private lateinit var cameraExecutor: ExecutorService
 
     private lateinit var camera: Camera
     private lateinit var cameraFacing: CameraFacing
 
-    private lateinit var extensionsManager: ExtensionsManager
+    private lateinit var cameraMode: CameraMode
     private var extensionMode: Int = ExtensionMode.NONE
 
     private var imageCapture: ImageCapture? = null
@@ -57,8 +58,6 @@ class MainActivity : AppCompatActivity() {
 
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
-
-    private lateinit var cameraExecutor: ExecutorService
 
     @androidx.camera.core.ExperimentalZeroShutterLag
     override fun onCreate(savedInstanceState: Bundle?) {
