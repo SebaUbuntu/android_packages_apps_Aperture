@@ -15,8 +15,10 @@ class SharedPreferencesUtils {
         fun getLastCameraFacing(sharedPreferences: SharedPreferences): CameraFacing {
             return when (sharedPreferences.getString(
                 LAST_CAMERA_FACING_KEY, LAST_CAMERA_FACING_DEFAULT)) {
+                "unknown" -> CameraFacing.UNKNOWN
                 "front" -> CameraFacing.FRONT
                 "back" -> CameraFacing.BACK
+                "external" -> CameraFacing.EXTERNAL
                 // Default to back
                 else -> CameraFacing.BACK
             }
@@ -25,8 +27,10 @@ class SharedPreferencesUtils {
         fun setLastCameraFacing(sharedPreferences: SharedPreferences, value: CameraFacing) {
             sharedPreferences.edit {
                 putString(LAST_CAMERA_FACING_KEY, when (value) {
+                    CameraFacing.UNKNOWN -> "unknown"
                     CameraFacing.FRONT -> "front"
                     CameraFacing.BACK -> "back"
+                    CameraFacing.EXTERNAL -> "external"
                 })
             }
         }
