@@ -9,7 +9,8 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import android.view.Surface.ROTATION_0
+import android.view.OrientationEventListener
+import android.view.Surface
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.Camera
@@ -61,6 +62,26 @@ class MainActivity : AppCompatActivity() {
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
 
+    private val orientationEventListener by lazy {
+        object : OrientationEventListener(this) {
+            override fun onOrientationChanged(orientation: Int) {
+                if (orientation == ORIENTATION_UNKNOWN) {
+                    return
+                }
+
+                val rotation = when (orientation) {
+                    in 45 until 135 -> Surface.ROTATION_270
+                    in 135 until 225 -> Surface.ROTATION_180
+                    in 225 until 315 -> Surface.ROTATION_90
+                    else -> Surface.ROTATION_0
+                }
+
+                imageCapture?.targetRotation = rotation
+                videoCapture?.targetRotation = rotation
+            }
+        }
+    }
+
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,6 +115,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        orientationEventListener.enable()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        orientationEventListener.disable()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        orientationEventListener.enable()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        orientationEventListener.disable()
     }
 
     override fun onDestroy() {
@@ -303,7 +344,9 @@ class MainActivity : AppCompatActivity() {
             imageCapture = ImageCapture.Builder()
                 .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
                 .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
-                .setTargetRotation(viewBinding.root.display.let { it?.rotation ?: ROTATION_0 })
+                .setTargetRotation(viewBinding.root.display.let {
+                    it?.rotation ?: Surface.ROTATION_0
+                })
                 .build()
 
             // Select the extension
