@@ -2,10 +2,16 @@
     <string name="app_name">Camera</string>
 
     <!-- Button descriptions -->
-    <string name="flip_camera_button_description">Flip camera</string>
+    <string name="timer_button_description">Timer</string>
+    <string name="effect_button_description">Effect</string>
+    <string name="grid_button_description">Grid</string>
+    <string name="torch_button_description">Torch</string>
+    <string name="flash_button_description">Flash</string>
+    <string name="settings_button_description">Settings</string>
     <string name="photo_mode_button_description">Switch to photo mode</string>
-    <string name="shutter_button_description">Shutter</string>
     <string name="video_mode_button_description">Switch to video mode</string>
+    <string name="flip_camera_button_description">Flip camera</string>
+    <string name="shutter_button_description">Shutter</string>
 
     <!-- Record chip -->
     <string translatable="false" name="record_chip_default_text">00:00:00</string>
