@@ -344,9 +344,6 @@ class MainActivity : AppCompatActivity() {
             imageCapture = ImageCapture.Builder()
                 .setCaptureMode(SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences))
                 .setFlashMode(SharedPreferencesUtils.getPhotoFlashMode(sharedPreferences))
-                .setTargetRotation(viewBinding.root.display.let {
-                    it?.rotation ?: Surface.ROTATION_0
-                })
                 .build()
 
             // Select the extension
