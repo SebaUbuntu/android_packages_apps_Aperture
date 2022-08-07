@@ -122,6 +122,17 @@
 
     </androidx.camera.view.PreviewView>
 
+    <ImageView
+        android:id="@+id/viewFinderFocus"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/camera_focus_circle"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
+        app:layout_constraintEnd_toEndOf="@+id/viewFinder"
+        app:layout_constraintStart_toStartOf="@+id/viewFinder"
+        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout" />
+
     <org.lineageos.selfie.ui.GridView
         android:id="@+id/gridView"
         android:layout_width="0dp"

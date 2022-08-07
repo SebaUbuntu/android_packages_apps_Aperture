@@ -72,6 +72,9 @@ class MainActivity : AppCompatActivity() {
                 MSG_HIDE_ZOOM_SLIDER -> {
                     viewBinding.zoomLevel.visibility = View.GONE
                 }
+                MSG_HIDE_FOCUS_RING -> {
+                    viewBinding.viewFinderFocus.visibility = View.GONE
+                }
             }
         }
     }
@@ -326,6 +329,20 @@ class MainActivity : AppCompatActivity() {
         // Restore settings that can be set on the fly
         setGridMode(sharedPreferences.getLastGridMode())
         setFlashMode(sharedPreferences.getPhotoFlashMode())
+
+        // Observe focus state
+        cameraController.tapToFocusState.observe(this) {
+            when (it) {
+                CameraController.TAP_TO_FOCUS_STARTED -> {
+                    viewBinding.viewFinderFocus.visibility = View.VISIBLE
+                    handler.removeMessages(MSG_HIDE_FOCUS_RING)
+                }
+                else -> {
+                    handler.removeMessages(MSG_HIDE_FOCUS_RING)
+                    handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_FOCUS_RING), 500)
+                }
+            }
+        }
 
         // Observe zoom state
         cameraController.zoomState.observe(this) {
@@ -619,5 +636,6 @@ class MainActivity : AppCompatActivity() {
             ).toTypedArray()
 
         private const val MSG_HIDE_ZOOM_SLIDER = 0
+        private const val MSG_HIDE_FOCUS_RING = 1
     }
 }
