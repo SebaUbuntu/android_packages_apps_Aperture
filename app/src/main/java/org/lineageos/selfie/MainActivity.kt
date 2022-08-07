@@ -40,6 +40,7 @@ import com.google.android.material.slider.Slider
 import org.lineageos.selfie.ui.GridView
 import org.lineageos.selfie.utils.CameraFacing
 import org.lineageos.selfie.utils.CameraMode
+import org.lineageos.selfie.utils.ExtensionModeExt
 import org.lineageos.selfie.utils.GridMode
 import org.lineageos.selfie.utils.StorageUtils
 import org.lineageos.selfie.utils.TimeUtils
@@ -73,7 +74,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraController: LifecycleCameraController
 
     private lateinit var cameraMode: CameraMode
-    private var extensionMode: Int = ExtensionMode.NONE
+
+    private var extensionMode = ExtensionMode.NONE
+    private var extensionModeIndex = 0
+    private var supportedExtensionModes = listOf(extensionMode)
 
     private var isTakingPhoto: Boolean = false
 
@@ -321,10 +325,13 @@ class MainActivity : AppCompatActivity() {
             CameraMode.VIDEO -> CameraController.VIDEO_CAPTURE
         }
 
-        // Only photo mode supports vendor extensions
+        // Only photo mode supports vendor extensions for now
         if (cameraMode == CameraMode.PHOTO) {
+            // Fetch the supported extensions
+            supportedExtensionModes =
+                ExtensionModeExt.getSupportedModes(extensionsManager, cameraSelector)
             // Select the extension
-            if (extensionsManager.isExtensionAvailable(cameraSelector, extensionMode)) {
+            if (supportedExtensionModes.contains(extensionMode)) {
                 cameraSelector = extensionsManager.getExtensionEnabledCameraSelector(
                     cameraSelector, extensionMode
                 )
@@ -595,13 +602,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Set a photo effect and restart the camera
+     * Set a photo effect and restart the camera if required
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
     private fun setExtensionMode(extensionMode: Int) {
         if (!canRestartCamera())
+            return
+
+        if (extensionMode == this.extensionMode)
             return
 
         sharedPreferences.setPhotoEffect(extensionMode)
@@ -639,9 +649,14 @@ class MainActivity : AppCompatActivity() {
         if (!canRestartCamera())
             return
 
+        if (supportedExtensionModes.size - 1 == extensionModeIndex) {
+            extensionModeIndex = 0
+        } else {
+            extensionModeIndex++
+        }
+
         setExtensionMode(
-            if (extensionMode >= ExtensionMode.AUTO) ExtensionMode.NONE
-            else extensionMode + 1
+            supportedExtensionModes[extensionModeIndex]
         )
     }
 
