@@ -155,7 +155,11 @@ class MainActivity : AppCompatActivity() {
         galleryButton.setOnClickListener {
             val intent = Intent().apply {
                 action = MediaStore.ACTION_REVIEW
-                type = "image/*"
+                sharedPreferences.getLastSavedUri()?.let {
+                    data = it
+                } ?: run {
+                    type = "image/*"
+                }
                 flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
             }
             startActivity(intent)
@@ -230,6 +234,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     galleryButton.setOnClickListener { startActivity(intent) }
                     val msg = "Photo capture succeeded: ${output.savedUri}"
+                    sharedPreferences.setLastSavedUri(output.savedUri)
                     Log.d(LOG_TAG, msg)
                     isTakingPhoto = false
                     shutterButton.isEnabled = true
@@ -263,6 +268,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     galleryButton.setOnClickListener { startActivity(intent) }
                     val msg = "Video capture succeeded: ${output.savedUri}"
+                    sharedPreferences.setLastSavedUri(output.savedUri)
                     Log.d(LOG_TAG, msg)
                 }
 
