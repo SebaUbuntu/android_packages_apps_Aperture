@@ -41,7 +41,6 @@ import com.google.android.material.slider.Slider
 import org.lineageos.selfie.ui.GridView
 import org.lineageos.selfie.utils.CameraFacing
 import org.lineageos.selfie.utils.CameraMode
-import org.lineageos.selfie.utils.ExtensionModeExt
 import org.lineageos.selfie.utils.GridMode
 import org.lineageos.selfie.utils.StorageUtils
 import org.lineageos.selfie.utils.TimeUtils
@@ -318,8 +317,14 @@ class MainActivity : AppCompatActivity() {
             else -> CameraSelector.DEFAULT_BACK_CAMERA
         }
 
+        // Get the supported vendor extensions for the given camera selector
+        supportedExtensionModes = extensionsManager.getSupportedModes(cameraSelector)
+
         // Get the user selected effect
         extensionMode = sharedPreferences.getPhotoEffect()
+        if (!supportedExtensionModes.contains(extensionMode))
+            extensionMode = ExtensionMode.NONE
+        extensionModeIndex = supportedExtensionModes.indexOf(extensionMode)
 
         // Initialize the use case we want
         cameraMode = sharedPreferences.getLastCameraMode()
@@ -330,9 +335,6 @@ class MainActivity : AppCompatActivity() {
 
         // Only photo mode supports vendor extensions for now
         if (cameraMode == CameraMode.PHOTO) {
-            // Fetch the supported extensions
-            supportedExtensionModes =
-                ExtensionModeExt.getSupportedModes(extensionsManager, cameraSelector)
             // Select the extension
             if (supportedExtensionModes.contains(extensionMode)) {
                 cameraSelector = extensionsManager.getExtensionEnabledCameraSelector(
