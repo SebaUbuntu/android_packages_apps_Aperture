@@ -373,7 +373,7 @@ class MainActivity : AppCompatActivity() {
             return
 
         sharedPreferences.setLastCameraFacing(
-            when(cameraController.cameraFacing()) {
+            when(cameraController.physicalCamera()?.getCameraFacing()) {
                 // We can definitely do it better
                 CameraFacing.FRONT -> CameraFacing.BACK
                 CameraFacing.BACK -> CameraFacing.FRONT

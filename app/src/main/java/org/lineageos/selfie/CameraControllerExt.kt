@@ -1,13 +1,9 @@
 package org.lineageos.selfie
 
-import androidx.camera.core.CameraSelector
 import androidx.camera.view.CameraController
-import org.lineageos.selfie.utils.CameraFacing
+import org.lineageos.selfie.utils.PhysicalCamera
 
-internal fun CameraController.cameraFacing(): CameraFacing {
-    return if (cameraSelector == CameraSelector.DEFAULT_FRONT_CAMERA) {
-        CameraFacing.FRONT
-    } else {
-        CameraFacing.BACK
-    }
+@androidx.camera.camera2.interop.ExperimentalCamera2Interop
+internal fun CameraController.physicalCamera(): PhysicalCamera? {
+    return cameraInfo?.let { PhysicalCamera(it) }
 }
