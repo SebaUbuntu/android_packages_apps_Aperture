@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="top_view_buttons_size">60dp</dimen>
+    <dimen name="top_view_buttons_size">48dp</dimen>
 </resources>
