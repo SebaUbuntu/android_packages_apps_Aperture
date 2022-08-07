@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
     private val recordChip by lazy { findViewById<Chip>(R.id.recordChip) }
     private val settingsButton by lazy { findViewById<ImageView>(R.id.settingsButton) }
     private val shutterButton by lazy { findViewById<ImageView>(R.id.shutterButton) }
+    private val galleryButton by lazy { findViewById<ImageView>(R.id.galleryButton) }
     private val torchButton by lazy { findViewById<ImageView>(R.id.torchButton) }
     private val videoModeButton by lazy { findViewById<ImageView>(R.id.videoModeButton) }
     private val viewFinder by lazy { findViewById<PreviewView>(R.id.viewFinder) }
@@ -212,8 +213,12 @@ class MainActivity : AppCompatActivity() {
                     )
                     colorFade.duration = 500
                     colorFade.start()
+                    val intent = Intent().apply {
+                        action = Intent.ACTION_VIEW
+                        data = output.savedUri
+                    }
+                    galleryButton.setOnClickListener { startActivity(intent) }
                     val msg = "Photo capture succeeded: ${output.savedUri}"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(LOG_TAG, msg)
                     isTakingPhoto = false
                     shutterButton.isEnabled = true
@@ -238,12 +243,14 @@ class MainActivity : AppCompatActivity() {
             outputOptions,
             cameraExecutor,
             object : OnVideoSavedCallback {
-                override fun onVideoSaved(outputFileResults: OutputFileResults) {
+                override fun onVideoSaved(output: OutputFileResults) {
                     stopRecordingTimer()
-                    val msg = "Video capture succeeded: ${outputFileResults.savedUri}"
-                    runOnUiThread {
-                        Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                    val intent = Intent().apply {
+                        action = Intent.ACTION_VIEW
+                        data = output.savedUri
                     }
+                    galleryButton.setOnClickListener { startActivity(intent) }
+                    val msg = "Video capture succeeded: ${output.savedUri}"
                     Log.d(LOG_TAG, msg)
                 }
 
