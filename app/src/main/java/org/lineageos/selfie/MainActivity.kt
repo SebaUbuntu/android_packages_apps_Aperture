@@ -152,6 +152,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        galleryButton.setOnClickListener {
+            val intent = Intent().apply {
+                action = MediaStore.ACTION_REVIEW
+                type = "image/*"
+            }
+            startActivity(intent)
+        }
+
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
