@@ -153,18 +153,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        galleryButton.setOnClickListener {
-            val intent = Intent().apply {
-                action = MediaStore.ACTION_REVIEW
-                sharedPreferences.getLastSavedUri()?.let {
-                    data = it
-                } ?: run {
-                    type = "image/*"
-                }
-                flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-            }
-            startActivity(intent)
-        }
+        updateGalleryIcon(sharedPreferences.getLastSavedUri() != null)
+        galleryButton.setOnClickListener { openGallery() }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
@@ -228,12 +218,7 @@ class MainActivity : AppCompatActivity() {
                     )
                     colorFade.duration = 500
                     colorFade.start()
-                    val intent = Intent().apply {
-                        action = MediaStore.ACTION_REVIEW
-                        data = output.savedUri
-                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-                    }
-                    galleryButton.setOnClickListener { startActivity(intent) }
+                    updateGalleryIcon(true)
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     sharedPreferences.setLastSavedUri(output.savedUri)
                     Log.d(LOG_TAG, msg)
@@ -262,12 +247,7 @@ class MainActivity : AppCompatActivity() {
             object : OnVideoSavedCallback {
                 override fun onVideoSaved(output: OutputFileResults) {
                     stopRecordingTimer()
-                    val intent = Intent().apply {
-                        action = MediaStore.ACTION_REVIEW
-                        data = output.savedUri
-                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-                    }
-                    galleryButton.setOnClickListener { startActivity(intent) }
+                    updateGalleryIcon(true)
                     val msg = "Video capture succeeded: ${output.savedUri}"
                     sharedPreferences.setLastSavedUri(output.savedUri)
                     Log.d(LOG_TAG, msg)
@@ -705,6 +685,27 @@ class MainActivity : AppCompatActivity() {
         ContextCompat.checkSelfPermission(
             baseContext, it
         ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun updateGalleryIcon(uriExists: Boolean) {
+        if (uriExists) {
+            galleryButton.clearColorFilter()
+            galleryButton.setColorFilter(getColor(R.color.grey))
+        } else {
+            galleryButton.clearColorFilter()
+            galleryButton.setColorFilter(getColor(R.color.dark_grey))
+        }
+    }
+
+    private fun openGallery() {
+        sharedPreferences.getLastSavedUri()?.let { uri ->
+            val intent = Intent().apply {
+                action = MediaStore.ACTION_REVIEW
+                data = uri
+                flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+            }
+            startActivity(intent)
+        }
     }
 
     @androidx.camera.view.video.ExperimentalVideo
