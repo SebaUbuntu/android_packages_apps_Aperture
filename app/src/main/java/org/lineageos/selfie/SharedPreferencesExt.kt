@@ -15,7 +15,8 @@ private const val LAST_CAMERA_FACING_DEFAULT = "back"
 
 internal fun SharedPreferences.getLastCameraFacing(): CameraFacing {
     return when (getString(
-        LAST_CAMERA_FACING_KEY, LAST_CAMERA_FACING_DEFAULT)) {
+        LAST_CAMERA_FACING_KEY, LAST_CAMERA_FACING_DEFAULT
+    )) {
         "unknown" -> CameraFacing.UNKNOWN
         "front" -> CameraFacing.FRONT
         "back" -> CameraFacing.BACK
@@ -27,12 +28,14 @@ internal fun SharedPreferences.getLastCameraFacing(): CameraFacing {
 
 internal fun SharedPreferences.setLastCameraFacing(value: CameraFacing) {
     edit {
-        putString(LAST_CAMERA_FACING_KEY, when (value) {
-            CameraFacing.UNKNOWN -> "unknown"
-            CameraFacing.FRONT -> "front"
-            CameraFacing.BACK -> "back"
-            CameraFacing.EXTERNAL -> "external"
-        })
+        putString(
+            LAST_CAMERA_FACING_KEY, when (value) {
+                CameraFacing.UNKNOWN -> "unknown"
+                CameraFacing.FRONT -> "front"
+                CameraFacing.BACK -> "back"
+                CameraFacing.EXTERNAL -> "external"
+            }
+        )
     }
 }
 
@@ -41,7 +44,8 @@ private const val LAST_CAMERA_MODE_DEFAULT = "photo"
 
 internal fun SharedPreferences.getLastCameraMode(): CameraMode {
     return when (getString(
-        LAST_CAMERA_MODE_KEY, LAST_CAMERA_MODE_DEFAULT)) {
+        LAST_CAMERA_MODE_KEY, LAST_CAMERA_MODE_DEFAULT
+    )) {
         "photo" -> CameraMode.PHOTO
         "video" -> CameraMode.VIDEO
         // Default to photo
@@ -51,10 +55,12 @@ internal fun SharedPreferences.getLastCameraMode(): CameraMode {
 
 internal fun SharedPreferences.setLastCameraMode(value: CameraMode) {
     edit {
-        putString(LAST_CAMERA_MODE_KEY, when (value) {
-            CameraMode.PHOTO -> "photo"
-            CameraMode.VIDEO -> "video"
-        })
+        putString(
+            LAST_CAMERA_MODE_KEY, when (value) {
+                CameraMode.PHOTO -> "photo"
+                CameraMode.VIDEO -> "video"
+            }
+        )
     }
 }
 
@@ -63,7 +69,8 @@ private const val LAST_GRID_MODE_DEFAULT = "off"
 
 internal fun SharedPreferences.getLastGridMode(): GridMode {
     return when (getString(
-        LAST_GRID_MODE_KEY, LAST_GRID_MODE_DEFAULT)) {
+        LAST_GRID_MODE_KEY, LAST_GRID_MODE_DEFAULT
+    )) {
         "off" -> GridMode.OFF
         "on_3" -> GridMode.ON_3
         // Default to off
@@ -73,10 +80,12 @@ internal fun SharedPreferences.getLastGridMode(): GridMode {
 
 internal fun SharedPreferences.setLastGridMode(value: GridMode) {
     edit {
-        putString(LAST_GRID_MODE_KEY, when (value) {
-            GridMode.OFF -> "off"
-            GridMode.ON_3 -> "on_3"
-        })
+        putString(
+            LAST_GRID_MODE_KEY, when (value) {
+                GridMode.OFF -> "off"
+                GridMode.ON_3 -> "on_3"
+            }
+        )
     }
 }
 
@@ -87,7 +96,8 @@ private const val PHOTO_CAPTURE_MODE_DEFAULT = "maximize_quality"
 @androidx.camera.core.ExperimentalZeroShutterLag
 internal fun SharedPreferences.getPhotoCaptureMode(): Int {
     return when (getString(
-        PHOTO_CAPTURE_MODE_KEY, PHOTO_CAPTURE_MODE_DEFAULT)) {
+        PHOTO_CAPTURE_MODE_KEY, PHOTO_CAPTURE_MODE_DEFAULT
+    )) {
         "maximize_quality" -> ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY
         "minimize_latency" -> ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY
         "zero_shutter_lag" -> ImageCapture.CAPTURE_MODE_ZERO_SHUTTER_LAG
@@ -101,7 +111,8 @@ private const val PHOTO_FLASH_MODE_DEFAULT = "auto"
 
 internal fun SharedPreferences.getPhotoFlashMode(): Int {
     return when (getString(
-        PHOTO_FLASH_MODE_KEY, PHOTO_FLASH_MODE_DEFAULT)) {
+        PHOTO_FLASH_MODE_KEY, PHOTO_FLASH_MODE_DEFAULT
+    )) {
         "auto" -> ImageCapture.FLASH_MODE_AUTO
         "on" -> ImageCapture.FLASH_MODE_ON
         "off" -> ImageCapture.FLASH_MODE_OFF
@@ -112,13 +123,15 @@ internal fun SharedPreferences.getPhotoFlashMode(): Int {
 
 internal fun SharedPreferences.setPhotoFlashMode(value: Int) {
     edit {
-        putString(PHOTO_FLASH_MODE_KEY, when (value) {
-            ImageCapture.FLASH_MODE_AUTO -> "auto"
-            ImageCapture.FLASH_MODE_ON -> "on"
-            ImageCapture.FLASH_MODE_OFF -> "off"
-            // Default to auto
-            else -> PHOTO_FLASH_MODE_DEFAULT
-        })
+        putString(
+            PHOTO_FLASH_MODE_KEY, when (value) {
+                ImageCapture.FLASH_MODE_AUTO -> "auto"
+                ImageCapture.FLASH_MODE_ON -> "on"
+                ImageCapture.FLASH_MODE_OFF -> "off"
+                // Default to auto
+                else -> PHOTO_FLASH_MODE_DEFAULT
+            }
+        )
     }
 }
 
@@ -127,7 +140,8 @@ private const val PHOTO_EFFECT_DEFAULT = "none"
 
 internal fun SharedPreferences.getPhotoEffect(): Int {
     return when (getString(
-        PHOTO_EFFECT_KEY, PHOTO_EFFECT_DEFAULT)) {
+        PHOTO_EFFECT_KEY, PHOTO_EFFECT_DEFAULT
+    )) {
         "none" -> ExtensionMode.NONE
         "bokeh" -> ExtensionMode.BOKEH
         "hdr" -> ExtensionMode.HDR
@@ -141,16 +155,18 @@ internal fun SharedPreferences.getPhotoEffect(): Int {
 
 internal fun SharedPreferences.setPhotoEffect(value: Int) {
     edit {
-        putString(PHOTO_EFFECT_KEY, when (value) {
-            ExtensionMode.NONE -> "none"
-            ExtensionMode.BOKEH -> "bokeh"
-            ExtensionMode.HDR -> "hdr"
-            ExtensionMode.NIGHT -> "night"
-            ExtensionMode.FACE_RETOUCH -> "face_retouch"
-            ExtensionMode.AUTO -> "auto"
-            // Default to none
-            else -> PHOTO_EFFECT_DEFAULT
-        })
+        putString(
+            PHOTO_EFFECT_KEY, when (value) {
+                ExtensionMode.NONE -> "none"
+                ExtensionMode.BOKEH -> "bokeh"
+                ExtensionMode.HDR -> "hdr"
+                ExtensionMode.NIGHT -> "night"
+                ExtensionMode.FACE_RETOUCH -> "face_retouch"
+                ExtensionMode.AUTO -> "auto"
+                // Default to none
+                else -> PHOTO_EFFECT_DEFAULT
+            }
+        )
     }
 }
 

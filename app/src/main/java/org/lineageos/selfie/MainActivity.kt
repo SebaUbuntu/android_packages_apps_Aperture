@@ -89,7 +89,8 @@ class MainActivity : AppCompatActivity() {
             initCamera()
         } else {
             ActivityCompat.requestPermissions(
-                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+            )
         }
 
         viewBinding.effectButton.setOnClickListener { cyclePhotoEffects() }
@@ -128,15 +129,18 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.core.ExperimentalZeroShutterLag
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
-        IntArray) {
+        IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
                 initCamera()
             } else {
-                Toast.makeText(this,
+                Toast.makeText(
+                    this,
                     "Permissions not granted by the user.",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
                 finish()
             }
         }
@@ -199,23 +203,23 @@ class MainActivity : AppCompatActivity() {
 
         // Start recording
         cameraController.startRecording(
-                outputOptions,
-                cameraExecutor,
-                object : OnVideoSavedCallback {
-                    override fun onVideoSaved(outputFileResults: OutputFileResults) {
-                        stopRecordingTimer()
-                        val msg = "Video capture succeeded: ${outputFileResults.savedUri}"
-                        runOnUiThread {
-                            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                        }
-                        Log.d(LOG_TAG, msg)
+            outputOptions,
+            cameraExecutor,
+            object : OnVideoSavedCallback {
+                override fun onVideoSaved(outputFileResults: OutputFileResults) {
+                    stopRecordingTimer()
+                    val msg = "Video capture succeeded: ${outputFileResults.savedUri}"
+                    runOnUiThread {
+                        Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     }
-
-                    override fun onError(videoCaptureError: Int, message: String, cause: Throwable?) {
-                        stopRecordingTimer()
-                        Log.e(LOG_TAG, "Video capture ends with error: $message")
-                    }
+                    Log.d(LOG_TAG, msg)
                 }
+
+                override fun onError(videoCaptureError: Int, message: String, cause: Throwable?) {
+                    stopRecordingTimer()
+                    Log.e(LOG_TAG, "Video capture ends with error: $message")
+                }
+            }
         )
 
         startRecordingTimer()
@@ -296,7 +300,8 @@ class MainActivity : AppCompatActivity() {
             // Select the extension
             if (extensionsManager.isExtensionAvailable(cameraSelector, extensionMode)) {
                 cameraSelector = extensionsManager.getExtensionEnabledCameraSelector(
-                    cameraSelector, extensionMode)
+                    cameraSelector, extensionMode
+                )
             } else {
                 val msg = "Extension $extensionMode is not supported"
                 Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT)
@@ -373,12 +378,13 @@ class MainActivity : AppCompatActivity() {
             return
 
         sharedPreferences.setLastCameraFacing(
-            when(cameraController.physicalCamera()?.getCameraFacing()) {
+            when (cameraController.physicalCamera()?.getCameraFacing()) {
                 // We can definitely do it better
                 CameraFacing.FRONT -> CameraFacing.BACK
                 CameraFacing.BACK -> CameraFacing.FRONT
                 else -> CameraFacing.BACK
-            })
+            }
+        )
 
         bindCameraUseCases()
     }
@@ -424,11 +430,13 @@ class MainActivity : AppCompatActivity() {
      * Toggle grid
      */
     private fun toggleGrid() {
-        setGridMode(when (viewBinding.gridView.visibility) {
-            View.VISIBLE -> GridMode.OFF
-            View.INVISIBLE -> GridMode.ON_3
-            else -> GridMode.ON_3
-        })
+        setGridMode(
+            when (viewBinding.gridView.visibility) {
+                View.VISIBLE -> GridMode.OFF
+                View.INVISIBLE -> GridMode.ON_3
+                else -> GridMode.ON_3
+            }
+        )
     }
 
     /**
@@ -459,11 +467,13 @@ class MainActivity : AppCompatActivity() {
      * Toggle torch mode
      */
     private fun toggleTorchMode() {
-        setTorchMode(when (cameraController.torchState.value) {
-            TorchState.OFF -> true
-            TorchState.ON -> false
-            else -> false
-        })
+        setTorchMode(
+            when (cameraController.torchState.value) {
+                TorchState.OFF -> true
+                TorchState.ON -> false
+                else -> false
+            }
+        )
     }
 
     /**
@@ -499,7 +509,8 @@ class MainActivity : AppCompatActivity() {
     private fun cycleFlashMode() {
         setFlashMode(
             if (cameraController.imageCaptureFlashMode >= ImageCapture.FLASH_MODE_OFF) ImageCapture.FLASH_MODE_AUTO
-            else cameraController.imageCaptureFlashMode + 1)
+            else cameraController.imageCaptureFlashMode + 1
+        )
     }
 
     @androidx.camera.view.video.ExperimentalVideo
@@ -578,12 +589,14 @@ class MainActivity : AppCompatActivity() {
 
         setExtensionMode(
             if (extensionMode >= ExtensionMode.AUTO) ExtensionMode.NONE
-            else extensionMode + 1)
+            else extensionMode + 1
+        )
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
-            baseContext, it) == PackageManager.PERMISSION_GRANTED
+            baseContext, it
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     @androidx.camera.view.video.ExperimentalVideo
@@ -600,7 +613,7 @@ class MainActivity : AppCompatActivity() {
 
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS =
-            mutableListOf (
+            mutableListOf(
                 Manifest.permission.CAMERA,
                 Manifest.permission.RECORD_AUDIO
             ).toTypedArray()

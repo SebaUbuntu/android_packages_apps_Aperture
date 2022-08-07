@@ -17,7 +17,8 @@ object StorageUtils {
      * Returns a new ImageCapture.OutputFileOptions to use to store a JPEG photo
      */
     fun getPhotoMediaStoreOutputOptions(
-            contentResolver: ContentResolver): ImageCapture.OutputFileOptions {
+        contentResolver: ContentResolver
+    ): ImageCapture.OutputFileOptions {
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, getCurrentTimeString())
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
@@ -25,8 +26,10 @@ object StorageUtils {
         }
 
         return ImageCapture.OutputFileOptions
-            .Builder(contentResolver, MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                contentValues)
+            .Builder(
+                contentResolver, MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                contentValues
+            )
             .build()
     }
 
