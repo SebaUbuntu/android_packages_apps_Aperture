@@ -416,6 +416,11 @@ class MainActivity : AppCompatActivity() {
             handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_ZOOM_SLIDER), 2000)
         }
 
+        // Observe torch state
+        cameraController.torchState.observe(this) {
+            updateTorchModeIcon()
+        }
+
         // Set grid mode from last state
         setGridMode(sharedPreferences.getLastGridMode())
 
@@ -424,7 +429,6 @@ class MainActivity : AppCompatActivity() {
         toggleRecordingChipVisibility()
         updatePhotoEffectIcon()
         updateGridIcon()
-        updateTorchModeIcon()
         updateFlashModeIcon()
     }
 
@@ -534,18 +538,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Set the specified torch mode, also updating the icon
-     */
-    private fun setTorchMode(value: Boolean) {
-        cameraController.enableTorch(value)
-        updateTorchModeIcon()
-    }
-
-    /**
      * Toggle torch mode
      */
     private fun toggleTorchMode() {
-        setTorchMode(
+        cameraController.enableTorch(
             when (cameraController.torchState.value) {
                 TorchState.OFF -> true
                 TorchState.ON -> false
