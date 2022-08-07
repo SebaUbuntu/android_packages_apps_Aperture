@@ -343,6 +343,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        viewBinding.viewFinder.setOnTouchListener { v, event ->
+            if (event != null) {
+                viewBinding.viewFinderFocus.x = event.x - (viewBinding.viewFinderFocus.width / 2)
+                viewBinding.viewFinderFocus.y = event.y + (viewBinding.viewFinderFocus.height / 2)
+            } else {
+                viewBinding.viewFinderFocus.x = (v.width - viewBinding.viewFinderFocus.width) / 2f
+                viewBinding.viewFinderFocus.y = (v.height - viewBinding.viewFinderFocus.height) / 2f
+            }
+            return@setOnTouchListener false
+        }
 
         // Observe zoom state
         cameraController.zoomState.observe(this) {
