@@ -1,6 +1,7 @@
 package org.lineageos.aperture
 
 import android.content.SharedPreferences
+import android.net.Uri
 import androidx.camera.core.ImageCapture
 import androidx.camera.extensions.ExtensionMode
 import androidx.camera.video.Quality
@@ -183,5 +184,19 @@ internal fun SharedPreferences.getVideoQuality(): Quality {
         "highest" -> Quality.HIGHEST
         // Default to highest
         else -> Quality.HIGHEST
+    }
+}
+
+// Last saved URI
+private const val LAST_SAVED_URI_KEY = "saved_uri"
+
+internal fun SharedPreferences.getLastSavedUri(): Uri? {
+    val raw = getString(LAST_SAVED_URI_KEY, null) ?: return null
+    return Uri.parse(raw)
+}
+
+internal fun SharedPreferences.setLastSavedUri(uri: Uri?) {
+    edit {
+        putString(LAST_SAVED_URI_KEY, uri.toString())
     }
 }
