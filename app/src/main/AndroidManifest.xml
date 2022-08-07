@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Selfie">
 
+        <uses-library
+            android:name="androidx.camera.extensions.impl"
+            android:required="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
