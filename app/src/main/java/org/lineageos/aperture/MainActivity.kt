@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import android.provider.MediaStore
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -215,7 +216,7 @@ class MainActivity : AppCompatActivity() {
                     colorFade.duration = 500
                     colorFade.start()
                     val intent = Intent().apply {
-                        action = Intent.ACTION_VIEW
+                        action = MediaStore.ACTION_REVIEW
                         data = output.savedUri
                     }
                     galleryButton.setOnClickListener { startActivity(intent) }
@@ -247,7 +248,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onVideoSaved(output: OutputFileResults) {
                     stopRecordingTimer()
                     val intent = Intent().apply {
-                        action = Intent.ACTION_VIEW
+                        action = MediaStore.ACTION_REVIEW
                         data = output.savedUri
                     }
                     galleryButton.setOnClickListener { startActivity(intent) }
