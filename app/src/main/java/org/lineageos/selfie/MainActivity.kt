@@ -157,6 +157,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent().apply {
                 action = MediaStore.ACTION_REVIEW
                 type = "image/*"
+                flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
             }
             startActivity(intent)
         }
@@ -226,6 +227,7 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent().apply {
                         action = MediaStore.ACTION_REVIEW
                         data = output.savedUri
+                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
                     }
                     galleryButton.setOnClickListener { startActivity(intent) }
                     val msg = "Photo capture succeeded: ${output.savedUri}"
@@ -258,6 +260,7 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent().apply {
                         action = MediaStore.ACTION_REVIEW
                         data = output.savedUri
+                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
                     }
                     galleryButton.setOnClickListener { startActivity(intent) }
                     val msg = "Video capture succeeded: ${output.savedUri}"
