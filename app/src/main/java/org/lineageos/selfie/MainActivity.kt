@@ -153,9 +153,6 @@ class MainActivity : AppCompatActivity() {
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getPhotoMediaStoreOutputOptions(contentResolver)
 
-        // Set camera usecases
-        cameraController.setEnabledUseCases(CameraController.IMAGE_CAPTURE)
-
         // Set up image capture listener, which is triggered after photo has
         // been taken
         cameraController.takePicture(
@@ -194,15 +191,11 @@ class MainActivity : AppCompatActivity() {
         if (cameraController.isRecording) {
             // Stop the current recording session.
             cameraController.stopRecording()
-            cameraController.setEnabledUseCases(CameraController.IMAGE_CAPTURE)
             return
         }
 
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getVideoMediaStoreOutputOptions(contentResolver)
-
-        // Set camera usecases
-        cameraController.setEnabledUseCases(CameraController.VIDEO_CAPTURE)
 
         // Start recording
         cameraController.startRecording(
@@ -293,6 +286,12 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize the use case we want
         cameraMode = sharedPreferences.getLastCameraMode()
+        val cameraUseCases = when (cameraMode) {
+            CameraMode.PHOTO -> CameraController.IMAGE_CAPTURE
+            CameraMode.VIDEO -> CameraController.VIDEO_CAPTURE
+        }
+
+        // Only photo mode supports vendor extensions
         if (cameraMode == CameraMode.PHOTO) {
             // Select the extension
             if (extensionsManager.isExtensionAvailable(cameraSelector, extensionMode)) {
@@ -308,6 +307,7 @@ class MainActivity : AppCompatActivity() {
 
         // Bind use cases to camera
         cameraController.cameraSelector = cameraSelector
+        cameraController.setEnabledUseCases(cameraUseCases)
         cameraController.imageCaptureMode = sharedPreferences.getPhotoCaptureMode()
         cameraController.bindToLifecycle(this)
         viewBinding.viewFinder.controller = cameraController
