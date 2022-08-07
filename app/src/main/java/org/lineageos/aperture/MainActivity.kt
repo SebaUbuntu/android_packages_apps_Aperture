@@ -12,6 +12,7 @@ import android.os.Looper
 import android.os.Message
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
@@ -23,12 +24,16 @@ import androidx.camera.extensions.ExtensionsManager
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.CameraController
 import androidx.camera.view.LifecycleCameraController
+import androidx.camera.view.PreviewView
 import androidx.camera.view.video.OnVideoSavedCallback
 import androidx.camera.view.video.OutputFileResults
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
-import org.lineageos.aperture.databinding.ActivityMainBinding
+import com.google.android.material.chip.Chip
+import com.google.android.material.slider.Slider
+import org.lineageos.aperture.ui.GridView
 import org.lineageos.aperture.utils.CameraFacing
 import org.lineageos.aperture.utils.CameraMode
 import org.lineageos.aperture.utils.GridMode
@@ -40,7 +45,21 @@ import java.util.Timer
 import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityMainBinding
+    private val effectButton by lazy { findViewById<ImageView>(R.id.effectButton) }
+    private val flashButton by lazy { findViewById<ImageView>(R.id.flashButton) }
+    private val flipCameraButton by lazy { findViewById<ImageView>(R.id.flipCameraButton) }
+    private val gridButton by lazy { findViewById<ImageView>(R.id.gridButton) }
+    private val gridView by lazy { findViewById<GridView>(R.id.gridView) }
+    private val mainLayout by lazy { findViewById<ConstraintLayout>(R.id.mainLayout) }
+    private val photoModeButton by lazy { findViewById<ImageView>(R.id.photoModeButton) }
+    private val recordChip by lazy { findViewById<Chip>(R.id.recordChip) }
+    private val settingsButton by lazy { findViewById<ImageView>(R.id.settingsButton) }
+    private val shutterButton by lazy { findViewById<ImageView>(R.id.shutterButton) }
+    private val torchButton by lazy { findViewById<ImageView>(R.id.torchButton) }
+    private val videoModeButton by lazy { findViewById<ImageView>(R.id.videoModeButton) }
+    private val viewFinder by lazy { findViewById<PreviewView>(R.id.viewFinder) }
+    private val viewFinderFocus by lazy { findViewById<ImageView>(R.id.viewFinderFocus) }
+    private val zoomLevel by lazy { findViewById<Slider>(R.id.zoomLevel) }
 
     private lateinit var cameraProvider: ProcessCameraProvider
     private lateinit var extensionsManager: ExtensionsManager
@@ -57,7 +76,7 @@ class MainActivity : AppCompatActivity() {
     private var recordingTime = 0L
         set(value) {
             field = value
-            viewBinding.recordChip.text = TimeUtils.convertSecondsToString(recordingTime)
+            recordChip.text = TimeUtils.convertSecondsToString(recordingTime)
         }
     private lateinit var recordingTimer: Timer
 
@@ -70,10 +89,10 @@ class MainActivity : AppCompatActivity() {
             super.handleMessage(msg)
             when (msg.what) {
                 MSG_HIDE_ZOOM_SLIDER -> {
-                    viewBinding.zoomLevel.visibility = View.GONE
+                    zoomLevel.visibility = View.GONE
                 }
                 MSG_HIDE_FOCUS_RING -> {
-                    viewBinding.viewFinderFocus.visibility = View.GONE
+                    viewFinderFocus.visibility = View.GONE
                 }
             }
         }
@@ -84,8 +103,7 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.view.video.ExperimentalVideo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(viewBinding.root)
+        setContentView(R.layout.activity_main)
 
         // Request camera permissions
         if (allPermissionsGranted()) {
@@ -96,24 +114,24 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        viewBinding.effectButton.setOnClickListener { cyclePhotoEffects() }
-        viewBinding.gridButton.setOnClickListener { toggleGrid() }
-        viewBinding.torchButton.setOnClickListener { toggleTorchMode() }
-        viewBinding.flashButton.setOnClickListener { cycleFlashMode() }
-        viewBinding.settingsButton.setOnClickListener { openSettings() }
+        effectButton.setOnClickListener { cyclePhotoEffects() }
+        gridButton.setOnClickListener { toggleGrid() }
+        torchButton.setOnClickListener { toggleTorchMode() }
+        flashButton.setOnClickListener { cycleFlashMode() }
+        settingsButton.setOnClickListener { openSettings() }
 
-        viewBinding.zoomLevel.addOnChangeListener { _, value, fromUser ->
+        zoomLevel.addOnChangeListener { _, value, fromUser ->
             if (fromUser) {
                 cameraController.setZoomRatio(value)
             }
         }
 
-        viewBinding.photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
-        viewBinding.videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
+        photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
+        videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
 
-        viewBinding.flipCameraButton.setOnClickListener { flipCamera() }
+        flipCameraButton.setOnClickListener { flipCamera() }
 
-        viewBinding.shutterButton.setOnClickListener {
+        shutterButton.setOnClickListener {
             when (cameraMode) {
                 CameraMode.PHOTO -> takePhoto()
                 CameraMode.VIDEO -> captureVideo()
@@ -155,7 +173,7 @@ class MainActivity : AppCompatActivity() {
             return
 
         isTakingPhoto = true
-        viewBinding.shutterButton.isEnabled = false
+        shutterButton.isEnabled = false
 
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getPhotoMediaStoreOutputOptions(contentResolver)
@@ -169,14 +187,13 @@ class MainActivity : AppCompatActivity() {
                 override fun onError(exc: ImageCaptureException) {
                     Log.e(LOG_TAG, "Photo capture failed: ${exc.message}", exc)
                     isTakingPhoto = false
-                    viewBinding.shutterButton.isEnabled = true
+                    shutterButton.isEnabled = true
                 }
 
-                override fun
-                        onImageSaved(output: ImageCapture.OutputFileResults) {
-                    viewBinding.root.foreground = ColorDrawable(Color.WHITE)
+                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                    mainLayout.foreground = ColorDrawable(Color.WHITE)
                     val colorFade: ObjectAnimator = ObjectAnimator.ofInt(
-                        viewBinding.root.foreground,
+                        mainLayout.foreground,
                         "alpha",
                         255,
                         0,
@@ -187,7 +204,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(LOG_TAG, msg)
                     isTakingPhoto = false
-                    viewBinding.shutterButton.isEnabled = true
+                    shutterButton.isEnabled = true
                 }
             }
         )
@@ -318,7 +335,7 @@ class MainActivity : AppCompatActivity() {
         cameraController.setEnabledUseCases(cameraUseCases)
 
         // Attach CameraController to PreviewView
-        viewBinding.viewFinder.controller = cameraController
+        viewFinder.controller = cameraController
 
         // Restore settings that needs a rebind
         cameraController.imageCaptureMode = sharedPreferences.getPhotoCaptureMode()
@@ -334,7 +351,7 @@ class MainActivity : AppCompatActivity() {
         cameraController.tapToFocusState.observe(this) {
             when (it) {
                 CameraController.TAP_TO_FOCUS_STARTED -> {
-                    viewBinding.viewFinderFocus.visibility = View.VISIBLE
+                    viewFinderFocus.visibility = View.VISIBLE
                     handler.removeMessages(MSG_HIDE_FOCUS_RING)
                 }
                 else -> {
@@ -343,23 +360,23 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        viewBinding.viewFinder.setOnTouchListener { v, event ->
+        viewFinder.setOnTouchListener { v, event ->
             if (event != null) {
-                viewBinding.viewFinderFocus.x = event.x - (viewBinding.viewFinderFocus.width / 2)
-                viewBinding.viewFinderFocus.y = event.y + (viewBinding.viewFinderFocus.height / 2)
+                viewFinderFocus.x = event.x - (viewFinderFocus.width / 2)
+                viewFinderFocus.y = event.y + (viewFinderFocus.height / 2)
             } else {
-                viewBinding.viewFinderFocus.x = (v.width - viewBinding.viewFinderFocus.width) / 2f
-                viewBinding.viewFinderFocus.y = (v.height - viewBinding.viewFinderFocus.height) / 2f
+                viewFinderFocus.x = (v.width - viewFinderFocus.width) / 2f
+                viewFinderFocus.y = (v.height - viewFinderFocus.height) / 2f
             }
             return@setOnTouchListener false
         }
 
         // Observe zoom state
         cameraController.zoomState.observe(this) {
-            viewBinding.zoomLevel.valueFrom = it.minZoomRatio
-            viewBinding.zoomLevel.valueTo = it.maxZoomRatio
-            viewBinding.zoomLevel.value = it.zoomRatio
-            viewBinding.zoomLevel.visibility = View.VISIBLE
+            zoomLevel.valueFrom = it.minZoomRatio
+            zoomLevel.valueTo = it.maxZoomRatio
+            zoomLevel.value = it.zoomRatio
+            zoomLevel.visibility = View.VISIBLE
 
             handler.removeMessages(MSG_HIDE_ZOOM_SLIDER)
             handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_ZOOM_SLIDER), 2000)
@@ -420,18 +437,18 @@ class MainActivity : AppCompatActivity() {
      * Update the camera mode buttons reflecting the current mode
      */
     private fun updateCameraModeButtons() {
-        viewBinding.photoModeButton.isEnabled = cameraMode != CameraMode.PHOTO
-        viewBinding.videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
+        photoModeButton.isEnabled = cameraMode != CameraMode.PHOTO
+        videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
     }
 
     /**
      * Update the grid button icon based on the value set in grid view
      */
     private fun updateGridIcon() {
-        viewBinding.gridButton.setImageDrawable(
+        gridButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
-                when (viewBinding.gridView.visibility) {
+                when (gridView.visibility) {
                     View.VISIBLE -> R.drawable.ic_grid_on
                     View.INVISIBLE -> R.drawable.ic_grid_off
                     else -> R.drawable.ic_grid_off
@@ -444,7 +461,7 @@ class MainActivity : AppCompatActivity() {
      * Set the specified grid mode, also updating the icon
      */
     private fun setGridMode(value: GridMode) {
-        viewBinding.gridView.visibility = when (value) {
+        gridView.visibility = when (value) {
             GridMode.OFF -> View.INVISIBLE
             GridMode.ON_3 -> View.VISIBLE
         }
@@ -458,7 +475,7 @@ class MainActivity : AppCompatActivity() {
      */
     private fun toggleGrid() {
         setGridMode(
-            when (viewBinding.gridView.visibility) {
+            when (gridView.visibility) {
                 View.VISIBLE -> GridMode.OFF
                 View.INVISIBLE -> GridMode.ON_3
                 else -> GridMode.ON_3
@@ -470,7 +487,7 @@ class MainActivity : AppCompatActivity() {
      * Update the torch mode button icon based on the value set in camera
      */
     private fun updateTorchModeIcon() {
-        viewBinding.torchButton.setImageDrawable(
+        torchButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
                 when (cameraController.torchState.value) {
@@ -507,7 +524,7 @@ class MainActivity : AppCompatActivity() {
      * Update the flash mode button icon based on the value set in imageCapture
      */
     private fun updateFlashModeIcon() {
-        viewBinding.flashButton.setImageDrawable(
+        flashButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
                 when (cameraController.imageCaptureFlashMode) {
@@ -542,7 +559,7 @@ class MainActivity : AppCompatActivity() {
 
     @androidx.camera.view.video.ExperimentalVideo
     private fun toggleRecordingChipVisibility() {
-        viewBinding.recordChip.visibility = if (cameraController.isRecording) View.VISIBLE else
+        recordChip.visibility = if (cameraController.isRecording) View.VISIBLE else
             View.GONE
     }
 
@@ -588,7 +605,7 @@ class MainActivity : AppCompatActivity() {
      * Update the photo effect icon based on the current value of extensionMode
      */
     private fun updatePhotoEffectIcon() {
-        viewBinding.effectButton.setImageDrawable(
+        effectButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
                 when (extensionMode) {
