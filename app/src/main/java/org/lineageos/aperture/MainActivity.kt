@@ -258,6 +258,9 @@ class MainActivity : AppCompatActivity() {
             // Used to bind the lifecycle of cameras to the lifecycle owner
             cameraProvider = cameraProviderFuture.get()
 
+            // Initialize camera controller
+            cameraController = LifecycleCameraController(this)
+
             // Get vendor extensions manager
             extensionsManager =
                 ExtensionsManager.getInstanceAsync(this, cameraProvider).get()
@@ -274,7 +277,7 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.view.video.ExperimentalVideo
     private fun bindCameraUseCases() {
         // Unbind previous use cases
-        cameraProvider.unbindAll()
+        cameraController.unbind()
 
         isTakingPhoto = false
 
@@ -304,7 +307,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Bind use cases to camera
-        cameraController = LifecycleCameraController(this)
         cameraController.cameraSelector = cameraSelector
         cameraController.imageCaptureMode = sharedPreferences.getPhotoCaptureMode()
         cameraController.bindToLifecycle(this)
