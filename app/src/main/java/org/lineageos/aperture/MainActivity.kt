@@ -31,6 +31,9 @@ import androidx.camera.view.video.OutputFileResults
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat.getInsetsController
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.preference.PreferenceManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.slider.Slider
@@ -104,6 +107,8 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.view.video.ExperimentalVideo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        hideSystemBars()
+
         setContentView(R.layout.activity_main)
 
         // Request camera permissions
@@ -653,6 +658,15 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun hideSystemBars() {
+        val windowInsetsController = getInsetsController(window, window.decorView)
+        // Configure the behavior of the hidden system bars
+        windowInsetsController.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        // Hide both the status bar and the navigation bar
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
     }
 
     companion object {
