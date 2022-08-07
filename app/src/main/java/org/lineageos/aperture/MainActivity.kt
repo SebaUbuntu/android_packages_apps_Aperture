@@ -8,6 +8,9 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -60,6 +63,17 @@ class MainActivity : AppCompatActivity() {
         }
     private lateinit var recordingTimer: Timer
 
+    private val handler = object : Handler(Looper.getMainLooper()) {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            when (msg.what) {
+                MSG_HIDE_ZOOM_SLIDER -> {
+                    viewBinding.zoomLevel.visibility = View.GONE
+                }
+            }
+        }
+    }
+
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
@@ -81,6 +95,12 @@ class MainActivity : AppCompatActivity() {
         viewBinding.torchButton.setOnClickListener { toggleTorchMode() }
         viewBinding.flashButton.setOnClickListener { cycleFlashMode() }
         viewBinding.settingsButton.setOnClickListener { openSettings() }
+
+        viewBinding.zoomLevel.addOnChangeListener { _, value, fromUser ->
+            if (fromUser) {
+                cameraController.setZoomRatio(value)
+            }
+        }
 
         viewBinding.photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
         viewBinding.videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
@@ -291,6 +311,17 @@ class MainActivity : AppCompatActivity() {
                 SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences)
         cameraController.bindToLifecycle(this)
         viewBinding.viewFinder.controller = cameraController
+
+        // Observe zoom state
+        cameraController.zoomState.observe(this) {
+            viewBinding.zoomLevel.valueFrom = it.minZoomRatio
+            viewBinding.zoomLevel.valueTo = it.maxZoomRatio
+            viewBinding.zoomLevel.value = it.zoomRatio
+            viewBinding.zoomLevel.visibility = View.VISIBLE
+
+            handler.removeMessages(MSG_HIDE_ZOOM_SLIDER)
+            handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_ZOOM_SLIDER), 2000)
+        }
 
         // Set grid mode from last state
         setGridMode(SharedPreferencesUtils.getLastGridMode(sharedPreferences))
@@ -567,5 +598,7 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.CAMERA,
                 Manifest.permission.RECORD_AUDIO
             ).toTypedArray()
+
+        private const val MSG_HIDE_ZOOM_SLIDER = 0
     }
 }
