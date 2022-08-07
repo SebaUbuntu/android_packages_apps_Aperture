@@ -190,6 +190,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_circle" />
 
+        <ImageButton
+            android:id="@+id/galleryButton"
+            style="@style/SelfieBottomBarButton"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/gallery_button_description"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/shutterButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_gallery_empty" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
