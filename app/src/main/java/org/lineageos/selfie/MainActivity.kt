@@ -33,7 +33,6 @@ import org.lineageos.selfie.databinding.ActivityMainBinding
 import org.lineageos.selfie.utils.CameraFacing
 import org.lineageos.selfie.utils.CameraMode
 import org.lineageos.selfie.utils.GridMode
-import org.lineageos.selfie.utils.SharedPreferencesUtils
 import org.lineageos.selfie.utils.StorageUtils
 import org.lineageos.selfie.utils.TimeUtils
 import java.util.concurrent.ExecutorService
@@ -62,6 +61,10 @@ class MainActivity : AppCompatActivity() {
             viewBinding.recordChip.text = TimeUtils.convertSecondsToString(recordingTime)
         }
     private lateinit var recordingTimer: Timer
+
+    private val sharedPreferences by lazy {
+        PreferenceManager.getDefaultSharedPreferences(this)
+    }
 
     private val handler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
@@ -276,21 +279,18 @@ class MainActivity : AppCompatActivity() {
 
         isTakingPhoto = false
 
-        // Get shared preferences
-        val sharedPreferences = getSharedPreferences()
-
         // Select front/back camera
-        var cameraSelector = when (SharedPreferencesUtils.getLastCameraFacing(sharedPreferences)) {
+        var cameraSelector = when (sharedPreferences.getLastCameraFacing()) {
             CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
             CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
             else -> CameraSelector.DEFAULT_BACK_CAMERA
         }
 
         // Get the user selected effect
-        extensionMode = SharedPreferencesUtils.getPhotoEffect(sharedPreferences)
+        extensionMode = sharedPreferences.getPhotoEffect()
 
         // Initialize the use case we want
-        cameraMode = SharedPreferencesUtils.getLastCameraMode(sharedPreferences)
+        cameraMode = sharedPreferences.getLastCameraMode()
         if (cameraMode == CameraMode.PHOTO) {
             // Select the extension
             if (extensionsManager.isExtensionAvailable(cameraSelector, extensionMode)) {
@@ -307,8 +307,7 @@ class MainActivity : AppCompatActivity() {
         // Bind use cases to camera
         cameraController = LifecycleCameraController(this)
         cameraController.cameraSelector = cameraSelector
-        cameraController.imageCaptureMode =
-                SharedPreferencesUtils.getPhotoCaptureMode(sharedPreferences)
+        cameraController.imageCaptureMode = sharedPreferences.getPhotoCaptureMode()
         cameraController.bindToLifecycle(this)
         viewBinding.viewFinder.controller = cameraController
 
@@ -324,7 +323,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Set grid mode from last state
-        setGridMode(SharedPreferencesUtils.getLastGridMode(sharedPreferences))
+        setGridMode(sharedPreferences.getLastGridMode())
 
         // Update icons from last state
         updateCameraModeButtons()
@@ -348,7 +347,7 @@ class MainActivity : AppCompatActivity() {
         if (cameraMode == this.cameraMode)
             return
 
-        SharedPreferencesUtils.setLastCameraMode(getSharedPreferences(), cameraMode)
+        sharedPreferences.setLastCameraMode(cameraMode)
         bindCameraUseCases()
     }
 
@@ -362,8 +361,8 @@ class MainActivity : AppCompatActivity() {
         if (!canRestartCamera())
             return
 
-        SharedPreferencesUtils.setLastCameraFacing(
-            getSharedPreferences(), when(cameraController.cameraFacing()) {
+        sharedPreferences.setLastCameraFacing(
+            when(cameraController.cameraFacing()) {
                 // We can definitely do it better
                 CameraFacing.FRONT -> CameraFacing.BACK
                 CameraFacing.BACK -> CameraFacing.FRONT
@@ -407,7 +406,7 @@ class MainActivity : AppCompatActivity() {
         }
         updateGridIcon()
 
-        SharedPreferencesUtils.setLastGridMode(getSharedPreferences(), value)
+        sharedPreferences.setLastGridMode(value)
     }
 
     /**
@@ -480,7 +479,7 @@ class MainActivity : AppCompatActivity() {
         cameraController.imageCaptureFlashMode = flashMode
         updateFlashModeIcon()
 
-        SharedPreferencesUtils.setPhotoFlashMode(getSharedPreferences(), flashMode)
+        sharedPreferences.setPhotoFlashMode(flashMode)
     }
 
     /**
@@ -531,7 +530,7 @@ class MainActivity : AppCompatActivity() {
         if (!canRestartCamera())
             return
 
-        SharedPreferencesUtils.setPhotoEffect(getSharedPreferences(), extensionMode)
+        sharedPreferences.setPhotoEffect(extensionMode)
 
         bindCameraUseCases()
     }
@@ -574,10 +573,6 @@ class MainActivity : AppCompatActivity() {
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
             baseContext, it) == PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun getSharedPreferences(): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(this)
     }
 
     @androidx.camera.view.video.ExperimentalVideo
