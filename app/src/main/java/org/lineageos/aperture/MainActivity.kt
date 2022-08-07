@@ -11,6 +11,7 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -362,8 +363,10 @@ class MainActivity : AppCompatActivity() {
         }
         viewFinder.setOnTouchListener { v, event ->
             if (event != null) {
-                viewFinderFocus.x = event.x - (viewFinderFocus.width / 2)
-                viewFinderFocus.y = event.y + (viewFinderFocus.height / 2)
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    viewFinderFocus.x = event.x - (viewFinderFocus.width / 2)
+                    viewFinderFocus.y = event.y + (viewFinderFocus.height / 2)
+                }
             } else {
                 viewFinderFocus.x = (v.width - viewFinderFocus.width) / 2f
                 viewFinderFocus.y = (v.height - viewFinderFocus.height) / 2f
