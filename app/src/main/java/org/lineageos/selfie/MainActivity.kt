@@ -116,6 +116,7 @@ class MainActivity : AppCompatActivity() {
         hideSystemBars()
 
         setContentView(R.layout.activity_main)
+        setShowWhenLocked(true)
 
         // Request camera permissions
         if (allPermissionsGranted()) {
