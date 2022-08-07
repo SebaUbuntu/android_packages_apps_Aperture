@@ -308,9 +308,19 @@ class MainActivity : AppCompatActivity() {
         // Bind use cases to camera
         cameraController.cameraSelector = cameraSelector
         cameraController.setEnabledUseCases(cameraUseCases)
-        cameraController.imageCaptureMode = sharedPreferences.getPhotoCaptureMode()
-        cameraController.bindToLifecycle(this)
+
+        // Attach CameraController to PreviewView
         viewBinding.viewFinder.controller = cameraController
+
+        // Restore settings that needs a rebind
+        cameraController.imageCaptureMode = sharedPreferences.getPhotoCaptureMode()
+
+        // Bind camera controller to lifecycle
+        cameraController.bindToLifecycle(this)
+
+        // Restore settings that can be set on the fly
+        setGridMode(sharedPreferences.getLastGridMode())
+        setFlashMode(sharedPreferences.getPhotoFlashMode())
 
         // Observe zoom state
         cameraController.zoomState.observe(this) {
