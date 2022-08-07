@@ -13,6 +13,7 @@ import android.os.Message
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -80,6 +81,8 @@ class MainActivity : AppCompatActivity() {
     private var supportedExtensionModes = listOf(extensionMode)
 
     private var isTakingPhoto: Boolean = false
+
+    private var viewFinderTouchEvent: MotionEvent? = null
 
     private var recordingTime = 0L
         set(value) {
@@ -373,17 +376,31 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        viewFinder.setOnTouchListener { v, event ->
-            if (event != null) {
-                if (event.action == MotionEvent.ACTION_DOWN) {
-                    viewFinderFocus.x = event.x - (viewFinderFocus.width / 2)
-                    viewFinderFocus.y = event.y + (viewFinderFocus.height / 2)
-                }
-            } else {
-                viewFinderFocus.x = (v.width - viewFinderFocus.width) / 2f
-                viewFinderFocus.y = (v.height - viewFinderFocus.height) / 2f
+
+        viewFinder.setOnTouchListener { view, event ->
+            val isSingleTouch = event.pointerCount == 1
+            val isUpEvent = event.action == MotionEvent.ACTION_UP
+            val notALongPress = (event.eventTime - event.downTime
+                    < ViewConfiguration.getLongPressTimeout())
+            if (isSingleTouch && isUpEvent && notALongPress) {
+                // If the event is a click, invoke tap-to-focus and forward it to user's
+                // OnClickListener#onClick.
+                viewFinderTouchEvent = event
+                view.performClick()
+                // A click has been detected and forwarded. Consume the event so onClick won't be
+                // invoked twice.
+                return@setOnTouchListener true
             }
             return@setOnTouchListener false
+        }
+        viewFinder.setOnClickListener { view ->
+            viewFinderTouchEvent?.let {
+                viewFinderFocus.x = it.x - (viewFinderFocus.width / 2)
+                viewFinderFocus.y = it.y + (viewFinderFocus.height / 2)
+            } ?: run {
+                viewFinderFocus.x = (view.width - viewFinderFocus.width) / 2f
+                viewFinderFocus.y = (view.height - viewFinderFocus.height) / 2f
+            }
         }
 
         // Observe zoom state
