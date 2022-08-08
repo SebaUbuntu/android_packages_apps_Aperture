@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     private val viewFinderFocus by lazy { findViewById<ImageView>(R.id.viewFinderFocus) }
     private val zoomLevel by lazy { findViewById<Slider>(R.id.zoomLevel) }
 
-    private val keyguardManager by lazy { getSystemService(KEYGUARD_SERVICE) as KeyguardManager }
+    private val keyguardManager by lazy { getSystemService(KeyguardManager::class.java) }
 
     private lateinit var cameraProvider: ProcessCameraProvider
     private lateinit var extensionsManager: ExtensionsManager
@@ -95,6 +95,16 @@ class MainActivity : AppCompatActivity() {
     private var extensionMode = ExtensionMode.NONE
     private var extensionModeIndex = 0
     private var supportedExtensionModes = listOf(extensionMode)
+
+    // Always add the secure intents first
+    // They must be checked before the non-secure ones as they won't
+    // trigger the request to dismiss the keyguard
+    // Must be sorted by priority
+    private val secureIntentsMap = mapOf(
+        Pair(MediaStore.ACTION_REVIEW_SECURE, true),
+        Pair(MediaStore.ACTION_REVIEW, false),
+        Pair(Intent.ACTION_VIEW, false),
+    )
 
     private var isTakingPhoto: Boolean = false
 
@@ -728,22 +738,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openGallery() {
-        dismissKeyguardAndRun {
-            sharedPreferences.lastSavedUri?.let { uri ->
-                listOf(MediaStore.ACTION_REVIEW, Intent.ACTION_VIEW).forEach {
-                    runCatching {
-                        val intent = Intent().apply {
-                            action = it
-                            data = uri
-                            flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-                        }
+        sharedPreferences.lastSavedUri?.let { uri ->
+            secureIntentsMap.forEach { (intentAction, secure) ->
+                runCatching {
+                    val intent = Intent().apply {
+                        action = intentAction
+                        data = uri
+                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    }
+                    // This ensure the target action and the keyguard are in sync
+                    // allowing secure preview to work
+                    val isSecure = secure && keyguardManager.isKeyguardLocked
+                    if (isSecure) {
                         startActivity(intent)
-                        return@dismissKeyguardAndRun
+                        return
+                    } else {
+                        dismissKeyguardAndRun {
+                            startActivity(intent)
+                        }
+                        return
                     }
                 }
-                Toast.makeText(this, "No gallery activity found!", Toast.LENGTH_SHORT).show()
             }
         }
+        Toast.makeText(this, "No gallery activity found!", Toast.LENGTH_SHORT).show()
     }
 
     @androidx.camera.view.video.ExperimentalVideo
