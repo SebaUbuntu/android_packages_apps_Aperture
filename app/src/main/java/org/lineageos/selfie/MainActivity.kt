@@ -8,6 +8,7 @@ package org.lineageos.selfie
 
 import android.Manifest
 import android.animation.ObjectAnimator
+import android.app.KeyguardManager
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -73,6 +74,8 @@ class MainActivity : AppCompatActivity() {
     private val viewFinder by lazy { findViewById<PreviewView>(R.id.viewFinder) }
     private val viewFinderFocus by lazy { findViewById<ImageView>(R.id.viewFinderFocus) }
     private val zoomLevel by lazy { findViewById<Slider>(R.id.zoomLevel) }
+
+    private val keyguardManager by lazy { getSystemService(KEYGUARD_SERVICE) as KeyguardManager }
 
     private lateinit var cameraProvider: ProcessCameraProvider
     private lateinit var extensionsManager: ExtensionsManager
@@ -703,20 +706,39 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun openGallery() {
-        sharedPreferences.getLastSavedUri()?.let { uri ->
-            listOf(MediaStore.ACTION_REVIEW, Intent.ACTION_VIEW).forEach {
-                runCatching {
-                    val intent = Intent().apply {
-                        action = it
-                        data = uri
-                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-                    }
-                    startActivity(intent)
-                    return
+    private fun dismissKeyguardAndRun(runnable: () -> Unit) {
+        if (!keyguardManager.isKeyguardLocked) {
+            runnable()
+            return
+        }
+
+        keyguardManager.requestDismissKeyguard(
+            this,
+            object : KeyguardManager.KeyguardDismissCallback() {
+                override fun onDismissSucceeded() {
+                    super.onDismissSucceeded()
+                    runnable()
                 }
             }
-            Toast.makeText(this, "No gallery activity found!", Toast.LENGTH_SHORT).show()
+        )
+    }
+
+    private fun openGallery() {
+        dismissKeyguardAndRun {
+            sharedPreferences.getLastSavedUri()?.let { uri ->
+                listOf(MediaStore.ACTION_REVIEW, Intent.ACTION_VIEW).forEach {
+                    runCatching {
+                        val intent = Intent().apply {
+                            action = it
+                            data = uri
+                            flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+                        }
+                        startActivity(intent)
+                        return@dismissKeyguardAndRun
+                    }
+                }
+                Toast.makeText(this, "No gallery activity found!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
