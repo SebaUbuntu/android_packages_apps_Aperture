@@ -11,14 +11,17 @@ import android.animation.ObjectAnimator
 import android.app.KeyguardManager
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.provider.MediaStore
 import android.util.Log
+import android.util.Size
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
@@ -52,6 +55,7 @@ import org.lineageos.aperture.utils.CameraMode
 import org.lineageos.aperture.utils.GridMode
 import org.lineageos.aperture.utils.StorageUtils
 import org.lineageos.aperture.utils.TimeUtils
+import java.io.FileNotFoundException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.Timer
@@ -162,7 +166,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        updateGalleryIcon(sharedPreferences.getLastSavedUri() != null)
+        updateGalleryIcon(sharedPreferences.getLastSavedUri())
         galleryButton.setOnClickListener { openGallery() }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -227,7 +231,7 @@ class MainActivity : AppCompatActivity() {
                     )
                     colorFade.duration = 500
                     colorFade.start()
-                    updateGalleryIcon(true)
+                    updateGalleryIcon(output.savedUri)
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     sharedPreferences.setLastSavedUri(output.savedUri)
                     Log.d(LOG_TAG, msg)
@@ -256,7 +260,7 @@ class MainActivity : AppCompatActivity() {
             object : OnVideoSavedCallback {
                 override fun onVideoSaved(output: OutputFileResults) {
                     stopRecordingTimer()
-                    updateGalleryIcon(true)
+                    updateGalleryIcon(output.savedUri)
                     val msg = "Video capture succeeded: ${output.savedUri}"
                     sharedPreferences.setLastSavedUri(output.savedUri)
                     Log.d(LOG_TAG, msg)
@@ -692,12 +696,13 @@ class MainActivity : AppCompatActivity() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun updateGalleryIcon(uriExists: Boolean) {
-        if (uriExists) {
-            galleryButton.clearColorFilter()
-            galleryButton.setColorFilter(getColor(R.color.grey))
-        } else {
-            galleryButton.clearColorFilter()
+    private fun updateGalleryIcon(uri: Uri?) {
+        galleryButton.clearColorFilter()
+        getThumbnail(uri)?.let {
+            runOnUiThread {
+                galleryButton.setImageBitmap(it)
+            }
+        } ?: run {
             galleryButton.setColorFilter(getColor(R.color.dark_grey))
         }
     }
@@ -754,6 +759,20 @@ class MainActivity : AppCompatActivity() {
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         // Hide both the status bar and the navigation bar
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+    }
+
+    private fun getThumbnail(uri: Uri?): Bitmap? {
+        if (uri == null) {
+            return null
+        }
+
+        return try {
+            val sizeInPx = convertDpToPx(75)
+            contentResolver.loadThumbnail(uri, Size(sizeInPx, sizeInPx), null)
+        } catch (exception: FileNotFoundException) {
+            Log.e(LOG_TAG, "${exception.message}")
+            null
+        }
     }
 
     companion object {

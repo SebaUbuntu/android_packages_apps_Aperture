@@ -190,19 +190,26 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_circle" />
 
-        <ImageButton
-            android:id="@+id/galleryButton"
-            style="@style/ApertureBottomBarButton"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/gallery_button_description"
             android:scaleType="fitXY"
+            app:cardCornerRadius="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/shutterButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_gallery_empty" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/galleryButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/gallery_button_description"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_gallery_empty" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
