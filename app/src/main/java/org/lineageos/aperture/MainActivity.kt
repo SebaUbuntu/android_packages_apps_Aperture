@@ -699,12 +699,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun openGallery() {
         sharedPreferences.getLastSavedUri()?.let { uri ->
-            val intent = Intent().apply {
-                action = MediaStore.ACTION_REVIEW
-                data = uri
-                flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+            listOf(MediaStore.ACTION_REVIEW, Intent.ACTION_VIEW).forEach {
+                runCatching {
+                    val intent = Intent().apply {
+                        action = it
+                        data = uri
+                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    }
+                    startActivity(intent)
+                    return
+                }
             }
-            startActivity(intent)
+            Toast.makeText(this, "No gallery activity found!", Toast.LENGTH_SHORT).show()
         }
     }
 
