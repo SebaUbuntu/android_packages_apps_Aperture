@@ -207,8 +207,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/gallery_button_description"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_gallery_empty" />
+                android:scaleType="centerCrop" />
         </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
