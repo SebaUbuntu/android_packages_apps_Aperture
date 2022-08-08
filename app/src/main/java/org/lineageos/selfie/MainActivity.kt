@@ -403,10 +403,6 @@ class MainActivity : AppCompatActivity() {
                 // If the event is a click, invoke tap-to-focus and forward it to user's
                 // OnClickListener#onClick.
                 viewFinderTouchEvent = event
-                view.performClick()
-                // A click has been detected and forwarded. Consume the event so onClick won't be
-                // invoked twice.
-                return@setOnTouchListener true
             }
             return@setOnTouchListener false
         }
