@@ -178,14 +178,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        galleryButton.setOnClickListener { openGallery() }
+
+        cameraExecutor = Executors.newSingleThreadExecutor()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
         // Special case: we want to enable the gallery by default if
         // we have at least one saved Uri and we aren't locked
         sharedPreferences.lastSavedUri?.let {
             updateGalleryButton(it, !keyguardManager.isKeyguardLocked)
         }
-        galleryButton.setOnClickListener { openGallery() }
-
-        cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
     override fun onDestroy() {
@@ -714,7 +719,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateGalleryButton(uri: Uri?, enable: Boolean = true) {
-        galleryButton.clearColorFilter()
         if (uri != null && enable) {
             getThumbnail(uri)?.let {
                 runOnUiThread {
@@ -724,12 +728,10 @@ class MainActivity : AppCompatActivity() {
             galleryButton.isEnabled = true
         } else if (keyguardManager.isKeyguardLocked) {
             // Mimic disable for now
-            galleryButton.clearColorFilter()
-            galleryButton.setColorFilter(getColor(R.color.dark_grey))
+            galleryButton.setImageResource(R.drawable.ic_lock)
             galleryButton.isEnabled = false
         } else {
-            galleryButton.clearColorFilter()
-            galleryButton.setColorFilter(getColor(R.color.dark_grey))
+            galleryButton.setImageResource(0)
             galleryButton.isEnabled = false
         }
     }
