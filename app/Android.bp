@@ -1,0 +1,38 @@
+//
+// Copyright (C) 2022 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app {
+    name: "Aperture",
+
+    srcs: ["src/main/java/**/*.kt"],
+    resource_dirs: ["src/main/res"],
+    manifest: "src/main/AndroidManifest.xml",
+
+    product_specific: true,
+    platform_apis: true,
+
+    static_libs: [
+        "androidx.appcompat_appcompat",
+        "androidx.camera_camera-camera2",
+        "androidx.camera_camera-core",
+        "androidx.camera_camera-extensions",
+        "androidx.camera_camera-lifecycle",
+        "androidx.camera_camera-mlkit-vision",
+        "androidx.camera_camera-video",
+        "androidx.camera_camera-view",
+        "androidx-constraintlayout_constraintlayout",
+        "androidx.core_core",
+        "androidx.preference_preference",
+        "com.google.android.material_material",
+    ],
+    optional_uses_libs: [
+        "androidx.camera.extensions.impl"
+    ],
+
+    optimize: {
+        proguard_flags_files: ["proguard-rules.pro"],
+    },
+}
