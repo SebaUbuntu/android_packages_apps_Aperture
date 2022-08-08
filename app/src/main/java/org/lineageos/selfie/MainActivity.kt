@@ -748,7 +748,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hideSystemBars() {
-        val windowInsetsController = getInsetsController(window, window.decorView)
+        val windowInsetsController = getInsetsController(window, window.decorView) ?: return
         // Configure the behavior of the hidden system bars
         windowInsetsController.systemBarsBehavior =
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
