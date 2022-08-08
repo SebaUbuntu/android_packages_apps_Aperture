@@ -178,7 +178,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        updateGalleryIcon(sharedPreferences.lastSavedUri)
+        // Special case: we want to enable the gallery by default if
+        // we have at least one saved Uri and we aren't locked
+        sharedPreferences.lastSavedUri?.let {
+            updateGalleryButton(it, !keyguardManager.isKeyguardLocked)
+        }
         galleryButton.setOnClickListener { openGallery() }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -243,9 +247,9 @@ class MainActivity : AppCompatActivity() {
                     )
                     colorFade.duration = 500
                     colorFade.start()
-                    updateGalleryIcon(output.savedUri)
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     sharedPreferences.lastSavedUri = output.savedUri
+                    updateGalleryButton(output.savedUri)
                     Log.d(LOG_TAG, msg)
                     isTakingPhoto = false
                     shutterButton.isEnabled = true
@@ -272,9 +276,9 @@ class MainActivity : AppCompatActivity() {
             object : OnVideoSavedCallback {
                 override fun onVideoSaved(output: OutputFileResults) {
                     stopRecordingTimer()
-                    updateGalleryIcon(output.savedUri)
                     val msg = "Video capture succeeded: ${output.savedUri}"
                     sharedPreferences.lastSavedUri = output.savedUri
+                    updateGalleryButton(output.savedUri)
                     Log.d(LOG_TAG, msg)
                 }
 
@@ -709,14 +713,24 @@ class MainActivity : AppCompatActivity() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun updateGalleryIcon(uri: Uri?) {
+    private fun updateGalleryButton(uri: Uri?, enable: Boolean = true) {
         galleryButton.clearColorFilter()
-        getThumbnail(uri)?.let {
-            runOnUiThread {
-                galleryButton.setImageBitmap(it)
+        if (uri != null && enable) {
+            getThumbnail(uri)?.let {
+                runOnUiThread {
+                    galleryButton.setImageBitmap(it)
+                }
             }
-        } ?: run {
+            galleryButton.isEnabled = true
+        } else if (keyguardManager.isKeyguardLocked) {
+            // Mimic disable for now
+            galleryButton.clearColorFilter()
             galleryButton.setColorFilter(getColor(R.color.dark_grey))
+            galleryButton.isEnabled = false
+        } else {
+            galleryButton.clearColorFilter()
+            galleryButton.setColorFilter(getColor(R.color.dark_grey))
+            galleryButton.isEnabled = false
         }
     }
 
