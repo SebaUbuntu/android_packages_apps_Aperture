@@ -8,6 +8,7 @@ package org.lineageos.aperture
 
 import android.Manifest
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.app.KeyguardManager
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -320,6 +321,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Rebind cameraProvider use cases
      */
+    @SuppressLint("ClickableViewAccessibility")
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
@@ -398,7 +400,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        viewFinder.setOnTouchListener { view, event ->
+        viewFinder.setOnTouchListener { _, event ->
             val isSingleTouch = event.pointerCount == 1
             val isUpEvent = event.action == MotionEvent.ACTION_UP
             val notALongPress = (event.eventTime - event.downTime
