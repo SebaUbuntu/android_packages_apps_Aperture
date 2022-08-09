@@ -64,6 +64,7 @@ private const val LAST_CAMERA_MODE_DEFAULT = "photo"
 internal var SharedPreferences.lastCameraMode: CameraMode
     get() {
         return when (getString(LAST_CAMERA_MODE_KEY, LAST_CAMERA_MODE_DEFAULT)) {
+            "qr" -> CameraMode.QR
             "photo" -> CameraMode.PHOTO
             "video" -> CameraMode.VIDEO
             // Default to photo
@@ -74,6 +75,7 @@ internal var SharedPreferences.lastCameraMode: CameraMode
         edit {
             putString(
                 LAST_CAMERA_MODE_KEY, when (value) {
+                    CameraMode.QR -> "qr"
                     CameraMode.PHOTO -> "photo"
                     CameraMode.VIDEO -> "video"
                 }
