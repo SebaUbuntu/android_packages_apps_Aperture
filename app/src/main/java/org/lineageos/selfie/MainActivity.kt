@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
     private val effectButton by lazy { findViewById<ImageView>(R.id.effectButton) }
     private val flashButton by lazy { findViewById<ImageView>(R.id.flashButton) }
     private val flipCameraButton by lazy { findViewById<ImageView>(R.id.flipCameraButton) }
+    private val galleryButton by lazy { findViewById<ImageView>(R.id.galleryButton) }
     private val gridButton by lazy { findViewById<ImageView>(R.id.gridButton) }
     private val gridView by lazy { findViewById<GridView>(R.id.gridView) }
     private val mainLayout by lazy { findViewById<ConstraintLayout>(R.id.mainLayout) }
@@ -74,7 +75,6 @@ class MainActivity : AppCompatActivity() {
     private val recordChip by lazy { findViewById<Chip>(R.id.recordChip) }
     private val settingsButton by lazy { findViewById<ImageView>(R.id.settingsButton) }
     private val shutterButton by lazy { findViewById<ImageView>(R.id.shutterButton) }
-    private val galleryButton by lazy { findViewById<ImageView>(R.id.galleryButton) }
     private val torchButton by lazy { findViewById<ImageView>(R.id.torchButton) }
     private val videoModeButton by lazy { findViewById<ImageView>(R.id.videoModeButton) }
     private val viewFinder by lazy { findViewById<PreviewView>(R.id.viewFinder) }
