@@ -559,6 +559,7 @@ class MainActivity : AppCompatActivity() {
      * Update the torch mode button icon based on the value set in camera
      */
     private fun updateTorchModeIcon() {
+        torchButton.isVisible = cameraController.cameraInfo?.hasFlashUnit() == true
         torchButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
@@ -588,6 +589,7 @@ class MainActivity : AppCompatActivity() {
      * Update the flash mode button icon based on the value set in imageCapture
      */
     private fun updateFlashModeIcon() {
+        flashButton.isVisible = cameraController.cameraInfo?.hasFlashUnit() == true
         flashButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
