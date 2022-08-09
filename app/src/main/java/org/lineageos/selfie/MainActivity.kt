@@ -410,6 +410,7 @@ class MainActivity : AppCompatActivity() {
         setFlashMode(sharedPreferences.photoFlashMode)
 
         // Observe focus state
+        cameraController.tapToFocusState.removeObservers(this)
         cameraController.tapToFocusState.observe(this) {
             when (it) {
                 CameraController.TAP_TO_FOCUS_STARTED -> {
