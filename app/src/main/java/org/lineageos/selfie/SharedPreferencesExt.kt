@@ -226,6 +226,20 @@ internal var SharedPreferences.videoQuality: Quality
         }
     }
 
+// Timer mode
+private const val TIMER_MODE_KEY = "timer_mode"
+private const val TIMER_MODE_DEFAULT = 0
+
+internal var SharedPreferences.timerMode: Int
+    get() {
+        return getInt(TIMER_MODE_KEY, TIMER_MODE_DEFAULT)
+    }
+    set(value) {
+        edit {
+            putInt(TIMER_MODE_KEY, value)
+        }
+    }
+
 // Last saved URI
 private const val LAST_SAVED_URI_KEY = "saved_uri"
 
