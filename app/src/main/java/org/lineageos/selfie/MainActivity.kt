@@ -49,6 +49,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat.getInsetsController
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
@@ -79,6 +80,7 @@ class MainActivity : AppCompatActivity() {
     private val gridView by lazy { findViewById<GridView>(R.id.gridView) }
     private val mainLayout by lazy { findViewById<ConstraintLayout>(R.id.mainLayout) }
     private val photoModeButton by lazy { findViewById<ImageButton>(R.id.photoModeButton) }
+    private val qrModeButton by lazy { findViewById<ImageButton>(R.id.qrModeButton) }
     private val recordChip by lazy { findViewById<Chip>(R.id.recordChip) }
     private val settingsButton by lazy { findViewById<ImageButton>(R.id.settingsButton) }
     private val shutterButton by lazy { findViewById<ImageButton>(R.id.shutterButton) }
@@ -169,6 +171,7 @@ class MainActivity : AppCompatActivity() {
         }
         zoomLevel.setLabelFormatter { "%.1fx".format(it) }
 
+        qrModeButton.setOnClickListener { changeCameraMode(CameraMode.QR) }
         photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
         videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
 
@@ -179,6 +182,7 @@ class MainActivity : AppCompatActivity() {
                 when (cameraMode) {
                     CameraMode.PHOTO -> takePhoto()
                     CameraMode.VIDEO -> captureVideo()
+                    else -> {}
                 }
             }
         }
@@ -380,6 +384,7 @@ class MainActivity : AppCompatActivity() {
         // Initialize the use case we want
         cameraMode = sharedPreferences.lastCameraMode
         val cameraUseCases = when (cameraMode) {
+            CameraMode.QR -> CameraController.IMAGE_ANALYSIS
             CameraMode.PHOTO -> CameraController.IMAGE_CAPTURE
             CameraMode.VIDEO -> CameraController.VIDEO_CAPTURE
         }
@@ -389,6 +394,16 @@ class MainActivity : AppCompatActivity() {
             cameraSelector = extensionsManager.getExtensionEnabledCameraSelector(
                 cameraSelector, extensionMode
             )
+        }
+
+        // Setup QR mode
+        if (cameraMode == CameraMode.QR) {
+            cameraController.setImageAnalysisAnalyzer(cameraExecutor, QrImageAnalyzer(this))
+            timerButton.isVisible = false
+            shutterButton.isInvisible = true
+        } else {
+            timerButton.isVisible = true
+            shutterButton.isInvisible = false
         }
 
         // Bind use cases to camera
@@ -523,6 +538,7 @@ class MainActivity : AppCompatActivity() {
      * Update the camera mode buttons reflecting the current mode
      */
     private fun updateCameraModeButtons() {
+        qrModeButton.isEnabled = cameraMode != CameraMode.QR
         photoModeButton.isEnabled = cameraMode != CameraMode.PHOTO
         videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
     }
