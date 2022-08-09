@@ -49,4 +49,11 @@ class PhysicalCamera(private val cameraInfo: CameraInfo) {
             else -> CameraFacing.UNKNOWN
         }
     }
+
+    /**
+     * Return if flash is available or not
+     */
+    fun hasFlashUnit(): Boolean {
+        return cameraInfo.hasFlashUnit()
+    }
 }

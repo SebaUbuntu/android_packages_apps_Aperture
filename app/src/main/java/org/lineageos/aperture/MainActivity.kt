@@ -58,6 +58,7 @@ import org.lineageos.aperture.ui.GridView
 import org.lineageos.aperture.utils.CameraFacing
 import org.lineageos.aperture.utils.CameraMode
 import org.lineageos.aperture.utils.GridMode
+import org.lineageos.aperture.utils.PhysicalCamera
 import org.lineageos.aperture.utils.StorageUtils
 import org.lineageos.aperture.utils.TimeUtils
 import java.io.FileNotFoundException
@@ -96,6 +97,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraController: LifecycleCameraController
 
     private lateinit var cameraMode: CameraMode
+
+    private lateinit var camera: PhysicalCamera
 
     private var extensionMode = ExtensionMode.NONE
     private var extensionModeIndex = 0
@@ -406,6 +409,10 @@ class MainActivity : AppCompatActivity() {
         // Bind camera controller to lifecycle
         cameraController.bindToLifecycle(this)
 
+        // Get a stable reference to CameraInfo
+        // We can hardcode the first one in the filter as long as we use DEFAULT_*_CAMERA
+        camera = PhysicalCamera(cameraSelector.filter(cameraProvider.availableCameraInfos)[0])
+
         // Restore settings that can be set on the fly
         setGridMode(sharedPreferences.lastGridMode)
         setFlashMode(sharedPreferences.photoFlashMode)
@@ -625,9 +632,9 @@ class MainActivity : AppCompatActivity() {
     /**
      * Update the flash mode button icon based on the value set in imageCapture
      */
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     private fun updateFlashModeIcon() {
-        flashButton.isVisible =
-            cameraMode == CameraMode.PHOTO && cameraController.cameraInfo?.hasFlashUnit() == true
+        flashButton.isVisible = cameraMode == CameraMode.PHOTO && camera.hasFlashUnit() == true
         flashButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
@@ -644,6 +651,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Set the specified flash mode, saving the value to shared prefs and updating the icon
      */
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     private fun setFlashMode(flashMode: Int) {
         cameraController.imageCaptureFlashMode = flashMode
         updateFlashModeIcon()
@@ -654,6 +662,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Cycle flash mode between auto, on and off
      */
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     private fun cycleFlashMode() {
         setFlashMode(
             if (cameraController.imageCaptureFlashMode >= ImageCapture.FLASH_MODE_OFF) ImageCapture.FLASH_MODE_AUTO
