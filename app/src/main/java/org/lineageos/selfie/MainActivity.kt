@@ -423,6 +423,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Observe zoom state
+        cameraController.zoomState.removeObservers(this)
         cameraController.zoomState.observe(this) {
             zoomLevel.valueFrom = it.minZoomRatio
             zoomLevel.valueTo = it.maxZoomRatio
@@ -434,6 +435,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Observe torch state
+        cameraController.torchState.removeObservers(this)
         cameraController.torchState.observe(this) {
             updateTorchModeIcon()
         }
