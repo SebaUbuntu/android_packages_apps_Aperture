@@ -48,9 +48,12 @@ import androidx.core.view.WindowCompat.getInsetsController
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.slider.Slider
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.lineageos.aperture.ui.GridView
 import org.lineageos.aperture.utils.CameraFacing
 import org.lineageos.aperture.utils.CameraMode
@@ -75,6 +78,8 @@ class MainActivity : AppCompatActivity() {
     private val recordChip by lazy { findViewById<Chip>(R.id.recordChip) }
     private val settingsButton by lazy { findViewById<ImageView>(R.id.settingsButton) }
     private val shutterButton by lazy { findViewById<ImageView>(R.id.shutterButton) }
+    private val timerButton by lazy { findViewById<ImageView>(R.id.timerButton) }
+    private val timerChip by lazy { findViewById<Chip>(R.id.timerChip) }
     private val torchButton by lazy { findViewById<ImageView>(R.id.torchButton) }
     private val videoModeButton by lazy { findViewById<ImageView>(R.id.videoModeButton) }
     private val viewFinder by lazy { findViewById<PreviewView>(R.id.viewFinder) }
@@ -147,6 +152,7 @@ class MainActivity : AppCompatActivity() {
 
         effectButton.setOnClickListener { cyclePhotoEffects() }
         gridButton.setOnClickListener { toggleGrid() }
+        timerButton.setOnClickListener { toggleTimerMode() }
         torchButton.setOnClickListener { toggleTorchMode() }
         flashButton.setOnClickListener { cycleFlashMode() }
         settingsButton.setOnClickListener { openSettings() }
@@ -163,9 +169,11 @@ class MainActivity : AppCompatActivity() {
         flipCameraButton.setOnClickListener { flipCamera() }
 
         shutterButton.setOnClickListener {
-            when (cameraMode) {
-                CameraMode.PHOTO -> takePhoto()
-                CameraMode.VIDEO -> captureVideo()
+            startTimerAndRun {
+                when (cameraMode) {
+                    CameraMode.PHOTO -> takePhoto()
+                    CameraMode.VIDEO -> captureVideo()
+                }
             }
         }
 
@@ -299,12 +307,12 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.view.video.ExperimentalVideo
     private fun canRestartCamera(): Boolean {
         if (cameraMode == CameraMode.PHOTO) {
-            // Check if we're taking a photo
-            if (isTakingPhoto)
+            // Check if we're taking a photo or if timer is running
+            if (isTakingPhoto || timerChip.isVisible)
                 return false
         } else if (cameraMode == CameraMode.VIDEO) {
-            // Check for a recording in progress
-            if (cameraController.isRecording)
+            // Check for a recording in progress or if timer is running
+            if (cameraController.isRecording || timerChip.isVisible)
                 return false
         }
 
@@ -462,6 +470,7 @@ class MainActivity : AppCompatActivity() {
         // Update icons from last state
         updateCameraModeButtons()
         toggleRecordingChipVisibility()
+        updateTimerModeIcon()
         updatePhotoEffectIcon()
         updateGridIcon()
         updateFlashModeIcon()
@@ -553,6 +562,34 @@ class MainActivity : AppCompatActivity() {
                 else -> GridMode.ON_3
             }
         )
+    }
+
+    /**
+     * Update the timer mode button icon based on the value set in settings
+     */
+    private fun updateTimerModeIcon() {
+        timerButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                when (sharedPreferences.timerMode) {
+                    3 -> R.drawable.ic_timer_3
+                    10 -> R.drawable.ic_timer_10
+                    else -> R.drawable.ic_timer_off
+                }
+            )
+        )
+    }
+
+    /**
+     * Toggle timer mode
+     */
+    private fun toggleTimerMode() {
+        sharedPreferences.timerMode = when (sharedPreferences.timerMode) {
+            0 -> 3
+            3 -> 10
+            else -> 0
+        }
+        updateTimerModeIcon()
     }
 
     /**
@@ -827,6 +864,29 @@ class MainActivity : AppCompatActivity() {
         } catch (exception: FileNotFoundException) {
             Log.e(LOG_TAG, "${exception.message}")
             null
+        }
+    }
+
+    @androidx.camera.view.video.ExperimentalVideo
+    private fun startTimerAndRun(runnable: () -> Unit) {
+        if (sharedPreferences.timerMode <= 0 || !canRestartCamera()) {
+            runnable()
+            return
+        }
+
+        lifecycleScope.launch {
+            shutterButton.isEnabled = false
+            timerChip.isVisible = true
+
+            for (i in sharedPreferences.timerMode downTo 0) {
+                timerChip.text = "$i"
+                delay(1000)
+            }
+
+            timerChip.isVisible = false
+            shutterButton.isEnabled = true
+
+            runnable()
         }
     }
 
