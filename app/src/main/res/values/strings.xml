@@ -8,6 +8,7 @@
     <string name="torch_button_description">Torch</string>
     <string name="flash_button_description">Flash</string>
     <string name="settings_button_description">Settings</string>
+    <string name="qr_mode_button_description">Switch to QR scanner mode</string>
     <string name="photo_mode_button_description">Switch to photo mode</string>
     <string name="video_mode_button_description">Switch to video mode</string>
     <string name="flip_camera_button_description">Flip camera</string>
@@ -16,6 +17,10 @@
 
     <!-- Record chip -->
     <string translatable="false" name="record_chip_default_text">00:00:00</string>
+
+    <!-- QR dialog -->
+    <string name="qr_copy">Copy to clipboard</string>
+    <string name="qr_title">Scan result</string>
 
     <!-- Settings title -->
     <string name="title_activity_settings">Settings</string>
