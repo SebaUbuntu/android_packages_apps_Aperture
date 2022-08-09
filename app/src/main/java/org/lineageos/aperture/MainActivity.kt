@@ -728,12 +728,15 @@ class MainActivity : AppCompatActivity() {
         if (uri != null && enable) {
             getThumbnail(uri)?.let {
                 runOnUiThread {
+                    galleryButton.setPadding(0)
                     galleryButton.setImageBitmap(it)
                 }
             }
         } else if (keyguardManager.isKeyguardLocked) {
+            galleryButton.setPadding(convertDpToPx(15))
             galleryButton.setImageResource(R.drawable.ic_lock)
         } else {
+            galleryButton.setPadding(0)
             galleryButton.setImageResource(0)
         }
     }
