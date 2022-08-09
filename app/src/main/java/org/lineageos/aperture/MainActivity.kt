@@ -47,6 +47,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat.getInsetsController
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.isVisible
 import androidx.preference.PreferenceManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.slider.Slider
@@ -607,8 +608,7 @@ class MainActivity : AppCompatActivity() {
 
     @androidx.camera.view.video.ExperimentalVideo
     private fun toggleRecordingChipVisibility() {
-        recordChip.visibility = if (cameraController.isRecording) View.VISIBLE else
-            View.GONE
+        recordChip.isVisible = cameraController.isRecording
     }
 
     @androidx.camera.view.video.ExperimentalVideo
