@@ -634,7 +634,7 @@ class MainActivity : AppCompatActivity() {
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     private fun updateFlashModeIcon() {
-        flashButton.isVisible = cameraMode == CameraMode.PHOTO && camera.hasFlashUnit() == true
+        flashButton.isVisible = cameraMode == CameraMode.PHOTO && camera.hasFlashUnit()
         flashButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
