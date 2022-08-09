@@ -188,9 +188,7 @@ class MainActivity : AppCompatActivity() {
 
         // Special case: we want to enable the gallery by default if
         // we have at least one saved Uri and we aren't locked
-        sharedPreferences.lastSavedUri?.let {
-            updateGalleryButton(it, !keyguardManager.isKeyguardLocked)
-        }
+        updateGalleryButton(sharedPreferences.lastSavedUri, !keyguardManager.isKeyguardLocked)
     }
 
     override fun onPause() {
@@ -731,13 +729,10 @@ class MainActivity : AppCompatActivity() {
                     galleryButton.setImageBitmap(it)
                 }
             }
-            galleryButton.isEnabled = true
         } else if (keyguardManager.isKeyguardLocked) {
             galleryButton.setImageResource(R.drawable.ic_lock)
-            galleryButton.isEnabled = true
         } else {
             galleryButton.setImageResource(0)
-            galleryButton.isEnabled = false
         }
     }
 
@@ -759,30 +754,53 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openGallery() {
-        sharedPreferences.lastSavedUri?.let { uri ->
-            secureIntentsMap.forEach { (intentAction, secure) ->
-                runCatching {
+        sharedPreferences.lastSavedUri.let { uri ->
+            // If the Uri is null attempt to launch non secure-gallery
+            if (uri == null) {
+                dismissKeyguardAndRun {
+                    val intent = Intent().apply {
+                        action = Intent.ACTION_VIEW
+                        type = "image/*"
+                    }
+                    runCatching {
+                        startActivity(intent)
+                        return@dismissKeyguardAndRun
+                    }
+                }
+                return
+            }
+
+            // This ensure we took at least one photo/video in the secure use-case
+            if (tookSomething && keyguardManager.isKeyguardLocked) {
+                secureIntentsMap.filter { it.value }.forEach { (intentAction, _) ->
                     val intent = Intent().apply {
                         action = intentAction
                         data = uri
                         flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
                     }
-                    // This ensure the target action and the keyguard are in sync
-                    // allowing secure preview to work
-                    val isSecure = secure && keyguardManager.isKeyguardLocked
-                    if (isSecure && tookSomething) {
+                    runCatching {
                         startActivity(intent)
-                        return
-                    } else {
-                        dismissKeyguardAndRun {
-                            startActivity(intent)
-                        }
-                        return
+                        return@forEach
+                    }
+                }
+                return
+            }
+
+            // Try to open the Uri in the non secure gallery
+            dismissKeyguardAndRun {
+                secureIntentsMap.filter { !it.value }.forEach { (intentAction, _) ->
+                    val intent = Intent().apply {
+                        action = intentAction
+                        data = uri
+                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    }
+                    runCatching {
+                        startActivity(intent)
+                        return@dismissKeyguardAndRun
                     }
                 }
             }
         }
-        Toast.makeText(this, "No gallery activity found!", Toast.LENGTH_SHORT).show()
     }
 
     @androidx.camera.view.video.ExperimentalVideo
