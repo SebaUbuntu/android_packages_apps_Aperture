@@ -382,18 +382,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Only photo mode supports vendor extensions for now
-        if (cameraMode == CameraMode.PHOTO) {
-            // Select the extension
-            if (supportedExtensionModes.contains(extensionMode)) {
-                cameraSelector = extensionsManager.getExtensionEnabledCameraSelector(
-                    cameraSelector, extensionMode
-                )
-            } else {
-                val msg = "Extension $extensionMode is not supported"
-                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT)
-                    .show()
-                Log.e(LOG_TAG, msg)
-            }
+        if (cameraMode == CameraMode.PHOTO && supportedExtensionModes.contains(extensionMode)) {
+            cameraSelector = extensionsManager.getExtensionEnabledCameraSelector(
+                cameraSelector, extensionMode
+            )
         }
 
         // Bind use cases to camera
