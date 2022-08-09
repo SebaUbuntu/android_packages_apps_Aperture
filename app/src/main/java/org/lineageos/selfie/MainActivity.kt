@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.view.video.ExperimentalVideo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        hideSystemBars()
+        hideStatusBars()
 
         setContentView(R.layout.activity_main)
         setShowWhenLocked(true)
@@ -841,13 +841,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun hideSystemBars() {
+    private fun hideStatusBars() {
         val windowInsetsController = getInsetsController(window, window.decorView) ?: return
         // Configure the behavior of the hidden system bars
         windowInsetsController.systemBarsBehavior =
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        // Hide both the status bar and the navigation bar
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+        // Hide the status bar
+        windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
     }
 
     private fun getThumbnail(uri: Uri?): Bitmap? {
