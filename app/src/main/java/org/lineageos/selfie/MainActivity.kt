@@ -714,7 +714,7 @@ class MainActivity : AppCompatActivity() {
      * Update the photo effect icon based on the current value of extensionMode
      */
     private fun updatePhotoEffectIcon() {
-        effectButton.isVisible = supportedExtensionModes.size > 1
+        effectButton.isVisible = cameraMode == CameraMode.PHOTO && supportedExtensionModes.size > 1
         effectButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
