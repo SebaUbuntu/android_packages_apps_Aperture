@@ -96,16 +96,6 @@ class MainActivity : AppCompatActivity() {
     private var extensionModeIndex = 0
     private var supportedExtensionModes = listOf(extensionMode)
 
-    // Always add the secure intents first
-    // They must be checked before the non-secure ones as they won't
-    // trigger the request to dismiss the keyguard
-    // Must be sorted by priority
-    private val secureIntentsMap = mapOf(
-        Pair(MediaStore.ACTION_REVIEW_SECURE, true),
-        Pair(MediaStore.ACTION_REVIEW, false),
-        Pair(Intent.ACTION_VIEW, false),
-    )
-
     private var isTakingPhoto: Boolean = false
     private var tookSomething: Boolean = false
 
@@ -777,25 +767,22 @@ class MainActivity : AppCompatActivity() {
 
             // This ensure we took at least one photo/video in the secure use-case
             if (tookSomething && keyguardManager.isKeyguardLocked) {
-                secureIntentsMap.filter { it.value }.forEach { (intentAction, _) ->
-                    val intent = Intent().apply {
-                        action = intentAction
-                        data = uri
-                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-                    }
-                    runCatching {
-                        startActivity(intent)
-                        return@forEach
-                    }
+                val intent = Intent().apply {
+                    action = MediaStore.ACTION_REVIEW_SECURE
+                    data = uri
+                    flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
                 }
-                return
+                runCatching {
+                    startActivity(intent)
+                    return
+                }
             }
 
             // Try to open the Uri in the non secure gallery
             dismissKeyguardAndRun {
-                secureIntentsMap.filter { !it.value }.forEach { (intentAction, _) ->
+                listOf(MediaStore.ACTION_REVIEW, Intent.ACTION_VIEW).forEach {
                     val intent = Intent().apply {
-                        action = intentAction
+                        action = it
                         data = uri
                         flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
                     }
