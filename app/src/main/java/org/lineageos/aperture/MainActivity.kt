@@ -620,13 +620,7 @@ class MainActivity : AppCompatActivity() {
      * Toggle torch mode
      */
     private fun toggleTorchMode() {
-        cameraController.enableTorch(
-            when (cameraController.torchState.value) {
-                TorchState.OFF -> true
-                TorchState.ON -> false
-                else -> false
-            }
-        )
+        cameraController.enableTorch(cameraController.torchState.value != TorchState.ON)
     }
 
     /**
