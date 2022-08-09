@@ -271,6 +271,20 @@ internal var SharedPreferences.aspectRatio: Int
         }
     }
 
+// Shutter sound
+private const val SHUTTER_SOUND_KEY = "shutter_sound"
+private const val SHUTTER_SOUND_DEFAULT = true
+
+internal var SharedPreferences.shutterSound: Boolean
+    get() {
+        return getBoolean(SHUTTER_SOUND_KEY, SHUTTER_SOUND_DEFAULT)
+    }
+    set(value) {
+        edit {
+            putBoolean(SHUTTER_SOUND_KEY, value)
+        }
+    }
+
 // Last saved URI
 private const val LAST_SAVED_URI_KEY = "saved_uri"
 

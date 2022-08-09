@@ -61,6 +61,7 @@ import kotlinx.coroutines.launch
 import org.lineageos.aperture.ui.GridView
 import org.lineageos.aperture.utils.CameraFacing
 import org.lineageos.aperture.utils.CameraMode
+import org.lineageos.aperture.utils.CameraSoundsUtils
 import org.lineageos.aperture.utils.GridMode
 import org.lineageos.aperture.utils.PhysicalCamera
 import org.lineageos.aperture.utils.StorageUtils
@@ -126,6 +127,8 @@ class MainActivity : AppCompatActivity() {
         PreferenceManager.getDefaultSharedPreferences(this)
     }
 
+    private lateinit var cameraSoundsUtils: CameraSoundsUtils
+
     private val handler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
@@ -167,6 +170,9 @@ class MainActivity : AppCompatActivity() {
 
         // Get vendor extensions manager
         extensionsManager = ExtensionsManager.getInstanceAsync(this, cameraProvider).get()
+
+        // Initialize sounds utils
+        cameraSoundsUtils = CameraSoundsUtils(sharedPreferences)
 
         // Bind camera controller to lifecycle
         cameraController.bindToLifecycle(this)
@@ -258,7 +264,7 @@ class MainActivity : AppCompatActivity() {
             startTimerAndRun {
                 when (cameraMode) {
                     CameraMode.PHOTO -> takePhoto()
-                    CameraMode.VIDEO -> captureVideo()
+                    CameraMode.VIDEO -> lifecycleScope.launch { captureVideo() }
                     else -> {}
                 }
             }
@@ -332,6 +338,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                    cameraSoundsUtils.playShutterClick()
                     viewFinder.foreground = ColorDrawable(Color.BLACK)
                     ValueAnimator.ofInt(0, 255, 0).apply {
                         addUpdateListener { anim ->
@@ -351,7 +358,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @androidx.camera.view.video.ExperimentalVideo
-    private fun captureVideo() {
+    private suspend fun captureVideo() {
         if (cameraController.isRecording) {
             // Stop the current recording session.
             cameraController.stopRecording()
@@ -361,12 +368,19 @@ class MainActivity : AppCompatActivity() {
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getVideoMediaStoreOutputOptions(contentResolver)
 
+        // Play shutter sound
+        if (cameraSoundsUtils.playStartVideoRecording()) {
+            // Delay startRecording() by 500ms to avoid recording shutter sound
+            delay(500)
+        }
+
         // Start recording
         cameraController.startRecording(
             outputOptions,
             cameraExecutor,
             object : OnVideoSavedCallback {
                 override fun onVideoSaved(output: OutputFileResults) {
+                    cameraSoundsUtils.playStopVideoRecording()
                     stopRecordingTimer()
                     val msg = "Video capture succeeded: ${output.savedUri}"
                     sharedPreferences.lastSavedUri = output.savedUri
@@ -376,6 +390,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onError(videoCaptureError: Int, message: String, cause: Throwable?) {
+                    cameraSoundsUtils.playStopVideoRecording()
                     stopRecordingTimer()
                     Log.e(LOG_TAG, "Video capture ends with error: $message")
                 }
