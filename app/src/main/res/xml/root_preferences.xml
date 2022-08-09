@@ -1,5 +1,15 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <PreferenceCategory app:title="@string/general_header">
+
+        <SwitchPreference
+            app:defaultValue="true"
+            app:key="shutter_sound"
+            app:title="@string/shutter_sound_title"
+            app:summary="@string/shutter_sound_summary" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/photos_header">
 
         <ListPreference

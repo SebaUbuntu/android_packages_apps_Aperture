@@ -27,8 +27,13 @@
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
+    <string name="general_header">General</string>
     <string name="photos_header">Photos</string>
     <string name="videos_header">Videos</string>
+
+    <!-- General Preferences -->
+    <string name="shutter_sound_title">Shutter sound</string>
+    <string name="shutter_sound_summary">Note: In some countries this setting will be ignored</string>
 
     <!-- Photo Preferences -->
     <string name="photo_capture_mode_title">Capture mode</string>

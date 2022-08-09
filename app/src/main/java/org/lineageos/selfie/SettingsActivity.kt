@@ -10,6 +10,8 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreference
+import org.lineageos.selfie.utils.CameraSoundsUtils
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -36,8 +38,11 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
+        private val shutterSound by lazy { findPreference<SwitchPreference>("shutter_sound") }
+
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
+            shutterSound?.isEnabled = !CameraSoundsUtils.mustPlaySounds
         }
     }
 }
