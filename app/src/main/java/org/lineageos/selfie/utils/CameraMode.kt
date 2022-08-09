@@ -7,6 +7,7 @@
 package org.lineageos.selfie.utils
 
 enum class CameraMode {
+    QR,
     PHOTO,
     VIDEO,
 }
