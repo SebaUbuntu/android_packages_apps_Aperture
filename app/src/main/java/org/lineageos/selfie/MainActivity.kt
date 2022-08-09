@@ -736,8 +736,8 @@ class MainActivity : AppCompatActivity() {
             galleryButton.setPadding(convertDpToPx(15))
             galleryButton.setImageResource(R.drawable.ic_lock)
         } else {
-            galleryButton.setPadding(0)
-            galleryButton.setImageResource(0)
+            galleryButton.setPadding(convertDpToPx(15))
+            galleryButton.setImageResource(R.drawable.ic_image)
         }
     }
 
