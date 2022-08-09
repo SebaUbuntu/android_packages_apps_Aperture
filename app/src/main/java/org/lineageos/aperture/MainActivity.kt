@@ -167,7 +167,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        updateGalleryIcon(sharedPreferences.getLastSavedUri())
+        updateGalleryIcon(sharedPreferences.lastSavedUri)
         galleryButton.setOnClickListener { openGallery() }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -234,7 +234,7 @@ class MainActivity : AppCompatActivity() {
                     colorFade.start()
                     updateGalleryIcon(output.savedUri)
                     val msg = "Photo capture succeeded: ${output.savedUri}"
-                    sharedPreferences.setLastSavedUri(output.savedUri)
+                    sharedPreferences.lastSavedUri = output.savedUri
                     Log.d(LOG_TAG, msg)
                     isTakingPhoto = false
                     shutterButton.isEnabled = true
@@ -263,7 +263,7 @@ class MainActivity : AppCompatActivity() {
                     stopRecordingTimer()
                     updateGalleryIcon(output.savedUri)
                     val msg = "Video capture succeeded: ${output.savedUri}"
-                    sharedPreferences.setLastSavedUri(output.savedUri)
+                    sharedPreferences.lastSavedUri = output.savedUri
                     Log.d(LOG_TAG, msg)
                 }
 
@@ -332,7 +332,7 @@ class MainActivity : AppCompatActivity() {
         isTakingPhoto = false
 
         // Select front/back camera
-        var cameraSelector = when (sharedPreferences.getLastCameraFacing()) {
+        var cameraSelector = when (sharedPreferences.lastCameraFacing) {
             CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
             CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
             else -> CameraSelector.DEFAULT_BACK_CAMERA
@@ -342,13 +342,13 @@ class MainActivity : AppCompatActivity() {
         supportedExtensionModes = extensionsManager.getSupportedModes(cameraSelector)
 
         // Get the user selected effect
-        extensionMode = sharedPreferences.getPhotoEffect()
+        extensionMode = sharedPreferences.photoEffect
         if (!supportedExtensionModes.contains(extensionMode))
             extensionMode = ExtensionMode.NONE
         extensionModeIndex = supportedExtensionModes.indexOf(extensionMode)
 
         // Initialize the use case we want
-        cameraMode = sharedPreferences.getLastCameraMode()
+        cameraMode = sharedPreferences.lastCameraMode
         val cameraUseCases = when (cameraMode) {
             CameraMode.PHOTO -> CameraController.IMAGE_CAPTURE
             CameraMode.VIDEO -> CameraController.VIDEO_CAPTURE
@@ -377,14 +377,14 @@ class MainActivity : AppCompatActivity() {
         viewFinder.controller = cameraController
 
         // Restore settings that needs a rebind
-        cameraController.imageCaptureMode = sharedPreferences.getPhotoCaptureMode()
+        cameraController.imageCaptureMode = sharedPreferences.photoCaptureMode
 
         // Bind camera controller to lifecycle
         cameraController.bindToLifecycle(this)
 
         // Restore settings that can be set on the fly
-        setGridMode(sharedPreferences.getLastGridMode())
-        setFlashMode(sharedPreferences.getPhotoFlashMode())
+        setGridMode(sharedPreferences.lastGridMode)
+        setFlashMode(sharedPreferences.photoFlashMode)
 
         // Observe focus state
         cameraController.tapToFocusState.observe(this) {
@@ -439,7 +439,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Set grid mode from last state
-        setGridMode(sharedPreferences.getLastGridMode())
+        setGridMode(sharedPreferences.lastGridMode)
 
         // Update icons from last state
         updateCameraModeButtons()
@@ -462,7 +462,7 @@ class MainActivity : AppCompatActivity() {
         if (cameraMode == this.cameraMode)
             return
 
-        sharedPreferences.setLastCameraMode(cameraMode)
+        sharedPreferences.lastCameraMode = cameraMode
         bindCameraUseCases()
     }
 
@@ -476,14 +476,13 @@ class MainActivity : AppCompatActivity() {
         if (!canRestartCamera())
             return
 
-        sharedPreferences.setLastCameraFacing(
+        sharedPreferences.lastCameraFacing =
             when (cameraController.physicalCamera()?.getCameraFacing()) {
                 // We can definitely do it better
                 CameraFacing.FRONT -> CameraFacing.BACK
                 CameraFacing.BACK -> CameraFacing.FRONT
                 else -> CameraFacing.BACK
             }
-        )
 
         bindCameraUseCases()
     }
@@ -522,7 +521,7 @@ class MainActivity : AppCompatActivity() {
         }
         updateGridIcon()
 
-        sharedPreferences.setLastGridMode(value)
+        sharedPreferences.lastGridMode = value
     }
 
     /**
@@ -591,7 +590,7 @@ class MainActivity : AppCompatActivity() {
         cameraController.imageCaptureFlashMode = flashMode
         updateFlashModeIcon()
 
-        sharedPreferences.setPhotoFlashMode(flashMode)
+        sharedPreferences.photoFlashMode = flashMode
     }
 
     /**
@@ -646,7 +645,7 @@ class MainActivity : AppCompatActivity() {
         if (extensionMode == this.extensionMode)
             return
 
-        sharedPreferences.setPhotoEffect(extensionMode)
+        sharedPreferences.photoEffect = extensionMode
 
         bindCameraUseCases()
     }
@@ -728,7 +727,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun openGallery() {
         dismissKeyguardAndRun {
-            sharedPreferences.getLastSavedUri()?.let { uri ->
+            sharedPreferences.lastSavedUri?.let { uri ->
                 listOf(MediaStore.ACTION_REVIEW, Intent.ACTION_VIEW).forEach {
                     runCatching {
                         val intent = Intent().apply {
