@@ -106,6 +106,7 @@ class MainActivity : AppCompatActivity() {
     )
 
     private var isTakingPhoto: Boolean = false
+    private var tookSomething: Boolean = false
 
     private var viewFinderTouchEvent: MotionEvent? = null
 
@@ -192,6 +193,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onPause() {
+        tookSomething = false
+        super.onPause()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         cameraExecutor.shutdown()
@@ -257,6 +263,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d(LOG_TAG, msg)
                     isTakingPhoto = false
                     shutterButton.isEnabled = true
+                    tookSomething = true
                 }
             }
         )
@@ -284,6 +291,7 @@ class MainActivity : AppCompatActivity() {
                     sharedPreferences.lastSavedUri = output.savedUri
                     updateGalleryButton(output.savedUri)
                     Log.d(LOG_TAG, msg)
+                    tookSomething = true
                 }
 
                 override fun onError(videoCaptureError: Int, message: String, cause: Throwable?) {
@@ -725,9 +733,8 @@ class MainActivity : AppCompatActivity() {
             }
             galleryButton.isEnabled = true
         } else if (keyguardManager.isKeyguardLocked) {
-            // Mimic disable for now
             galleryButton.setImageResource(R.drawable.ic_lock)
-            galleryButton.isEnabled = false
+            galleryButton.isEnabled = true
         } else {
             galleryButton.setImageResource(0)
             galleryButton.isEnabled = false
@@ -763,7 +770,7 @@ class MainActivity : AppCompatActivity() {
                     // This ensure the target action and the keyguard are in sync
                     // allowing secure preview to work
                     val isSecure = secure && keyguardManager.isKeyguardLocked
-                    if (isSecure) {
+                    if (isSecure && tookSomething) {
                         startActivity(intent)
                         return
                     } else {
