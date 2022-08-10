@@ -102,7 +102,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var camera: PhysicalCamera
 
     private var extensionMode = ExtensionMode.NONE
-    private var extensionModeIndex = 0
     private var supportedExtensionModes = listOf(extensionMode)
 
     private var isTakingPhoto: Boolean = false
@@ -371,9 +370,9 @@ class MainActivity : AppCompatActivity() {
 
         // Get the user selected effect
         extensionMode = sharedPreferences.photoEffect
-        if (!supportedExtensionModes.contains(extensionMode))
+        if (!supportedExtensionModes.contains(extensionMode)) {
             extensionMode = ExtensionMode.NONE
-        extensionModeIndex = supportedExtensionModes.indexOf(extensionMode)
+        }
 
         // Initialize the use case we want
         cameraMode = sharedPreferences.lastCameraMode
@@ -735,14 +734,9 @@ class MainActivity : AppCompatActivity() {
         if (!canRestartCamera())
             return
 
-        if (supportedExtensionModes.size - 1 == extensionModeIndex) {
-            extensionModeIndex = 0
-        } else {
-            extensionModeIndex++
-        }
-
         setExtensionMode(
-            supportedExtensionModes[extensionModeIndex]
+            if (extensionMode == supportedExtensionModes.last()) supportedExtensionModes.first()
+            else supportedExtensionModes.indexOf(extensionMode) + 1
         )
     }
 
