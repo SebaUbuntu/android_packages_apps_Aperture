@@ -31,6 +31,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.AspectRatio
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -71,6 +72,7 @@ import java.util.Timer
 import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
+    private val aspectRatioButton by lazy { findViewById<ImageButton>(R.id.aspectRatioButton) }
     private val effectButton by lazy { findViewById<ImageButton>(R.id.effectButton) }
     private val flashButton by lazy { findViewById<ImageButton>(R.id.flashButton) }
     private val flipCameraButton by lazy { findViewById<ImageButton>(R.id.flipCameraButton) }
@@ -103,6 +105,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraMode: CameraMode
 
     private lateinit var camera: PhysicalCamera
+
+    private var aspectRatio: Int = AspectRatio.RATIO_4_3
 
     private var extensionMode = ExtensionMode.NONE
     private var supportedExtensionModes = listOf(extensionMode)
@@ -171,6 +175,7 @@ class MainActivity : AppCompatActivity() {
         cameraController.bindToLifecycle(this)
 
         // Set top bar button callbacks
+        aspectRatioButton.setOnClickListener { cycleAspectRatio() }
         effectButton.setOnClickListener { cyclePhotoEffects() }
         gridButton.setOnClickListener { toggleGrid() }
         timerButton.setOnClickListener { toggleTimerMode() }
@@ -427,12 +432,25 @@ class MainActivity : AppCompatActivity() {
             extensionMode = ExtensionMode.NONE
         }
 
-        // Initialize the use case we want
+        // Get aspect ratio
+        aspectRatio = sharedPreferences.aspectRatio
+        val outputSize = CameraController.OutputSize(aspectRatio)
+
+        // Initialize the use case we want and set its aspect ratio
         cameraMode = sharedPreferences.lastCameraMode
         val cameraUseCases = when (cameraMode) {
-            CameraMode.QR -> CameraController.IMAGE_ANALYSIS
-            CameraMode.PHOTO -> CameraController.IMAGE_CAPTURE
-            CameraMode.VIDEO -> CameraController.VIDEO_CAPTURE
+            CameraMode.QR -> {
+                cameraController.imageAnalysisTargetSize = outputSize
+                CameraController.IMAGE_ANALYSIS
+            }
+            CameraMode.PHOTO -> {
+                cameraController.imageCaptureTargetSize = outputSize
+                CameraController.IMAGE_CAPTURE
+            }
+            CameraMode.VIDEO -> {
+                cameraController.videoCaptureTargetSize = outputSize
+                CameraController.VIDEO_CAPTURE
+            }
         }
 
         // Only photo mode supports vendor extensions for now
@@ -526,6 +544,21 @@ class MainActivity : AppCompatActivity() {
         qrModeButton.isEnabled = cameraMode != CameraMode.QR
         photoModeButton.isEnabled = cameraMode != CameraMode.PHOTO
         videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
+    }
+
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
+    @androidx.camera.view.video.ExperimentalVideo
+    private fun cycleAspectRatio() {
+        if (!canRestartCamera())
+            return
+
+        sharedPreferences.aspectRatio = when (aspectRatio) {
+            AspectRatio.RATIO_4_3 -> AspectRatio.RATIO_16_9
+            AspectRatio.RATIO_16_9 -> AspectRatio.RATIO_4_3
+            else -> AspectRatio.RATIO_4_3
+        }
+
+        bindCameraUseCases()
     }
 
     /**
