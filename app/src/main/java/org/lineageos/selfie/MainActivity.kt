@@ -26,6 +26,7 @@ import android.util.Size
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -68,21 +69,21 @@ import java.util.Timer
 import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
-    private val effectButton by lazy { findViewById<ImageView>(R.id.effectButton) }
-    private val flashButton by lazy { findViewById<ImageView>(R.id.flashButton) }
-    private val flipCameraButton by lazy { findViewById<ImageView>(R.id.flipCameraButton) }
+    private val effectButton by lazy { findViewById<ImageButton>(R.id.effectButton) }
+    private val flashButton by lazy { findViewById<ImageButton>(R.id.flashButton) }
+    private val flipCameraButton by lazy { findViewById<ImageButton>(R.id.flipCameraButton) }
     private val galleryButton by lazy { findViewById<ImageView>(R.id.galleryButton) }
-    private val gridButton by lazy { findViewById<ImageView>(R.id.gridButton) }
+    private val gridButton by lazy { findViewById<ImageButton>(R.id.gridButton) }
     private val gridView by lazy { findViewById<GridView>(R.id.gridView) }
     private val mainLayout by lazy { findViewById<ConstraintLayout>(R.id.mainLayout) }
-    private val photoModeButton by lazy { findViewById<ImageView>(R.id.photoModeButton) }
+    private val photoModeButton by lazy { findViewById<ImageButton>(R.id.photoModeButton) }
     private val recordChip by lazy { findViewById<Chip>(R.id.recordChip) }
-    private val settingsButton by lazy { findViewById<ImageView>(R.id.settingsButton) }
-    private val shutterButton by lazy { findViewById<ImageView>(R.id.shutterButton) }
-    private val timerButton by lazy { findViewById<ImageView>(R.id.timerButton) }
+    private val settingsButton by lazy { findViewById<ImageButton>(R.id.settingsButton) }
+    private val shutterButton by lazy { findViewById<ImageButton>(R.id.shutterButton) }
+    private val timerButton by lazy { findViewById<ImageButton>(R.id.timerButton) }
     private val timerChip by lazy { findViewById<Chip>(R.id.timerChip) }
-    private val torchButton by lazy { findViewById<ImageView>(R.id.torchButton) }
-    private val videoModeButton by lazy { findViewById<ImageView>(R.id.videoModeButton) }
+    private val torchButton by lazy { findViewById<ImageButton>(R.id.torchButton) }
+    private val videoModeButton by lazy { findViewById<ImageButton>(R.id.videoModeButton) }
     private val viewFinder by lazy { findViewById<PreviewView>(R.id.viewFinder) }
     private val viewFinderFocus by lazy { findViewById<ImageView>(R.id.viewFinderFocus) }
     private val zoomLevel by lazy { findViewById<Slider>(R.id.zoomLevel) }
