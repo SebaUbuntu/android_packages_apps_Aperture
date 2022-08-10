@@ -168,9 +168,6 @@ class MainActivity : AppCompatActivity() {
         // Get vendor extensions manager
         extensionsManager = ExtensionsManager.getInstanceAsync(this, cameraProvider).get()
 
-        // Bind use cases for the first time
-        bindCameraUseCases()
-
         // Bind camera controller to lifecycle
         cameraController.bindToLifecycle(this)
 
@@ -272,12 +269,16 @@ class MainActivity : AppCompatActivity() {
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     override fun onResume() {
         super.onResume()
 
         // Special case: we want to enable the gallery by default if
         // we have at least one saved Uri and we aren't locked
         updateGalleryButton(sharedPreferences.lastSavedUri, !keyguardManager.isKeyguardLocked)
+
+        // Re-bind the use cases
+        bindCameraUseCases()
     }
 
     override fun onPause() {
