@@ -19,6 +19,12 @@ import android.view.View
 class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, attributeSet) {
     private val paint: Paint = Paint()
 
+    var size = 0
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     init {
         paint.isAntiAlias = true
         paint.strokeWidth = 3F
@@ -29,15 +35,19 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
+        if (size <= 0) {
+            return
+        }
+
         val width = width.toFloat()
         val height = height.toFloat()
 
-        val widthSection = (width / 3)
-        val heightSection = (height / 3)
+        val widthSection = (width / size)
+        val heightSection = (height / size)
 
-        canvas.drawLine(widthSection * 2, 0F, widthSection * 2, height, paint)
-        canvas.drawLine(widthSection, 0F, widthSection, height, paint)
-        canvas.drawLine(0F, heightSection * 2, width, heightSection * 2, paint)
-        canvas.drawLine(0F, heightSection, width, heightSection, paint)
+        for (i in size - 1 downTo 1) {
+            canvas.drawLine(widthSection * i, 0F, widthSection * i, height, paint)
+            canvas.drawLine(0F, heightSection * i, width, heightSection * i, paint)
+        }
     }
 }
