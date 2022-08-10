@@ -167,6 +167,9 @@ class MainActivity : AppCompatActivity() {
         // Bind use cases for the first time
         bindCameraUseCases()
 
+        // Bind camera controller to lifecycle
+        cameraController.bindToLifecycle(this)
+
         // Set top bar button callbacks
         effectButton.setOnClickListener { cyclePhotoEffects() }
         gridButton.setOnClickListener { toggleGrid() }
@@ -406,9 +409,6 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
     private fun bindCameraUseCases() {
-        // Unbind previous use cases
-        cameraController.unbind()
-
         isTakingPhoto = false
 
         // Select front/back camera
@@ -458,9 +458,6 @@ class MainActivity : AppCompatActivity() {
 
         // Restore settings that needs a rebind
         cameraController.imageCaptureMode = sharedPreferences.photoCaptureMode
-
-        // Bind camera controller to lifecycle
-        cameraController.bindToLifecycle(this)
 
         // Get a stable reference to CameraInfo
         // We can hardcode the first one in the filter as long as we use DEFAULT_*_CAMERA
