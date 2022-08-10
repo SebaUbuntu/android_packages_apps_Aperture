@@ -895,13 +895,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getThumbnail(uri: Uri?): Bitmap? {
-        if (uri == null) {
-            return null
-        }
-
         return try {
-            val sizeInPx = convertDpToPx(75)
-            contentResolver.loadThumbnail(uri, Size(sizeInPx, sizeInPx), null)
+            uri?.let {
+                val sizeInPx = convertDpToPx(75)
+                contentResolver.loadThumbnail(it, Size(sizeInPx, sizeInPx), null)
+            }
         } catch (exception: FileNotFoundException) {
             Log.e(LOG_TAG, "${exception.message}")
             null
