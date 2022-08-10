@@ -52,6 +52,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import com.google.android.material.chip.Chip
+import com.google.android.material.slider.LabelFormatter
 import com.google.android.material.slider.Slider
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -166,6 +167,7 @@ class MainActivity : AppCompatActivity() {
                 cameraController.setZoomRatio(value)
             }
         }
+        zoomLevel.setLabelFormatter { "%.1fx".format(it) }
 
         photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
         videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
