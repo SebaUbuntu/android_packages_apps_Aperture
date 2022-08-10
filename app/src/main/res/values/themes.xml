@@ -17,7 +17,6 @@
     <!-- Top bar icons theme -->
     <style name="SelfieTopBarButton">
         <item name="tint">?attr/colorPrimary</item>
-        <item name="backgroundTint">?attr/colorOnPrimary</item>
         <item name="android:padding">0dp</item>
     </style>
 

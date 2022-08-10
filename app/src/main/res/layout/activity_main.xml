@@ -8,11 +8,79 @@
     android:background="?attr/colorOnPrimary"
     tools:context=".MainActivity">
 
+    <androidx.camera.view.PreviewView
+        android:id="@+id/viewFinder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomButtonsLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout" />
+
+    <ImageView
+        android:id="@+id/viewFinderFocus"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/camera_focus_circle"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
+        app:layout_constraintEnd_toEndOf="@+id/viewFinder"
+        app:layout_constraintStart_toStartOf="@+id/viewFinder"
+        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout" />
+
+    <org.lineageos.selfie.ui.GridView
+        android:id="@+id/gridView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/bottomButtonsLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/recordChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/record_chip_default_text"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:chipIcon="@drawable/ic_record"
+        app:chipSurfaceColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout"
+        app:rippleColor="#00ffffff" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/timerChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:chipSurfaceColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout"
+        app:rippleColor="#00ffffff" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/zoomLevel"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:labelBehavior="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topButtonsLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="?colorOnPrimary"
         android:paddingStart="16dp"
         android:paddingTop="8dp"
         android:paddingEnd="16dp"
@@ -109,77 +177,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.camera.view.PreviewView
-        android:id="@+id/viewFinder"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomButtonsLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout">
-
-    </androidx.camera.view.PreviewView>
-
-    <ImageView
-        android:id="@+id/viewFinderFocus"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:src="@drawable/camera_focus_circle"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
-        app:layout_constraintEnd_toEndOf="@+id/viewFinder"
-        app:layout_constraintStart_toStartOf="@+id/viewFinder"
-        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout" />
-
-    <org.lineageos.selfie.ui.GridView
-        android:id="@+id/gridView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/bottomButtonsLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout" />
-
-    <com.google.android.material.chip.Chip
-        android:id="@+id/recordChip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/record_chip_default_text"
-        android:textColor="@color/white"
-        android:visibility="gone"
-        app:chipIcon="@drawable/ic_record"
-        app:chipSurfaceColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout"
-        app:rippleColor="#00ffffff" />
-
-    <com.google.android.material.chip.Chip
-        android:id="@+id/timerChip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:textColor="@color/white"
-        android:visibility="gone"
-        app:chipSurfaceColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout"
-        app:rippleColor="#00ffffff" />
-
-    <com.google.android.material.slider.Slider
-        android:id="@+id/zoomLevel"
-        android:layout_width="250dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:labelBehavior="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomButtonsLayout"
