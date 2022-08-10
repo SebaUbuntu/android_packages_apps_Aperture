@@ -20,10 +20,10 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
     private val paint: Paint = Paint()
 
     init {
-        paint.isAntiAlias = true;
-        paint.strokeWidth = 3F;
-        paint.style = Paint.Style.STROKE;
-        paint.color = Color.argb(255, 255, 255, 255);
+        paint.isAntiAlias = true
+        paint.strokeWidth = 3F
+        paint.style = Paint.Style.STROKE
+        paint.color = Color.WHITE
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -35,9 +35,9 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
         val widthSection = (width / 3)
         val heightSection = (height / 3)
 
-        canvas.drawLine(widthSection * 2, 0F, widthSection * 2, height, paint);
-        canvas.drawLine(widthSection, 0F, widthSection, height, paint);
-        canvas.drawLine(0F, heightSection * 2, width, heightSection * 2, paint);
-        canvas.drawLine(0F, heightSection, width, heightSection, paint);
+        canvas.drawLine(widthSection * 2, 0F, widthSection * 2, height, paint)
+        canvas.drawLine(widthSection, 0F, widthSection, height, paint)
+        canvas.drawLine(0F, heightSection * 2, width, heightSection * 2, paint)
+        canvas.drawLine(0F, heightSection, width, heightSection, paint)
     }
 }
