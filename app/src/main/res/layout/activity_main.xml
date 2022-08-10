@@ -8,7 +8,6 @@
     android:background="?attr/colorOnPrimary"
     tools:context=".MainActivity">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topButtonsLayout"
         android:layout_width="0dp"
@@ -123,7 +122,6 @@
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.camera.view.PreviewView
         android:id="@+id/viewFinder"
         android:layout_width="0dp"
@@ -132,9 +130,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout"
-        app:scaleType="fitCenter">
-
-    </androidx.camera.view.PreviewView>
+        app:scaleType="fitCenter" />
 
     <ImageView
         android:id="@+id/viewFinderFocus"
@@ -310,6 +306,4 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
