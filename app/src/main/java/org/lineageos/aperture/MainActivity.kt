@@ -451,6 +451,10 @@ class MainActivity : AppCompatActivity() {
         // Observe zoom state
         cameraController.zoomState.removeObservers(this)
         cameraController.zoomState.observe(this) {
+            if (it.minZoomRatio == it.maxZoomRatio) {
+                return@observe
+            }
+
             zoomLevel.valueFrom = it.minZoomRatio
             zoomLevel.valueTo = it.maxZoomRatio
             zoomLevel.value = it.zoomRatio
