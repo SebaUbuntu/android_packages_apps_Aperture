@@ -177,7 +177,7 @@ class MainActivity : AppCompatActivity() {
         // Set top bar button callbacks
         aspectRatioButton.setOnClickListener { cycleAspectRatio() }
         effectButton.setOnClickListener { cyclePhotoEffects() }
-        gridButton.setOnClickListener { toggleGrid() }
+        gridButton.setOnClickListener { cycleGridMode() }
         timerButton.setOnClickListener { toggleTimerMode() }
         torchButton.setOnClickListener { toggleTorchMode() }
         flashButton.setOnClickListener { cycleFlashMode() }
@@ -483,9 +483,6 @@ class MainActivity : AppCompatActivity() {
         setGridMode(sharedPreferences.lastGridMode)
         setFlashMode(sharedPreferences.photoFlashMode)
 
-        // Set grid mode from last state
-        setGridMode(sharedPreferences.lastGridMode)
-
         // Update icons from last state
         updateCameraModeButtons()
         toggleRecordingChipVisibility()
@@ -565,10 +562,10 @@ class MainActivity : AppCompatActivity() {
         gridButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
-                when (gridView.visibility) {
-                    View.VISIBLE -> R.drawable.ic_grid_on
-                    View.INVISIBLE -> R.drawable.ic_grid_off
-                    else -> R.drawable.ic_grid_off
+                when (sharedPreferences.lastGridMode) {
+                    GridMode.OFF -> R.drawable.ic_grid_off
+                    GridMode.ON_3 -> R.drawable.ic_grid_on_3
+                    GridMode.ON_4 -> R.drawable.ic_grid_on_4
                 }
             )
         )
@@ -577,27 +574,22 @@ class MainActivity : AppCompatActivity() {
     /**
      * Set the specified grid mode, also updating the icon
      */
-    private fun setGridMode(value: GridMode) {
-        gridView.visibility = when (value) {
-            GridMode.OFF -> View.INVISIBLE
-            GridMode.ON_3 -> View.VISIBLE
+    private fun cycleGridMode() {
+        sharedPreferences.lastGridMode = when (sharedPreferences.lastGridMode) {
+            GridMode.OFF -> GridMode.ON_3
+            GridMode.ON_3 -> GridMode.ON_4
+            GridMode.ON_4 -> GridMode.OFF
         }
-        updateGridIcon()
-
-        sharedPreferences.lastGridMode = value
+        setGridMode(sharedPreferences.lastGridMode)
     }
 
-    /**
-     * Toggle grid
-     */
-    private fun toggleGrid() {
-        setGridMode(
-            when (gridView.visibility) {
-                View.VISIBLE -> GridMode.OFF
-                View.INVISIBLE -> GridMode.ON_3
-                else -> GridMode.ON_3
-            }
-        )
+    private fun setGridMode(gridMode: GridMode) {
+        gridView.size = when (gridMode) {
+            GridMode.OFF -> 0
+            GridMode.ON_3 -> 3
+            GridMode.ON_4 -> 4
+        }
+        updateGridIcon()
     }
 
     /**

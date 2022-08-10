@@ -92,6 +92,7 @@ internal var SharedPreferences.lastGridMode: GridMode
         return when (getString(LAST_GRID_MODE_KEY, LAST_GRID_MODE_DEFAULT)) {
             "off" -> GridMode.OFF
             "on_3" -> GridMode.ON_3
+            "on_4" -> GridMode.ON_4
             // Default to off
             else -> GridMode.OFF
         }
@@ -102,6 +103,7 @@ internal var SharedPreferences.lastGridMode: GridMode
                 LAST_GRID_MODE_KEY, when (value) {
                     GridMode.OFF -> "off"
                     GridMode.ON_3 -> "on_3"
+                    GridMode.ON_4 -> "on_4"
                 }
             )
         }
