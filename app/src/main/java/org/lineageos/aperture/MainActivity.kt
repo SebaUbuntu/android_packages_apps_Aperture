@@ -14,6 +14,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -502,6 +503,8 @@ class MainActivity : AppCompatActivity() {
     private fun flipCamera() {
         if (!canRestartCamera())
             return
+
+        (flipCameraButton.drawable as AnimatedVectorDrawable).start()
 
         sharedPreferences.lastCameraFacing =
             when (cameraController.physicalCamera?.getCameraFacing()) {

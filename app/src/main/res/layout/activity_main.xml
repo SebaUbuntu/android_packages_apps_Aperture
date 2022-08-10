@@ -238,7 +238,7 @@
                 android:layout_height="50dp"
                 android:contentDescription="@string/flip_camera_button_description"
                 android:scaleType="center"
-                android:src="@drawable/ic_flip_camera"
+                android:src="@drawable/ic_flip_camera_anim"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
