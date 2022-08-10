@@ -137,6 +137,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
@@ -156,12 +157,70 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        // Set top bar button callbacks
         effectButton.setOnClickListener { cyclePhotoEffects() }
         gridButton.setOnClickListener { toggleGrid() }
         timerButton.setOnClickListener { toggleTimerMode() }
         torchButton.setOnClickListener { toggleTorchMode() }
         flashButton.setOnClickListener { cycleFlashMode() }
         settingsButton.setOnClickListener { openSettings() }
+
+        // Observe torch state
+        cameraController.torchState.observe(this) {
+            updateTorchModeIcon()
+        }
+
+        // Observe focus state
+        cameraController.tapToFocusState.observe(this) {
+            when (it) {
+                CameraController.TAP_TO_FOCUS_STARTED -> {
+                    viewFinderFocus.visibility = View.VISIBLE
+                    handler.removeMessages(MSG_HIDE_FOCUS_RING)
+                }
+                else -> {
+                    handler.removeMessages(MSG_HIDE_FOCUS_RING)
+                    handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_FOCUS_RING), 500)
+                }
+            }
+        }
+
+        // Observe manual focus
+        viewFinder.setOnTouchListener { _, event ->
+            val isSingleTouch = event.pointerCount == 1
+            val isUpEvent = event.action == MotionEvent.ACTION_UP
+            val notALongPress = (event.eventTime - event.downTime
+                    < ViewConfiguration.getLongPressTimeout())
+            if (isSingleTouch && isUpEvent && notALongPress) {
+                // If the event is a click, invoke tap-to-focus and forward it to user's
+                // OnClickListener#onClick.
+                viewFinderTouchEvent = event
+            }
+            return@setOnTouchListener false
+        }
+        viewFinder.setOnClickListener { view ->
+            viewFinderTouchEvent?.let {
+                viewFinderFocus.x = it.x - (viewFinderFocus.width / 2)
+                viewFinderFocus.y = it.y + (viewFinderFocus.height / 2)
+            } ?: run {
+                viewFinderFocus.x = (view.width - viewFinderFocus.width) / 2f
+                viewFinderFocus.y = (view.height - viewFinderFocus.height) / 2f
+            }
+        }
+
+        // Observe zoom state
+        cameraController.zoomState.observe(this) {
+            if (it.minZoomRatio == it.maxZoomRatio) {
+                return@observe
+            }
+
+            zoomLevel.valueFrom = it.minZoomRatio
+            zoomLevel.valueTo = it.maxZoomRatio
+            zoomLevel.value = it.zoomRatio
+            zoomLevel.visibility = View.VISIBLE
+
+            handler.removeMessages(MSG_HIDE_ZOOM_SLIDER)
+            handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_ZOOM_SLIDER), 2000)
+        }
 
         zoomLevel.addOnChangeListener { _, value, fromUser ->
             if (fromUser) {
@@ -170,6 +229,7 @@ class MainActivity : AppCompatActivity() {
         }
         zoomLevel.setLabelFormatter { "%.1fx".format(it) }
 
+        // Set bottom bar button callbacks
         qrModeButton.setOnClickListener { changeCameraMode(CameraMode.QR) }
         photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
         videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
@@ -354,7 +414,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Rebind cameraProvider use cases
      */
-    @SuppressLint("ClickableViewAccessibility")
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
@@ -425,65 +484,6 @@ class MainActivity : AppCompatActivity() {
         // Restore settings that can be set on the fly
         setGridMode(sharedPreferences.lastGridMode)
         setFlashMode(sharedPreferences.photoFlashMode)
-
-        // Observe focus state
-        cameraController.tapToFocusState.removeObservers(this)
-        cameraController.tapToFocusState.observe(this) {
-            when (it) {
-                CameraController.TAP_TO_FOCUS_STARTED -> {
-                    viewFinderFocus.visibility = View.VISIBLE
-                    handler.removeMessages(MSG_HIDE_FOCUS_RING)
-                }
-                else -> {
-                    handler.removeMessages(MSG_HIDE_FOCUS_RING)
-                    handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_FOCUS_RING), 500)
-                }
-            }
-        }
-
-        viewFinder.setOnTouchListener { _, event ->
-            val isSingleTouch = event.pointerCount == 1
-            val isUpEvent = event.action == MotionEvent.ACTION_UP
-            val notALongPress = (event.eventTime - event.downTime
-                    < ViewConfiguration.getLongPressTimeout())
-            if (isSingleTouch && isUpEvent && notALongPress) {
-                // If the event is a click, invoke tap-to-focus and forward it to user's
-                // OnClickListener#onClick.
-                viewFinderTouchEvent = event
-            }
-            return@setOnTouchListener false
-        }
-        viewFinder.setOnClickListener { view ->
-            viewFinderTouchEvent?.let {
-                viewFinderFocus.x = it.x - (viewFinderFocus.width / 2)
-                viewFinderFocus.y = it.y + (viewFinderFocus.height / 2)
-            } ?: run {
-                viewFinderFocus.x = (view.width - viewFinderFocus.width) / 2f
-                viewFinderFocus.y = (view.height - viewFinderFocus.height) / 2f
-            }
-        }
-
-        // Observe zoom state
-        cameraController.zoomState.removeObservers(this)
-        cameraController.zoomState.observe(this) {
-            if (it.minZoomRatio == it.maxZoomRatio) {
-                return@observe
-            }
-
-            zoomLevel.valueFrom = it.minZoomRatio
-            zoomLevel.valueTo = it.maxZoomRatio
-            zoomLevel.value = it.zoomRatio
-            zoomLevel.visibility = View.VISIBLE
-
-            handler.removeMessages(MSG_HIDE_ZOOM_SLIDER)
-            handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_ZOOM_SLIDER), 2000)
-        }
-
-        // Observe torch state
-        cameraController.torchState.removeObservers(this)
-        cameraController.torchState.observe(this) {
-            updateTorchModeIcon()
-        }
 
         // Set grid mode from last state
         setGridMode(sharedPreferences.lastGridMode)
