@@ -10,4 +10,5 @@ enum class GridMode {
     OFF,
     ON_3,
     ON_4,
+    ON_GOLDENRATIO,
 }

@@ -12,6 +12,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import org.lineageos.aperture.utils.GridMode
 
 /**
  * A simple view that shows a 3x3 grid
@@ -19,7 +20,7 @@ import android.view.View
 class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, attributeSet) {
     private val paint: Paint = Paint()
 
-    var size = 0
+    var mode: GridMode = GridMode.OFF
         set(value) {
             field = value
             invalidate()
@@ -35,6 +36,13 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
+        val size = when (mode) {
+            GridMode.OFF -> 0
+            GridMode.ON_3 -> 3
+            GridMode.ON_4 -> 4
+            GridMode.ON_GOLDENRATIO -> 3
+        }
+
         if (size <= 0) {
             return
         }
@@ -42,12 +50,29 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
         val width = width.toFloat()
         val height = height.toFloat()
 
-        val widthSection = (width / size)
-        val heightSection = (height / size)
+        val unitDiv = if (mode == GridMode.ON_GOLDENRATIO) GOLDEN_RATIO_UNIT else size.toFloat()
+
+        val widthSection = width / unitDiv
+        val heightSection = height / unitDiv
 
         for (i in size - 1 downTo 1) {
-            canvas.drawLine(widthSection * i, 0F, widthSection * i, height, paint)
-            canvas.drawLine(0F, heightSection * i, width, heightSection * i, paint)
+            val position =
+                if (mode == GridMode.ON_GOLDENRATIO && i == 2) 1 + GOLDEN_RATIO
+                else i.toFloat()
+
+            canvas.drawLine(
+                widthSection * position, 0F,
+                widthSection * position, height, paint
+            )
+            canvas.drawLine(
+                0F, heightSection * position,
+                width, heightSection * position, paint
+            )
         }
+    }
+
+    companion object {
+        private const val GOLDEN_RATIO = 0.618f
+        private const val GOLDEN_RATIO_UNIT = 2 + GOLDEN_RATIO
     }
 }

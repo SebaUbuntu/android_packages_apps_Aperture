@@ -566,6 +566,7 @@ class MainActivity : AppCompatActivity() {
                     GridMode.OFF -> R.drawable.ic_grid_off
                     GridMode.ON_3 -> R.drawable.ic_grid_on_3
                     GridMode.ON_4 -> R.drawable.ic_grid_on_4
+                    GridMode.ON_GOLDENRATIO -> R.drawable.ic_grid_on_goldenratio
                 }
             )
         )
@@ -578,17 +579,14 @@ class MainActivity : AppCompatActivity() {
         sharedPreferences.lastGridMode = when (sharedPreferences.lastGridMode) {
             GridMode.OFF -> GridMode.ON_3
             GridMode.ON_3 -> GridMode.ON_4
-            GridMode.ON_4 -> GridMode.OFF
+            GridMode.ON_4 -> GridMode.ON_GOLDENRATIO
+            GridMode.ON_GOLDENRATIO -> GridMode.OFF
         }
         setGridMode(sharedPreferences.lastGridMode)
     }
 
     private fun setGridMode(gridMode: GridMode) {
-        gridView.size = when (gridMode) {
-            GridMode.OFF -> 0
-            GridMode.ON_3 -> 3
-            GridMode.ON_4 -> 4
-        }
+        gridView.mode = gridMode
         updateGridIcon()
     }
 
