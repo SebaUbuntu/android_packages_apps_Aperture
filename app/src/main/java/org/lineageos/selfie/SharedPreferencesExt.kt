@@ -9,6 +9,7 @@ package org.lineageos.selfie
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.net.Uri
+import androidx.camera.core.AspectRatio
 import androidx.camera.core.ImageCapture
 import androidx.camera.extensions.ExtensionMode
 import androidx.camera.video.Quality
@@ -239,6 +240,30 @@ internal var SharedPreferences.timerMode: Int
     set(value) {
         edit {
             putInt(TIMER_MODE_KEY, value)
+        }
+    }
+
+private const val ASPECT_RATIO_KEY = "aspect_ratio"
+private const val ASPECT_RATIO_DEFAULT = "4_3"
+
+internal var SharedPreferences.aspectRatio: Int
+    get() {
+        return when (getString(ASPECT_RATIO_KEY, ASPECT_RATIO_DEFAULT)) {
+            "4_3" -> AspectRatio.RATIO_4_3
+            "16_9" -> AspectRatio.RATIO_16_9
+            else -> AspectRatio.RATIO_4_3
+        }
+    }
+    set(value) {
+        edit {
+            putString(
+                ASPECT_RATIO_KEY, when (value) {
+                    AspectRatio.RATIO_4_3 -> "4_3"
+                    AspectRatio.RATIO_16_9 -> "16_9"
+                    // Default to 4:3
+                    else -> ASPECT_RATIO_DEFAULT
+                }
+            )
         }
     }
 

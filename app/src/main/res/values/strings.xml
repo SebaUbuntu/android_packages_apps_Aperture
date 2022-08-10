@@ -3,6 +3,7 @@
 
     <!-- Button descriptions -->
     <string name="timer_button_description">Timer</string>
+    <string name="aspect_ratio_button_description">Aspect ratio</string>
     <string name="effect_button_description">Effect</string>
     <string name="grid_button_description">Grid</string>
     <string name="torch_button_description">Torch</string>
