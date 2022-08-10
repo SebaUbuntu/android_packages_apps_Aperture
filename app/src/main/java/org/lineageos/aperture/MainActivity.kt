@@ -30,6 +30,7 @@ import android.view.ViewConfiguration
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.AspectRatio
 import androidx.camera.core.CameraSelector
@@ -72,7 +73,7 @@ import java.util.Timer
 import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
-    private val aspectRatioButton by lazy { findViewById<ImageButton>(R.id.aspectRatioButton) }
+    private val aspectRatioButton by lazy { findViewById<ToggleButton>(R.id.aspectRatioButton) }
     private val effectButton by lazy { findViewById<ImageButton>(R.id.effectButton) }
     private val flashButton by lazy { findViewById<ImageButton>(R.id.flashButton) }
     private val flipCameraButton by lazy { findViewById<ImageButton>(R.id.flipCameraButton) }
@@ -492,6 +493,7 @@ class MainActivity : AppCompatActivity() {
         updateCameraModeButtons()
         toggleRecordingChipVisibility()
         updateTimerModeIcon()
+        updateAspectRatioIcon()
         updatePhotoEffectIcon()
         updateGridIcon()
         updateFlashModeIcon()
@@ -629,6 +631,14 @@ class MainActivity : AppCompatActivity() {
             else -> 0
         }
         updateTimerModeIcon()
+    }
+
+    private fun updateAspectRatioIcon() {
+        aspectRatioButton.text = when (sharedPreferences.aspectRatio) {
+            AspectRatio.RATIO_4_3 -> "4:3"
+            AspectRatio.RATIO_16_9 -> "16:9"
+            else -> throw Exception("Unknown aspect ratio $sharedPreferences.aspectRatio")
+        }
     }
 
     /**
