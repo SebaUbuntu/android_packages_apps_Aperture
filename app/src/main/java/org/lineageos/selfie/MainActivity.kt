@@ -165,6 +165,9 @@ class MainActivity : AppCompatActivity() {
         flashButton.setOnClickListener { cycleFlashMode() }
         settingsButton.setOnClickListener { openSettings() }
 
+        // Attach CameraController to PreviewView
+        viewFinder.controller = cameraController
+
         // Observe torch state
         cameraController.torchState.observe(this) {
             updateTorchModeIcon()
@@ -467,9 +470,6 @@ class MainActivity : AppCompatActivity() {
         // Bind use cases to camera
         cameraController.cameraSelector = cameraSelector
         cameraController.setEnabledUseCases(cameraUseCases)
-
-        // Attach CameraController to PreviewView
-        viewFinder.controller = cameraController
 
         // Restore settings that needs a rebind
         cameraController.imageCaptureMode = sharedPreferences.photoCaptureMode
