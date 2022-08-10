@@ -144,7 +144,6 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -291,8 +290,6 @@ class MainActivity : AppCompatActivity() {
         cameraExecutor.shutdown()
     }
 
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.core.ExperimentalZeroShutterLag
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
         IntArray
@@ -503,7 +500,6 @@ class MainActivity : AppCompatActivity() {
      * Change the current camera mode and restarts the stream
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
     private fun changeCameraMode(cameraMode: CameraMode) {
         if (!canRestartCamera())
@@ -520,7 +516,6 @@ class MainActivity : AppCompatActivity() {
      * Cycle between cameras
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
     private fun flipCamera() {
         if (!canRestartCamera())
@@ -738,7 +733,6 @@ class MainActivity : AppCompatActivity() {
      * Set a photo effect and restart the camera if required
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
     private fun setExtensionMode(extensionMode: Int) {
         if (!canRestartCamera())
@@ -777,7 +771,6 @@ class MainActivity : AppCompatActivity() {
      * Cycle between supported photo camera effects
      */
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
     private fun cyclePhotoEffects() {
         if (!canRestartCamera())
