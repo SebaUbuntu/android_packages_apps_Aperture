@@ -149,13 +149,23 @@ class MainActivity : AppCompatActivity() {
         setShowWhenLocked(true)
 
         // Request camera permissions
-        if (allPermissionsGranted()) {
-            initCamera()
-        } else {
+        if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
             )
         }
+
+        // Initialize camera provider
+        cameraProvider = ProcessCameraProvider.getInstance(this).get()
+
+        // Initialize camera controller
+        cameraController = LifecycleCameraController(this)
+
+        // Get vendor extensions manager
+        extensionsManager = ExtensionsManager.getInstanceAsync(this, cameraProvider).get()
+
+        // Bind use cases for the first time
+        bindCameraUseCases()
 
         // Set top bar button callbacks
         effectButton.setOnClickListener { cyclePhotoEffects() }
@@ -280,9 +290,7 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
-            if (allPermissionsGranted()) {
-                initCamera()
-            } else {
+            if (!allPermissionsGranted()) {
                 Toast.makeText(
                     this,
                     "Permissions not granted by the user.",
@@ -389,25 +397,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         return true
-    }
-
-    /**
-     * Prepare CameraProvider and other one-time init objects, must only be called from onCreate
-     */
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.core.ExperimentalZeroShutterLag
-    private fun initCamera() {
-        // Used to bind the lifecycle of cameras to the lifecycle owner
-        cameraProvider = ProcessCameraProvider.getInstance(this).get()
-
-        // Initialize camera controller
-        cameraController = LifecycleCameraController(this)
-
-        // Get vendor extensions manager
-        extensionsManager =
-            ExtensionsManager.getInstanceAsync(this, cameraProvider).get()
-
-        bindCameraUseCases()
     }
 
     /**
