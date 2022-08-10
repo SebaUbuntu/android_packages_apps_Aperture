@@ -93,6 +93,7 @@ internal var SharedPreferences.lastGridMode: GridMode
             "off" -> GridMode.OFF
             "on_3" -> GridMode.ON_3
             "on_4" -> GridMode.ON_4
+            "on_goldenratio" -> GridMode.ON_GOLDENRATIO
             // Default to off
             else -> GridMode.OFF
         }
@@ -104,6 +105,7 @@ internal var SharedPreferences.lastGridMode: GridMode
                     GridMode.OFF -> "off"
                     GridMode.ON_3 -> "on_3"
                     GridMode.ON_4 -> "on_4"
+                    GridMode.ON_GOLDENRATIO -> "on_goldenratio"
                 }
             )
         }
