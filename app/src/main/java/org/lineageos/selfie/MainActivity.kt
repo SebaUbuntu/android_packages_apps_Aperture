@@ -397,21 +397,17 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.core.ExperimentalZeroShutterLag
     private fun initCamera() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        // Used to bind the lifecycle of cameras to the lifecycle owner
+        cameraProvider = ProcessCameraProvider.getInstance(this).get()
 
-        cameraProviderFuture.addListener({
-            // Used to bind the lifecycle of cameras to the lifecycle owner
-            cameraProvider = cameraProviderFuture.get()
+        // Initialize camera controller
+        cameraController = LifecycleCameraController(this)
 
-            // Initialize camera controller
-            cameraController = LifecycleCameraController(this)
+        // Get vendor extensions manager
+        extensionsManager =
+            ExtensionsManager.getInstanceAsync(this, cameraProvider).get()
 
-            // Get vendor extensions manager
-            extensionsManager =
-                ExtensionsManager.getInstanceAsync(this, cameraProvider).get()
-
-            bindCameraUseCases()
-        }, ContextCompat.getMainExecutor(this))
+        bindCameraUseCases()
     }
 
     /**
