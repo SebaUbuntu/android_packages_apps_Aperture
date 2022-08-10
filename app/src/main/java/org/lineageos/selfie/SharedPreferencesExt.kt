@@ -126,7 +126,7 @@ internal var SharedPreferences.photoCaptureMode: Int
     set(value) {
         edit {
             putString(
-                PHOTO_FLASH_MODE_KEY, when (value) {
+                PHOTO_CAPTURE_MODE_KEY, when (value) {
                     ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY -> "maximize_quality"
                     ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY -> "minimize_latency"
                     ImageCapture.CAPTURE_MODE_ZERO_SHUTTER_LAG -> "zero_shutter_lag"
