@@ -31,12 +31,9 @@
         <item name="android:padding">0dp</item>
     </style>
 
-    <!-- Bottom bar icons theme -->
-    <style name="SelfieBottomBarButton">
-        <item name="tint">?attr/colorPrimary</item>
-        <item name="backgroundTint">?attr/colorOnPrimary</item>
-        <item name="android:padding">0dp</item>
-        <item name="android:scaleType">fitXY</item>
+    <!-- Shutter button theme -->
+    <style name="SelfieShutterButton">
+        <item name="android:background">@drawable/shutter_button_background</item>
     </style>
 
     <!-- Flip camera button theme -->

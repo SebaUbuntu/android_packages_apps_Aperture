@@ -203,17 +203,18 @@
 
         <ImageButton
             android:id="@+id/shutterButton"
-            style="@style/SelfieBottomBarButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            style="@style/SelfieShutterButton"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:contentDescription="@string/shutter_button_description"
-            android:scaleType="fitXY"
+            android:padding="4dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_circle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_circle" />
+            app:tint="?colorSecondaryContainer" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="60dp"

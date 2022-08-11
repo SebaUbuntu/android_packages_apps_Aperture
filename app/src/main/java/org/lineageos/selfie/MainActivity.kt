@@ -305,6 +305,13 @@ class MainActivity : AppCompatActivity() {
         flipCameraButton.setOnClickListener { flipCamera() }
 
         shutterButton.setOnClickListener {
+            // Shutter animation
+            ValueAnimator.ofInt(convertDpToPx(4), convertDpToPx(16), convertDpToPx(4)).apply {
+                addUpdateListener {
+                    shutterButton.setPadding(it.animatedValue as Int)
+                }
+            }.start()
+
             startTimerAndRun {
                 when (cameraMode) {
                     CameraMode.PHOTO -> takePhoto()
