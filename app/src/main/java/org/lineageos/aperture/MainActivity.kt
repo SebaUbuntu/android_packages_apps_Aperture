@@ -7,7 +7,7 @@
 package org.lineageos.aperture
 
 import android.Manifest
-import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.app.KeyguardManager
 import android.content.Intent
@@ -335,14 +335,11 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     mainLayout.foreground = ColorDrawable(Color.WHITE)
-                    val colorFade: ObjectAnimator = ObjectAnimator.ofInt(
-                        mainLayout.foreground,
-                        "alpha",
-                        255,
-                        0,
-                    )
-                    colorFade.duration = 500
-                    colorFade.start()
+                    ValueAnimator.ofInt(0, 255, 0).apply {
+                        addUpdateListener { anim ->
+                            mainLayout.foreground.alpha = anim.animatedValue as Int
+                        }
+                    }.start()
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     sharedPreferences.lastSavedUri = output.savedUri
                     updateGalleryButton(output.savedUri)
