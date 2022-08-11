@@ -538,10 +538,11 @@ class MainActivity : AppCompatActivity() {
         aspectRatio = sharedPreferences.aspectRatio
         val outputSize = CameraController.OutputSize(aspectRatio)
 
-        // Initialize the use case we want and set its aspect ratio
+        // Initialize the use case we want and set its properties
         val cameraUseCases = when (cameraMode) {
             CameraMode.QR -> {
                 cameraController.imageAnalysisTargetSize = outputSize
+                cameraController.setImageAnalysisAnalyzer(cameraExecutor, QrImageAnalyzer(this))
                 CameraController.IMAGE_ANALYSIS
             }
             CameraMode.PHOTO -> {
@@ -561,16 +562,23 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        // Setup QR mode
-        if (cameraMode == CameraMode.QR) {
-            cameraController.setImageAnalysisAnalyzer(cameraExecutor, QrImageAnalyzer(this))
-            timerButton.isVisible = false
-            flipCameraButton.isInvisible = true
-            shutterButton.isInvisible = true
-        } else {
-            timerButton.isVisible = true
-            flipCameraButton.isInvisible = false
-            shutterButton.isInvisible = false
+        // Setup UI depending on camera mode
+        when (cameraMode) {
+            CameraMode.QR -> {
+                timerButton.isVisible = false
+                flipCameraButton.isInvisible = true
+                shutterButton.isInvisible = true
+            }
+            CameraMode.PHOTO -> {
+                timerButton.isVisible = true
+                flipCameraButton.isInvisible = false
+                shutterButton.isInvisible = false
+            }
+            CameraMode.VIDEO -> {
+                timerButton.isVisible = true
+                flipCameraButton.isInvisible = false
+                shutterButton.isInvisible = false
+            }
         }
 
         // Bind use cases to camera
