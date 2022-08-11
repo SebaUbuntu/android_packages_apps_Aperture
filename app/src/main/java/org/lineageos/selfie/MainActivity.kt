@@ -231,6 +231,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // Observe preview stream state
+        viewFinder.previewStreamState.observe(this) {
+            when (it) {
+                PreviewView.StreamState.STREAMING -> {
+                    // Show grid
+                    gridView.alpha = 1f
+                    gridView.previewView = viewFinder
+                }
+                else -> {}
+            }
+        }
+
         // Observe zoom state
         cameraController.zoomState.observe(this) {
             if (it.minZoomRatio == it.maxZoomRatio) {
@@ -426,6 +438,9 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.view.video.ExperimentalVideo
     private fun bindCameraUseCases() {
         isTakingPhoto = false
+
+        // Hide grid until preview is ready
+        gridView.alpha = 0f
 
         // Select front/back camera
         var cameraSelector = when (sharedPreferences.lastCameraFacing) {
