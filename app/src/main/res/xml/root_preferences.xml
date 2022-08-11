@@ -3,7 +3,7 @@
     <PreferenceCategory app:title="@string/photos_header">
 
         <ListPreference
-            app:defaultValue="maximize_quality"
+            app:defaultValue="minimize_latency"
             app:entries="@array/photo_capture_mode_entries"
             app:entryValues="@array/photo_capture_mode_values"
             app:key="photo_capture_mode"

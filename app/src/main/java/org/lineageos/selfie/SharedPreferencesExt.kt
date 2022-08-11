@@ -113,7 +113,7 @@ internal var SharedPreferences.lastGridMode: GridMode
 
 // Photos prefs
 private const val PHOTO_CAPTURE_MODE_KEY = "photo_capture_mode"
-private const val PHOTO_CAPTURE_MODE_DEFAULT = "maximize_quality"
+private const val PHOTO_CAPTURE_MODE_DEFAULT = "minimize_latency"
 
 internal var SharedPreferences.photoCaptureMode: Int
     @androidx.camera.core.ExperimentalZeroShutterLag
@@ -122,8 +122,8 @@ internal var SharedPreferences.photoCaptureMode: Int
             "maximize_quality" -> ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY
             "minimize_latency" -> ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY
             "zero_shutter_lag" -> ImageCapture.CAPTURE_MODE_ZERO_SHUTTER_LAG
-            // Default to maximize quality
-            else -> ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY
+            // Default to minimize latency
+            else -> ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY
         }
     }
     @androidx.camera.core.ExperimentalZeroShutterLag
