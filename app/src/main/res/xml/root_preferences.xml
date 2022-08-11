@@ -20,6 +20,11 @@
             app:title="@string/photo_capture_mode_title"
             app:useSimpleSummaryProvider="true" />
 
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="photo_save_location"
+            app:title="@string/photo_save_location_title" />
+
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/videos_header">

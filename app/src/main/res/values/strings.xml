@@ -37,6 +37,7 @@
 
     <!-- Photo Preferences -->
     <string name="photo_capture_mode_title">Capture mode</string>
+    <string name="photo_save_location_title">Save GPS location</string>
 
     <!-- Videos Preferences -->
     <string name="video_quality_title">Video quality</string>

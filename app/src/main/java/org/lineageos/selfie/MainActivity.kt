@@ -16,6 +16,9 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -93,6 +96,7 @@ class MainActivity : AppCompatActivity() {
     private val zoomLevel by lazy { findViewById<Slider>(R.id.zoomLevel) }
 
     private val keyguardManager by lazy { getSystemService(KeyguardManager::class.java) }
+    private val locationManager by lazy { getSystemService(LocationManager::class.java) }
 
     private lateinit var cameraProvider: ProcessCameraProvider
     private lateinit var extensionsManager: ExtensionsManager
@@ -142,6 +146,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private var location: Location? = null
+    private val locationListener = object : LocationListener {
+        override fun onLocationChanged(it: Location) {
+            if (location == null || location!!.accuracy >= it.accuracy) {
+                location = it
+            }
+        }
+
+        @SuppressLint("MissingPermission")
+        fun register() {
+            // Reset cached location
+            location = null
+
+            if (allLocationPermissionsGranted() && sharedPreferences.photoSaveLocation) {
+                // Request location updates
+                locationManager.allProviders.forEach {
+                    locationManager.requestLocationUpdates(it, 1000, 0f, this)
+                }
+            }
+        }
+
+        fun unregister() {
+            // Remove updates
+            locationManager.removeUpdates(this)
+
+            // Reset cached location
+            location = null
+        }
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.view.video.ExperimentalVideo
@@ -155,11 +189,7 @@ class MainActivity : AppCompatActivity() {
         setShowWhenLocked(true)
 
         // Request camera permissions
-        if (!allPermissionsGranted()) {
-            ActivityCompat.requestPermissions(
-                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
-            )
-        }
+        ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
 
         // Initialize camera provider
         cameraProvider = ProcessCameraProvider.getInstance(this).get()
@@ -291,12 +321,20 @@ class MainActivity : AppCompatActivity() {
         // we have at least one saved Uri and we aren't locked
         updateGalleryButton(sharedPreferences.lastSavedUri, !keyguardManager.isKeyguardLocked)
 
+        // Register location updates
+        locationListener.register()
+
         // Re-bind the use cases
         bindCameraUseCases()
     }
 
     override fun onPause() {
+        // Remove location and location updates
+        locationListener.unregister()
+
+        // Reset tookSomething state
         tookSomething = false
+
         super.onPause()
     }
 
@@ -318,6 +356,8 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
                 finish()
+            } else if (!allLocationPermissionsGranted()) {
+                ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS_LOCATION, 0)
             }
         }
     }
@@ -332,6 +372,7 @@ class MainActivity : AppCompatActivity() {
 
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getPhotoMediaStoreOutputOptions(contentResolver)
+        outputOptions.metadata.location = location
 
         // Set up image capture listener, which is triggered after photo has
         // been taken
@@ -809,6 +850,12 @@ class MainActivity : AppCompatActivity() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
+    private fun allLocationPermissionsGranted() = REQUIRED_PERMISSIONS_LOCATION.all {
+        ContextCompat.checkSelfPermission(
+            baseContext, it
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
     private fun updateGalleryButton(uri: Uri?, enable: Boolean = true) {
         runOnUiThread {
             if (uri != null && enable) {
@@ -954,6 +1001,11 @@ class MainActivity : AppCompatActivity() {
             mutableListOf(
                 Manifest.permission.CAMERA,
                 Manifest.permission.RECORD_AUDIO
+            ).toTypedArray()
+        private val REQUIRED_PERMISSIONS_LOCATION =
+            mutableListOf(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
             ).toTypedArray()
 
         private const val MSG_HIDE_ZOOM_SLIDER = 0
