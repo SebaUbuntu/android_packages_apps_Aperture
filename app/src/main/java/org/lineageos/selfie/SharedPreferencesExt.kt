@@ -141,6 +141,18 @@ internal var SharedPreferences.photoCaptureMode: Int
         }
     }
 
+private const val PHOTO_SAVE_LOCATION = "photo_save_location"
+private const val PHOTO_SAVE_LOCATION_DEFAULT = false
+internal var SharedPreferences.photoSaveLocation: Boolean
+    get() {
+        return getBoolean(PHOTO_SAVE_LOCATION, PHOTO_SAVE_LOCATION_DEFAULT)
+    }
+    set(value) {
+        edit {
+            putBoolean(PHOTO_SAVE_LOCATION, value)
+        }
+    }
+
 private const val PHOTO_FLASH_MODE_KEY = "photo_flash_mode"
 private const val PHOTO_FLASH_MODE_DEFAULT = "auto"
 
