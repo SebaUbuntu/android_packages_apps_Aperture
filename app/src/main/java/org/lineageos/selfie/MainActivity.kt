@@ -232,9 +232,20 @@ class MainActivity : AppCompatActivity() {
                 CameraController.TAP_TO_FOCUS_STARTED -> {
                     viewFinderFocus.visibility = View.VISIBLE
                     handler.removeMessages(MSG_HIDE_FOCUS_RING)
+                    ValueAnimator.ofInt(convertDpToPx(0), convertDpToPx(8)).apply {
+                        addUpdateListener { anim ->
+                            viewFinderFocus.setPadding(anim.animatedValue as Int)
+                        }
+                    }.start()
                 }
                 else -> {
                     handler.removeMessages(MSG_HIDE_FOCUS_RING)
+                    ValueAnimator.ofInt(convertDpToPx(8), convertDpToPx(0)).apply {
+                        addUpdateListener { anim ->
+                            viewFinderFocus.setPadding(anim.animatedValue as Int)
+                        }
+                    }.start()
+
                     handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_FOCUS_RING), 500)
                 }
             }
