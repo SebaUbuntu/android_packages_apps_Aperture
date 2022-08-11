@@ -9,6 +9,9 @@
         <item name="colorSecondary">@color/white</item>
         <item name="colorSecondaryVariant">@color/white</item>
         <item name="colorOnSecondary">@color/black</item>
+        <!-- Secondary container -->
+        <item name="colorOnSecondaryContainer">@color/white</item>
+        <item name="colorSecondaryContainer">#2a3232</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorOnPrimary</item>
         <!-- Customize your theme here. -->
