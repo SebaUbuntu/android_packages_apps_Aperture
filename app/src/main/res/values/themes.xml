@@ -45,7 +45,6 @@
 
     <!-- Flip camera button theme -->
     <style name="ApertureFlipCameraButton">
-        <item name="tint">?attr/colorOnPrimary</item>
-        <item name="android:background">@drawable/flip_camera_button_background</item>
+        <item name="tint">?attr/colorPrimary</item>
     </style>
 </resources>
