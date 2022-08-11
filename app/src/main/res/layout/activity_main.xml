@@ -195,7 +195,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomButtonsLayout"
         android:layout_width="0dp"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/mode_selector_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -219,11 +220,11 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
+            android:layout_marginStart="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="fitXY"
             app:cardCornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/shutterButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -238,24 +239,22 @@
         <ImageButton
             android:id="@+id/flipCameraButton"
             style="@style/ApertureFlipCameraButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="32dp"
             android:contentDescription="@string/flip_camera_button_description"
             android:scaleType="center"
             android:src="@drawable/ic_flip_camera_anim"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/shutterButton"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mode_selector_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="12dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
