@@ -261,7 +261,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/photoModeButton"
-            style="@style/Widget.Material3.Button.TonalButton"
+            style="@style/SelfieModeSelectorButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/photo_mode_button_description"
@@ -276,7 +276,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/videoModeButton"
-            style="@style/Widget.Material3.Button.TonalButton"
+            style="@style/SelfieModeSelectorButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/video_mode_button_description"
@@ -291,7 +291,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/qrModeButton"
-            style="@style/Widget.Material3.Button.TonalButton"
+            style="@style/SelfieModeSelectorButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/qr_mode_button_description"
