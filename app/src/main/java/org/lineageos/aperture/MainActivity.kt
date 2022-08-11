@@ -58,6 +58,7 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.slider.Slider
 import kotlinx.coroutines.delay
@@ -83,15 +84,15 @@ class MainActivity : AppCompatActivity() {
     private val galleryButton by lazy { findViewById<ImageView>(R.id.galleryButton) }
     private val gridButton by lazy { findViewById<ImageButton>(R.id.gridButton) }
     private val gridView by lazy { findViewById<GridView>(R.id.gridView) }
-    private val photoModeButton by lazy { findViewById<ImageButton>(R.id.photoModeButton) }
-    private val qrModeButton by lazy { findViewById<ImageButton>(R.id.qrModeButton) }
+    private val photoModeButton by lazy { findViewById<MaterialButton>(R.id.photoModeButton) }
+    private val qrModeButton by lazy { findViewById<MaterialButton>(R.id.qrModeButton) }
     private val recordChip by lazy { findViewById<Chip>(R.id.recordChip) }
     private val settingsButton by lazy { findViewById<ImageButton>(R.id.settingsButton) }
     private val shutterButton by lazy { findViewById<ImageButton>(R.id.shutterButton) }
     private val timerButton by lazy { findViewById<ImageButton>(R.id.timerButton) }
     private val timerChip by lazy { findViewById<Chip>(R.id.timerChip) }
     private val torchButton by lazy { findViewById<ImageButton>(R.id.torchButton) }
-    private val videoModeButton by lazy { findViewById<ImageButton>(R.id.videoModeButton) }
+    private val videoModeButton by lazy { findViewById<MaterialButton>(R.id.videoModeButton) }
     private val viewFinder by lazy { findViewById<PreviewView>(R.id.viewFinder) }
     private val viewFinderFocus by lazy { findViewById<ImageView>(R.id.viewFinderFocus) }
     private val zoomLevel by lazy { findViewById<Slider>(R.id.zoomLevel) }

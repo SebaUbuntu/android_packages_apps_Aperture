@@ -35,12 +35,6 @@
         <item name="android:scaleType">fitXY</item>
     </style>
 
-    <!-- Camera mode selector button theme -->
-    <style name="ApertureCameraModeButton">
-        <item name="tint">@color/camera_mode_selector_icon</item>
-        <item name="android:background">@drawable/camera_mode_button</item>
-    </style>
-
     <!-- Flip camera button theme -->
     <style name="ApertureFlipCameraButton">
         <item name="tint">?attr/colorOnPrimary</item>
