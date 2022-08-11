@@ -32,6 +32,12 @@
         <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
+    <!-- Bottom bar icons theme -->
+    <style name="ApertureModeSelectorButton" parent="@style/Widget.Material3.Button.TonalButton">
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
     <!-- Shutter button theme -->
     <style name="ApertureShutterButton">
         <item name="android:background">@drawable/shutter_button_background</item>
