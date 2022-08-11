@@ -11,8 +11,13 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.view.SurfaceView
+import android.view.TextureView
 import android.view.View
+import androidx.camera.view.PreviewView
+import androidx.core.view.children
 import org.lineageos.aperture.utils.GridMode
+import kotlin.math.roundToInt
 
 /**
  * A simple view that shows a 3x3 grid
@@ -21,6 +26,11 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
     private val paint: Paint = Paint()
 
     var mode: GridMode = GridMode.OFF
+        set(value) {
+            field = value
+            invalidate()
+        }
+    var previewView: PreviewView? = null
         set(value) {
             field = value
             invalidate()
@@ -36,6 +46,8 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
+        val previewView = previewView ?: return
+
         val size = when (mode) {
             GridMode.OFF -> 0
             GridMode.ON_3 -> 3
@@ -47,8 +59,15 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
             return
         }
 
-        val width = width.toFloat()
-        val height = height.toFloat()
+        val surface = previewView.children.firstOrNull {
+            it is TextureView || it is SurfaceView
+        } ?: throw Exception("Unable to get preview image surface!")
+
+        val width = (surface.scaleX * surface.width).roundToInt()
+        val height = (surface.scaleY * surface.height).roundToInt()
+
+        val wOffset = (this.width - width) / 2F
+        val hOffset = (this.height - height) / 2F
 
         val unitDiv = if (mode == GridMode.ON_GOLDENRATIO) GOLDEN_RATIO_UNIT else size.toFloat()
 
@@ -61,12 +80,14 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
                 else i.toFloat()
 
             canvas.drawLine(
-                widthSection * position, 0F,
-                widthSection * position, height, paint
+                (widthSection * position) + wOffset, hOffset,
+                (widthSection * position) + wOffset, height + hOffset,
+                paint
             )
             canvas.drawLine(
-                0F, heightSection * position,
-                width, heightSection * position, paint
+                wOffset, (heightSection * position) + hOffset,
+                width + wOffset, (heightSection * position) + hOffset,
+                paint
             )
         }
     }
