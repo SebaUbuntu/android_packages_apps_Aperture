@@ -222,7 +222,7 @@
             android:layout_gravity="center"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="fitXY"
-            app:cardCornerRadius="30dp"
+            app:cardCornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/shutterButton"
             app:layout_constraintStart_toStartOf="parent"
