@@ -16,6 +16,11 @@
     <string name="shutter_button_description">Shutter</string>
     <string name="gallery_button_description">Gallery</string>
 
+    <!-- Selector chip -->
+    <string name="selector_photo">PHOTO</string>
+    <string name="select_video">VIDEO</string>
+    <string name="select_scan">SCAN</string>
+
     <!-- Record chip -->
     <string translatable="false" name="record_chip_default_text">00:00:00</string>
 
