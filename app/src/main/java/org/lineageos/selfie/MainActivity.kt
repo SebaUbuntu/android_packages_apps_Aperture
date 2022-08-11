@@ -267,7 +267,7 @@ class MainActivity : AppCompatActivity() {
         viewFinder.setOnClickListener { view ->
             viewFinderTouchEvent?.let {
                 viewFinderFocus.x = it.x - (viewFinderFocus.width / 2)
-                viewFinderFocus.y = it.y + (viewFinderFocus.height / 2)
+                viewFinderFocus.y = it.y - (viewFinderFocus.height / 2)
             } ?: run {
                 viewFinderFocus.x = (view.width - viewFinderFocus.width) / 2f
                 viewFinderFocus.y = (view.height - viewFinderFocus.height) / 2f
