@@ -141,16 +141,16 @@
         app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
         app:layout_constraintEnd_toEndOf="@+id/viewFinder"
         app:layout_constraintStart_toStartOf="@+id/viewFinder"
-        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout" />
+        app:layout_constraintTop_toTopOf="@+id/viewFinder" />
 
     <org.lineageos.aperture.ui.GridView
         android:id="@+id/gridView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomButtonsLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout" />
+        app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
+        app:layout_constraintEnd_toEndOf="@+id/viewFinder"
+        app:layout_constraintStart_toStartOf="@+id/viewFinder"
+        app:layout_constraintTop_toTopOf="@+id/viewFinder" />
 
     <com.google.android.material.chip.Chip
         android:id="@+id/recordChip"
@@ -164,7 +164,7 @@
         app:chipIcon="@drawable/ic_record"
         app:chipSurfaceColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout"
+        app:layout_constraintTop_toTopOf="@+id/viewFinder"
         app:rippleColor="#00ffffff" />
 
     <com.google.android.material.chip.Chip
@@ -177,7 +177,7 @@
         android:visibility="gone"
         app:chipSurfaceColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topButtonsLayout"
+        app:layout_constraintTop_toTopOf="@+id/viewFinder"
         app:rippleColor="#00ffffff" />
 
     <com.google.android.material.slider.Slider
@@ -267,7 +267,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/photoModeButton"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="wrap_content"
@@ -279,7 +279,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/videoModeButton"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="wrap_content"
@@ -291,7 +291,7 @@
             app:layout_constraintStart_toEndOf="@+id/photoModeButton"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/qrModeButton"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="wrap_content"
@@ -302,6 +302,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/videoModeButton"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
