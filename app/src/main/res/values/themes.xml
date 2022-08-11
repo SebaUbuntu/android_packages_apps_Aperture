@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorOnPrimary</item>
         <!-- Customize your theme here. -->
+        <item name="dialogCornerRadius">28dp</item>
     </style>
 
     <!-- Main activity theme. -->
