@@ -655,17 +655,9 @@ class MainActivity : AppCompatActivity() {
      * Update the camera mode buttons reflecting the current mode
      */
     private fun updateCameraModeButtons() {
-        val background = listOf(
-            qrModeButton.background,
-            photoModeButton.background,
-            videoModeButton.background
-        ).first {
-            it != null
-        }
-
-        qrModeButton.background = if (cameraMode == CameraMode.QR) background else null
-        photoModeButton.background = if (cameraMode == CameraMode.PHOTO) background else null
-        videoModeButton.background = if (cameraMode == CameraMode.VIDEO) background else null
+        qrModeButton.isEnabled = cameraMode != CameraMode.QR
+        photoModeButton.isEnabled = cameraMode != CameraMode.PHOTO
+        videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
     }
 
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
