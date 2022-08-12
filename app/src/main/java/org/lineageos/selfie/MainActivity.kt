@@ -174,9 +174,6 @@ class MainActivity : AppCompatActivity() {
         // Initialize sounds utils
         cameraSoundsUtils = CameraSoundsUtils(sharedPreferences)
 
-        // Bind camera controller to lifecycle
-        cameraController.bindToLifecycle(this)
-
         // Set top bar button callbacks
         aspectRatioButton.setOnClickListener { cycleAspectRatio() }
         effectButton.setOnClickListener { cyclePhotoEffects() }
@@ -437,6 +434,9 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.core.ExperimentalZeroShutterLag
     @androidx.camera.view.video.ExperimentalVideo
     private fun bindCameraUseCases() {
+        // Unbind previous use cases
+        cameraController.unbind()
+
         isTakingPhoto = false
 
         // Hide grid until preview is ready
@@ -502,6 +502,9 @@ class MainActivity : AppCompatActivity() {
 
         // Restore settings that needs a rebind
         cameraController.imageCaptureMode = sharedPreferences.photoCaptureMode
+
+        // Bind camera controller to lifecycle
+        cameraController.bindToLifecycle(this)
 
         // Get a stable reference to CameraInfo
         // We can hardcode the first one in the filter as long as we use DEFAULT_*_CAMERA
