@@ -231,9 +231,7 @@ class MainActivity : AppCompatActivity() {
                 return@observe
             }
 
-            zoomLevel.valueFrom = it.minZoomRatio
-            zoomLevel.valueTo = it.maxZoomRatio
-            zoomLevel.value = it.zoomRatio
+            zoomLevel.value = it.linearZoom
             zoomLevel.visibility = View.VISIBLE
 
             handler.removeMessages(MSG_HIDE_ZOOM_SLIDER)
@@ -242,10 +240,12 @@ class MainActivity : AppCompatActivity() {
 
         zoomLevel.addOnChangeListener { _, value, fromUser ->
             if (fromUser) {
-                cameraController.setZoomRatio(value)
+                cameraController.setLinearZoom(value)
             }
         }
-        zoomLevel.setLabelFormatter { "%.1fx".format(it) }
+        zoomLevel.setLabelFormatter {
+            "%.1fx".format(cameraController.zoomState.value?.zoomRatio)
+        }
 
         // Set bottom bar button callbacks
         qrModeButton.setOnClickListener { changeCameraMode(CameraMode.QR) }
