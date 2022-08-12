@@ -221,7 +221,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginStart="32dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:backgroundTint="?colorSecondaryContainer"
             android:scaleType="fitXY"
             app:cardCornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
