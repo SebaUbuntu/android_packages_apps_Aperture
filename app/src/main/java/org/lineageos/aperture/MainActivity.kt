@@ -491,6 +491,7 @@ class MainActivity : AppCompatActivity() {
         updateAspectRatioIcon()
         updatePhotoEffectIcon()
         updateGridIcon()
+        updateTorchModeIcon()
         updateFlashModeIcon()
     }
 
