@@ -34,6 +34,8 @@
 
     <!-- Bottom bar icons theme -->
     <style name="SelfieModeSelectorButton" parent="@style/Widget.Material3.Button.TonalButton">
+        <item name="android:backgroundTint">@color/camera_mode_selector_icon</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">monospace</item>
     </style>
