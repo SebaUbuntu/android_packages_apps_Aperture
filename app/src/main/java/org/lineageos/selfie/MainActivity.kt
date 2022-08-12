@@ -317,11 +317,7 @@ class MainActivity : AppCompatActivity() {
 
         shutterButton.setOnClickListener {
             // Shutter animation
-            ValueAnimator.ofInt(convertDpToPx(4), convertDpToPx(16), convertDpToPx(4)).apply {
-                addUpdateListener {
-                    shutterButton.setPadding(it.animatedValue as Int)
-                }
-            }.start()
+            (shutterButton.drawable as AnimatedVectorDrawable).start()
 
             startTimerAndRun {
                 when (cameraMode) {
