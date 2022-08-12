@@ -147,7 +147,9 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.view.video.ExperimentalVideo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         hideStatusBars()
+        supportActionBar?.hide()
 
         setContentView(R.layout.activity_main)
         setShowWhenLocked(true)
