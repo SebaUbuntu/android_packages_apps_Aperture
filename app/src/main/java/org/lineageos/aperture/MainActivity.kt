@@ -901,7 +901,7 @@ class MainActivity : AppCompatActivity() {
             shutterButton.isEnabled = false
             timerChip.isVisible = true
 
-            for (i in sharedPreferences.timerMode downTo 0) {
+            for (i in sharedPreferences.timerMode downTo 1) {
                 timerChip.text = "$i"
                 delay(1000)
             }
