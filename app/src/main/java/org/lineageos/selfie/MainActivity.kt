@@ -45,7 +45,6 @@ import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
 import androidx.camera.view.video.OnVideoSavedCallback
 import androidx.camera.view.video.OutputFileResults
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat.getInsetsController
@@ -80,7 +79,6 @@ class MainActivity : AppCompatActivity() {
     private val galleryButton by lazy { findViewById<ImageView>(R.id.galleryButton) }
     private val gridButton by lazy { findViewById<ImageButton>(R.id.gridButton) }
     private val gridView by lazy { findViewById<GridView>(R.id.gridView) }
-    private val mainLayout by lazy { findViewById<ConstraintLayout>(R.id.mainLayout) }
     private val photoModeButton by lazy { findViewById<ImageButton>(R.id.photoModeButton) }
     private val qrModeButton by lazy { findViewById<ImageButton>(R.id.qrModeButton) }
     private val recordChip by lazy { findViewById<Chip>(R.id.recordChip) }
@@ -334,10 +332,10 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    mainLayout.foreground = ColorDrawable(Color.WHITE)
+                    viewFinder.foreground = ColorDrawable(Color.BLACK)
                     ValueAnimator.ofInt(0, 255, 0).apply {
                         addUpdateListener { anim ->
-                            mainLayout.foreground.alpha = anim.animatedValue as Int
+                            viewFinder.foreground.alpha = anim.animatedValue as Int
                         }
                     }.start()
                     val msg = "Photo capture succeeded: ${output.savedUri}"
