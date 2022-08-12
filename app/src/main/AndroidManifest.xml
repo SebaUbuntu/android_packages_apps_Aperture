@@ -27,7 +27,8 @@
             android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
             android:exported="true"
             android:launchMode="singleTask"
-            android:screenOrientation="nosensor">
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.Selfie.Main">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,7 +51,8 @@
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_settings"
+            android:theme="@style/Theme.Selfie.Settings" />
 
     </application>
 

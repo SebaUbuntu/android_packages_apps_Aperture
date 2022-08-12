@@ -14,6 +14,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Main activity theme. -->
+    <style name="Theme.Selfie.Main" parent="Theme.Selfie" />
+
+    <!-- Settings activity theme. -->
+    <style name="Theme.Selfie.Settings" parent="Theme.Selfie" />
+
     <!-- Top bar icons theme -->
     <style name="SelfieTopBarButton">
         <item name="tint">?attr/colorPrimary</item>
