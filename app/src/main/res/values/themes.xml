@@ -44,9 +44,4 @@
     <style name="SelfieShutterButton">
         <item name="android:background">@drawable/shutter_button_background</item>
     </style>
-
-    <!-- Flip camera button theme -->
-    <style name="SelfieFlipCameraButton">
-        <item name="tint">?attr/colorPrimary</item>
-    </style>
 </resources>
