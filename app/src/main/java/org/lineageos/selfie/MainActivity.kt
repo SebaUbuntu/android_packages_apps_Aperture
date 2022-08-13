@@ -811,19 +811,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateGalleryButton(uri: Uri?, enable: Boolean = true) {
-        if (uri != null && enable) {
-            getThumbnail(uri)?.let {
-                runOnUiThread {
+        runOnUiThread {
+            if (uri != null && enable) {
+                getThumbnail(uri)?.let {
                     galleryButton.setPadding(0)
                     galleryButton.setImageBitmap(it)
                 }
+            } else if (keyguardManager.isKeyguardLocked) {
+                galleryButton.setPadding(convertDpToPx(15))
+                galleryButton.setImageResource(R.drawable.ic_lock)
+            } else {
+                galleryButton.setPadding(convertDpToPx(15))
+                galleryButton.setImageResource(R.drawable.ic_image)
             }
-        } else if (keyguardManager.isKeyguardLocked) {
-            galleryButton.setPadding(convertDpToPx(15))
-            galleryButton.setImageResource(R.drawable.ic_lock)
-        } else {
-            galleryButton.setPadding(convertDpToPx(15))
-            galleryButton.setImageResource(R.drawable.ic_image)
         }
     }
 
