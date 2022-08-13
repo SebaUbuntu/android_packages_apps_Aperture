@@ -160,7 +160,7 @@ class MainActivity : AppCompatActivity() {
             // Reset cached location
             location = null
 
-            if (allLocationPermissionsGranted() && sharedPreferences.photoSaveLocation) {
+            if (allLocationPermissionsGranted() && sharedPreferences.saveLocation) {
                 // Request location updates
                 locationManager.allProviders.forEach {
                     locationManager.requestLocationUpdates(it, 1000, 0f, this)
