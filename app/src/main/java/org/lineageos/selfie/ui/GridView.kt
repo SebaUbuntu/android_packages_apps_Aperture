@@ -63,8 +63,8 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
             it is TextureView || it is SurfaceView
         } ?: throw Exception("Unable to get preview image surface!")
 
-        val width = (surface.scaleX * surface.width).roundToInt()
-        val height = (surface.scaleY * surface.height).roundToInt()
+        val width = (surface.scaleX * surface.width).roundToInt().coerceIn(0, previewView.width)
+        val height = (surface.scaleY * surface.height).roundToInt().coerceIn(0, previewView.height)
 
         val wOffset = (this.width - width) / 2F
         val hOffset = (this.height - height) / 2F
