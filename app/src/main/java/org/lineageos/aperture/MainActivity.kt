@@ -163,7 +163,7 @@ class MainActivity : AppCompatActivity() {
             if (allLocationPermissionsGranted() && sharedPreferences.saveLocation) {
                 // Request location updates
                 locationManager.allProviders.forEach {
-                    locationManager.requestLocationUpdates(it, 1000, 0f, this)
+                    locationManager.requestLocationUpdates(it, 1000, 1f, this)
                 }
             }
         }
