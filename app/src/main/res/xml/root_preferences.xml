@@ -3,6 +3,11 @@
     <PreferenceCategory app:title="@string/general_header">
 
         <SwitchPreference
+            app:defaultValue="false"
+            app:key="save_location"
+            app:title="@string/save_location_title" />
+
+        <SwitchPreference
             app:defaultValue="true"
             app:key="shutter_sound"
             app:title="@string/shutter_sound_title"
@@ -19,11 +24,6 @@
             app:key="photo_capture_mode"
             app:title="@string/photo_capture_mode_title"
             app:useSimpleSummaryProvider="true" />
-
-        <SwitchPreference
-            app:defaultValue="false"
-            app:key="photo_save_location"
-            app:title="@string/photo_save_location_title" />
 
     </PreferenceCategory>
 
