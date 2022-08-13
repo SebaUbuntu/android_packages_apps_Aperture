@@ -66,7 +66,6 @@ import org.lineageos.selfie.utils.GridMode
 import org.lineageos.selfie.utils.PhysicalCamera
 import org.lineageos.selfie.utils.StorageUtils
 import org.lineageos.selfie.utils.TimeUtils
-import java.io.FileNotFoundException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.Timer
@@ -816,6 +815,9 @@ class MainActivity : AppCompatActivity() {
                 getThumbnail(uri)?.let {
                     galleryButton.setPadding(0)
                     galleryButton.setImageBitmap(it)
+                } ?: run {
+                    galleryButton.setPadding(convertDpToPx(15))
+                    galleryButton.setImageResource(R.drawable.ic_image)
                 }
             } else if (keyguardManager.isKeyguardLocked) {
                 galleryButton.setPadding(convertDpToPx(15))
@@ -915,7 +917,7 @@ class MainActivity : AppCompatActivity() {
                 val sizeInPx = convertDpToPx(75)
                 contentResolver.loadThumbnail(it, Size(sizeInPx, sizeInPx), null)
             }
-        } catch (exception: FileNotFoundException) {
+        } catch (exception: Exception) {
             Log.e(LOG_TAG, "${exception.message}")
             null
         }
