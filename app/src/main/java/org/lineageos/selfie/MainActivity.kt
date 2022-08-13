@@ -16,10 +16,11 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
+import android.location.Criteria
 import android.location.Location
-import android.location.LocationListener
 import android.location.LocationManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -51,6 +52,10 @@ import androidx.camera.view.video.OnVideoSavedCallback
 import androidx.camera.view.video.OutputFileResults
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.location.LocationListenerCompat
+import androidx.core.location.LocationManagerCompat
+import androidx.core.location.LocationRequestCompat
+import androidx.core.location.LocationRequestCompat.QUALITY_BALANCED_POWER_ACCURACY
 import androidx.core.view.WindowCompat.getInsetsController
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -148,7 +153,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private var location: Location? = null
-    private val locationListener = object : LocationListener {
+    private val locationListener = object : LocationListenerCompat {
         override fun onLocationChanged(it: Location) {
             if (location == null || location!!.accuracy >= it.accuracy) {
                 location = it
@@ -162,8 +167,37 @@ class MainActivity : AppCompatActivity() {
 
             if (allLocationPermissionsGranted() && sharedPreferences.saveLocation) {
                 // Request location updates
-                locationManager.allProviders.forEach {
-                    locationManager.requestLocationUpdates(it, 1000, 1f, this)
+
+                // The "fused" provider always had this name, but it was made
+                // public only in S
+                val fusedProvider = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    LocationManager.FUSED_PROVIDER
+                } else {
+                    "fused"
+                }
+
+                // Best provider returns the first provider that matches our criteria
+                // We only care if fused matches our criteria, if it does use it, otherwise
+                // register updates from all the providers ( including fused )
+                val bestProvider = locationManager.getBestProvider(Criteria().apply {
+                    accuracy = Criteria.ACCURACY_FINE
+                }, true).takeIf {
+                    it == fusedProvider
+                }
+                val providers =
+                    if (bestProvider != null) listOf(bestProvider) else locationManager.allProviders
+
+                providers.forEach {
+                    LocationManagerCompat.requestLocationUpdates(
+                        locationManager,
+                        it,
+                        LocationRequestCompat.Builder(1000).apply {
+                            setMinUpdateDistanceMeters(1f)
+                            setQuality(QUALITY_BALANCED_POWER_ACCURACY)
+                        }.build(),
+                        this,
+                        Looper.getMainLooper()
+                    )
                 }
             }
         }
