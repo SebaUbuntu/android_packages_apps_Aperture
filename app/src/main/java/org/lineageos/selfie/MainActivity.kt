@@ -400,7 +400,8 @@ class MainActivity : AppCompatActivity() {
 
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getPhotoMediaStoreOutputOptions(
-            contentResolver,
+            this,
+            sharedPreferences.customStorageLocation,
             ImageCapture.Metadata().apply {
                 location = this@MainActivity.location
             }
@@ -426,9 +427,10 @@ class MainActivity : AppCompatActivity() {
                             viewFinder.foreground.alpha = anim.animatedValue as Int
                         }
                     }.start()
-                    val msg = "Photo capture succeeded: ${output.savedUri}"
-                    sharedPreferences.lastSavedUri = output.savedUri
-                    updateGalleryButton(output.savedUri)
+                    val savedUri = output.savedUri ?: sharedPreferences.lastSavedUri
+                    val msg = "Photo capture succeeded: $savedUri"
+                    sharedPreferences.lastSavedUri = savedUri
+                    updateGalleryButton(savedUri)
                     Log.d(LOG_TAG, msg)
                     isTakingPhoto = false
                     shutterButton.isEnabled = true
@@ -447,7 +449,8 @@ class MainActivity : AppCompatActivity() {
 
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getVideoMediaStoreOutputOptions(
-            contentResolver,
+            this,
+            sharedPreferences.customStorageLocation,
             Metadata.builder().apply {
                 setLocation(location)
             }.build()
@@ -467,9 +470,10 @@ class MainActivity : AppCompatActivity() {
                 override fun onVideoSaved(output: OutputFileResults) {
                     cameraSoundsUtils.playStopVideoRecording()
                     stopRecordingTimer()
-                    val msg = "Video capture succeeded: ${output.savedUri}"
-                    sharedPreferences.lastSavedUri = output.savedUri
-                    updateGalleryButton(output.savedUri)
+                    val savedUri = output.savedUri ?: sharedPreferences.lastSavedUri
+                    val msg = "Video capture succeeded: ${savedUri}"
+                    sharedPreferences.lastSavedUri = savedUri
+                    updateGalleryButton(savedUri)
                     Log.d(LOG_TAG, msg)
                     tookSomething = true
                 }

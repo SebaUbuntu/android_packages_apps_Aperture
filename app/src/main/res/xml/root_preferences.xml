@@ -3,6 +3,11 @@
     <PreferenceCategory app:title="@string/general_header">
 
         <SwitchPreference
+            app:key="custom_storage_location"
+            app:persistent="false"
+            app:title="@string/custom_storage_location_title" />
+
+        <SwitchPreference
             app:defaultValue="false"
             app:key="bright_screen"
             app:title="@string/bright_screen_title" />

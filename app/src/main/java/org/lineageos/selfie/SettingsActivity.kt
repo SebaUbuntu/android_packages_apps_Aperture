@@ -6,6 +6,7 @@
 
 package org.lineageos.selfie
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
@@ -43,6 +44,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
+        private val customStorageLocation by lazy { findPreference<SwitchPreference>("custom_storage_location") }
         private val saveLocation by lazy { findPreference<SwitchPreference>("save_location") }
         private val shutterSound by lazy { findPreference<SwitchPreference>("shutter_sound") }
 
@@ -57,8 +59,32 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
+        private val openDocumentTree = registerForActivityResult(
+            ActivityResultContracts.OpenDocumentTree()
+        ) {
+            if (it != null) {
+                context?.contentResolver?.takePersistableUriPermission(
+                    it, Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
+            }
+            customStorageLocation?.isChecked = it != null
+            customStorageLocation?.sharedPreferences?.customStorageLocation = it
+        }
+
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
+            customStorageLocation?.apply {
+                isChecked = sharedPreferences?.customStorageLocation != null
+                onPreferenceChangeListener =
+                    Preference.OnPreferenceChangeListener { _, newValue ->
+                        if (newValue as Boolean) {
+                            openDocumentTree.launch(null)
+                        } else {
+                            sharedPreferences?.customStorageLocation = null
+                        }
+                        true
+                    }
+            }
             saveLocation?.let {
                 // Reset location back to off if permissions aren't granted
                 it.isChecked = it.isChecked && allLocationPermissionsGranted()
