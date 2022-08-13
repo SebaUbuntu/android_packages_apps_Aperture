@@ -191,7 +191,11 @@ class MainActivity : AppCompatActivity() {
         setShowWhenLocked(true)
 
         // Request camera permissions
-        ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+        if (!allPermissionsGranted()) {
+            ActivityCompat.requestPermissions(
+                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+            )
+        }
 
         // Initialize camera provider
         cameraProvider = ProcessCameraProvider.getInstance(this).get()
@@ -358,8 +362,6 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
                 finish()
-            } else if (!allLocationPermissionsGranted()) {
-                ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS_LOCATION, 0)
             }
         }
     }
@@ -1010,7 +1012,7 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.CAMERA,
                 Manifest.permission.RECORD_AUDIO
             ).toTypedArray()
-        private val REQUIRED_PERMISSIONS_LOCATION =
+        internal val REQUIRED_PERMISSIONS_LOCATION =
             mutableListOf(
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION
