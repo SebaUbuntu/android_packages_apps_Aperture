@@ -32,12 +32,12 @@
     <string name="videos_header">Videos</string>
 
     <!-- General Preferences -->
+    <string name="save_location_title">Save GPS location</string>
     <string name="shutter_sound_title">Shutter sound</string>
     <string name="shutter_sound_summary">Note: In some countries this setting will be ignored</string>
 
     <!-- Photo Preferences -->
     <string name="photo_capture_mode_title">Capture mode</string>
-    <string name="photo_save_location_title">Save GPS location</string>
 
     <!-- Videos Preferences -->
     <string name="video_quality_title">Video quality</string>
