@@ -704,7 +704,7 @@ class MainActivity : AppCompatActivity() {
         aspectRatioButton.text = when (sharedPreferences.aspectRatio) {
             AspectRatio.RATIO_4_3 -> "4:3"
             AspectRatio.RATIO_16_9 -> "16:9"
-            else -> throw Exception("Unknown aspect ratio $sharedPreferences.aspectRatio")
+            else -> throw Exception("Unknown aspect ratio ${sharedPreferences.aspectRatio}")
         }
     }
 
