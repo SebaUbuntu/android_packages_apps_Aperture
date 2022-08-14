@@ -365,8 +365,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun takePhoto() {
         // Bail out if a photo is already being taken
-        if (isTakingPhoto)
+        if (isTakingPhoto) {
             return
+        }
 
         isTakingPhoto = true
         shutterButton.isEnabled = false
@@ -466,12 +467,14 @@ class MainActivity : AppCompatActivity() {
     private fun canRestartCamera(): Boolean {
         if (cameraMode == CameraMode.PHOTO) {
             // Check if we're taking a photo or if timer is running
-            if (isTakingPhoto || timerChip.isVisible)
+            if (isTakingPhoto || timerChip.isVisible) {
                 return false
+            }
         } else if (cameraMode == CameraMode.VIDEO) {
             // Check for a recording in progress or if timer is running
-            if (cameraController.isRecording || timerChip.isVisible)
+            if (cameraController.isRecording || timerChip.isVisible) {
                 return false
+            }
         }
 
         return true
@@ -581,11 +584,13 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.view.video.ExperimentalVideo
     private fun changeCameraMode(cameraMode: CameraMode) {
-        if (!canRestartCamera())
+        if (!canRestartCamera()) {
             return
+        }
 
-        if (cameraMode == this.cameraMode)
+        if (cameraMode == this.cameraMode) {
             return
+        }
 
         sharedPreferences.lastCameraMode = cameraMode
         bindCameraUseCases()
@@ -597,8 +602,9 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.view.video.ExperimentalVideo
     private fun flipCamera() {
-        if (!canRestartCamera())
+        if (!canRestartCamera()) {
             return
+        }
 
         (flipCameraButton.drawable as AnimatedVectorDrawable).start()
 
@@ -625,8 +631,9 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.view.video.ExperimentalVideo
     private fun cycleAspectRatio() {
-        if (!canRestartCamera())
+        if (!canRestartCamera()) {
             return
+        }
 
         sharedPreferences.aspectRatio = when (aspectRatio) {
             AspectRatio.RATIO_4_3 -> AspectRatio.RATIO_16_9
@@ -811,11 +818,13 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.view.video.ExperimentalVideo
     private fun setExtensionMode(extensionMode: Int) {
-        if (!canRestartCamera())
+        if (!canRestartCamera()) {
             return
+        }
 
-        if (extensionMode == this.extensionMode)
+        if (extensionMode == this.extensionMode) {
             return
+        }
 
         sharedPreferences.photoEffect = extensionMode
 
@@ -849,8 +858,9 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     @androidx.camera.view.video.ExperimentalVideo
     private fun cyclePhotoEffects() {
-        if (!canRestartCamera())
+        if (!canRestartCamera()) {
             return
+        }
 
         setExtensionMode(
             if (extensionMode == supportedExtensionModes.last()) supportedExtensionModes.first()
@@ -956,8 +966,9 @@ class MainActivity : AppCompatActivity() {
 
     @androidx.camera.view.video.ExperimentalVideo
     private fun openSettings() {
-        if (!canRestartCamera())
+        if (!canRestartCamera()) {
             return
+        }
 
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
