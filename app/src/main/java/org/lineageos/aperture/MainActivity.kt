@@ -189,7 +189,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         hideStatusBars()
-        supportActionBar?.hide()
 
         setContentView(R.layout.activity_main)
         setShowWhenLocked(true)
