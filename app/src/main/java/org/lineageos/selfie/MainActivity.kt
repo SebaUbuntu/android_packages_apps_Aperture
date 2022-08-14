@@ -100,6 +100,8 @@ class MainActivity : AppCompatActivity() {
     private val keyguardManager by lazy { getSystemService(KeyguardManager::class.java) }
     private val locationManager by lazy { getSystemService(LocationManager::class.java) }
 
+    private val imageAnalyzer by lazy { QrImageAnalyzer(this) }
+
     private lateinit var cameraProvider: ProcessCameraProvider
     private lateinit var extensionsManager: ExtensionsManager
 
@@ -542,7 +544,7 @@ class MainActivity : AppCompatActivity() {
         val cameraUseCases = when (cameraMode) {
             CameraMode.QR -> {
                 cameraController.imageAnalysisTargetSize = outputSize
-                cameraController.setImageAnalysisAnalyzer(cameraExecutor, QrImageAnalyzer(this))
+                cameraController.setImageAnalysisAnalyzer(cameraExecutor, imageAnalyzer)
                 CameraController.IMAGE_ANALYSIS
             }
             CameraMode.PHOTO -> {
