@@ -356,9 +356,7 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (!allPermissionsGranted()) {
                 Toast.makeText(
-                    this,
-                    "Permissions not granted by the user.",
-                    Toast.LENGTH_SHORT
+                    this, getString(R.string.app_permissions_toast), Toast.LENGTH_SHORT
                 ).show()
                 finish()
             }

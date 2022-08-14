@@ -19,6 +19,9 @@
     <!-- Record chip -->
     <string translatable="false" name="record_chip_default_text">00:00:00</string>
 
+    <!-- Permissions toast -->
+    <string name="app_permissions_toast">Permissions not granted by the user.</string>
+
     <!-- QR dialog -->
     <string name="qr_copy">Copy to clipboard</string>
     <string name="qr_title">Scan result</string>
