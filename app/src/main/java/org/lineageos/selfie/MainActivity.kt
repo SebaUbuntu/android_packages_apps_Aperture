@@ -940,7 +940,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun openGallery() {
         sharedPreferences.lastSavedUri.let { uri ->
-            // If the Uri is null attempt to launch non secure-gallery
+            // If the Uri is null, attempt to launch non secure-gallery
             if (uri == null) {
                 dismissKeyguardAndRun {
                     val intent = Intent().apply {
