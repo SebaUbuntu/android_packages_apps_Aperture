@@ -19,7 +19,10 @@
     </style>
 
     <!-- Main activity theme. -->
-    <style name="Theme.Selfie.Main" parent="Theme.Selfie" />
+    <style name="Theme.Selfie.Main" parent="Theme.Selfie">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
     <!-- Settings activity theme. -->
     <style name="Theme.Selfie.Settings" parent="Theme.Selfie" />
