@@ -13,8 +13,11 @@ import android.content.ClipboardManager
 import android.content.Intent
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
-import android.text.util.Linkify
 import android.view.View
+import android.view.textclassifier.TextLinks
+import android.view.textclassifier.TextLinks.APPLY_STRATEGY_REPLACE
+import android.view.textclassifier.TextLinks.STATUS_LINKS_APPLIED
+import android.view.textclassifier.TextLinks.STATUS_NO_LINKS_APPLIED
 import android.widget.AdapterView
 import android.widget.ImageButton
 import android.widget.Spinner
@@ -28,9 +31,13 @@ import com.google.zxing.BinaryBitmap
 import com.google.zxing.MultiFormatReader
 import com.google.zxing.Result
 import com.google.zxing.common.HybridBinarizer
-import java.lang.Exception
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
+class QrImageAnalyzer(private val activity: Activity, private val lifecycleScope: CoroutineScope) :
+    ImageAnalysis.Analyzer {
     private val bottomSheetDialog by lazy {
         BottomSheetDialog(activity).apply {
             setContentView(R.layout.qr_bottom_sheet_dialog)
@@ -88,14 +95,30 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
             // Set type to text by default
             type = Type.TEXT
 
-            // Linkify message
-            SpannableString(result.text).let {
-                Linkify.addLinks(it, Linkify.ALL)
-                bottomSheetDialogText?.text = it
-                bottomSheetDialogText?.movementMethod =
-                    if (!keyguardManager.isKeyguardLocked) LinkMovementMethod.getInstance()
-                    else null
+            // Classify message
+            val span = SpannableString(result.text)
+            bottomSheetDialogText?.text = span
+            lifecycleScope.launch {
+                val textLinks = withContext(Dispatchers.IO) {
+                    bottomSheetDialogText?.textClassifier?.generateLinks(
+                        TextLinks.Request.Builder(result.text).build()
+                    )
+                }
+                val status = textLinks?.apply(
+                    span,
+                    APPLY_STRATEGY_REPLACE,
+                    null
+                ) ?: STATUS_NO_LINKS_APPLIED
+                activity.runOnUiThread {
+                    if (status == STATUS_LINKS_APPLIED) {
+                        bottomSheetDialogText?.text = span
+                    }
+                }
             }
+
+            bottomSheetDialogText?.movementMethod =
+                if (!keyguardManager.isKeyguardLocked) LinkMovementMethod.getInstance()
+                else null
 
             // Set type spinner
             bottomSheetDialog.findViewById<Spinner>(R.id.set_type)?.onItemSelectedListener =
