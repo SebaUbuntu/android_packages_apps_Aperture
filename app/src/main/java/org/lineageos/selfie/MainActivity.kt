@@ -486,20 +486,13 @@ class MainActivity : AppCompatActivity() {
      * Check if we can reinitialize the camera use cases
      */
     @androidx.camera.view.video.ExperimentalVideo
-    private fun canRestartCamera(): Boolean {
-        if (cameraMode == CameraMode.PHOTO) {
-            // Check if we're taking a photo or if timer is running
-            if (isTakingPhoto || timerChip.isVisible) {
-                return false
-            }
-        } else if (cameraMode == CameraMode.VIDEO) {
-            // Check for a recording in progress or if timer is running
-            if (cameraController.isRecording || timerChip.isVisible) {
-                return false
-            }
-        }
-
-        return true
+    private fun canRestartCamera() = when (cameraMode) {
+        // Disallow camera restart if we're taking a photo or if timer is running
+        CameraMode.PHOTO -> !isTakingPhoto && !timerChip.isVisible
+        // Disallow camera restart if a recording in progress or if timer is running
+        CameraMode.VIDEO -> !cameraController.isRecording && !timerChip.isVisible
+        // Otherwise, allow camera restart
+        else -> true
     }
 
     /**
