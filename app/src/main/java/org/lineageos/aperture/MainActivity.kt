@@ -49,6 +49,7 @@ import androidx.camera.view.PreviewView
 import androidx.camera.view.video.Metadata
 import androidx.camera.view.video.OnVideoSavedCallback
 import androidx.camera.view.video.OutputFileResults
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat.getInsetsController
@@ -78,6 +79,7 @@ import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
     private val aspectRatioButton by lazy { findViewById<ToggleButton>(R.id.aspectRatioButton) }
+    private val bottomButtonsLayout by lazy { findViewById<ConstraintLayout>(R.id.bottomButtonsLayout) }
     private val effectButton by lazy { findViewById<ImageButton>(R.id.effectButton) }
     private val flashButton by lazy { findViewById<ImageButton>(R.id.flashButton) }
     private val flipCameraButton by lazy { findViewById<ImageButton>(R.id.flipCameraButton) }
@@ -568,18 +570,15 @@ class MainActivity : AppCompatActivity() {
         when (cameraMode) {
             CameraMode.QR -> {
                 timerButton.isVisible = false
-                flipCameraButton.isInvisible = true
-                shutterButton.isInvisible = true
+                bottomButtonsLayout.isInvisible = true
             }
             CameraMode.PHOTO -> {
                 timerButton.isVisible = true
-                flipCameraButton.isInvisible = false
-                shutterButton.isInvisible = false
+                bottomButtonsLayout.isInvisible = false
             }
             CameraMode.VIDEO -> {
                 timerButton.isVisible = true
-                flipCameraButton.isInvisible = false
-                shutterButton.isInvisible = false
+                bottomButtonsLayout.isInvisible = false
             }
         }
 
