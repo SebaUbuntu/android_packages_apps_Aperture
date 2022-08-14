@@ -24,7 +24,14 @@
 
     <!-- QR dialog -->
     <string name="qr_copy">Copy to clipboard</string>
+    <string name="qr_copy_toast_bytes">Bytes copied to clipboard</string>
+    <string name="qr_copy_toast_text">Text copied to clipboard</string>
     <string name="qr_title">Scan result</string>
+    <string name="qr_bytes">Bytes:</string>
+    <string name="qr_text">Text:</string>
+    <string name="qr_type">Type:</string>
+    <string name="qr_type_text">Text</string>
+    <string name="qr_type_bytes">Bytes</string>
 
     <!-- Settings title -->
     <string name="title_activity_settings">Settings</string>
