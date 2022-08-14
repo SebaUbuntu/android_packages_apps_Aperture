@@ -42,7 +42,7 @@ object StorageUtils {
     }
 
     /**
-     * Returns a new MediaStoreOutputOptions to use to store a MP4 video
+     * Returns a new OutputFileOptions to use to store a MP4 video
      */
     @androidx.camera.view.video.ExperimentalVideo
     fun getVideoMediaStoreOutputOptions(
