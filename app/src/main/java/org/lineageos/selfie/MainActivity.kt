@@ -496,10 +496,14 @@ class MainActivity : AppCompatActivity() {
         gridView.alpha = 0f
 
         // Select front/back camera
-        var cameraSelector = when (sharedPreferences.lastCameraFacing) {
-            CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
-            CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
-            else -> CameraSelector.DEFAULT_BACK_CAMERA
+        cameraMode = sharedPreferences.lastCameraMode
+        var cameraSelector = when (cameraMode) {
+            CameraMode.QR -> CameraSelector.DEFAULT_BACK_CAMERA
+            else -> when (sharedPreferences.lastCameraFacing) {
+                CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
+                CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
+                else -> CameraSelector.DEFAULT_BACK_CAMERA
+            }
         }
 
         // Get the supported vendor extensions for the given camera selector
@@ -516,7 +520,6 @@ class MainActivity : AppCompatActivity() {
         val outputSize = CameraController.OutputSize(aspectRatio)
 
         // Initialize the use case we want and set its aspect ratio
-        cameraMode = sharedPreferences.lastCameraMode
         val cameraUseCases = when (cameraMode) {
             CameraMode.QR -> {
                 cameraController.imageAnalysisTargetSize = outputSize
@@ -543,9 +546,11 @@ class MainActivity : AppCompatActivity() {
         if (cameraMode == CameraMode.QR) {
             cameraController.setImageAnalysisAnalyzer(cameraExecutor, QrImageAnalyzer(this))
             timerButton.isVisible = false
+            flipCameraButton.isInvisible = true
             shutterButton.isInvisible = true
         } else {
             timerButton.isVisible = true
+            flipCameraButton.isInvisible = false
             shutterButton.isInvisible = false
         }
 
