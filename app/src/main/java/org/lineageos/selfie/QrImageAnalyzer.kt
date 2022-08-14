@@ -31,13 +31,8 @@ import com.google.zxing.BinaryBitmap
 import com.google.zxing.MultiFormatReader
 import com.google.zxing.Result
 import com.google.zxing.common.HybridBinarizer
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-class QrImageAnalyzer(private val activity: Activity, private val lifecycleScope: CoroutineScope) :
-    ImageAnalysis.Analyzer {
+class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
     private val bottomSheetDialog by lazy {
         BottomSheetDialog(activity).apply {
             setContentView(R.layout.qr_bottom_sheet_dialog)
@@ -98,12 +93,10 @@ class QrImageAnalyzer(private val activity: Activity, private val lifecycleScope
             // Classify message
             val span = SpannableString(result.text)
             bottomSheetDialogText?.text = span
-            lifecycleScope.launch {
-                val textLinks = withContext(Dispatchers.IO) {
-                    bottomSheetDialogText?.textClassifier?.generateLinks(
-                        TextLinks.Request.Builder(result.text).build()
-                    )
-                }
+            Thread {
+                val textLinks = bottomSheetDialogText?.textClassifier?.generateLinks(
+                    TextLinks.Request.Builder(result.text).build()
+                )
                 val status = textLinks?.apply(
                     span,
                     APPLY_STRATEGY_REPLACE,
@@ -114,7 +107,7 @@ class QrImageAnalyzer(private val activity: Activity, private val lifecycleScope
                         bottomSheetDialogText?.text = span
                     }
                 }
-            }
+            }.start()
 
             bottomSheetDialogText?.movementMethod =
                 if (!keyguardManager.isKeyguardLocked) LinkMovementMethod.getInstance()
