@@ -768,8 +768,12 @@ class MainActivity : AppCompatActivity() {
     @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     private fun cycleFlashMode() {
         setFlashMode(
-            if (cameraController.imageCaptureFlashMode >= ImageCapture.FLASH_MODE_OFF) ImageCapture.FLASH_MODE_AUTO
-            else cameraController.imageCaptureFlashMode + 1
+            when (cameraController.imageCaptureFlashMode) {
+                ImageCapture.FLASH_MODE_AUTO -> ImageCapture.FLASH_MODE_ON
+                ImageCapture.FLASH_MODE_ON -> ImageCapture.FLASH_MODE_OFF
+                ImageCapture.FLASH_MODE_OFF -> ImageCapture.FLASH_MODE_AUTO
+                else -> ImageCapture.FLASH_MODE_AUTO
+            }
         )
     }
 
