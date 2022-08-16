@@ -35,12 +35,24 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
             setContentView(R.layout.qr_bottom_sheet_dialog)
         }
     }
-    private val bottomSheetDialogBytes by lazy { bottomSheetDialog.findViewById<TextView>(R.id.bytes) }
-    private val bottomSheetDialogBytesTitle by lazy { bottomSheetDialog.findViewById<TextView>(R.id.bytes_title) }
-    private val bottomSheetDialogText by lazy { bottomSheetDialog.findViewById<TextView>(R.id.text) }
-    private val bottomSheetDialogTextTitle by lazy { bottomSheetDialog.findViewById<TextView>(R.id.text_title) }
-    private val bottomSheetDialogType by lazy { bottomSheetDialog.findViewById<TextView>(R.id.type) }
-    private val bottomSheetDialogSetType by lazy { bottomSheetDialog.findViewById<Spinner>(R.id.set_type) }
+    private val bottomSheetDialogBytes by lazy {
+        bottomSheetDialog.findViewById<TextView>(R.id.bytes)!!
+    }
+    private val bottomSheetDialogBytesTitle by lazy {
+        bottomSheetDialog.findViewById<TextView>(R.id.bytes_title)!!
+    }
+    private val bottomSheetDialogText by lazy {
+        bottomSheetDialog.findViewById<TextView>(R.id.text)!!
+    }
+    private val bottomSheetDialogTextTitle by lazy {
+        bottomSheetDialog.findViewById<TextView>(R.id.text_title)!!
+    }
+    private val bottomSheetDialogType by lazy {
+        bottomSheetDialog.findViewById<TextView>(R.id.type)!!
+    }
+    private val bottomSheetDialogSetType by lazy {
+        bottomSheetDialog.findViewById<Spinner>(R.id.set_type)!!
+    }
 
     private val reader by lazy { MultiFormatReader() }
 
@@ -55,10 +67,10 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
     private var type: Type = Type.TEXT
         set(value) {
             field = value
-            bottomSheetDialogBytes?.isVisible = type == Type.BYTES
-            bottomSheetDialogBytesTitle?.isVisible = type == Type.BYTES
-            bottomSheetDialogText?.isVisible = type == Type.TEXT
-            bottomSheetDialogTextTitle?.isVisible = type == Type.TEXT
+            bottomSheetDialogBytes.isVisible = type == Type.BYTES
+            bottomSheetDialogBytesTitle.isVisible = type == Type.BYTES
+            bottomSheetDialogText.isVisible = type == Type.TEXT
+            bottomSheetDialogTextTitle.isVisible = type == Type.TEXT
         }
 
     override fun analyze(image: ImageProxy) {
@@ -78,10 +90,10 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
             }
 
             // Set barcode type
-            bottomSheetDialogType?.text = result.barcodeFormat.name
+            bottomSheetDialogType.text = result.barcodeFormat.name
 
             // Set bytes
-            bottomSheetDialogBytes?.text =
+            bottomSheetDialogBytes.text =
                 result.rawBytes?.joinToString(" ") { "%02X".format(it) }
 
             // Set type to text by default
@@ -89,21 +101,21 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
 
             // Classify message
             val span = SpannableString(result.text)
-            bottomSheetDialogText?.text = span
+            bottomSheetDialogText.text = span
             Thread {
-                val status = bottomSheetDialogText?.textClassifier?.generateLinks(
+                val status = bottomSheetDialogText.textClassifier.generateLinks(
                     TextLinks.Request.Builder(result.text).build()
-                )?.apply(span, TextLinks.APPLY_STRATEGY_REPLACE, null)
+                ).apply(span, TextLinks.APPLY_STRATEGY_REPLACE, null)
 
                 if (status == TextLinks.STATUS_LINKS_APPLIED) {
                     activity.runOnUiThread {
-                        bottomSheetDialogText?.text = span
+                        bottomSheetDialogText.text = span
                     }
                 }
             }.start()
 
             // Make links clickable if not on locked keyguard
-            bottomSheetDialogText?.movementMethod =
+            bottomSheetDialogText.movementMethod =
                 if (!keyguardManager.isKeyguardLocked) LinkMovementMethod.getInstance()
                 else null
 
@@ -125,8 +137,8 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
                         }
                     }
                 }
-            bottomSheetDialogSetType?.setSelection(Type.TEXT.ordinal)
-            bottomSheetDialogSetType?.isVisible = !bottomSheetDialogBytes?.text.isNullOrEmpty()
+            bottomSheetDialogSetType.setSelection(Type.TEXT.ordinal)
+            bottomSheetDialogSetType.isVisible = !bottomSheetDialogBytes.text.isNullOrEmpty()
 
             // Set buttons
             bottomSheetDialog.findViewById<ImageButton>(R.id.copy)?.setOnClickListener {
@@ -134,7 +146,7 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
                     ClipData.newPlainText(
                         "", when (type) {
                             Type.TEXT -> result.text
-                            Type.BYTES -> bottomSheetDialogBytes?.text
+                            Type.BYTES -> bottomSheetDialogBytes.text
                         }
                     )
                 )
@@ -155,7 +167,7 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
                             putExtra(
                                 Intent.EXTRA_TEXT, when (this@QrImageAnalyzer.type) {
                                     Type.TEXT -> result.text
-                                    Type.BYTES -> bottomSheetDialogBytes?.text
+                                    Type.BYTES -> bottomSheetDialogBytes.text
                                 }
                             )
                         },
