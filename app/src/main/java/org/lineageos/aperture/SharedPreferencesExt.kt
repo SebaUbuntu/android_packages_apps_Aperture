@@ -247,6 +247,7 @@ internal var SharedPreferences.timerMode: Int
         }
     }
 
+// Aspect ratio
 private const val ASPECT_RATIO_KEY = "aspect_ratio"
 private const val ASPECT_RATIO_DEFAULT = "4_3"
 
