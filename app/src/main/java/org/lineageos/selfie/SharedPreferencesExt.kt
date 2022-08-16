@@ -272,6 +272,7 @@ internal var SharedPreferences.aspectRatio: Int
         }
     }
 
+// Save location
 private const val SAVE_LOCATION = "save_location"
 private const val SAVE_LOCATION_DEFAULT = false
 internal var SharedPreferences.saveLocation: Boolean
