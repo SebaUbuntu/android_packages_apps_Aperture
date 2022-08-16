@@ -9,6 +9,7 @@ package org.lineageos.selfie.utils
 import android.hardware.camera2.CameraCharacteristics
 import androidx.camera.camera2.interop.Camera2CameraInfo
 import androidx.camera.core.CameraInfo
+import androidx.camera.core.CameraSelector
 
 /**
  * Class representing a physical device camera
@@ -55,5 +56,9 @@ class PhysicalCamera(private val cameraInfo: CameraInfo) {
      */
     fun hasFlashUnit(): Boolean {
         return cameraInfo.hasFlashUnit()
+    }
+
+    fun getCameraSelector(): CameraSelector {
+        return cameraInfo.cameraSelector
     }
 }
