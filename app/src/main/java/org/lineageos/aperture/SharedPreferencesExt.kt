@@ -272,6 +272,20 @@ internal var SharedPreferences.aspectRatio: Int
         }
     }
 
+// Bright screen
+private const val BRIGHT_SCREEN_KEY = "bright_screen"
+private const val BRIGHT_SCREEN_DEFAULT = false
+
+internal var SharedPreferences.brightScreen: Boolean
+    get() {
+        return getBoolean(BRIGHT_SCREEN_KEY, BRIGHT_SCREEN_DEFAULT)
+    }
+    set(value) {
+        edit {
+            putBoolean(BRIGHT_SCREEN_KEY, value)
+        }
+    }
+
 // Save location
 private const val SAVE_LOCATION = "save_location"
 private const val SAVE_LOCATION_DEFAULT = false

@@ -30,6 +30,7 @@ import android.util.Size
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
+import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
@@ -343,6 +344,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        // Set bright screen
+        setBrightScreen(sharedPreferences.brightScreen)
 
         // Special case: we want to enable the gallery by default if
         // we have at least one saved Uri and we aren't locked
@@ -870,6 +874,14 @@ class MainActivity : AppCompatActivity() {
             if (extensionMode == supportedExtensionModes.last()) supportedExtensionModes.first()
             else supportedExtensionModes.indexOf(extensionMode) + 1
         )
+    }
+
+    private fun setBrightScreen(brightScreen: Boolean) {
+        window.attributes = window.attributes.apply {
+            screenBrightness =
+                if (brightScreen) WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_FULL
+                else WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
+        }
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
