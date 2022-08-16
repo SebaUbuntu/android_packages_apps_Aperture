@@ -8,7 +8,6 @@ package org.lineageos.selfie.ui
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.SurfaceView
@@ -38,9 +37,9 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
 
     init {
         paint.isAntiAlias = true
-        paint.strokeWidth = 3F
+        paint.strokeWidth = 1F
         paint.style = Paint.Style.STROKE
-        paint.color = Color.WHITE
+        paint.color = 0x7FFFFFFF
     }
 
     override fun onDraw(canvas: Canvas) {
