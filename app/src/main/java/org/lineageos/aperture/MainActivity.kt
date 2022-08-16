@@ -77,6 +77,9 @@ import java.util.concurrent.Executors
 import java.util.Timer
 import java.util.TimerTask
 
+@androidx.camera.camera2.interop.ExperimentalCamera2Interop
+@androidx.camera.core.ExperimentalZeroShutterLag
+@androidx.camera.view.video.ExperimentalVideo
 class MainActivity : AppCompatActivity() {
     private val aspectRatioButton by lazy { findViewById<ToggleButton>(R.id.aspectRatioButton) }
     private val bottomButtonsLayout by lazy { findViewById<ConstraintLayout>(R.id.bottomButtonsLayout) }
@@ -183,8 +186,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.view.video.ExperimentalVideo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -340,7 +341,6 @@ class MainActivity : AppCompatActivity() {
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     override fun onResume() {
         super.onResume()
 
@@ -434,7 +434,6 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    @androidx.camera.view.video.ExperimentalVideo
     private suspend fun captureVideo() {
         if (cameraController.isRecording) {
             // Stop the current recording session.
@@ -485,7 +484,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Check if we can reinitialize the camera use cases
      */
-    @androidx.camera.view.video.ExperimentalVideo
     private fun canRestartCamera() = when (cameraMode) {
         // Disallow camera restart if we're taking a photo or if timer is running
         CameraMode.PHOTO -> !isTakingPhoto && !timerChip.isVisible
@@ -498,9 +496,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Rebind cameraProvider use cases
      */
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.core.ExperimentalZeroShutterLag
-    @androidx.camera.view.video.ExperimentalVideo
     private fun bindCameraUseCases() {
         // Unbind previous use cases
         cameraController.unbind()
@@ -606,8 +601,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Change the current camera mode and restarts the stream
      */
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.view.video.ExperimentalVideo
     private fun changeCameraMode(cameraMode: CameraMode) {
         if (!canRestartCamera()) {
             return
@@ -624,8 +617,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Cycle between cameras
      */
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.view.video.ExperimentalVideo
     private fun flipCamera() {
         if (!canRestartCamera()) {
             return
@@ -653,8 +644,6 @@ class MainActivity : AppCompatActivity() {
         videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
     }
 
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.view.video.ExperimentalVideo
     private fun cycleAspectRatio() {
         if (!canRestartCamera()) {
             return
@@ -767,7 +756,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Update the flash mode button icon based on the value set in imageCapture
      */
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     private fun updateFlashModeIcon() {
         flashButton.isVisible = cameraMode == CameraMode.PHOTO && camera.hasFlashUnit()
         flashButton.setImageDrawable(
@@ -786,7 +774,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Set the specified flash mode, saving the value to shared prefs and updating the icon
      */
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     private fun setFlashMode(flashMode: Int) {
         cameraController.imageCaptureFlashMode = flashMode
         updateFlashModeIcon()
@@ -797,7 +784,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Cycle flash mode between auto, on and off
      */
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
     private fun cycleFlashMode() {
         setFlashMode(
             when (cameraController.imageCaptureFlashMode) {
@@ -809,12 +795,10 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    @androidx.camera.view.video.ExperimentalVideo
     private fun toggleRecordingChipVisibility() {
         recordChip.isVisible = cameraController.isRecording
     }
 
-    @androidx.camera.view.video.ExperimentalVideo
     private fun startRecordingTimer() {
         recordingTime = 0
         toggleRecordingChipVisibility()
@@ -829,7 +813,6 @@ class MainActivity : AppCompatActivity() {
         }, 1000, 1000)
     }
 
-    @androidx.camera.view.video.ExperimentalVideo
     private fun stopRecordingTimer() {
         recordingTimer.cancel()
         runOnUiThread {
@@ -840,8 +823,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Set a photo effect and restart the camera if required
      */
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.view.video.ExperimentalVideo
     private fun setExtensionMode(extensionMode: Int) {
         if (!canRestartCamera()) {
             return
@@ -880,8 +861,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Cycle between supported photo camera effects
      */
-    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-    @androidx.camera.view.video.ExperimentalVideo
     private fun cyclePhotoEffects() {
         if (!canRestartCamera()) {
             return
@@ -985,7 +964,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @androidx.camera.view.video.ExperimentalVideo
     private fun openSettings() {
         if (!canRestartCamera()) {
             return
@@ -1016,7 +994,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @androidx.camera.view.video.ExperimentalVideo
     private fun startTimerAndRun(runnable: () -> Unit) {
         if (sharedPreferences.timerMode <= 0 || !canRestartCamera()) {
             runnable()
