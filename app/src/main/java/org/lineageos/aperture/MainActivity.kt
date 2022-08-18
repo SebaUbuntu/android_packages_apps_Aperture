@@ -44,12 +44,12 @@ import androidx.camera.core.TorchState
 import androidx.camera.extensions.ExtensionMode
 import androidx.camera.extensions.ExtensionsManager
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.video.Recording
+import androidx.camera.video.VideoRecordEvent
 import androidx.camera.view.CameraController
 import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
-import androidx.camera.view.video.Metadata
-import androidx.camera.view.video.OnVideoSavedCallback
-import androidx.camera.view.video.OutputFileResults
+import androidx.camera.view.video.AudioConfig
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -75,8 +75,6 @@ import org.lineageos.aperture.utils.StorageUtils
 import org.lineageos.aperture.utils.TimeUtils
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import java.util.Timer
-import java.util.TimerTask
 
 @androidx.camera.camera2.interop.ExperimentalCamera2Interop
 @androidx.camera.core.ExperimentalZeroShutterLag
@@ -129,12 +127,12 @@ class MainActivity : AppCompatActivity() {
 
     private var viewFinderTouchEvent: MotionEvent? = null
 
+    private var recording: Recording? = null
     private var recordingTime = 0L
         set(value) {
             field = value
-            recordChip.text = TimeUtils.convertSecondsToString(recordingTime)
+            recordChip.text = TimeUtils.convertNanosToString(recordingTime)
         }
-    private lateinit var recordingTimer: Timer
 
     private val sharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -438,20 +436,16 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    @SuppressLint("MissingPermission")
     private suspend fun captureVideo() {
         if (cameraController.isRecording) {
             // Stop the current recording session.
-            cameraController.stopRecording()
+            recording?.stop()
             return
         }
 
         // Create output options object which contains file + metadata
-        val outputOptions = StorageUtils.getVideoMediaStoreOutputOptions(
-            contentResolver,
-            Metadata.builder().apply {
-                setLocation(location)
-            }.build()
-        )
+        val outputOptions = StorageUtils.getVideoMediaStoreOutputOptions(contentResolver, location)
 
         // Play shutter sound
         if (cameraSoundsUtils.playStartVideoRecording()) {
@@ -460,29 +454,28 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Start recording
-        cameraController.startRecording(
+        recording = cameraController.startRecording(
             outputOptions,
-            cameraExecutor,
-            object : OnVideoSavedCallback {
-                override fun onVideoSaved(output: OutputFileResults) {
-                    cameraSoundsUtils.playStopVideoRecording()
-                    stopRecordingTimer()
-                    val msg = "Video capture succeeded: ${output.savedUri}"
-                    sharedPreferences.lastSavedUri = output.savedUri
-                    updateGalleryButton(output.savedUri)
-                    Log.d(LOG_TAG, msg)
-                    tookSomething = true
+            AudioConfig.create(true),
+            cameraExecutor
+        ) {
+            if (it is VideoRecordEvent.Status) {
+                runOnUiThread {
+                    recordingTime = it.recordingStats.recordedDurationNanos
+                    recordChip.isVisible = true
                 }
-
-                override fun onError(videoCaptureError: Int, message: String, cause: Throwable?) {
-                    cameraSoundsUtils.playStopVideoRecording()
-                    stopRecordingTimer()
-                    Log.e(LOG_TAG, "Video capture ends with error: $message")
+            } else if (it is VideoRecordEvent.Finalize) {
+                runOnUiThread {
+                    recordChip.isVisible = false
                 }
+                cameraSoundsUtils.playStopVideoRecording()
+                val msg = "Video capture succeeded: ${it.outputResults.outputUri}"
+                sharedPreferences.lastSavedUri = it.outputResults.outputUri
+                updateGalleryButton(it.outputResults.outputUri)
+                Log.d(LOG_TAG, msg)
+                tookSomething = true
             }
-        )
-
-        startRecordingTimer()
+        }
     }
 
     /**
@@ -545,7 +538,7 @@ class MainActivity : AppCompatActivity() {
                 CameraController.IMAGE_CAPTURE
             }
             CameraMode.VIDEO -> {
-                cameraController.videoCaptureTargetSize = outputSize
+                cameraController.videoCaptureTargetQuality = sharedPreferences.videoQuality
                 CameraController.VIDEO_CAPTURE
             }
         }
@@ -593,7 +586,6 @@ class MainActivity : AppCompatActivity() {
 
         // Update icons from last state
         updateCameraModeButtons()
-        toggleRecordingChipVisibility()
         updateTimerModeIcon()
         updateAspectRatioIcon()
         updatePhotoEffectIcon()
@@ -726,6 +718,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateAspectRatioIcon() {
+        aspectRatioButton.isVisible = cameraMode != CameraMode.VIDEO
         aspectRatioButton.text = when (sharedPreferences.aspectRatio) {
             AspectRatio.RATIO_4_3 -> "4:3"
             AspectRatio.RATIO_16_9 -> "16:9"
@@ -797,31 +790,6 @@ class MainActivity : AppCompatActivity() {
                 else -> ImageCapture.FLASH_MODE_AUTO
             }
         )
-    }
-
-    private fun toggleRecordingChipVisibility() {
-        recordChip.isVisible = cameraController.isRecording
-    }
-
-    private fun startRecordingTimer() {
-        recordingTime = 0
-        toggleRecordingChipVisibility()
-
-        recordingTimer = Timer("${hashCode()}", false)
-        recordingTimer.scheduleAtFixedRate(object : TimerTask() {
-            override fun run() {
-                runOnUiThread {
-                    recordingTime++
-                }
-            }
-        }, 1000, 1000)
-    }
-
-    private fun stopRecordingTimer() {
-        recordingTimer.cancel()
-        runOnUiThread {
-            toggleRecordingChipVisibility()
-        }
     }
 
     /**

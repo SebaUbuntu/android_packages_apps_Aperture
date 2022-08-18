@@ -8,10 +8,10 @@ package org.lineageos.aperture.utils
 
 import android.content.ContentResolver
 import android.content.ContentValues
+import android.location.Location
 import android.provider.MediaStore
 import androidx.camera.core.ImageCapture
-import androidx.camera.view.video.Metadata
-import androidx.camera.view.video.OutputFileOptions
+import androidx.camera.video.MediaStoreOutputOptions
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -47,17 +47,18 @@ object StorageUtils {
     @androidx.camera.view.video.ExperimentalVideo
     fun getVideoMediaStoreOutputOptions(
         contentResolver: ContentResolver,
-        metadata: Metadata
-    ): OutputFileOptions {
+        location: Location?
+    ): MediaStoreOutputOptions {
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, getCurrentTimeString())
             put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4")
             put(MediaStore.Video.Media.RELATIVE_PATH, STORAGE_DESTINATION)
         }
 
-        return OutputFileOptions
-            .builder(contentResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI, contentValues)
-            .setMetadata(metadata)
+        return MediaStoreOutputOptions
+            .Builder(contentResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
+            .setContentValues(contentValues)
+            .setLocation(location)
             .build()
     }
 
