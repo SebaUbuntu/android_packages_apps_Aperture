@@ -100,9 +100,24 @@
             android:contentDescription="@string/flash_button_description"
             android:src="@drawable/ic_flash_off"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/settingsButton"
+            app:layout_constraintEnd_toStartOf="@+id/micButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/torchButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/micButton"
+            style="@style/SelfieTopBarButton"
+            android:layout_width="@dimen/top_view_buttons_size"
+            android:layout_height="@dimen/top_view_buttons_size"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/mic_button_description"
+            android:src="@drawable/ic_mic_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/settingsButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/flashButton"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -117,7 +132,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/flashButton"
+            app:layout_constraintStart_toEndOf="@+id/micButton"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
