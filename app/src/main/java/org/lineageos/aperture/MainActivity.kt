@@ -88,6 +88,7 @@ class MainActivity : AppCompatActivity() {
     private val galleryButton by lazy { findViewById<ImageView>(R.id.galleryButton) }
     private val gridButton by lazy { findViewById<ImageButton>(R.id.gridButton) }
     private val gridView by lazy { findViewById<GridView>(R.id.gridView) }
+    private val micButton by lazy { findViewById<ImageButton>(R.id.micButton) }
     private val photoModeButton by lazy { findViewById<MaterialButton>(R.id.photoModeButton) }
     private val qrModeButton by lazy { findViewById<MaterialButton>(R.id.qrModeButton) }
     private val recordChip by lazy { findViewById<Chip>(R.id.recordChip) }
@@ -116,6 +117,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraMode: CameraMode
 
     private lateinit var camera: PhysicalCamera
+
+    private lateinit var audioConfig: AudioConfig
 
     private var aspectRatio: Int = AspectRatio.RATIO_4_3
 
@@ -219,6 +222,7 @@ class MainActivity : AppCompatActivity() {
         timerButton.setOnClickListener { toggleTimerMode() }
         torchButton.setOnClickListener { toggleTorchMode() }
         flashButton.setOnClickListener { cycleFlashMode() }
+        micButton.setOnClickListener { toggleMicrophoneMode() }
         settingsButton.setOnClickListener { openSettings() }
 
         // Attach CameraController to PreviewView
@@ -436,7 +440,6 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    @SuppressLint("MissingPermission")
     private suspend fun captureVideo() {
         if (cameraController.isRecording) {
             // Stop the current recording session.
@@ -456,7 +459,7 @@ class MainActivity : AppCompatActivity() {
         // Start recording
         recording = cameraController.startRecording(
             outputOptions,
-            AudioConfig.create(true),
+            audioConfig,
             cameraExecutor
         ) {
             if (it is VideoRecordEvent.Status) {
@@ -583,6 +586,7 @@ class MainActivity : AppCompatActivity() {
         // Restore settings that can be set on the fly
         setGridMode(sharedPreferences.lastGridMode)
         setFlashMode(sharedPreferences.photoFlashMode)
+        setMicrophoneMode(sharedPreferences.lastMicMode)
 
         // Update icons from last state
         updateCameraModeButtons()
@@ -592,6 +596,7 @@ class MainActivity : AppCompatActivity() {
         updateGridIcon()
         updateTorchModeIcon()
         updateFlashModeIcon()
+        updateMicrophoneModeIcon()
     }
 
     /**
@@ -790,6 +795,41 @@ class MainActivity : AppCompatActivity() {
                 else -> ImageCapture.FLASH_MODE_AUTO
             }
         )
+    }
+
+    /**
+     * Update the microphone mode button icon based on the value set in audioConfig
+     */
+    private fun updateMicrophoneModeIcon() {
+        micButton.isVisible = cameraMode == CameraMode.VIDEO
+        micButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                if (audioConfig.audioEnabled) R.drawable.ic_mic_on else R.drawable.ic_mic_off
+            )
+        )
+    }
+
+    /**
+     * Toggles microphone during video recording
+     */
+    private fun toggleMicrophoneMode() {
+        setMicrophoneMode(!audioConfig.audioEnabled)
+    }
+
+    /**
+     * Set the specified microphone mode, saving the value to shared prefs and updating the icon
+     */
+    @SuppressLint("MissingPermission")
+    private fun setMicrophoneMode(microphoneMode: Boolean) {
+        if (!canRestartCamera()) {
+            return
+        }
+
+        audioConfig = AudioConfig.create(microphoneMode)
+        updateMicrophoneModeIcon()
+
+        sharedPreferences.lastMicMode = microphoneMode
     }
 
     /**

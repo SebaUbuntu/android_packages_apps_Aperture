@@ -8,6 +8,7 @@
     <string name="grid_button_description">Grid</string>
     <string name="torch_button_description">Torch</string>
     <string name="flash_button_description">Flash</string>
+    <string name="mic_button_description">Microphone</string>
     <string name="settings_button_description">Settings</string>
     <string name="qr_mode_button_description">Switch to QR scanner mode</string>
     <string name="photo_mode_button_description">Switch to photo mode</string>

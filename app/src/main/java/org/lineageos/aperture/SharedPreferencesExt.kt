@@ -111,6 +111,19 @@ internal var SharedPreferences.lastGridMode: GridMode
         }
     }
 
+private const val LAST_MIC_MODE_KEY = "last_mic_mode"
+private const val LAST_MIC_MODE_DEFAULT = true
+
+internal var SharedPreferences.lastMicMode: Boolean
+    get() {
+        return getBoolean(LAST_MIC_MODE_KEY, LAST_MIC_MODE_DEFAULT)
+    }
+    set(value) {
+        edit {
+            putBoolean(LAST_MIC_MODE_KEY, value)
+        }
+    }
+
 // Photos prefs
 private const val PHOTO_CAPTURE_MODE_KEY = "photo_capture_mode"
 private const val PHOTO_CAPTURE_MODE_DEFAULT = "minimize_latency"
