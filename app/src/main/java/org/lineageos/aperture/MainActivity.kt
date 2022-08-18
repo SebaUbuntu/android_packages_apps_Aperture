@@ -541,6 +541,7 @@ class MainActivity : AppCompatActivity() {
                 CameraController.IMAGE_CAPTURE
             }
             CameraMode.VIDEO -> {
+                cameraController.videoCaptureTargetQuality = null // FIXME: video preview restart
                 cameraController.videoCaptureTargetQuality = sharedPreferences.videoQuality
                 CameraController.VIDEO_CAPTURE
             }
