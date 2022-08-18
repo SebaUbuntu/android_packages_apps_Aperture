@@ -9,6 +9,7 @@ package org.lineageos.selfie.utils
 import android.content.res.Resources
 import android.content.SharedPreferences
 import android.media.MediaActionSound
+import android.os.Build
 import org.lineageos.selfie.shutterSound
 
 class CameraSoundsUtils(private val sharedPreferences: SharedPreferences) {
@@ -42,9 +43,13 @@ class CameraSoundsUtils(private val sharedPreferences: SharedPreferences) {
     companion object {
         val mustPlaySounds: Boolean
             get() {
-                val resources = Resources.getSystem()
-                val id = resources.getIdentifier("config_camera_sound_forced", "bool", "android")
-                return id > 0 && resources.getBoolean(id)
+                return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    MediaActionSound.mustPlayShutterSound()
+                } else {
+                    val resources = Resources.getSystem()
+                    val id = resources.getIdentifier("config_camera_sound_forced", "bool", "android")
+                    id > 0 && resources.getBoolean(id)
+                }
             }
     }
 }
