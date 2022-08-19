@@ -43,6 +43,11 @@
         <item name="android:typeface">monospace</item>
     </style>
 
+    <!-- Bottom bar icons highlight theme -->
+    <style name="ApertureModeSelectorButtonHighlight" parent="@style/ApertureModeSelectorButton">
+        <item name="android:backgroundTint">@color/camera_mode_selector_icon_highlight</item>
+    </style>
+
     <!-- Shutter button theme -->
     <style name="ApertureShutterButton">
         <item name="android:background">@drawable/shutter_button_background</item>
