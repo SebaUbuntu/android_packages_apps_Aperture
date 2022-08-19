@@ -56,6 +56,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat.getInsetsController
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.doOnLayout
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
@@ -82,6 +83,7 @@ import java.util.concurrent.Executors
 class MainActivity : AppCompatActivity() {
     private val aspectRatioButton by lazy { findViewById<ToggleButton>(R.id.aspectRatioButton) }
     private val bottomButtonsLayout by lazy { findViewById<ConstraintLayout>(R.id.bottomButtonsLayout) }
+    private val cameraModeHighlight by lazy { findViewById<MaterialButton>(R.id.cameraModeHighlight) }
     private val effectButton by lazy { findViewById<ImageButton>(R.id.effectButton) }
     private val flashButton by lazy { findViewById<ImageButton>(R.id.flashButton) }
     private val flipCameraButton by lazy { findViewById<ImageButton>(R.id.flipCameraButton) }
@@ -114,7 +116,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var cameraController: LifecycleCameraController
 
-    private lateinit var cameraMode: CameraMode
+    private val cameraMode: CameraMode
+        get() = sharedPreferences.lastCameraMode
 
     private lateinit var camera: PhysicalCamera
 
@@ -224,6 +227,15 @@ class MainActivity : AppCompatActivity() {
         flashButton.setOnClickListener { cycleFlashMode() }
         micButton.setOnClickListener { toggleMicrophoneMode() }
         settingsButton.setOnClickListener { openSettings() }
+
+        // Initialize camera mode highlight position
+        (cameraModeHighlight.parent as View).doOnLayout {
+            cameraModeHighlight.x = when (cameraMode) {
+                CameraMode.QR -> qrModeButton.x
+                CameraMode.PHOTO -> photoModeButton.x
+                CameraMode.VIDEO -> videoModeButton.x
+            }
+        }
 
         // Attach CameraController to PreviewView
         viewFinder.controller = cameraController
@@ -507,7 +519,6 @@ class MainActivity : AppCompatActivity() {
         gridView.alpha = 0f
 
         // Select front/back camera
-        cameraMode = sharedPreferences.lastCameraMode
         var cameraSelector = when (cameraMode) {
             CameraMode.QR -> CameraSelector.DEFAULT_BACK_CAMERA
             else -> when (sharedPreferences.lastCameraFacing) {
@@ -645,6 +656,21 @@ class MainActivity : AppCompatActivity() {
         qrModeButton.isEnabled = cameraMode != CameraMode.QR
         photoModeButton.isEnabled = cameraMode != CameraMode.PHOTO
         videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
+
+        // Animate camera mode change
+        (cameraModeHighlight.parent as View).doOnLayout {
+            ValueAnimator.ofFloat(
+                cameraModeHighlight.x, when (cameraMode) {
+                    CameraMode.QR -> qrModeButton.x
+                    CameraMode.PHOTO -> photoModeButton.x
+                    CameraMode.VIDEO -> videoModeButton.x
+                }
+            ).apply {
+                addUpdateListener {
+                    cameraModeHighlight.x = it.animatedValue as Float
+                }
+            }.start()
+        }
     }
 
     private fun cycleAspectRatio() {
