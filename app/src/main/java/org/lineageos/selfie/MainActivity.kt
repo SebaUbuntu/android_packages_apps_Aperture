@@ -477,6 +477,7 @@ class MainActivity : AppCompatActivity() {
                 updateGalleryButton(it.outputResults.outputUri)
                 Log.d(LOG_TAG, msg)
                 tookSomething = true
+                recording = null
             }
         }
     }
