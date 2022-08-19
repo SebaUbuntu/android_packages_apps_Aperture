@@ -66,6 +66,8 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.slider.Slider
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import org.lineageos.aperture.ui.GridView
 import org.lineageos.aperture.utils.CameraFacing
 import org.lineageos.aperture.utils.CameraMode
@@ -132,6 +134,7 @@ class MainActivity : AppCompatActivity() {
     private var viewFinderTouchEvent: MotionEvent? = null
 
     private var recording: Recording? = null
+    private val recordingLock = Mutex()
     private var recordingTime = 0L
         set(value) {
             field = value
@@ -454,7 +457,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private suspend fun captureVideo() {
+    private suspend fun captureVideo() = recordingLock.withLock {
         if (cameraController.isRecording) {
             // Stop the current recording session.
             recording?.stop()
