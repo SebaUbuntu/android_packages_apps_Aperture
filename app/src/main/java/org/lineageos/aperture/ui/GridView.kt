@@ -22,7 +22,12 @@ import kotlin.math.roundToInt
  * A simple view that shows a 3x3 grid
  */
 class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, attributeSet) {
-    private val paint: Paint = Paint()
+    private val paint = Paint().apply {
+        isAntiAlias = true
+        strokeWidth = 1F
+        style = Paint.Style.STROKE
+        color = 0x7FFFFFFF
+    }
 
     var mode: GridMode = GridMode.OFF
         set(value) {
@@ -34,13 +39,6 @@ class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, a
             field = value
             invalidate()
         }
-
-    init {
-        paint.isAntiAlias = true
-        paint.strokeWidth = 1F
-        paint.style = Paint.Style.STROKE
-        paint.color = 0x7FFFFFFF
-    }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
