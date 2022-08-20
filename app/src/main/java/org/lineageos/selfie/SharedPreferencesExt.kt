@@ -36,15 +36,13 @@ private const val LAST_CAMERA_FACING_KEY = "last_camera_facing"
 private const val LAST_CAMERA_FACING_DEFAULT = "back"
 
 internal var SharedPreferences.lastCameraFacing: CameraFacing
-    get() {
-        return when (getString(LAST_CAMERA_FACING_KEY, LAST_CAMERA_FACING_DEFAULT)) {
-            "unknown" -> CameraFacing.UNKNOWN
-            "front" -> CameraFacing.FRONT
-            "back" -> CameraFacing.BACK
-            "external" -> CameraFacing.EXTERNAL
-            // Default to back
-            else -> CameraFacing.BACK
-        }
+    get() = when (getString(LAST_CAMERA_FACING_KEY, LAST_CAMERA_FACING_DEFAULT)) {
+        "unknown" -> CameraFacing.UNKNOWN
+        "front" -> CameraFacing.FRONT
+        "back" -> CameraFacing.BACK
+        "external" -> CameraFacing.EXTERNAL
+        // Default to back
+        else -> CameraFacing.BACK
     }
     set(value) {
         edit {
@@ -63,14 +61,12 @@ private const val LAST_CAMERA_MODE_KEY = "last_camera_mode"
 private const val LAST_CAMERA_MODE_DEFAULT = "photo"
 
 internal var SharedPreferences.lastCameraMode: CameraMode
-    get() {
-        return when (getString(LAST_CAMERA_MODE_KEY, LAST_CAMERA_MODE_DEFAULT)) {
-            "qr" -> CameraMode.QR
-            "photo" -> CameraMode.PHOTO
-            "video" -> CameraMode.VIDEO
-            // Default to photo
-            else -> CameraMode.PHOTO
-        }
+    get() = when (getString(LAST_CAMERA_MODE_KEY, LAST_CAMERA_MODE_DEFAULT)) {
+        "qr" -> CameraMode.QR
+        "photo" -> CameraMode.PHOTO
+        "video" -> CameraMode.VIDEO
+        // Default to photo
+        else -> CameraMode.PHOTO
     }
     set(value) {
         edit {
@@ -88,15 +84,13 @@ private const val LAST_GRID_MODE_KEY = "last_grid_mode"
 private const val LAST_GRID_MODE_DEFAULT = "off"
 
 internal var SharedPreferences.lastGridMode: GridMode
-    get() {
-        return when (getString(LAST_GRID_MODE_KEY, LAST_GRID_MODE_DEFAULT)) {
-            "off" -> GridMode.OFF
-            "on_3" -> GridMode.ON_3
-            "on_4" -> GridMode.ON_4
-            "on_goldenratio" -> GridMode.ON_GOLDENRATIO
-            // Default to off
-            else -> GridMode.OFF
-        }
+    get() = when (getString(LAST_GRID_MODE_KEY, LAST_GRID_MODE_DEFAULT)) {
+        "off" -> GridMode.OFF
+        "on_3" -> GridMode.ON_3
+        "on_4" -> GridMode.ON_4
+        "on_goldenratio" -> GridMode.ON_GOLDENRATIO
+        // Default to off
+        else -> GridMode.OFF
     }
     set(value) {
         edit {
@@ -115,9 +109,7 @@ private const val LAST_MIC_MODE_KEY = "last_mic_mode"
 private const val LAST_MIC_MODE_DEFAULT = true
 
 internal var SharedPreferences.lastMicMode: Boolean
-    get() {
-        return getBoolean(LAST_MIC_MODE_KEY, LAST_MIC_MODE_DEFAULT)
-    }
+    get() = getBoolean(LAST_MIC_MODE_KEY, LAST_MIC_MODE_DEFAULT)
     set(value) {
         edit {
             putBoolean(LAST_MIC_MODE_KEY, value)
@@ -130,14 +122,12 @@ private const val PHOTO_CAPTURE_MODE_DEFAULT = "minimize_latency"
 
 internal var SharedPreferences.photoCaptureMode: Int
     @androidx.camera.core.ExperimentalZeroShutterLag
-    get() {
-        return when (getString(PHOTO_CAPTURE_MODE_KEY, PHOTO_CAPTURE_MODE_DEFAULT)) {
-            "maximize_quality" -> ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY
-            "minimize_latency" -> ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY
-            "zero_shutter_lag" -> ImageCapture.CAPTURE_MODE_ZERO_SHUTTER_LAG
-            // Default to minimize latency
-            else -> ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY
-        }
+    get() = when (getString(PHOTO_CAPTURE_MODE_KEY, PHOTO_CAPTURE_MODE_DEFAULT)) {
+        "maximize_quality" -> ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY
+        "minimize_latency" -> ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY
+        "zero_shutter_lag" -> ImageCapture.CAPTURE_MODE_ZERO_SHUTTER_LAG
+        // Default to minimize latency
+        else -> ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY
     }
     @androidx.camera.core.ExperimentalZeroShutterLag
     set(value) {
@@ -158,14 +148,12 @@ private const val PHOTO_FLASH_MODE_KEY = "photo_flash_mode"
 private const val PHOTO_FLASH_MODE_DEFAULT = "auto"
 
 internal var SharedPreferences.photoFlashMode: Int
-    get() {
-        return when (getString(PHOTO_FLASH_MODE_KEY, PHOTO_FLASH_MODE_DEFAULT)) {
-            "auto" -> ImageCapture.FLASH_MODE_AUTO
-            "on" -> ImageCapture.FLASH_MODE_ON
-            "off" -> ImageCapture.FLASH_MODE_OFF
-            // Default to auto
-            else -> ImageCapture.FLASH_MODE_AUTO
-        }
+    get() = when (getString(PHOTO_FLASH_MODE_KEY, PHOTO_FLASH_MODE_DEFAULT)) {
+        "auto" -> ImageCapture.FLASH_MODE_AUTO
+        "on" -> ImageCapture.FLASH_MODE_ON
+        "off" -> ImageCapture.FLASH_MODE_OFF
+        // Default to auto
+        else -> ImageCapture.FLASH_MODE_AUTO
     }
     set(value) {
         edit {
@@ -185,17 +173,15 @@ private const val PHOTO_EFFECT_KEY = "photo_effect"
 private const val PHOTO_EFFECT_DEFAULT = "none"
 
 internal var SharedPreferences.photoEffect: Int
-    get() {
-        return when (getString(PHOTO_EFFECT_KEY, PHOTO_EFFECT_DEFAULT)) {
-            "none" -> ExtensionMode.NONE
-            "bokeh" -> ExtensionMode.BOKEH
-            "hdr" -> ExtensionMode.HDR
-            "night" -> ExtensionMode.NIGHT
-            "face_retouch" -> ExtensionMode.FACE_RETOUCH
-            "auto" -> ExtensionMode.AUTO
-            // Default to none
-            else -> ExtensionMode.NONE
-        }
+    get() = when (getString(PHOTO_EFFECT_KEY, PHOTO_EFFECT_DEFAULT)) {
+        "none" -> ExtensionMode.NONE
+        "bokeh" -> ExtensionMode.BOKEH
+        "hdr" -> ExtensionMode.HDR
+        "night" -> ExtensionMode.NIGHT
+        "face_retouch" -> ExtensionMode.FACE_RETOUCH
+        "auto" -> ExtensionMode.AUTO
+        // Default to none
+        else -> ExtensionMode.NONE
     }
     set(value) {
         edit {
@@ -219,16 +205,14 @@ private const val VIDEO_QUALITY_KEY = "video_quality"
 private const val VIDEO_QUALITY_DEFAULT = "highest"
 
 internal var SharedPreferences.videoQuality: Quality
-    get() {
-        return when (getString(VIDEO_QUALITY_KEY, VIDEO_QUALITY_DEFAULT)) {
-            "lowest" -> Quality.LOWEST
-            "hd" -> Quality.HD
-            "fhd" -> Quality.FHD
-            "uhd" -> Quality.UHD
-            "highest" -> Quality.HIGHEST
-            // Default to highest
-            else -> Quality.HIGHEST
-        }
+    get() = when (getString(VIDEO_QUALITY_KEY, VIDEO_QUALITY_DEFAULT)) {
+        "lowest" -> Quality.LOWEST
+        "hd" -> Quality.HD
+        "fhd" -> Quality.FHD
+        "uhd" -> Quality.UHD
+        "highest" -> Quality.HIGHEST
+        // Default to highest
+        else -> Quality.HIGHEST
     }
     set(value) {
         edit {
@@ -251,9 +235,7 @@ private const val TIMER_MODE_KEY = "timer_mode"
 private const val TIMER_MODE_DEFAULT = 0
 
 internal var SharedPreferences.timerMode: Int
-    get() {
-        return getInt(TIMER_MODE_KEY, TIMER_MODE_DEFAULT)
-    }
+    get() = getInt(TIMER_MODE_KEY, TIMER_MODE_DEFAULT)
     set(value) {
         edit {
             putInt(TIMER_MODE_KEY, value)
@@ -265,12 +247,10 @@ private const val ASPECT_RATIO_KEY = "aspect_ratio"
 private const val ASPECT_RATIO_DEFAULT = "4_3"
 
 internal var SharedPreferences.aspectRatio: Int
-    get() {
-        return when (getString(ASPECT_RATIO_KEY, ASPECT_RATIO_DEFAULT)) {
-            "4_3" -> AspectRatio.RATIO_4_3
-            "16_9" -> AspectRatio.RATIO_16_9
-            else -> AspectRatio.RATIO_4_3
-        }
+    get() = when (getString(ASPECT_RATIO_KEY, ASPECT_RATIO_DEFAULT)) {
+        "4_3" -> AspectRatio.RATIO_4_3
+        "16_9" -> AspectRatio.RATIO_16_9
+        else -> AspectRatio.RATIO_4_3
     }
     set(value) {
         edit {
@@ -290,9 +270,7 @@ private const val BRIGHT_SCREEN_KEY = "bright_screen"
 private const val BRIGHT_SCREEN_DEFAULT = false
 
 internal var SharedPreferences.brightScreen: Boolean
-    get() {
-        return getBoolean(BRIGHT_SCREEN_KEY, BRIGHT_SCREEN_DEFAULT)
-    }
+    get() = getBoolean(BRIGHT_SCREEN_KEY, BRIGHT_SCREEN_DEFAULT)
     set(value) {
         edit {
             putBoolean(BRIGHT_SCREEN_KEY, value)
@@ -303,9 +281,7 @@ internal var SharedPreferences.brightScreen: Boolean
 private const val SAVE_LOCATION = "save_location"
 private const val SAVE_LOCATION_DEFAULT = false
 internal var SharedPreferences.saveLocation: Boolean
-    get() {
-        return getBoolean(SAVE_LOCATION, SAVE_LOCATION_DEFAULT)
-    }
+    get() = getBoolean(SAVE_LOCATION, SAVE_LOCATION_DEFAULT)
     set(value) {
         edit {
             putBoolean(SAVE_LOCATION, value)
@@ -317,9 +293,7 @@ private const val SHUTTER_SOUND_KEY = "shutter_sound"
 private const val SHUTTER_SOUND_DEFAULT = true
 
 internal var SharedPreferences.shutterSound: Boolean
-    get() {
-        return getBoolean(SHUTTER_SOUND_KEY, SHUTTER_SOUND_DEFAULT)
-    }
+    get() = getBoolean(SHUTTER_SOUND_KEY, SHUTTER_SOUND_DEFAULT)
     set(value) {
         edit {
             putBoolean(SHUTTER_SOUND_KEY, value)
