@@ -19,7 +19,7 @@ import org.lineageos.aperture.utils.GridMode
 import kotlin.math.roundToInt
 
 /**
- * A simple view that shows a 3x3 grid
+ * A simple view that shows a grid
  */
 class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, attributeSet) {
     private val paint = Paint().apply {
