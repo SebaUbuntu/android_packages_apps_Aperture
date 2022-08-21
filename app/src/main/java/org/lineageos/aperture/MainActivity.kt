@@ -27,6 +27,7 @@ import android.os.Message
 import android.provider.MediaStore
 import android.util.Log
 import android.util.Size
+import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
@@ -388,6 +389,19 @@ class MainActivity : AppCompatActivity() {
                 ).show()
                 finish()
             }
+        }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return when (keyCode) {
+            KeyEvent.KEYCODE_VOLUME_UP,
+            KeyEvent.KEYCODE_VOLUME_DOWN -> {
+                if (shutterButton.isEnabled) {
+                    shutterButton.performClick()
+                }
+                true
+            }
+            else -> super.onKeyDown(keyCode, event)
         }
     }
 
