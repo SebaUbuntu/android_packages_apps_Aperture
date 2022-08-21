@@ -6,6 +6,7 @@
 
 package org.lineageos.aperture
 
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
@@ -57,6 +58,7 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
+        @SuppressLint("UnsafeOptInUsageError")
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
             saveLocation?.let {
@@ -75,6 +77,7 @@ class SettingsActivity : AppCompatActivity() {
             shutterSound?.isEnabled = !CameraSoundsUtils.mustPlaySounds
         }
 
+        @SuppressLint("UnsafeOptInUsageError")
         private fun allLocationPermissionsGranted() =
             MainActivity.REQUIRED_PERMISSIONS_LOCATION.all {
                 ContextCompat.checkSelfPermission(

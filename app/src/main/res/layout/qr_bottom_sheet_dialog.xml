@@ -16,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="#ddd" />
+        app:tint="#ddd"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/title"
@@ -44,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/qr_copy_description"
         android:src="@drawable/ic_copy"
         app:layout_constraintBottom_toBottomOf="@+id/title"
         app:layout_constraintEnd_toStartOf="@id/share"
@@ -54,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/qr_share_description"
         android:src="@drawable/ic_share"
         app:layout_constraintBottom_toBottomOf="@+id/title"
         app:layout_constraintEnd_toEndOf="parent"
