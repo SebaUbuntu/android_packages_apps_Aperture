@@ -5,7 +5,6 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorOnPrimary"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -156,7 +155,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
         app:layout_constraintEnd_toEndOf="@+id/viewFinder"
         app:layout_constraintStart_toStartOf="@+id/viewFinder"
-        app:layout_constraintTop_toTopOf="@+id/viewFinder" />
+        app:layout_constraintTop_toTopOf="@+id/viewFinder"
+        tools:ignore="ContentDescription" />
 
     <org.lineageos.selfie.ui.GridView
         android:id="@+id/gridView"

@@ -29,9 +29,10 @@
     <string name="app_permissions_toast">Permissions not granted by the user.</string>
 
     <!-- QR dialog -->
-    <string name="qr_copy">Copy to clipboard</string>
+    <string name="qr_copy_description">Copy to clipboard</string>
     <string name="qr_copy_toast_bytes">Bytes copied to clipboard</string>
     <string name="qr_copy_toast_text">Text copied to clipboard</string>
+    <string name="qr_share_description">Share</string>
     <string name="qr_title">Scan result</string>
     <string name="qr_bytes">Bytes:</string>
     <string name="qr_text">Text:</string>
