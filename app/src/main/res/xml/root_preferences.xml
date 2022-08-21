@@ -1,43 +1,54 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/general_header">
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/general_header">
 
         <SwitchPreference
             app:defaultValue="false"
+            app:iconSpaceReserved="false"
             app:key="bright_screen"
             app:title="@string/bright_screen_title" />
 
         <SwitchPreference
             app:defaultValue="false"
+            app:iconSpaceReserved="false"
             app:key="save_location"
             app:title="@string/save_location_title" />
 
         <SwitchPreference
             app:defaultValue="true"
+            app:iconSpaceReserved="false"
             app:key="shutter_sound"
             app:title="@string/shutter_sound_title"
             app:summary="@string/shutter_sound_summary" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/photos_header">
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/photos_header">
 
         <ListPreference
             app:defaultValue="minimize_latency"
             app:entries="@array/photo_capture_mode_entries"
             app:entryValues="@array/photo_capture_mode_values"
+            app:iconSpaceReserved="false"
             app:key="photo_capture_mode"
             app:title="@string/photo_capture_mode_title"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/videos_header">
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/videos_header">
 
         <ListPreference
             app:defaultValue="highest"
             app:entries="@array/video_quality_entries"
             app:entryValues="@array/video_quality_values"
+            app:iconSpaceReserved="false"
             app:key="video_quality"
             app:title="@string/video_quality_title"
             app:useSimpleSummaryProvider="true" />
