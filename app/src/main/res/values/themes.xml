@@ -26,7 +26,17 @@
     </style>
 
     <!-- Settings activity theme. -->
-    <style name="Theme.Selfie.Settings" parent="Theme.Selfie" />
+    <style name="Theme.Selfie.Settings" parent="Theme.Selfie">
+        <item name="android:switchStyle">@style/Theme.Selfie.Settings.Switch</item>
+    </style>
+
+    <!-- Settings switch theme. -->
+    <style name="Theme.Selfie.Settings.Switch" parent="@android:style/Widget.Material.CompoundButton.Switch">
+        <item name="android:switchMinWidth">52dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:track">@drawable/settingslib_switch_track</item>
+        <item name="android:thumb">@drawable/settingslib_switch_thumb</item>
+    </style>
 
     <!-- Top bar icons theme -->
     <style name="SelfieTopBarButton">
