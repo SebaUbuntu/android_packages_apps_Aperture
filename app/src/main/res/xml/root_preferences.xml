@@ -8,12 +8,14 @@
             app:defaultValue="false"
             app:iconSpaceReserved="false"
             app:key="bright_screen"
+            app:summary="@string/bright_screen_sumary"
             app:title="@string/bright_screen_title" />
 
         <SwitchPreference
             app:defaultValue="false"
             app:iconSpaceReserved="false"
             app:key="save_location"
+            app:summary="@string/save_location_summary"
             app:title="@string/save_location_title" />
 
         <SwitchPreference
