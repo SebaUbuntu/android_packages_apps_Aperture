@@ -193,6 +193,7 @@ private const val VIDEO_QUALITY_DEFAULT = "highest"
 internal var SharedPreferences.videoQuality: Quality
     get() = when (getString(VIDEO_QUALITY_KEY, VIDEO_QUALITY_DEFAULT)) {
         "lowest" -> Quality.LOWEST
+        "sd" -> Quality.SD
         "hd" -> Quality.HD
         "fhd" -> Quality.FHD
         "uhd" -> Quality.UHD
@@ -204,6 +205,7 @@ internal var SharedPreferences.videoQuality: Quality
         putString(
             VIDEO_QUALITY_KEY, when (value) {
                 Quality.LOWEST -> "lowest"
+                Quality.SD -> "sd"
                 Quality.HD -> "hd"
                 Quality.FHD -> "fhd"
                 Quality.UHD -> "uhd"

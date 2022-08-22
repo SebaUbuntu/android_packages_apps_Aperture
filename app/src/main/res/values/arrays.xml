@@ -15,6 +15,7 @@
     <!-- Video quality Preference -->
     <string-array name="video_quality_entries">
         <item>@string/video_quality_lowest</item>
+        <item>SD</item>
         <item>HD</item>
         <item>FHD</item>
         <item>UHD</item>
@@ -23,6 +24,7 @@
 
     <string-array name="video_quality_values">
         <item>lowest</item>
+        <item>sd</item>
         <item>hd</item>
         <item>fhd</item>
         <item>uhd</item>
