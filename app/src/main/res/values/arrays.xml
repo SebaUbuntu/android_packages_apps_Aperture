@@ -1,9 +1,9 @@
 <resources>
     <!-- Photo capture mode Preference -->
     <string-array name="photo_capture_mode_entries">
-        <item>Maximize quality</item>
-        <item>Minimize latency</item>
-        <item>Zero shutter lag (experimental)</item>
+        <item>@string/photo_capture_mode_maximize_quality</item>
+        <item>@string/photo_capture_mode_minimize_latency</item>
+        <item>@string/photo_capture_mode_zsl</item>
     </string-array>
 
     <string-array name="photo_capture_mode_values">
