@@ -6,9 +6,13 @@
 
 package org.lineageos.selfie.utils
 
+import android.content.Context
 import android.hardware.camera2.CameraCharacteristics
 import androidx.camera.camera2.interop.Camera2CameraInfo
 import androidx.camera.core.CameraInfo
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.video.Quality
+import androidx.camera.video.QualitySelector
 
 /**
  * Class representing a physical device camera
@@ -40,4 +44,17 @@ class PhysicalCamera(val cameraInfo: CameraInfo) {
      * Flash is available or not
      */
     val hasFlashUnit = cameraInfo.hasFlashUnit()
+
+    companion object {
+        internal fun supportedVideoQualities(
+            context: Context,
+            cameraFacing: CameraFacing
+        ): List<Quality> {
+            val cameraProvider = ProcessCameraProvider.getInstance(context).get()
+            val cameraInfo = cameraProvider.availableCameraInfos.first {
+                PhysicalCamera(it).cameraFacing == cameraFacing
+            }
+            return QualitySelector.getSupportedQualities(cameraInfo)
+        }
+    }
 }

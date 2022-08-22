@@ -13,11 +13,15 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.video.Quality
 import androidx.core.content.ContextCompat
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
+import org.lineageos.selfie.utils.CameraFacing
 import org.lineageos.selfie.utils.CameraSoundsUtils
+import org.lineageos.selfie.utils.PhysicalCamera
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -46,6 +50,7 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         private val saveLocation by lazy { findPreference<SwitchPreference>("save_location") }
         private val shutterSound by lazy { findPreference<SwitchPreference>("shutter_sound") }
+        private val videoQuality by lazy { findPreference<ListPreference>("video_quality") }
 
         private val requestLocationPermissions = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
@@ -75,6 +80,23 @@ class SettingsActivity : AppCompatActivity() {
                     }
             }
             shutterSound?.isEnabled = !CameraSoundsUtils.mustPlaySounds
+            videoQuality?.let {
+                val supportedVideoQualities =
+                    PhysicalCamera.supportedVideoQualities(requireContext(), CameraFacing.BACK)
+                val map = it.entries.zip(it.entryValues).toMap().filter { (_, value) ->
+                    value == "lowest" || value == "highest" || supportedVideoQualities.contains(
+                        when (value) {
+                            "sd" -> Quality.SD
+                            "hd" -> Quality.HD
+                            "fhd" -> Quality.FHD
+                            "uhd" -> Quality.UHD
+                            else -> null
+                        }
+                    )
+                }
+                it.entries = map.keys.toTypedArray()
+                it.entryValues = map.values.toTypedArray()
+            }
         }
 
         @SuppressLint("UnsafeOptInUsageError")
