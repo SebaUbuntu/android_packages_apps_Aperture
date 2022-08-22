@@ -20,8 +20,8 @@
             app:defaultValue="true"
             app:iconSpaceReserved="false"
             app:key="shutter_sound"
-            app:title="@string/shutter_sound_title"
-            app:summary="@string/shutter_sound_summary" />
+            app:summary="@string/shutter_sound_summary"
+            app:title="@string/shutter_sound_title" />
 
     </PreferenceCategory>
 
