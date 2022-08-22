@@ -60,4 +60,6 @@
 
     <!-- Videos Preferences -->
     <string name="video_quality_title">Video quality</string>
+    <string name="video_quality_lowest">Lowest</string>
+    <string name="video_quality_highest">Highest</string>
 </resources>
