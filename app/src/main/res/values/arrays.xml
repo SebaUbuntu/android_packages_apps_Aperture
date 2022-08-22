@@ -14,11 +14,11 @@
 
     <!-- Video quality Preference -->
     <string-array name="video_quality_entries">
-        <item>Lowest</item>
+        <item>@string/video_quality_lowest</item>
         <item>HD</item>
         <item>FHD</item>
         <item>UHD</item>
-        <item>Highest</item>
+        <item>@string/video_quality_highest</item>
     </string-array>
 
     <string-array name="video_quality_values">
