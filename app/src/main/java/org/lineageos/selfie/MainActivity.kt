@@ -411,12 +411,25 @@ class MainActivity : AppCompatActivity() {
         return when (keyCode) {
             KeyEvent.KEYCODE_VOLUME_UP,
             KeyEvent.KEYCODE_VOLUME_DOWN -> {
-                if (shutterButton.isEnabled && event?.repeatCount == 0) {
+                if (cameraMode == CameraMode.VIDEO && shutterButton.isEnabled && event?.repeatCount == 1) {
                     shutterButton.performClick()
                 }
                 true
             }
             else -> super.onKeyDown(keyCode, event)
+        }
+    }
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        return when (keyCode) {
+            KeyEvent.KEYCODE_VOLUME_UP,
+            KeyEvent.KEYCODE_VOLUME_DOWN -> {
+                if (cameraMode != CameraMode.QR && shutterButton.isEnabled) {
+                    shutterButton.performClick()
+                }
+                true
+            }
+            else -> super.onKeyUp(keyCode, event)
         }
     }
 
