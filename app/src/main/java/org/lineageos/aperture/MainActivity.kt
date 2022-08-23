@@ -411,7 +411,7 @@ class MainActivity : AppCompatActivity() {
         return when (keyCode) {
             KeyEvent.KEYCODE_VOLUME_UP,
             KeyEvent.KEYCODE_VOLUME_DOWN -> {
-                if (shutterButton.isEnabled) {
+                if (shutterButton.isEnabled && event?.repeatCount == 0) {
                     shutterButton.performClick()
                 }
                 true
