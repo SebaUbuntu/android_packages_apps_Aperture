@@ -42,19 +42,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        app:iconSpaceReserved="false"
-        app:title="@string/videos_header">
-
-        <ListPreference
-            app:defaultValue="highest"
-            app:entries="@array/video_quality_entries"
-            app:entryValues="@array/video_quality_values"
-            app:iconSpaceReserved="false"
-            app:key="video_quality"
-            app:title="@string/video_quality_title"
-            app:useSimpleSummaryProvider="true" />
-
-    </PreferenceCategory>
-
 </PreferenceScreen>

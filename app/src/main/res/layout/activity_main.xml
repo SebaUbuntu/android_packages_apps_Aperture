@@ -42,9 +42,22 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/aspect_ratio_button_description"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/effectButton"
+            app:layout_constraintEnd_toStartOf="@+id/videoQualityButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/timerButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ToggleButton
+            android:id="@+id/videoQualityButton"
+            style="@style/ApertureTopBarButton"
+            android:layout_width="@dimen/top_view_buttons_size"
+            android:layout_height="@dimen/top_view_buttons_size"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/video_quality_button_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/effectButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/aspectRatioButton"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
@@ -58,7 +71,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/gridButton"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/aspectRatioButton"
+            app:layout_constraintStart_toEndOf="@+id/videoQualityButton"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton

@@ -45,6 +45,7 @@ import androidx.camera.core.TorchState
 import androidx.camera.extensions.ExtensionMode
 import androidx.camera.extensions.ExtensionsManager
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.video.Quality
 import androidx.camera.video.Recording
 import androidx.camera.video.VideoRecordEvent
 import androidx.camera.view.CameraController
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity() {
     private val timerChip by lazy { findViewById<Chip>(R.id.timerChip) }
     private val torchButton by lazy { findViewById<ImageButton>(R.id.torchButton) }
     private val videoModeButton by lazy { findViewById<MaterialButton>(R.id.videoModeButton) }
+    private val videoQualityButton by lazy { findViewById<ToggleButton>(R.id.videoQualityButton) }
     private val viewFinder by lazy { findViewById<PreviewView>(R.id.viewFinder) }
     private val viewFinderFocus by lazy { findViewById<ImageView>(R.id.viewFinderFocus) }
     private val zoomLevel by lazy { findViewById<Slider>(R.id.zoomLevel) }
@@ -136,6 +138,8 @@ class MainActivity : AppCompatActivity() {
 
     private var viewFinderTouchEvent: MotionEvent? = null
 
+    private val videoQuality: Quality
+        get() = sharedPreferences.videoQuality
     private var recording: Recording? = null
     private val recordingLock = Mutex()
     private var recordingTime = 0L
@@ -224,6 +228,7 @@ class MainActivity : AppCompatActivity() {
 
         // Set top bar button callbacks
         aspectRatioButton.setOnClickListener { cycleAspectRatio() }
+        videoQualityButton.setOnClickListener { cycleVideoQuality() }
         effectButton.setOnClickListener { cyclePhotoEffects() }
         gridButton.setOnClickListener { cycleGridMode() }
         timerButton.setOnClickListener { toggleTimerMode() }
@@ -558,6 +563,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // Get a stable reference to CameraInfo
+        // We can hardcode the first one in the filter as long as we use DEFAULT_*_CAMERA
+        camera = PhysicalCamera(cameraSelector.filter(cameraProvider.availableCameraInfos).first())
+
         // Get the supported vendor extensions for the given camera selector
         supportedExtensionModes = extensionsManager.getSupportedModes(cameraSelector)
 
@@ -570,6 +579,11 @@ class MainActivity : AppCompatActivity() {
         // Get aspect ratio
         aspectRatio = sharedPreferences.aspectRatio
         val outputSize = CameraController.OutputSize(aspectRatio)
+
+        // Fallback to highest supported video quality
+        if (!camera.supportedVideoQualities.contains(sharedPreferences.videoQuality)) {
+            sharedPreferences.videoQuality = camera.supportedVideoQualities.first()
+        }
 
         // Initialize the use case we want and set its properties
         val cameraUseCases = when (cameraMode) {
@@ -584,7 +598,7 @@ class MainActivity : AppCompatActivity() {
             }
             CameraMode.VIDEO -> {
                 cameraController.videoCaptureTargetQuality = null // FIXME: video preview restart
-                cameraController.videoCaptureTargetQuality = sharedPreferences.videoQuality
+                cameraController.videoCaptureTargetQuality = videoQuality
                 CameraController.VIDEO_CAPTURE
             }
         }
@@ -622,10 +636,6 @@ class MainActivity : AppCompatActivity() {
         // Bind camera controller to lifecycle
         cameraController.bindToLifecycle(this)
 
-        // Get a stable reference to CameraInfo
-        // We can hardcode the first one in the filter as long as we use DEFAULT_*_CAMERA
-        camera = PhysicalCamera(cameraSelector.filter(cameraProvider.availableCameraInfos)[0])
-
         // Restore settings that can be set on the fly
         setGridMode(sharedPreferences.lastGridMode)
         setFlashMode(sharedPreferences.photoFlashMode)
@@ -635,6 +645,7 @@ class MainActivity : AppCompatActivity() {
         updateCameraModeButtons()
         updateTimerModeIcon()
         updateAspectRatioIcon()
+        updateVideoQualityIcon()
         updatePhotoEffectIcon()
         updateGridIcon()
         updateTorchModeIcon()
@@ -717,6 +728,27 @@ class MainActivity : AppCompatActivity() {
         bindCameraUseCases()
     }
 
+    private fun cycleVideoQuality() {
+        if (!canRestartCamera()) {
+            return
+        }
+
+        val newVideoQuality = if (videoQuality == camera.supportedVideoQualities.first()) {
+            camera.supportedVideoQualities.last()
+        } else {
+            val index = camera.supportedVideoQualities.indexOf(videoQuality)
+            camera.supportedVideoQualities[maxOf(0, index - 1)]
+        }
+
+        if (newVideoQuality == videoQuality) {
+            return
+        }
+
+        sharedPreferences.videoQuality = newVideoQuality
+
+        bindCameraUseCases()
+    }
+
     /**
      * Update the grid button icon based on the value set in grid view
      */
@@ -786,6 +818,17 @@ class MainActivity : AppCompatActivity() {
             AspectRatio.RATIO_4_3 -> "4:3"
             AspectRatio.RATIO_16_9 -> "16:9"
             else -> throw Exception("Unknown aspect ratio ${sharedPreferences.aspectRatio}")
+        }
+    }
+
+    private fun updateVideoQualityIcon() {
+        videoQualityButton.isVisible = cameraMode == CameraMode.VIDEO
+        videoQualityButton.text = when (videoQuality) {
+            Quality.SD -> "SD"
+            Quality.HD -> "HD"
+            Quality.FHD -> "FHD"
+            Quality.UHD -> "UHD"
+            else -> throw Exception("Unknown video quality $videoQuality")
         }
     }
 
