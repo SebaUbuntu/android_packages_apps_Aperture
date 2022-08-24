@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "org.lineageos.aperture"
-        minSdk 29
+        minSdk 31
         targetSdk 33
         versionCode 1
         versionName "1.0"
