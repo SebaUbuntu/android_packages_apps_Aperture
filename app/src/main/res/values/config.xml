@@ -10,6 +10,12 @@
     <string-array name="cameraTypes">
         <item>main</item> <!-- 0: Main back -->
         <item>main</item> <!-- 1: Main front -->
+        <item>ultra_wide_angle</item> <!-- 2: Ultra wide angle back -->
+        <item>bokeh</item> <!-- 3: Bokeh back -->
+        <item>macro</item> <!-- 4: Macro back -->
+        <item>unknown</item> <!-- 5: Another way to access main back, dunno what's its purpose -->
+        <item>unknown</item> <!-- 6: Back camera that kills camera HAL :D -->
+        <item>unknown</item> <!-- 7: Front camera that kills camera HAL :D -->
     </string-array>
 
     <!-- Decide whether unmapped cameras and cameras with type unknown
