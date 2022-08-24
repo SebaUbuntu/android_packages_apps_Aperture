@@ -656,7 +656,7 @@ class MainActivity : AppCompatActivity() {
         (flipCameraButton.drawable as AnimatedVectorDrawable).start()
 
         sharedPreferences.lastCameraFacing =
-            when (cameraController.physicalCamera?.getCameraFacing()) {
+            when (cameraController.physicalCamera?.cameraFacing) {
                 // We can definitely do it better
                 CameraFacing.FRONT -> CameraFacing.BACK
                 CameraFacing.BACK -> CameraFacing.FRONT
@@ -804,7 +804,7 @@ class MainActivity : AppCompatActivity() {
      * Update the flash mode button icon based on the value set in imageCapture
      */
     private fun updateFlashModeIcon() {
-        flashButton.isVisible = cameraMode == CameraMode.PHOTO && camera.hasFlashUnit()
+        flashButton.isVisible = cameraMode == CameraMode.PHOTO && camera.hasFlashUnit
         flashButton.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
