@@ -188,29 +188,25 @@ internal var SharedPreferences.photoEffect: Int
 
 // Video prefs
 private const val VIDEO_QUALITY_KEY = "video_quality"
-private const val VIDEO_QUALITY_DEFAULT = "highest"
+private const val VIDEO_QUALITY_DEFAULT = "fhd"
 
 internal var SharedPreferences.videoQuality: Quality
     get() = when (getString(VIDEO_QUALITY_KEY, VIDEO_QUALITY_DEFAULT)) {
-        "lowest" -> Quality.LOWEST
         "sd" -> Quality.SD
         "hd" -> Quality.HD
         "fhd" -> Quality.FHD
         "uhd" -> Quality.UHD
-        "highest" -> Quality.HIGHEST
-        // Default to highest
-        else -> Quality.HIGHEST
+        // Default to fhd
+        else -> Quality.FHD
     }
     set(value) = edit {
         putString(
             VIDEO_QUALITY_KEY, when (value) {
-                Quality.LOWEST -> "lowest"
                 Quality.SD -> "sd"
                 Quality.HD -> "hd"
                 Quality.FHD -> "fhd"
                 Quality.UHD -> "uhd"
-                Quality.HIGHEST -> "highest"
-                // Default to highest
+                // Default to fhd
                 else -> VIDEO_QUALITY_DEFAULT
             }
         )

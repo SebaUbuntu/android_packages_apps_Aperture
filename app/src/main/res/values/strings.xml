@@ -4,6 +4,7 @@
     <!-- Button descriptions -->
     <string name="timer_button_description">Timer</string>
     <string name="aspect_ratio_button_description">Aspect ratio</string>
+    <string name="video_quality_button_description">Video quality</string>
     <string name="effect_button_description">Effect</string>
     <string name="grid_button_description">Grid</string>
     <string name="torch_button_description">Torch</string>
@@ -46,7 +47,6 @@
     <!-- Preference Titles -->
     <string name="general_header">General</string>
     <string name="photos_header">Photos</string>
-    <string name="videos_header">Videos</string>
 
     <!-- General Preferences -->
     <string name="bright_screen_title">Bright screen</string>
@@ -62,9 +62,4 @@
     <string name="photo_capture_mode_maximize_quality">Maximize quality</string>
     <string name="photo_capture_mode_minimize_latency">Minimize latency</string>
     <string name="photo_capture_mode_zsl">Zero shutter lag (experimental)</string>
-
-    <!-- Videos Preferences -->
-    <string name="video_quality_title">Video quality</string>
-    <string name="video_quality_lowest">Lowest</string>
-    <string name="video_quality_highest">Highest</string>
 </resources>
