@@ -14,46 +14,30 @@ import androidx.camera.core.CameraInfo
  * Class representing a physical device camera
  */
 @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-class PhysicalCamera(private val cameraInfo: CameraInfo) {
-    private val camera2CameraInfo = Camera2CameraInfo.from(cameraInfo)
+class PhysicalCamera(val cameraInfo: CameraInfo) {
+    /**
+     * Camera2 CameraInfo
+     */
+    val camera2CameraInfo = Camera2CameraInfo.from(cameraInfo)
 
     /**
-     * Return a CameraX's CameraInfo object
+     * Camera2 compatible camera ID
      */
-    fun getCameraInfo(): CameraInfo {
-        return cameraInfo
-    }
+    val cameraId = camera2CameraInfo.cameraId.toInt()
 
     /**
-     * Return a CameraX's Camera2CameraInfo object
+     * Facing of the camera
      */
-    fun getCamera2CameraInfo(): Camera2CameraInfo {
-        return camera2CameraInfo
-    }
-
-    /**
-     * Returns a Camera2 compatible camera ID
-     */
-    fun getCameraId(): Int {
-        return camera2CameraInfo.cameraId.toInt()
-    }
-
-    /**
-     * Return the facing of the camera
-     */
-    fun getCameraFacing(): CameraFacing {
-        return when (camera2CameraInfo.getCameraCharacteristic(CameraCharacteristics.LENS_FACING)) {
+    val cameraFacing =
+        when (camera2CameraInfo.getCameraCharacteristic(CameraCharacteristics.LENS_FACING)) {
             CameraCharacteristics.LENS_FACING_FRONT -> CameraFacing.FRONT
             CameraCharacteristics.LENS_FACING_BACK -> CameraFacing.BACK
             CameraCharacteristics.LENS_FACING_EXTERNAL -> CameraFacing.EXTERNAL
             else -> CameraFacing.UNKNOWN
         }
-    }
 
     /**
-     * Return if flash is available or not
+     * Flash is available or not
      */
-    fun hasFlashUnit(): Boolean {
-        return cameraInfo.hasFlashUnit()
-    }
+    val hasFlashUnit = cameraInfo.hasFlashUnit()
 }
