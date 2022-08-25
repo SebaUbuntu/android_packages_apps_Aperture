@@ -451,6 +451,7 @@ class MainActivity : AppCompatActivity() {
         val outputOptions = StorageUtils.getPhotoMediaStoreOutputOptions(
             contentResolver,
             ImageCapture.Metadata().apply {
+                isReversedHorizontal = false
                 location = this@MainActivity.location
             }
         )
