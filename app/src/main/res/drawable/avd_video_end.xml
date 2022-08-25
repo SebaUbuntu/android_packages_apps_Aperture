@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_shutter_base">
+    <target
+        android:name="capture"
+        android:animation="@animator/video_end_cap_scale" />
+    <target
+        android:name="capture_src"
+        android:animation="@animator/video_end_cap_alpha" />
+    <target
+        android:name="record_src"
+        android:animation="@animator/video_end_rec_square" />
+</animated-vector>

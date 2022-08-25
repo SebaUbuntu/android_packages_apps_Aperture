@@ -231,18 +231,15 @@
 
         <ImageButton
             android:id="@+id/shutterButton"
-            style="@style/ApertureShutterButton"
+            android:background="@null"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:contentDescription="@string/shutter_button_description"
-            android:padding="4dp"
-            android:scaleType="center"
-            android:src="@drawable/ic_circle"
+            android:src="@drawable/avd_photo_capture"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="?colorSecondaryContainer" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="60dp"
