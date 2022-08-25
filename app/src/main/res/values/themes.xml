@@ -58,9 +58,4 @@
     <style name="SelfieModeSelectorButtonHighlight" parent="@style/SelfieModeSelectorButton">
         <item name="android:backgroundTint">@color/camera_mode_selector_icon_highlight</item>
     </style>
-
-    <!-- Shutter button theme -->
-    <style name="SelfieShutterButton">
-        <item name="android:background">@drawable/shutter_button_background</item>
-    </style>
 </resources>

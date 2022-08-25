@@ -198,6 +198,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    enum class ShutterAnimation(val resourceId: Int) {
+        InitPhoto(R.drawable.avd_photo_capture),
+        InitVideo(R.drawable.avd_mode_video_photo),
+
+        PhotoCapture(R.drawable.avd_photo_capture),
+        PhotoToVideo(R.drawable.avd_mode_photo_video),
+
+        VideoToPhoto(R.drawable.avd_mode_video_photo),
+        VideoStart(R.drawable.avd_video_start),
+        VideoEnd(R.drawable.avd_video_end),
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -343,13 +355,25 @@ class MainActivity : AppCompatActivity() {
 
         flipCameraButton.setOnClickListener { flipCamera() }
 
+        // Initialize shutter drawable
+        if (cameraMode == CameraMode.PHOTO) {
+            startShutterAnimation(ShutterAnimation.InitPhoto)
+        } else if (cameraMode == CameraMode.VIDEO) {
+            startShutterAnimation(ShutterAnimation.InitVideo)
+        }
+
         shutterButton.setOnClickListener {
             // Shutter animation
-            ValueAnimator.ofInt(convertDpToPx(4), convertDpToPx(16), convertDpToPx(4)).apply {
-                addUpdateListener {
-                    shutterButton.setPadding(it.animatedValue as Int)
+            when (cameraMode) {
+                CameraMode.PHOTO -> startShutterAnimation(ShutterAnimation.PhotoCapture)
+                CameraMode.VIDEO -> {
+                    if (!cameraController.isRecording) {
+                        // TODO: This animation doesn't work
+//                        startShutterAnimation(ShutterAnimation.VideoStart)
+                    }
                 }
-            }.start()
+                else -> {}
+            }
 
             startTimerAndRun {
                 when (cameraMode) {
@@ -438,6 +462,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun startShutterAnimation(shutterAnimation: ShutterAnimation) {
+        // Get appropriate drawable
+        val drawable = ContextCompat.getDrawable(
+            this, shutterAnimation.resourceId
+        ) as AnimatedVectorDrawable
+
+        // Update current drawable
+        shutterButton.setImageDrawable(drawable)
+
+        // Start or reset animation
+        when (shutterAnimation) {
+            ShutterAnimation.InitPhoto,
+            ShutterAnimation.InitVideo -> drawable.reset()
+            else -> drawable.start()
+        }
+    }
+
     private fun takePhoto() {
         // Bail out if a photo is already being taken
         if (isTakingPhoto) {
@@ -516,6 +557,8 @@ class MainActivity : AppCompatActivity() {
                 }
             } else if (it is VideoRecordEvent.Finalize) {
                 runOnUiThread {
+                    // TODO: This animation doesn't work
+//                    startShutterAnimation(ShutterAnimation.VideoEnd)
                     recordChip.isVisible = false
                 }
                 cameraSoundsUtils.playStopVideoRecording()
@@ -663,6 +706,24 @@ class MainActivity : AppCompatActivity() {
 
         if (cameraMode == this.cameraMode) {
             return
+        }
+
+        when (cameraMode) {
+            CameraMode.PHOTO -> {
+                if (this.cameraMode == CameraMode.VIDEO) {
+                    startShutterAnimation(ShutterAnimation.VideoToPhoto)
+                } else {
+                    startShutterAnimation(ShutterAnimation.InitPhoto)
+                }
+            }
+            CameraMode.VIDEO -> {
+                if (this.cameraMode == CameraMode.PHOTO) {
+                    startShutterAnimation(ShutterAnimation.PhotoToVideo)
+                } else {
+                    startShutterAnimation(ShutterAnimation.InitVideo)
+                }
+            }
+            else -> {}
         }
 
         sharedPreferences.lastCameraMode = cameraMode
