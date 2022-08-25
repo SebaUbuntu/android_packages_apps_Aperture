@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:duration="300"
+        android:interpolator="@android:interpolator/fast_out_slow_in"
+        android:propertyName="pathData"
+        android:valueFrom="M27 27H45V45H27V27Z"
+        android:valueTo="M 13.373 13.373 C 25.869 0.876 46.131 0.876 58.627 13.373 C 71.124 25.869 71.124 46.131 58.627 58.627 C 46.131 71.124 25.869 71.124 13.373 58.627 C 0.876 46.131 0.876 25.869 13.373 13.373 Z"
+        android:valueType="pathType" />
+</set>
