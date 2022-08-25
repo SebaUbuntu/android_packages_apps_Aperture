@@ -730,6 +730,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun cycleVideoQuality() {
         if (!canRestartCamera()) {
+            updateVideoQualityIcon()
             return
         }
 
