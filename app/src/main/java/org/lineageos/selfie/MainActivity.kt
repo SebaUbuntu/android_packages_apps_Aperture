@@ -19,7 +19,6 @@ import android.graphics.drawable.ColorDrawable
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -150,6 +149,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var supportedExtensionModes: List<Int>
 
     private var tookSomething: Boolean = false
+        set(value) {
+            field = value
+            updateGalleryButton()
+        }
 
     private var viewFinderTouchEvent: MotionEvent? = null
 
@@ -422,9 +425,8 @@ class MainActivity : AppCompatActivity() {
         // Set bright screen
         setBrightScreen(sharedPreferences.brightScreen)
 
-        // Special case: we want to enable the gallery by default if
-        // we have at least one saved Uri and we aren't locked
-        updateGalleryButton(sharedPreferences.lastSavedUri, !keyguardManager.isKeyguardLocked)
+        // Reset tookSomething state
+        tookSomething = false
 
         // Register location updates
         locationListener.register()
@@ -436,9 +438,6 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         // Remove location and location updates
         locationListener.unregister()
-
-        // Reset tookSomething state
-        tookSomething = false
 
         super.onPause()
     }
@@ -568,7 +567,6 @@ class MainActivity : AppCompatActivity() {
                         }
                     }.start()
                     sharedPreferences.lastSavedUri = output.savedUri
-                    updateGalleryButton(output.savedUri)
                     Log.d(LOG_TAG, "Photo capture succeeded: ${output.savedUri}")
                     cameraState = CameraState.IDLE
                     shutterButton.isEnabled = true
@@ -644,7 +642,6 @@ class MainActivity : AppCompatActivity() {
                     cameraSoundsUtils.playStopVideoRecording()
                     if (it.error != VideoRecordEvent.Finalize.ERROR_NO_VALID_DATA) {
                         sharedPreferences.lastSavedUri = it.outputResults.outputUri
-                        updateGalleryButton(it.outputResults.outputUri)
                         Log.d(LOG_TAG, "Video capture succeeded: ${it.outputResults.outputUri}")
                         tookSomething = true
                     }
@@ -1153,9 +1150,11 @@ class MainActivity : AppCompatActivity() {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun updateGalleryButton(uri: Uri?, enable: Boolean = true) {
+    private fun updateGalleryButton() {
         runOnUiThread {
-            if (uri != null && enable) {
+            val uri = sharedPreferences.lastSavedUri
+            val keyguardLocked = keyguardManager.isKeyguardLocked
+            if (uri != null && (!keyguardLocked || tookSomething)) {
                 galleryButton.load(uri) {
                     decoderFactory(VideoFrameDecoder.Factory())
                     crossfade(true)
@@ -1180,7 +1179,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     })
                 }
-            } else if (keyguardManager.isKeyguardLocked) {
+            } else if (keyguardLocked) {
                 galleryButton.setPadding(15.px)
                 galleryButton.setImageResource(R.drawable.ic_lock)
             } else {
