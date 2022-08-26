@@ -5,6 +5,10 @@
 -->
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <objectAnimator
+        android:propertyName="fillColor"
+        android:valueTo="@color/white" />
+
+    <objectAnimator
         android:duration="300"
         android:interpolator="@android:interpolator/fast_out_slow_in"
         android:propertyName="fillAlpha"
