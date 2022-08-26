@@ -214,7 +214,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/mode_selector_layout"
+        app:layout_constraintBottom_toTopOf="@+id/modeSelectorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -278,7 +278,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mode_selector_layout"
+        android:id="@+id/modeSelectorLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="16dp"
