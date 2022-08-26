@@ -368,8 +368,7 @@ class MainActivity : AppCompatActivity() {
                 CameraMode.PHOTO -> startShutterAnimation(ShutterAnimation.PhotoCapture)
                 CameraMode.VIDEO -> {
                     if (!cameraController.isRecording) {
-                        // TODO: This animation doesn't work
-//                        startShutterAnimation(ShutterAnimation.VideoStart)
+                        startShutterAnimation(ShutterAnimation.VideoStart)
                     }
                 }
                 else -> {}
@@ -557,8 +556,7 @@ class MainActivity : AppCompatActivity() {
                 }
             } else if (it is VideoRecordEvent.Finalize) {
                 runOnUiThread {
-                    // TODO: This animation doesn't work
-//                    startShutterAnimation(ShutterAnimation.VideoEnd)
+                    startShutterAnimation(ShutterAnimation.VideoEnd)
                     recordChip.isVisible = false
                 }
                 cameraSoundsUtils.playStopVideoRecording()
