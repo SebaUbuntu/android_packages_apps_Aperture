@@ -8,22 +8,22 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/topButtonsLayout"
+        android:id="@+id/secondaryBarLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingStart="16dp"
         android:paddingTop="8dp"
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomButtonsLayout"
+        app:layout_constraintBottom_toTopOf="@+id/primaryBarLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/timerButton"
-            style="@style/SelfieTopBarButton"
-            android:layout_width="@dimen/top_view_buttons_size"
-            android:layout_height="@dimen/top_view_buttons_size"
+            style="@style/SelfieSecondaryBarButton"
+            android:layout_width="@dimen/secondary_bar_button_size"
+            android:layout_height="@dimen/secondary_bar_button_size"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/timer_button_description"
             android:src="@drawable/ic_timer_off"
@@ -36,9 +36,9 @@
 
         <ToggleButton
             android:id="@+id/aspectRatioButton"
-            style="@style/SelfieTopBarButton"
-            android:layout_width="@dimen/top_view_buttons_size"
-            android:layout_height="@dimen/top_view_buttons_size"
+            style="@style/SelfieSecondaryBarButton"
+            android:layout_width="@dimen/secondary_bar_button_size"
+            android:layout_height="@dimen/secondary_bar_button_size"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/aspect_ratio_button_description"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -49,9 +49,9 @@
 
         <ToggleButton
             android:id="@+id/videoQualityButton"
-            style="@style/SelfieTopBarButton"
-            android:layout_width="@dimen/top_view_buttons_size"
-            android:layout_height="@dimen/top_view_buttons_size"
+            style="@style/SelfieSecondaryBarButton"
+            android:layout_width="@dimen/secondary_bar_button_size"
+            android:layout_height="@dimen/secondary_bar_button_size"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/video_quality_button_description"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -62,9 +62,9 @@
 
         <ImageButton
             android:id="@+id/effectButton"
-            style="@style/SelfieTopBarButton"
-            android:layout_width="@dimen/top_view_buttons_size"
-            android:layout_height="@dimen/top_view_buttons_size"
+            style="@style/SelfieSecondaryBarButton"
+            android:layout_width="@dimen/secondary_bar_button_size"
+            android:layout_height="@dimen/secondary_bar_button_size"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/effect_button_description"
             android:src="@drawable/ic_effect_none"
@@ -76,9 +76,9 @@
 
         <ImageButton
             android:id="@+id/gridButton"
-            style="@style/SelfieTopBarButton"
-            android:layout_width="@dimen/top_view_buttons_size"
-            android:layout_height="@dimen/top_view_buttons_size"
+            style="@style/SelfieSecondaryBarButton"
+            android:layout_width="@dimen/secondary_bar_button_size"
+            android:layout_height="@dimen/secondary_bar_button_size"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/grid_button_description"
             android:src="@drawable/ic_grid_off"
@@ -90,9 +90,9 @@
 
         <ImageButton
             android:id="@+id/torchButton"
-            style="@style/SelfieTopBarButton"
-            android:layout_width="@dimen/top_view_buttons_size"
-            android:layout_height="@dimen/top_view_buttons_size"
+            style="@style/SelfieSecondaryBarButton"
+            android:layout_width="@dimen/secondary_bar_button_size"
+            android:layout_height="@dimen/secondary_bar_button_size"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/torch_button_description"
             android:src="@drawable/ic_torch_on"
@@ -105,9 +105,9 @@
 
         <ImageButton
             android:id="@+id/flashButton"
-            style="@style/SelfieTopBarButton"
-            android:layout_width="@dimen/top_view_buttons_size"
-            android:layout_height="@dimen/top_view_buttons_size"
+            style="@style/SelfieSecondaryBarButton"
+            android:layout_width="@dimen/secondary_bar_button_size"
+            android:layout_height="@dimen/secondary_bar_button_size"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/flash_button_description"
             android:src="@drawable/ic_flash_off"
@@ -120,9 +120,9 @@
 
         <ImageButton
             android:id="@+id/micButton"
-            style="@style/SelfieTopBarButton"
-            android:layout_width="@dimen/top_view_buttons_size"
-            android:layout_height="@dimen/top_view_buttons_size"
+            style="@style/SelfieSecondaryBarButton"
+            android:layout_width="@dimen/secondary_bar_button_size"
+            android:layout_height="@dimen/secondary_bar_button_size"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/mic_button_description"
             android:src="@drawable/ic_mic_off"
@@ -135,9 +135,9 @@
 
         <ImageButton
             android:id="@+id/settingsButton"
-            style="@style/SelfieTopBarButton"
-            android:layout_width="@dimen/top_view_buttons_size"
-            android:layout_height="@dimen/top_view_buttons_size"
+            style="@style/SelfieSecondaryBarButton"
+            android:layout_width="@dimen/secondary_bar_button_size"
+            android:layout_height="@dimen/secondary_bar_button_size"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/settings_button_description"
             android:src="@drawable/ic_settings"
@@ -153,7 +153,7 @@
         android:id="@+id/viewFinder"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/topButtonsLayout"
+        app:layout_constraintBottom_toTopOf="@+id/secondaryBarLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -210,7 +210,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bottomButtonsLayout"
+        android:id="@+id/primaryBarLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
