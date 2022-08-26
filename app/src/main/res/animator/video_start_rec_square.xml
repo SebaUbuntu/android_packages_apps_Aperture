@@ -9,6 +9,6 @@
         android:interpolator="@android:interpolator/fast_out_slow_in"
         android:propertyName="pathData"
         android:valueFrom="M 13.373 13.373 C 25.869 0.876 46.131 0.876 58.627 13.373 C 71.124 25.869 71.124 46.131 58.627 58.627 C 46.131 71.124 25.869 71.124 13.373 58.627 C 0.876 46.131 0.876 25.869 13.373 13.373 Z"
-        android:valueTo="M27 27H45V45H27V27Z"
+        android:valueTo="M 27 27 C 33 27 39 27 45 27 C 45 33 45 39 45 45 C 39 45 33 45 27 45 C 27 39 27 33 27 27 Z"
         android:valueType="pathType" />
 </set>
