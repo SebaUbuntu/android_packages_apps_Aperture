@@ -135,6 +135,7 @@ class MainActivity : AppCompatActivity() {
         set(value) {
             field = value
             updateSecondaryBarButtons(value)
+            updatePrimaryBarButtons(value)
         }
 
     private lateinit var camera: PhysicalCamera
@@ -859,6 +860,17 @@ class MainActivity : AppCompatActivity() {
             flashButton.isEnabled = cameraState == CameraState.IDLE
             micButton.isEnabled = cameraState == CameraState.IDLE
             settingsButton.isEnabled = cameraState == CameraState.IDLE
+        }
+    }
+
+    /**
+     * Enable or disable primary bar buttons
+     */
+    private fun updatePrimaryBarButtons(cameraState: CameraState) {
+        runOnUiThread {
+            galleryButton.isEnabled = cameraState == CameraState.IDLE
+            // Shutter button must stay enabled
+            flipCameraButton.isEnabled = cameraState == CameraState.IDLE
         }
     }
 
