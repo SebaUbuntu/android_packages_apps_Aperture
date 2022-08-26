@@ -131,7 +131,11 @@ class MainActivity : AppCompatActivity() {
     private val cameraMode: CameraMode
         get() = sharedPreferences.lastCameraMode
 
-    private lateinit var cameraState: CameraState
+    private var cameraState = CameraState.IDLE
+        set(value) {
+            field = value
+            updateSecondaryBarButtons(value)
+        }
 
     private lateinit var camera: PhysicalCamera
 
@@ -841,6 +845,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Enable or disable secondary bar buttons
+     */
+    private fun updateSecondaryBarButtons(cameraState: CameraState) {
+        runOnUiThread {
+            timerButton.isEnabled = cameraState == CameraState.IDLE
+            aspectRatioButton.isEnabled = cameraState == CameraState.IDLE
+            videoQualityButton.isEnabled = cameraState == CameraState.IDLE
+            effectButton.isEnabled = cameraState == CameraState.IDLE
+            // Grid mode can be toggled at any time
+            // Torch mode can be toggled at any time
+            flashButton.isEnabled = cameraState == CameraState.IDLE
+            micButton.isEnabled = cameraState == CameraState.IDLE
+            settingsButton.isEnabled = cameraState == CameraState.IDLE
+        }
+    }
+
     private fun cycleAspectRatio() {
         if (!canRestartCamera()) {
             return
@@ -857,7 +878,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun cycleVideoQuality() {
         if (!canRestartCamera()) {
-            updateVideoQualityIcon()
             return
         }
 
@@ -1051,10 +1071,6 @@ class MainActivity : AppCompatActivity() {
      */
     @SuppressLint("MissingPermission")
     private fun setMicrophoneMode(microphoneMode: Boolean) {
-        if (!canRestartCamera()) {
-            return
-        }
-
         audioConfig = AudioConfig.create(microphoneMode)
         updateMicrophoneModeIcon()
 
@@ -1103,10 +1119,6 @@ class MainActivity : AppCompatActivity() {
      * Cycle between supported photo camera effects
      */
     private fun cyclePhotoEffects() {
-        if (!canRestartCamera()) {
-            return
-        }
-
         setExtensionMode(
             if (extensionMode == supportedExtensionModes.last()) supportedExtensionModes.first()
             else supportedExtensionModes[supportedExtensionModes.indexOf(extensionMode) + 1]
@@ -1231,10 +1243,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openSettings() {
-        if (!canRestartCamera()) {
-            return
-        }
-
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
