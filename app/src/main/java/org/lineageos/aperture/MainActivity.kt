@@ -92,7 +92,6 @@ import java.util.concurrent.Executors
 @androidx.camera.view.video.ExperimentalVideo
 class MainActivity : AppCompatActivity() {
     private val aspectRatioButton by lazy { findViewById<ToggleButton>(R.id.aspectRatioButton) }
-    private val bottomButtonsLayout by lazy { findViewById<ConstraintLayout>(R.id.bottomButtonsLayout) }
     private val cameraModeHighlight by lazy { findViewById<MaterialButton>(R.id.cameraModeHighlight) }
     private val countDownView by lazy { findViewById<CountDownView>(R.id.countDownView) }
     private val effectButton by lazy { findViewById<ImageButton>(R.id.effectButton) }
@@ -103,6 +102,7 @@ class MainActivity : AppCompatActivity() {
     private val gridView by lazy { findViewById<GridView>(R.id.gridView) }
     private val micButton by lazy { findViewById<ImageButton>(R.id.micButton) }
     private val photoModeButton by lazy { findViewById<MaterialButton>(R.id.photoModeButton) }
+    private val primaryBarLayout by lazy { findViewById<ConstraintLayout>(R.id.primaryBarLayout) }
     private val qrModeButton by lazy { findViewById<MaterialButton>(R.id.qrModeButton) }
     private val settingsButton by lazy { findViewById<ImageButton>(R.id.settingsButton) }
     private val shutterButton by lazy { findViewById<ImageButton>(R.id.shutterButton) }
@@ -249,7 +249,7 @@ class MainActivity : AppCompatActivity() {
         // Initialize sounds utils
         cameraSoundsUtils = CameraSoundsUtils(sharedPreferences)
 
-        // Set top bar button callbacks
+        // Set secondary bar button callbacks
         aspectRatioButton.setOnClickListener { cycleAspectRatio() }
         videoQualityButton.setOnClickListener { cycleVideoQuality() }
         effectButton.setOnClickListener { cyclePhotoEffects() }
@@ -359,7 +359,7 @@ class MainActivity : AppCompatActivity() {
             "%.1fx".format(cameraController.zoomState.value?.zoomRatio)
         }
 
-        // Set bottom bar button callbacks
+        // Set primary bar button callbacks
         qrModeButton.setOnClickListener { changeCameraMode(CameraMode.QR) }
         photoModeButton.setOnClickListener { changeCameraMode(CameraMode.PHOTO) }
         videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
@@ -722,15 +722,15 @@ class MainActivity : AppCompatActivity() {
         when (cameraMode) {
             CameraMode.QR -> {
                 timerButton.isVisible = false
-                bottomButtonsLayout.isInvisible = true
+                primaryBarLayout.isInvisible = true
             }
             CameraMode.PHOTO -> {
                 timerButton.isVisible = true
-                bottomButtonsLayout.isInvisible = false
+                primaryBarLayout.isInvisible = false
             }
             CameraMode.VIDEO -> {
                 timerButton.isVisible = true
-                bottomButtonsLayout.isInvisible = false
+                primaryBarLayout.isInvisible = false
             }
         }
 
