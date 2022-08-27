@@ -20,7 +20,6 @@ android_app {
         "androidx.camera_camera-core",
         "androidx.camera_camera-extensions",
         "androidx.camera_camera-lifecycle",
-        "androidx.camera_camera-mlkit-vision",
         "androidx.camera_camera-video",
         "androidx.camera_camera-view",
         "androidx-constraintlayout_constraintlayout",
