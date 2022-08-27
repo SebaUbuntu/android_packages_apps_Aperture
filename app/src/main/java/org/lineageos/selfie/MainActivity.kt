@@ -515,10 +515,9 @@ class MainActivity : AppCompatActivity() {
                             viewFinder.foreground.alpha = anim.animatedValue as Int
                         }
                     }.start()
-                    val msg = "Photo capture succeeded: ${output.savedUri}"
                     sharedPreferences.lastSavedUri = output.savedUri
                     updateGalleryButton(output.savedUri)
-                    Log.d(LOG_TAG, msg)
+                    Log.d(LOG_TAG, "Photo capture succeeded: ${output.savedUri}")
                     isTakingPhoto = false
                     shutterButton.isEnabled = true
                     tookSomething = true
@@ -561,10 +560,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 cameraSoundsUtils.playStopVideoRecording()
                 if (it.error != VideoRecordEvent.Finalize.ERROR_NO_VALID_DATA) {
-                    val msg = "Video capture succeeded: ${it.outputResults.outputUri}"
                     sharedPreferences.lastSavedUri = it.outputResults.outputUri
                     updateGalleryButton(it.outputResults.outputUri)
-                    Log.d(LOG_TAG, msg)
+                    Log.d(LOG_TAG, "Video capture succeeded: ${it.outputResults.outputUri}")
                     tookSomething = true
                 }
                 recording = null
