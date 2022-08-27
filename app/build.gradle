@@ -43,19 +43,20 @@ dependencies {
     implementation 'androidx.preference:preference:1.2.0'
 
     // CameraX core library using the camera2 implementation
+    def camerax_version = "1.2.0-beta02"
     // The following line is optional, as the core library is included indirectly by camera-camera2
-    implementation files('libs/camera-core-release.aar')
-    implementation files('libs/camera-camera2-release.aar')
+    implementation "androidx.camera:camera-core:${camerax_version}"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
     // If you want to additionally use the CameraX Lifecycle library
-    implementation files('libs/camera-lifecycle-release.aar')
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
     // If you want to additionally use the CameraX VideoCapture library
-    implementation files('libs/camera-video-release.aar')
+    implementation "androidx.camera:camera-video:${camerax_version}"
     // If you want to additionally use the CameraX View class
-    implementation files('libs/camera-view-release.aar')
+    implementation "androidx.camera:camera-view:${camerax_version}"
     // If you want to additionally add CameraX ML Kit Vision Integration
-    implementation files('libs/camera-mlkit-vision-release.aar')
+    implementation "androidx.camera:camera-mlkit-vision:${camerax_version}"
     // If you want to additionally use the CameraX Extensions library
-    implementation files('libs/camera-extensions-release.aar')
+    implementation "androidx.camera:camera-extensions:${camerax_version}"
 
     // ZXing
     implementation 'com.google.zxing:core:3.5.0'
