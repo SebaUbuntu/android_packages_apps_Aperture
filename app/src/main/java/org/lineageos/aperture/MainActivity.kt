@@ -1040,7 +1040,7 @@ class MainActivity : AppCompatActivity() {
 
         setExtensionMode(
             if (extensionMode == supportedExtensionModes.last()) supportedExtensionModes.first()
-            else supportedExtensionModes.indexOf(extensionMode) + 1
+            else supportedExtensionModes[supportedExtensionModes.indexOf(extensionMode) + 1]
         )
     }
 
