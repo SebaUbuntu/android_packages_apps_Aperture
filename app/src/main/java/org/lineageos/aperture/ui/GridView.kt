@@ -24,7 +24,7 @@ import kotlin.math.roundToInt
 class GridView(context: Context?, attributeSet: AttributeSet?) : View(context, attributeSet) {
     private val paint = Paint().apply {
         isAntiAlias = true
-        strokeWidth = 1F
+        strokeWidth = 2F
         style = Paint.Style.STROKE
         color = 0x7FFFFFFF
     }
