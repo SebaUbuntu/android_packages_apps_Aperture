@@ -560,11 +560,13 @@ class MainActivity : AppCompatActivity() {
                     recordChip.isVisible = false
                 }
                 cameraSoundsUtils.playStopVideoRecording()
-                val msg = "Video capture succeeded: ${it.outputResults.outputUri}"
-                sharedPreferences.lastSavedUri = it.outputResults.outputUri
-                updateGalleryButton(it.outputResults.outputUri)
-                Log.d(LOG_TAG, msg)
-                tookSomething = true
+                if (it.error != VideoRecordEvent.Finalize.ERROR_NO_VALID_DATA) {
+                    val msg = "Video capture succeeded: ${it.outputResults.outputUri}"
+                    sharedPreferences.lastSavedUri = it.outputResults.outputUri
+                    updateGalleryButton(it.outputResults.outputUri)
+                    Log.d(LOG_TAG, msg)
+                    tookSomething = true
+                }
                 recording = null
             }
         }
