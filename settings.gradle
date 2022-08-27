@@ -10,6 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://raw.githubusercontent.com/luk1337/camerax_selfie/5a80ea0508c15747e4c871cfd3bf1826d4c01b1e/.m2" }
     }
 }
 rootProject.name = "Selfie"
