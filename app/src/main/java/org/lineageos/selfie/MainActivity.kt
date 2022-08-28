@@ -360,10 +360,10 @@ class MainActivity : AppCompatActivity() {
         flipCameraButton.setOnClickListener { flipCamera() }
 
         // Initialize shutter drawable
-        if (cameraMode == CameraMode.PHOTO) {
-            startShutterAnimation(ShutterAnimation.InitPhoto)
-        } else if (cameraMode == CameraMode.VIDEO) {
-            startShutterAnimation(ShutterAnimation.InitVideo)
+        when (cameraMode) {
+            CameraMode.PHOTO -> startShutterAnimation(ShutterAnimation.InitPhoto)
+            CameraMode.VIDEO -> startShutterAnimation(ShutterAnimation.InitVideo)
+            else -> {}
         }
 
         shutterButton.setOnClickListener {
@@ -765,9 +765,11 @@ class MainActivity : AppCompatActivity() {
      * Update the camera mode buttons reflecting the current mode
      */
     private fun updateCameraModeButtons() {
-        qrModeButton.isEnabled = cameraMode != CameraMode.QR
-        photoModeButton.isEnabled = cameraMode != CameraMode.PHOTO
-        videoModeButton.isEnabled = cameraMode != CameraMode.VIDEO
+        cameraMode.let {
+            qrModeButton.isEnabled = it != CameraMode.QR
+            photoModeButton.isEnabled = it != CameraMode.PHOTO
+            videoModeButton.isEnabled = it != CameraMode.VIDEO
+        }
 
         // Animate camera mode change
         (cameraModeHighlight.parent as View).doOnLayout {
