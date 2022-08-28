@@ -136,8 +136,9 @@ class MainActivity : AppCompatActivity() {
     private val aspectRatio: Int
         get() = sharedPreferences.aspectRatio
 
-    private var extensionMode = ExtensionMode.NONE
-    private var supportedExtensionModes = listOf(extensionMode)
+    private val extensionMode: Int
+        get() = sharedPreferences.photoEffect
+    private lateinit var supportedExtensionModes: List<Int>
 
     private var isTakingPhoto: Boolean = false
     private var tookSomething: Boolean = false
@@ -632,10 +633,9 @@ class MainActivity : AppCompatActivity() {
         // Get the supported vendor extensions for the given camera selector
         supportedExtensionModes = extensionsManager.getSupportedModes(cameraSelector)
 
-        // Get the user selected effect
-        extensionMode = sharedPreferences.photoEffect
+        // Fallback to ExtensionMode.NONE if necessary
         if (!supportedExtensionModes.contains(extensionMode)) {
-            extensionMode = ExtensionMode.NONE
+            sharedPreferences.photoEffect = ExtensionMode.NONE
         }
 
         // Fallback to highest supported video quality
