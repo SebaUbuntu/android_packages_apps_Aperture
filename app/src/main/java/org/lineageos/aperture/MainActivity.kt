@@ -561,24 +561,25 @@ class MainActivity : AppCompatActivity() {
             audioConfig,
             cameraExecutor
         ) {
-            if (it is VideoRecordEvent.Status) {
-                runOnUiThread {
+            when (it) {
+                is VideoRecordEvent.Status -> runOnUiThread {
                     recordingTime = it.recordingStats.recordedDurationNanos
                     recordChip.isVisible = true
                 }
-            } else if (it is VideoRecordEvent.Finalize) {
-                runOnUiThread {
-                    startShutterAnimation(ShutterAnimation.VideoEnd)
-                    recordChip.isVisible = false
+                is VideoRecordEvent.Finalize -> {
+                    runOnUiThread {
+                        startShutterAnimation(ShutterAnimation.VideoEnd)
+                        recordChip.isVisible = false
+                    }
+                    cameraSoundsUtils.playStopVideoRecording()
+                    if (it.error != VideoRecordEvent.Finalize.ERROR_NO_VALID_DATA) {
+                        sharedPreferences.lastSavedUri = it.outputResults.outputUri
+                        updateGalleryButton(it.outputResults.outputUri)
+                        Log.d(LOG_TAG, "Video capture succeeded: ${it.outputResults.outputUri}")
+                        tookSomething = true
+                    }
+                    recording = null
                 }
-                cameraSoundsUtils.playStopVideoRecording()
-                if (it.error != VideoRecordEvent.Finalize.ERROR_NO_VALID_DATA) {
-                    sharedPreferences.lastSavedUri = it.outputResults.outputUri
-                    updateGalleryButton(it.outputResults.outputUri)
-                    Log.d(LOG_TAG, "Video capture succeeded: ${it.outputResults.outputUri}")
-                    tookSomething = true
-                }
-                recording = null
             }
         }
     }
