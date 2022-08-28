@@ -9,13 +9,14 @@ package org.lineageos.aperture.utils
 import android.hardware.camera2.CameraCharacteristics
 import androidx.camera.camera2.interop.Camera2CameraInfo
 import androidx.camera.core.CameraInfo
+import androidx.camera.video.Quality
 import androidx.camera.video.QualitySelector
 
 /**
  * Class representing a physical device camera
  */
 @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-class PhysicalCamera(val cameraInfo: CameraInfo) {
+class PhysicalCamera(cameraInfo: CameraInfo) {
     /**
      * Camera2 CameraInfo
      */
@@ -45,5 +46,6 @@ class PhysicalCamera(val cameraInfo: CameraInfo) {
     /**
      * Supported video qualities
      */
-    val supportedVideoQualities = QualitySelector.getSupportedQualities(cameraInfo)
+    val supportedVideoQualities: MutableList<Quality> =
+        QualitySelector.getSupportedQualities(cameraInfo)
 }
