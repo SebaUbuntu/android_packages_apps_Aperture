@@ -12,7 +12,6 @@ import android.annotation.SuppressLint
 import android.app.KeyguardManager
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
@@ -26,7 +25,6 @@ import android.os.Looper
 import android.os.Message
 import android.provider.MediaStore
 import android.util.Log
-import android.util.Size
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -63,6 +61,12 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
+import coil.decode.VideoFrameDecoder
+import coil.load
+import coil.request.ErrorResult
+import coil.request.ImageRequest
+import coil.request.SuccessResult
+import coil.size.Scale
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.slider.Slider
@@ -1072,12 +1076,29 @@ class MainActivity : AppCompatActivity() {
     private fun updateGalleryButton(uri: Uri?, enable: Boolean = true) {
         runOnUiThread {
             if (uri != null && enable) {
-                getThumbnail(uri)?.let {
-                    galleryButton.setPadding(0)
-                    galleryButton.setImageBitmap(it)
-                } ?: run {
-                    galleryButton.setPadding(15.px)
-                    galleryButton.setImageResource(R.drawable.ic_image)
+                galleryButton.load(uri) {
+                    decoderFactory(VideoFrameDecoder.Factory())
+                    crossfade(true)
+                    scale(Scale.FILL)
+                    size(75.px)
+                    error(R.drawable.ic_image)
+                    fallback(R.drawable.ic_image)
+                    listener(object : ImageRequest.Listener {
+                        override fun onSuccess(request: ImageRequest, result: SuccessResult) {
+                            galleryButton.setPadding(0)
+                            super.onSuccess(request, result)
+                        }
+
+                        override fun onError(request: ImageRequest, result: ErrorResult) {
+                            galleryButton.setPadding(15.px)
+                            super.onError(request, result)
+                        }
+
+                        override fun onCancel(request: ImageRequest) {
+                            galleryButton.setPadding(15.px)
+                            super.onCancel(request)
+                        }
+                    })
                 }
             } else if (keyguardManager.isKeyguardLocked) {
                 galleryButton.setPadding(15.px)
@@ -1169,17 +1190,6 @@ class MainActivity : AppCompatActivity() {
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         // Hide the status bar
         windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
-    }
-
-    private fun getThumbnail(uri: Uri?): Bitmap? {
-        return try {
-            uri?.let {
-                contentResolver.loadThumbnail(it, Size(75.px, 75.px), null)
-            }
-        } catch (exception: Exception) {
-            Log.e(LOG_TAG, "${exception.message}")
-            null
-        }
     }
 
     private fun startTimerAndRun(runnable: () -> Unit) {
