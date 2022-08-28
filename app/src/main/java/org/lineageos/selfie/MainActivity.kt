@@ -437,6 +437,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         return when (keyCode) {
+            KeyEvent.KEYCODE_FOCUS -> {
+                if (event?.repeatCount == 1) {
+                    viewFinderTouchEvent = null
+                    viewFinder.performClick()
+                }
+                true
+            }
+            KeyEvent.KEYCODE_CAMERA,
             KeyEvent.KEYCODE_VOLUME_UP,
             KeyEvent.KEYCODE_VOLUME_DOWN -> {
                 if (cameraMode == CameraMode.VIDEO && shutterButton.isEnabled && event?.repeatCount == 1) {
@@ -450,6 +458,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
         return when (keyCode) {
+            KeyEvent.KEYCODE_CAMERA,
             KeyEvent.KEYCODE_VOLUME_UP,
             KeyEvent.KEYCODE_VOLUME_DOWN -> {
                 if (cameraMode != CameraMode.QR && shutterButton.isEnabled) {
