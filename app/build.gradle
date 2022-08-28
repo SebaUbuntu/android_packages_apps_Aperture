@@ -58,4 +58,8 @@ dependencies {
 
     // ZXing
     implementation 'com.google.zxing:core:3.5.0'
+
+    // Coil
+    implementation 'io.coil-kt:coil:2.2.0'
+    implementation 'io.coil-kt:coil-video:2.2.0'
 }
