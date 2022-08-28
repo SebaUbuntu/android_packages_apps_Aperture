@@ -133,7 +133,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var audioConfig: AudioConfig
 
-    private var aspectRatio: Int = AspectRatio.RATIO_4_3
+    private val aspectRatio: Int
+        get() = sharedPreferences.aspectRatio
 
     private var extensionMode = ExtensionMode.NONE
     private var supportedExtensionModes = listOf(extensionMode)
@@ -637,10 +638,6 @@ class MainActivity : AppCompatActivity() {
             extensionMode = ExtensionMode.NONE
         }
 
-        // Get aspect ratio
-        aspectRatio = sharedPreferences.aspectRatio
-        val outputSize = CameraController.OutputSize(aspectRatio)
-
         // Fallback to highest supported video quality
         if (!camera.supportedVideoQualities.contains(sharedPreferences.videoQuality)) {
             sharedPreferences.videoQuality = camera.supportedVideoQualities.first()
@@ -649,12 +646,12 @@ class MainActivity : AppCompatActivity() {
         // Initialize the use case we want and set its properties
         val cameraUseCases = when (cameraMode) {
             CameraMode.QR -> {
-                cameraController.imageAnalysisTargetSize = outputSize
+                cameraController.imageAnalysisTargetSize = CameraController.OutputSize(aspectRatio)
                 cameraController.setImageAnalysisAnalyzer(cameraExecutor, imageAnalyzer)
                 CameraController.IMAGE_ANALYSIS
             }
             CameraMode.PHOTO -> {
-                cameraController.imageCaptureTargetSize = outputSize
+                cameraController.imageCaptureTargetSize = CameraController.OutputSize(aspectRatio)
                 CameraController.IMAGE_CAPTURE
             }
             CameraMode.VIDEO -> {
