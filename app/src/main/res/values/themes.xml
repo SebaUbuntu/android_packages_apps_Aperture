@@ -58,4 +58,9 @@
     <style name="SelfieModeSelectorButtonHighlight" parent="@style/SelfieModeSelectorButton">
         <item name="android:backgroundTint">@color/camera_mode_selector_icon_highlight</item>
     </style>
+
+    <!-- Video duration button theme -->
+    <style name="SelfieVideoDurationButton" parent="@style/SelfieModeSelectorButton">
+        <item name="android:backgroundTint">@color/rec_red</item>
+    </style>
 </resources>
