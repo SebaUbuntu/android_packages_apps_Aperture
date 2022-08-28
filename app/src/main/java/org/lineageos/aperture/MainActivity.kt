@@ -753,13 +753,12 @@ class MainActivity : AppCompatActivity() {
 
         (flipCameraButton.drawable as AnimatedVectorDrawable).start()
 
-        sharedPreferences.lastCameraFacing =
-            when (cameraController.physicalCamera?.cameraFacing) {
-                // We can definitely do it better
-                CameraFacing.FRONT -> CameraFacing.BACK
-                CameraFacing.BACK -> CameraFacing.FRONT
-                else -> CameraFacing.BACK
-            }
+        sharedPreferences.lastCameraFacing = when (cameraController.physicalCamera?.cameraFacing) {
+            // We can definitely do it better
+            CameraFacing.FRONT -> CameraFacing.BACK
+            CameraFacing.BACK -> CameraFacing.FRONT
+            else -> CameraFacing.BACK
+        }
 
         bindCameraUseCases()
     }
