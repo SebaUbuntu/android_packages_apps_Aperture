@@ -272,7 +272,7 @@ class MainActivity : AppCompatActivity() {
                 CameraController.TAP_TO_FOCUS_STARTED -> {
                     viewFinderFocus.visibility = View.VISIBLE
                     handler.removeMessages(MSG_HIDE_FOCUS_RING)
-                    ValueAnimator.ofInt(convertDpToPx(0), convertDpToPx(8)).apply {
+                    ValueAnimator.ofInt(0.px, 8.px).apply {
                         addUpdateListener { anim ->
                             viewFinderFocus.setPadding(anim.animatedValue as Int)
                         }
@@ -280,7 +280,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> {
                     handler.removeMessages(MSG_HIDE_FOCUS_RING)
-                    ValueAnimator.ofInt(convertDpToPx(8), convertDpToPx(0)).apply {
+                    ValueAnimator.ofInt(8.px, 0.px).apply {
                         addUpdateListener { anim ->
                             viewFinderFocus.setPadding(anim.animatedValue as Int)
                         }
@@ -1076,14 +1076,14 @@ class MainActivity : AppCompatActivity() {
                     galleryButton.setPadding(0)
                     galleryButton.setImageBitmap(it)
                 } ?: run {
-                    galleryButton.setPadding(convertDpToPx(15))
+                    galleryButton.setPadding(15.px)
                     galleryButton.setImageResource(R.drawable.ic_image)
                 }
             } else if (keyguardManager.isKeyguardLocked) {
-                galleryButton.setPadding(convertDpToPx(15))
+                galleryButton.setPadding(15.px)
                 galleryButton.setImageResource(R.drawable.ic_lock)
             } else {
-                galleryButton.setPadding(convertDpToPx(15))
+                galleryButton.setPadding(15.px)
                 galleryButton.setImageResource(R.drawable.ic_image)
             }
         }
@@ -1174,8 +1174,7 @@ class MainActivity : AppCompatActivity() {
     private fun getThumbnail(uri: Uri?): Bitmap? {
         return try {
             uri?.let {
-                val sizeInPx = convertDpToPx(75)
-                contentResolver.loadThumbnail(it, Size(sizeInPx, sizeInPx), null)
+                contentResolver.loadThumbnail(it, Size(75.px, 75.px), null)
             }
         } catch (exception: Exception) {
             Log.e(LOG_TAG, "${exception.message}")
