@@ -101,12 +101,12 @@ class MainActivity : AppCompatActivity() {
     private val micButton by lazy { findViewById<ImageButton>(R.id.micButton) }
     private val photoModeButton by lazy { findViewById<MaterialButton>(R.id.photoModeButton) }
     private val qrModeButton by lazy { findViewById<MaterialButton>(R.id.qrModeButton) }
-    private val recordChip by lazy { findViewById<Chip>(R.id.recordChip) }
     private val settingsButton by lazy { findViewById<ImageButton>(R.id.settingsButton) }
     private val shutterButton by lazy { findViewById<ImageButton>(R.id.shutterButton) }
     private val timerButton by lazy { findViewById<ImageButton>(R.id.timerButton) }
     private val timerChip by lazy { findViewById<Chip>(R.id.timerChip) }
     private val torchButton by lazy { findViewById<ImageButton>(R.id.torchButton) }
+    private val videoDuration by lazy { findViewById<MaterialButton>(R.id.videoDuration) }
     private val videoModeButton by lazy { findViewById<MaterialButton>(R.id.videoModeButton) }
     private val videoQualityButton by lazy { findViewById<ToggleButton>(R.id.videoQualityButton) }
     private val viewFinder by lazy { findViewById<PreviewView>(R.id.viewFinder) }
@@ -146,11 +146,6 @@ class MainActivity : AppCompatActivity() {
         get() = sharedPreferences.videoQuality
     private var recording: Recording? = null
     private val recordingLock = Mutex()
-    private var recordingTime = 0L
-        set(value) {
-            field = value
-            recordChip.text = TimeUtils.convertNanosToString(recordingTime)
-        }
 
     private val sharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -561,15 +556,25 @@ class MainActivity : AppCompatActivity() {
             audioConfig,
             cameraExecutor
         ) {
+            val updateRecordingStatus = { enabled: Boolean, duration: Long ->
+                // Hide mode buttons
+                photoModeButton.isInvisible = enabled
+                videoModeButton.isInvisible = enabled
+                qrModeButton.isInvisible = enabled
+
+                // Update duration text and visibility state
+                videoDuration.text = TimeUtils.convertNanosToString(duration)
+                videoDuration.isVisible = enabled
+            }
+
             when (it) {
                 is VideoRecordEvent.Status -> runOnUiThread {
-                    recordingTime = it.recordingStats.recordedDurationNanos
-                    recordChip.isVisible = true
+                    updateRecordingStatus(true, it.recordingStats.recordedDurationNanos)
                 }
                 is VideoRecordEvent.Finalize -> {
                     runOnUiThread {
                         startShutterAnimation(ShutterAnimation.VideoEnd)
-                        recordChip.isVisible = false
+                        updateRecordingStatus(false, 0)
                     }
                     cameraSoundsUtils.playStopVideoRecording()
                     if (it.error != VideoRecordEvent.Finalize.ERROR_NO_VALID_DATA) {

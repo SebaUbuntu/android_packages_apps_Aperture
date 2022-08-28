@@ -23,9 +23,6 @@
     <string name="select_video">VIDEO</string>
     <string name="select_scan">SCAN</string>
 
-    <!-- Record chip -->
-    <string translatable="false" name="record_chip_default_text">00:00:00</string>
-
     <!-- Permissions toast -->
     <string name="app_permissions_toast">Permissions not granted by the user.</string>
 
