@@ -13,6 +13,7 @@ import android.app.KeyguardManager
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
 import android.location.Location
@@ -68,12 +69,12 @@ import coil.request.ImageRequest
 import coil.request.SuccessResult
 import coil.size.Scale
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.chip.Chip
 import com.google.android.material.slider.Slider
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import org.lineageos.aperture.ui.CountDownView
 import org.lineageos.aperture.ui.GridView
 import org.lineageos.aperture.utils.CameraFacing
 import org.lineageos.aperture.utils.CameraMode
@@ -92,6 +93,7 @@ class MainActivity : AppCompatActivity() {
     private val aspectRatioButton by lazy { findViewById<ToggleButton>(R.id.aspectRatioButton) }
     private val bottomButtonsLayout by lazy { findViewById<ConstraintLayout>(R.id.bottomButtonsLayout) }
     private val cameraModeHighlight by lazy { findViewById<MaterialButton>(R.id.cameraModeHighlight) }
+    private val countDownView by lazy { findViewById<CountDownView>(R.id.countDownView) }
     private val effectButton by lazy { findViewById<ImageButton>(R.id.effectButton) }
     private val flashButton by lazy { findViewById<ImageButton>(R.id.flashButton) }
     private val flipCameraButton by lazy { findViewById<ImageButton>(R.id.flipCameraButton) }
@@ -104,7 +106,6 @@ class MainActivity : AppCompatActivity() {
     private val settingsButton by lazy { findViewById<ImageButton>(R.id.settingsButton) }
     private val shutterButton by lazy { findViewById<ImageButton>(R.id.shutterButton) }
     private val timerButton by lazy { findViewById<ImageButton>(R.id.timerButton) }
-    private val timerChip by lazy { findViewById<Chip>(R.id.timerChip) }
     private val torchButton by lazy { findViewById<ImageButton>(R.id.torchButton) }
     private val videoDuration by lazy { findViewById<MaterialButton>(R.id.videoDuration) }
     private val videoModeButton by lazy { findViewById<MaterialButton>(R.id.videoModeButton) }
@@ -594,9 +595,9 @@ class MainActivity : AppCompatActivity() {
      */
     private fun canRestartCamera() = when (cameraMode) {
         // Disallow camera restart if we're taking a photo or if timer is running
-        CameraMode.PHOTO -> !isTakingPhoto && !timerChip.isVisible
+        CameraMode.PHOTO -> !isTakingPhoto && !countDownView.isVisible
         // Disallow camera restart if a recording in progress or if timer is running
-        CameraMode.VIDEO -> !cameraController.isRecording && !timerChip.isVisible
+        CameraMode.VIDEO -> !cameraController.isRecording && !countDownView.isVisible
         // Otherwise, allow camera restart
         else -> true
     }
@@ -1206,20 +1207,21 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        lifecycleScope.launch {
-            shutterButton.isEnabled = false
-            timerChip.isVisible = true
-
-            for (i in sharedPreferences.timerMode downTo 1) {
-                timerChip.text = "$i"
-                delay(1000)
-            }
-
-            timerChip.isVisible = false
+        countDownView.setCountDownStatusListener {
+            countDownView.isVisible = false
             shutterButton.isEnabled = true
 
             runnable()
         }
+
+        shutterButton.isEnabled = false
+        countDownView.isVisible = true
+
+        val rect = Rect().apply {
+            viewFinder.getGlobalVisibleRect(this)
+        }
+        countDownView.onPreviewAreaChanged(rect)
+        countDownView.startCountDown(sharedPreferences.timerMode)
     }
 
     companion object {
