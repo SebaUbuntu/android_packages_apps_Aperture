@@ -12,10 +12,10 @@ import android.annotation.SuppressLint
 import android.app.KeyguardManager
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -26,7 +26,6 @@ import android.os.Looper
 import android.os.Message
 import android.provider.MediaStore
 import android.util.Log
-import android.util.Size
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -63,6 +62,11 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.slider.Slider
@@ -1063,13 +1067,33 @@ class MainActivity : AppCompatActivity() {
     private fun updateGalleryButton(uri: Uri?, enable: Boolean = true) {
         runOnUiThread {
             if (uri != null && enable) {
-                getThumbnail(uri)?.let {
-                    galleryButton.setPadding(0)
-                    galleryButton.setImageBitmap(it)
-                } ?: run {
-                    galleryButton.setPadding(convertDpToPx(15))
-                    galleryButton.setImageResource(R.drawable.ic_image)
-                }
+                Glide.with(this)
+                    .load(uri)
+                    .thumbnail()
+                    .listener(object : RequestListener<Drawable> {
+                        override fun onLoadFailed(
+                            e: GlideException?,
+                            model: Any?,
+                            target: Target<Drawable>?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            galleryButton.setPadding(convertDpToPx(15))
+                            galleryButton.setImageResource(R.drawable.ic_image)
+                            return false
+                        }
+
+                        override fun onResourceReady(
+                            resource: Drawable?,
+                            model: Any?,
+                            target: Target<Drawable>?,
+                            dataSource: DataSource?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            galleryButton.setPadding(0)
+                            return false
+                        }
+                    })
+                    .into(galleryButton)
             } else if (keyguardManager.isKeyguardLocked) {
                 galleryButton.setPadding(convertDpToPx(15))
                 galleryButton.setImageResource(R.drawable.ic_lock)
@@ -1160,18 +1184,6 @@ class MainActivity : AppCompatActivity() {
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         // Hide the status bar
         windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
-    }
-
-    private fun getThumbnail(uri: Uri?): Bitmap? {
-        return try {
-            uri?.let {
-                val sizeInPx = convertDpToPx(75)
-                contentResolver.loadThumbnail(it, Size(sizeInPx, sizeInPx), null)
-            }
-        } catch (exception: Exception) {
-            Log.e(LOG_TAG, "${exception.message}")
-            null
-        }
     }
 
     private fun startTimerAndRun(runnable: () -> Unit) {
