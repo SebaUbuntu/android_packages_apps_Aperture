@@ -1222,12 +1222,12 @@ class MainActivity : AppCompatActivity() {
 
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS =
-            mutableListOf(
+            listOf(
                 Manifest.permission.CAMERA,
                 Manifest.permission.RECORD_AUDIO
             ).toTypedArray()
         internal val REQUIRED_PERMISSIONS_LOCATION =
-            mutableListOf(
+            listOf(
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ).toTypedArray()
