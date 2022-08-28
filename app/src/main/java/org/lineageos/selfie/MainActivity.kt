@@ -639,7 +639,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Fallback to highest supported video quality
-        if (!camera.supportedVideoQualities.contains(sharedPreferences.videoQuality)) {
+        if (!camera.supportedVideoQualities.contains(videoQuality)) {
             sharedPreferences.videoQuality = camera.supportedVideoQualities.first()
         }
 
