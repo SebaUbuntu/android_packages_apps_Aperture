@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="32dp"
+            android:height="32dp"
+            android:viewportWidth="32"
+            android:viewportHeight="32">
+            <path
+                android:name="backplate"
+                android:fillColor="@color/gray_10"
+                android:pathData="M 16 1 C 12.023 1 8.205 2.581 5.393 5.393 C 2.581 8.205 1 12.023 1 16 C 1 19.977 2.581 23.795 5.393 26.607 C 8.205 29.419 12.023 31 16 31 C 19.976 31 23.794 29.419 26.606 26.607 C 29.418 23.795 31 19.977 31 16 C 31 12.023 29.418 8.205 26.606 5.393 C 23.794 2.581 19.976 1 16 1 Z"
+                android:strokeWidth="2"
+                android:strokeColor="@color/white" />
+            <group
+                android:name="ic_pause"
+                android:pivotX="16"
+                android:pivotY="16">
+                <path
+                    android:name="pause"
+                    android:fillColor="@color/gray_60"
+                    android:pathData="M 14 9 L 10 9 L 10 23 L 14 23 L 14 9 Z M 22 9 L 18 9 L 18 23 L 22 23 L 22 9 Z" />
+            </group>
+            <group
+                android:name="ic_play"
+                android:pivotX="16"
+                android:pivotY="16"
+                android:translateX="8">
+                <path
+                    android:name="play"
+                    android:fillAlpha="0"
+                    android:fillColor="@color/white"
+                    android:pathData="M 11.5 9 L 22.5 16 L 11.5 23 L 11.5 9 Z" />
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="backplate">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="200"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="fillColor"
+                android:startOffset="100"
+                android:valueFrom="@color/gray_10"
+                android:valueTo="@color/gray_60"
+                android:valueType="colorType" />
+        </aapt:attr>
+    </target>
+    <target android:name="ic_play">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="200"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:startOffset="100"
+                    android:valueFrom="8"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="200"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+                    android:propertyName="scaleX"
+                    android:startOffset="100"
+                    android:valueFrom="0.5"
+                    android:valueTo="1"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="200"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:startOffset="100"
+                    android:valueFrom="0.5"
+                    android:valueTo="1"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="play">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="200"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="fillAlpha"
+                android:startOffset="100"
+                android:valueFrom="0"
+                android:valueTo="1"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+    <target android:name="ic_pause">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="200"
+                    android:interpolator="@android:anim/accelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-8"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="200"
+                    android:interpolator="@android:anim/accelerate_interpolator"
+                    android:propertyName="scaleX"
+                    android:valueFrom="1"
+                    android:valueTo="0.5"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="200"
+                    android:interpolator="@android:anim/accelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1"
+                    android:valueTo="0.5"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="pause">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="200"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="fillAlpha"
+                android:valueFrom="1"
+                android:valueTo="0"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+</animated-vector>
