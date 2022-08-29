@@ -2,21 +2,21 @@
     <string name="app_name">Camera</string>
 
     <!-- Button descriptions -->
-    <string name="timer_button_description">Timer</string>
     <string name="aspect_ratio_button_description">Aspect ratio</string>
-    <string name="video_quality_button_description">Video quality</string>
     <string name="effect_button_description">Effect</string>
-    <string name="grid_button_description">Grid</string>
-    <string name="torch_button_description">Torch</string>
     <string name="flash_button_description">Flash</string>
-    <string name="mic_button_description">Microphone</string>
-    <string name="settings_button_description">Settings</string>
-    <string name="qr_mode_button_description">Switch to QR scanner mode</string>
-    <string name="photo_mode_button_description">Switch to photo mode</string>
-    <string name="video_mode_button_description">Switch to video mode</string>
     <string name="flip_camera_button_description">Flip camera</string>
-    <string name="shutter_button_description">Shutter</string>
     <string name="gallery_button_description">Gallery</string>
+    <string name="grid_button_description">Grid</string>
+    <string name="mic_button_description">Microphone</string>
+    <string name="photo_mode_button_description">Switch to photo mode</string>
+    <string name="qr_mode_button_description">Switch to QR scanner mode</string>
+    <string name="settings_button_description">Settings</string>
+    <string name="shutter_button_description">Shutter</string>
+    <string name="timer_button_description">Timer</string>
+    <string name="torch_button_description">Torch</string>
+    <string name="video_mode_button_description">Switch to video mode</string>
+    <string name="video_quality_button_description">Video quality</string>
 
     <!-- Selector chip -->
     <string name="selector_photo">PHOTO</string>
