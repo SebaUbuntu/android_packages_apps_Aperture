@@ -17,6 +17,7 @@
     <string name="torch_button_description">Torch</string>
     <string name="video_mode_button_description">Switch to video mode</string>
     <string name="video_quality_button_description">Video quality</string>
+    <string name="video_recording_state_button_description">Pause/resume video recording</string>
 
     <!-- Selector chip -->
     <string name="selector_photo">PHOTO</string>

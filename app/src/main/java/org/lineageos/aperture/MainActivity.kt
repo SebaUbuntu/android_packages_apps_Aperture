@@ -110,6 +110,7 @@ class MainActivity : AppCompatActivity() {
     private val videoDuration by lazy { findViewById<MaterialButton>(R.id.videoDuration) }
     private val videoModeButton by lazy { findViewById<MaterialButton>(R.id.videoModeButton) }
     private val videoQualityButton by lazy { findViewById<ToggleButton>(R.id.videoQualityButton) }
+    private val videoRecordingStateButton by lazy { findViewById<ImageButton>(R.id.videoRecordingStateButton) }
     private val viewFinder by lazy { findViewById<PreviewView>(R.id.viewFinder) }
     private val viewFinderFocus by lazy { findViewById<ImageView>(R.id.viewFinderFocus) }
     private val zoomLevel by lazy { findViewById<Slider>(R.id.zoomLevel) }
@@ -149,6 +150,7 @@ class MainActivity : AppCompatActivity() {
         get() = sharedPreferences.videoQuality
     private var recording: Recording? = null
     private val recordingLock = Mutex()
+    private var recordingPaused = false
 
     private val sharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -210,6 +212,12 @@ class MainActivity : AppCompatActivity() {
         VideoToPhoto(R.drawable.avd_mode_video_photo),
         VideoStart(R.drawable.avd_video_start),
         VideoEnd(R.drawable.avd_video_end),
+    }
+
+    enum class VideoRecordingStateAnimation(val resourceId: Int) {
+        Init(R.drawable.avd_video_recording_pause),
+        ResumeToPause(R.drawable.avd_video_recording_pause),
+        PauseToResume(R.drawable.avd_video_recording_resume),
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -357,6 +365,14 @@ class MainActivity : AppCompatActivity() {
 
         flipCameraButton.setOnClickListener { flipCamera() }
 
+        videoRecordingStateButton.setOnClickListener {
+            if (recordingPaused) {
+                recording?.resume()
+            } else {
+                recording?.pause()
+            }
+        }
+
         // Initialize shutter drawable
         when (cameraMode) {
             CameraMode.PHOTO -> startShutterAnimation(ShutterAnimation.InitPhoto)
@@ -488,6 +504,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun startVideoRecordingStateAnimation(animation: VideoRecordingStateAnimation) {
+        // Get appropriate drawable
+        val drawable = ContextCompat.getDrawable(
+            this, animation.resourceId
+        ) as AnimatedVectorDrawable
+
+        // Update current drawable
+        videoRecordingStateButton.setImageDrawable(drawable)
+
+        // Start or reset animation
+        when (animation) {
+            VideoRecordingStateAnimation.Init -> drawable.reset()
+            else -> drawable.start()
+        }
+    }
+
     private fun takePhoto() {
         // Bail out if a photo is already being taken
         if (isTakingPhoto) {
@@ -567,9 +599,27 @@ class MainActivity : AppCompatActivity() {
                 // Update duration text and visibility state
                 videoDuration.text = TimeUtils.convertNanosToString(duration)
                 videoDuration.isVisible = enabled
+
+                // Update video recording pause/resume button visibility state
+                if (duration == 0L) {
+                    flipCameraButton.isInvisible = enabled
+                    videoRecordingStateButton.isVisible = enabled
+                }
             }
 
             when (it) {
+                is VideoRecordEvent.Start -> runOnUiThread {
+                    recordingPaused = false
+                    startVideoRecordingStateAnimation(VideoRecordingStateAnimation.Init)
+                }
+                is VideoRecordEvent.Pause -> runOnUiThread {
+                    recordingPaused = true
+                    startVideoRecordingStateAnimation(VideoRecordingStateAnimation.ResumeToPause)
+                }
+                is VideoRecordEvent.Resume -> runOnUiThread {
+                    recordingPaused = false
+                    startVideoRecordingStateAnimation(VideoRecordingStateAnimation.PauseToResume)
+                }
                 is VideoRecordEvent.Status -> runOnUiThread {
                     updateRecordingStatus(true, it.recordingStats.recordedDurationNanos)
                 }
