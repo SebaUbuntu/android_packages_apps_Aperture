@@ -31,8 +31,16 @@ class CountDownView(context: Context, attrs: AttributeSet?) : FrameLayout(
     }
     private var remainingSeconds = 0
     private lateinit var listener: () -> Unit
-    private val handler = MainHandler(Looper.getMainLooper())
     private val previewArea = Rect()
+
+    private val handler = object : Handler(Looper.getMainLooper()) {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            when (msg.what) {
+                SET_TIMER_TEXT -> remainingSecondsChanged(remainingSeconds - 1)
+            }
+        }
+    }
 
     /**
      * Returns whether countdown is on-going.
@@ -110,15 +118,6 @@ class CountDownView(context: Context, attrs: AttributeSet?) : FrameLayout(
             remainingSeconds = 0
             handler.removeMessages(SET_TIMER_TEXT)
             isInvisible = true
-        }
-    }
-
-    private inner class MainHandler(looper: Looper) : Handler(looper) {
-        override fun handleMessage(message: Message) {
-            when (message.what) {
-                SET_TIMER_TEXT -> remainingSecondsChanged(remainingSeconds - 1)
-                else -> {}
-            }
         }
     }
 
