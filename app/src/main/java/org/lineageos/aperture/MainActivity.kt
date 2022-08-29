@@ -59,7 +59,6 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.doOnLayout
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import coil.decode.VideoFrameDecoder
 import coil.load
@@ -69,10 +68,6 @@ import coil.request.SuccessResult
 import coil.size.Scale
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.slider.Slider
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 import org.lineageos.aperture.ui.CountDownView
 import org.lineageos.aperture.ui.GridView
 import org.lineageos.aperture.utils.CameraFacing
@@ -159,7 +154,6 @@ class MainActivity : AppCompatActivity() {
     private val videoQuality: Quality
         get() = sharedPreferences.videoQuality
     private var recording: Recording? = null
-    private val recordingLock = Mutex()
 
     private val sharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -398,7 +392,7 @@ class MainActivity : AppCompatActivity() {
                         startShutterAnimation(ShutterAnimation.VideoEnd)
                         return@setOnClickListener
                     }
-                    if (!cameraController.isRecording) {
+                    if (cameraState == CameraState.IDLE) {
                         startShutterAnimation(ShutterAnimation.VideoStart)
                     }
                 }
@@ -408,7 +402,7 @@ class MainActivity : AppCompatActivity() {
             startTimerAndRun {
                 when (cameraMode) {
                     CameraMode.PHOTO -> takePhoto()
-                    CameraMode.VIDEO -> lifecycleScope.launch { captureVideo() }
+                    CameraMode.VIDEO -> captureVideo()
                     else -> {}
                 }
             }
@@ -576,10 +570,12 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private suspend fun captureVideo() = recordingLock.withLock {
-        if (cameraController.isRecording) {
-            // Stop the current recording session.
-            recording?.stop()
+    private fun captureVideo() {
+        if (cameraState != CameraState.IDLE) {
+            if (cameraController.isRecording) {
+                // Stop the current recording session.
+                recording?.stop()
+            }
             return
         }
 
@@ -590,66 +586,65 @@ class MainActivity : AppCompatActivity() {
         val outputOptions = StorageUtils.getVideoMediaStoreOutputOptions(contentResolver, location)
 
         // Play shutter sound
-        if (cameraSoundsUtils.playStartVideoRecording()) {
-            // Delay startRecording() by 500ms to avoid recording shutter sound
-            delay(500)
-        }
+        val delayTime = if (cameraSoundsUtils.playStartVideoRecording()) 500L else 0L
 
-        // Start recording
-        recording = cameraController.startRecording(
-            outputOptions,
-            audioConfig,
-            cameraExecutor
-        ) {
-            val updateRecordingStatus = { enabled: Boolean, duration: Long ->
-                // Hide mode buttons
-                photoModeButton.isInvisible = enabled
-                videoModeButton.isInvisible = enabled
-                qrModeButton.isInvisible = enabled
+        handler.postDelayed({
+            // Start recording
+            recording = cameraController.startRecording(
+                outputOptions,
+                audioConfig,
+                cameraExecutor
+            ) {
+                val updateRecordingStatus = { enabled: Boolean, duration: Long ->
+                    // Hide mode buttons
+                    photoModeButton.isInvisible = enabled
+                    videoModeButton.isInvisible = enabled
+                    qrModeButton.isInvisible = enabled
 
-                // Update duration text and visibility state
-                videoDuration.text = TimeUtils.convertNanosToString(duration)
-                videoDuration.isVisible = enabled
+                    // Update duration text and visibility state
+                    videoDuration.text = TimeUtils.convertNanosToString(duration)
+                    videoDuration.isVisible = enabled
 
-                // Update video recording pause/resume button visibility state
-                if (duration == 0L) {
-                    flipCameraButton.isInvisible = enabled
-                    videoRecordingStateButton.isVisible = enabled
+                    // Update video recording pause/resume button visibility state
+                    if (duration == 0L) {
+                        flipCameraButton.isInvisible = enabled
+                        videoRecordingStateButton.isVisible = enabled
+                    }
+                }
+
+                when (it) {
+                    is VideoRecordEvent.Start -> runOnUiThread {
+                        cameraState = CameraState.RECORDING_VIDEO
+                        startVideoRecordingStateAnimation(VideoRecordingStateAnimation.Init)
+                    }
+                    is VideoRecordEvent.Pause -> runOnUiThread {
+                        cameraState = CameraState.RECORDING_VIDEO_PAUSED
+                        startVideoRecordingStateAnimation(VideoRecordingStateAnimation.ResumeToPause)
+                    }
+                    is VideoRecordEvent.Resume -> runOnUiThread {
+                        cameraState = CameraState.RECORDING_VIDEO
+                        startVideoRecordingStateAnimation(VideoRecordingStateAnimation.PauseToResume)
+                    }
+                    is VideoRecordEvent.Status -> runOnUiThread {
+                        updateRecordingStatus(true, it.recordingStats.recordedDurationNanos)
+                    }
+                    is VideoRecordEvent.Finalize -> {
+                        runOnUiThread {
+                            startShutterAnimation(ShutterAnimation.VideoEnd)
+                            updateRecordingStatus(false, 0)
+                        }
+                        cameraSoundsUtils.playStopVideoRecording()
+                        if (it.error != VideoRecordEvent.Finalize.ERROR_NO_VALID_DATA) {
+                            sharedPreferences.lastSavedUri = it.outputResults.outputUri
+                            Log.d(LOG_TAG, "Video capture succeeded: ${it.outputResults.outputUri}")
+                            tookSomething = true
+                        }
+                        cameraState = CameraState.IDLE
+                        recording = null
+                    }
                 }
             }
-
-            when (it) {
-                is VideoRecordEvent.Start -> runOnUiThread {
-                    cameraState = CameraState.RECORDING_VIDEO
-                    startVideoRecordingStateAnimation(VideoRecordingStateAnimation.Init)
-                }
-                is VideoRecordEvent.Pause -> runOnUiThread {
-                    cameraState = CameraState.RECORDING_VIDEO_PAUSED
-                    startVideoRecordingStateAnimation(VideoRecordingStateAnimation.ResumeToPause)
-                }
-                is VideoRecordEvent.Resume -> runOnUiThread {
-                    cameraState = CameraState.RECORDING_VIDEO
-                    startVideoRecordingStateAnimation(VideoRecordingStateAnimation.PauseToResume)
-                }
-                is VideoRecordEvent.Status -> runOnUiThread {
-                    updateRecordingStatus(true, it.recordingStats.recordedDurationNanos)
-                }
-                is VideoRecordEvent.Finalize -> {
-                    runOnUiThread {
-                        startShutterAnimation(ShutterAnimation.VideoEnd)
-                        updateRecordingStatus(false, 0)
-                    }
-                    cameraSoundsUtils.playStopVideoRecording()
-                    if (it.error != VideoRecordEvent.Finalize.ERROR_NO_VALID_DATA) {
-                        sharedPreferences.lastSavedUri = it.outputResults.outputUri
-                        Log.d(LOG_TAG, "Video capture succeeded: ${it.outputResults.outputUri}")
-                        tookSomething = true
-                    }
-                    cameraState = CameraState.IDLE
-                    recording = null
-                }
-            }
-        }
+        }, delayTime)
     }
 
     /**
