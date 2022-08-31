@@ -91,22 +91,17 @@ class CountDownView(context: Context, attrs: AttributeSet?) : FrameLayout(
     }
 
     /**
-     * Sets a listener that gets notified when the status of countdown has finished.
-     */
-    fun setCountDownStatusListener(listener: () -> Unit) {
-        this.listener = listener
-    }
-
-    /**
      * Starts showing countdown in the UI.
      *
      * @param sec duration of the countdown, in seconds
+     * @param listener callback for when the status of countdown has finished.
      */
-    fun startCountDown(@IntRange(from = 0) sec: Int) {
+    fun startCountDown(@IntRange(from = 0) sec: Int, listener: () -> Unit) {
         if (isCountingDown) {
             cancelCountDown()
         }
         isVisible = true
+        this.listener = listener
         remainingSecondsChanged(sec)
     }
 
