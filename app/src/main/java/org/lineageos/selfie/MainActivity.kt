@@ -1254,19 +1254,15 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        countDownView.setCountDownStatusListener {
-            shutterButton.isEnabled = true
-
-            runnable()
-        }
-
         shutterButton.isEnabled = cameraMode == CameraMode.VIDEO
 
-        val rect = Rect().apply {
+        countDownView.onPreviewAreaChanged(Rect().apply {
             viewFinder.getGlobalVisibleRect(this)
+        })
+        countDownView.startCountDown(sharedPreferences.timerMode) {
+            shutterButton.isEnabled = true
+            runnable()
         }
-        countDownView.onPreviewAreaChanged(rect)
-        countDownView.startCountDown(sharedPreferences.timerMode)
     }
 
     companion object {
