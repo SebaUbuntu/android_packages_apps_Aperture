@@ -1251,14 +1251,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         countDownView.setCountDownStatusListener {
-            countDownView.isVisible = false
             shutterButton.isEnabled = true
 
             runnable()
         }
 
         shutterButton.isEnabled = false
-        countDownView.isVisible = true
 
         val rect = Rect().apply {
             viewFinder.getGlobalVisibleRect(this)
