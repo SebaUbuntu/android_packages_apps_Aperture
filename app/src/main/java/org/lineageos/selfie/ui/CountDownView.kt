@@ -113,12 +113,14 @@ class CountDownView(context: Context, attrs: AttributeSet?) : FrameLayout(
     /**
      * Cancels the on-going countdown in the UI, if any.
      */
-    private fun cancelCountDown() {
+    fun cancelCountDown(): Boolean {
         if (remainingSeconds > 0) {
             remainingSeconds = 0
             handler.removeMessages(SET_TIMER_TEXT)
             isInvisible = true
+            return true
         }
+        return false
     }
 
     companion object {
