@@ -79,6 +79,7 @@ import org.lineageos.selfie.ui.GridView
 import org.lineageos.selfie.utils.CameraFacing
 import org.lineageos.selfie.utils.CameraMode
 import org.lineageos.selfie.utils.CameraSoundsUtils
+import org.lineageos.selfie.utils.CameraState
 import org.lineageos.selfie.utils.GridMode
 import org.lineageos.selfie.utils.PhysicalCamera
 import org.lineageos.selfie.utils.StorageUtils
@@ -130,6 +131,8 @@ class MainActivity : AppCompatActivity() {
     private val cameraMode: CameraMode
         get() = sharedPreferences.lastCameraMode
 
+    private lateinit var cameraState: CameraState
+
     private lateinit var camera: PhysicalCamera
 
     private lateinit var audioConfig: AudioConfig
@@ -141,7 +144,6 @@ class MainActivity : AppCompatActivity() {
         get() = sharedPreferences.photoEffect
     private lateinit var supportedExtensionModes: List<Int>
 
-    private var isTakingPhoto: Boolean = false
     private var tookSomething: Boolean = false
 
     private var viewFinderTouchEvent: MotionEvent? = null
@@ -150,7 +152,6 @@ class MainActivity : AppCompatActivity() {
         get() = sharedPreferences.videoQuality
     private var recording: Recording? = null
     private val recordingLock = Mutex()
-    private var recordingPaused = false
 
     private val sharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -366,10 +367,10 @@ class MainActivity : AppCompatActivity() {
         flipCameraButton.setOnClickListener { flipCamera() }
 
         videoRecordingStateButton.setOnClickListener {
-            if (recordingPaused) {
-                recording?.resume()
-            } else {
-                recording?.pause()
+            when (cameraState) {
+                CameraState.RECORDING_VIDEO -> recording?.pause()
+                CameraState.RECORDING_VIDEO_PAUSED -> recording?.resume()
+                else -> {}
             }
         }
 
@@ -522,11 +523,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun takePhoto() {
         // Bail out if a photo is already being taken
-        if (isTakingPhoto) {
+        if (cameraState == CameraState.TAKING_PHOTO) {
             return
         }
 
-        isTakingPhoto = true
+        cameraState = CameraState.TAKING_PHOTO
         shutterButton.isEnabled = false
 
         // Create output options object which contains file + metadata
@@ -545,7 +546,7 @@ class MainActivity : AppCompatActivity() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
                     Log.e(LOG_TAG, "Photo capture failed: ${exc.message}", exc)
-                    isTakingPhoto = false
+                    cameraState = CameraState.IDLE
                     shutterButton.isEnabled = true
                 }
 
@@ -560,7 +561,7 @@ class MainActivity : AppCompatActivity() {
                     sharedPreferences.lastSavedUri = output.savedUri
                     updateGalleryButton(output.savedUri)
                     Log.d(LOG_TAG, "Photo capture succeeded: ${output.savedUri}")
-                    isTakingPhoto = false
+                    cameraState = CameraState.IDLE
                     shutterButton.isEnabled = true
                     tookSomething = true
                 }
@@ -574,6 +575,9 @@ class MainActivity : AppCompatActivity() {
             recording?.stop()
             return
         }
+
+        // Disallow state changes while we are about to prepare for recording video
+        cameraState = CameraState.PRE_RECORDING_VIDEO
 
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getVideoMediaStoreOutputOptions(contentResolver, location)
@@ -609,15 +613,15 @@ class MainActivity : AppCompatActivity() {
 
             when (it) {
                 is VideoRecordEvent.Start -> runOnUiThread {
-                    recordingPaused = false
+                    cameraState = CameraState.RECORDING_VIDEO
                     startVideoRecordingStateAnimation(VideoRecordingStateAnimation.Init)
                 }
                 is VideoRecordEvent.Pause -> runOnUiThread {
-                    recordingPaused = true
+                    cameraState = CameraState.RECORDING_VIDEO_PAUSED
                     startVideoRecordingStateAnimation(VideoRecordingStateAnimation.ResumeToPause)
                 }
                 is VideoRecordEvent.Resume -> runOnUiThread {
-                    recordingPaused = false
+                    cameraState = CameraState.RECORDING_VIDEO
                     startVideoRecordingStateAnimation(VideoRecordingStateAnimation.PauseToResume)
                 }
                 is VideoRecordEvent.Status -> runOnUiThread {
@@ -635,6 +639,7 @@ class MainActivity : AppCompatActivity() {
                         Log.d(LOG_TAG, "Video capture succeeded: ${it.outputResults.outputUri}")
                         tookSomething = true
                     }
+                    cameraState = CameraState.IDLE
                     recording = null
                 }
             }
@@ -644,14 +649,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Check if we can reinitialize the camera use cases
      */
-    private fun canRestartCamera() = when (cameraMode) {
-        // Disallow camera restart if we're taking a photo or if timer is running
-        CameraMode.PHOTO -> !isTakingPhoto && !countDownView.isVisible
-        // Disallow camera restart if a recording in progress or if timer is running
-        CameraMode.VIDEO -> !cameraController.isRecording && !countDownView.isVisible
-        // Otherwise, allow camera restart
-        else -> true
-    }
+    private fun canRestartCamera() = cameraState == CameraState.IDLE && !countDownView.isVisible
 
     /**
      * Rebind cameraProvider use cases
@@ -660,7 +658,7 @@ class MainActivity : AppCompatActivity() {
         // Unbind previous use cases
         cameraController.unbind()
 
-        isTakingPhoto = false
+        cameraState = CameraState.IDLE
 
         // Hide grid until preview is ready
         gridView.alpha = 0f
