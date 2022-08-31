@@ -370,7 +370,7 @@ class MainActivity : AppCompatActivity() {
             when (cameraState) {
                 CameraState.RECORDING_VIDEO -> recording?.pause()
                 CameraState.RECORDING_VIDEO_PAUSED -> recording?.resume()
-                else -> {}
+                else -> throw Exception("videoRecordingStateButton clicked while in invalid state: $cameraState")
             }
         }
 
