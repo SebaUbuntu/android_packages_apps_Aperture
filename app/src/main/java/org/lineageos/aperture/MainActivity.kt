@@ -386,6 +386,10 @@ class MainActivity : AppCompatActivity() {
             when (cameraMode) {
                 CameraMode.PHOTO -> startShutterAnimation(ShutterAnimation.PhotoCapture)
                 CameraMode.VIDEO -> {
+                    if (countDownView.cancelCountDown()) {
+                        startShutterAnimation(ShutterAnimation.VideoEnd)
+                        return@setOnClickListener
+                    }
                     if (!cameraController.isRecording) {
                         startShutterAnimation(ShutterAnimation.VideoStart)
                     }
@@ -1256,7 +1260,7 @@ class MainActivity : AppCompatActivity() {
             runnable()
         }
 
-        shutterButton.isEnabled = false
+        shutterButton.isEnabled = cameraMode == CameraMode.VIDEO
 
         val rect = Rect().apply {
             viewFinder.getGlobalVisibleRect(this)
