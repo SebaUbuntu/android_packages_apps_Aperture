@@ -39,19 +39,19 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
         bottomSheetDialog.findViewById<TextView>(R.id.bytes)!!
     }
     private val bottomSheetDialogBytesTitle by lazy {
-        bottomSheetDialog.findViewById<TextView>(R.id.bytes_title)!!
+        bottomSheetDialog.findViewById<TextView>(R.id.bytesTitle)!!
     }
     private val bottomSheetDialogText by lazy {
         bottomSheetDialog.findViewById<TextView>(R.id.text)!!
     }
     private val bottomSheetDialogTextTitle by lazy {
-        bottomSheetDialog.findViewById<TextView>(R.id.text_title)!!
+        bottomSheetDialog.findViewById<TextView>(R.id.textTitle)!!
     }
     private val bottomSheetDialogType by lazy {
         bottomSheetDialog.findViewById<TextView>(R.id.type)!!
     }
     private val bottomSheetDialogSetType by lazy {
-        bottomSheetDialog.findViewById<Spinner>(R.id.set_type)!!
+        bottomSheetDialog.findViewById<Spinner>(R.id.setType)!!
     }
 
     private val reader by lazy { MultiFormatReader() }
@@ -127,7 +127,7 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
                 else null
 
             // Set type spinner
-            bottomSheetDialog.findViewById<Spinner>(R.id.set_type)?.onItemSelectedListener =
+            bottomSheetDialog.findViewById<Spinner>(R.id.setType)?.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(parent: AdapterView<*>?) {}
 
