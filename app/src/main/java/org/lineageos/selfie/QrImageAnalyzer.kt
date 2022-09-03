@@ -141,7 +141,7 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
                         type = when (position) {
                             0 -> Type.BYTES
                             1 -> Type.TEXT
-                            else -> throw Exception("Unknown type spinner position")
+                            else -> throw Exception("Unknown type spinner position: $position")
                         }
                     }
                 }
