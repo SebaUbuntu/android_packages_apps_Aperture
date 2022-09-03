@@ -9,6 +9,7 @@ package org.lineageos.aperture
 import android.app.Activity
 import android.app.KeyguardManager
 import android.content.ClipData
+import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Intent
 import android.text.SpannableString
@@ -170,7 +171,7 @@ class QrImageAnalyzer(private val activity: Activity) : ImageAnalysis.Analyzer {
                     Intent.createChooser(
                         Intent().apply {
                             action = Intent.ACTION_SEND
-                            type = "text/plain"
+                            type = ClipDescription.MIMETYPE_TEXT_PLAIN
                             putExtra(
                                 Intent.EXTRA_TEXT, when (this@QrImageAnalyzer.type) {
                                     Type.TEXT -> result.text
