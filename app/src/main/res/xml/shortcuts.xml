@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_selfie"
+        android:shortcutDisabledMessage="@string/shortcut_selfie"
+        android:shortcutId="selfie"
+        android:shortcutLongLabel="@string/shortcut_selfie"
+        android:shortcutShortLabel="@string/shortcut_selfie">
+        <intent
+            android:action="shortcut_selfie"
+            android:targetClass="org.lineageos.aperture.MainActivity"
+            android:targetPackage="org.lineageos.aperture" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_video"
+        android:shortcutDisabledMessage="@string/shortcut_video"
+        android:shortcutId="video"
+        android:shortcutLongLabel="@string/shortcut_video"
+        android:shortcutShortLabel="@string/shortcut_video">
+        <intent
+            android:action="shortcut_video"
+            android:targetClass="org.lineageos.aperture.MainActivity"
+            android:targetPackage="org.lineageos.aperture" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_qr"
+        android:shortcutDisabledMessage="@string/shortcut_qr"
+        android:shortcutId="qr"
+        android:shortcutLongLabel="@string/shortcut_qr"
+        android:shortcutShortLabel="@string/shortcut_qr">
+        <intent
+            android:action="shortcut_qr"
+            android:targetClass="org.lineageos.aperture.MainActivity"
+            android:targetPackage="org.lineageos.aperture" />
+    </shortcut>
+</shortcuts>

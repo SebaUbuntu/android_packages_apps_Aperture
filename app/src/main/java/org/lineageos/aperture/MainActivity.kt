@@ -223,6 +223,20 @@ class MainActivity : AppCompatActivity() {
         PauseToResume(R.drawable.avd_video_recording_resume),
     }
 
+    private val shortcutActions = mapOf(
+        "shortcut_selfie" to {
+            sharedPreferences.lastCameraMode = CameraMode.PHOTO
+            sharedPreferences.lastCameraFacing = CameraFacing.FRONT
+        },
+        "shortcut_video" to {
+            sharedPreferences.lastCameraMode = CameraMode.VIDEO
+            sharedPreferences.lastCameraFacing = CameraFacing.BACK
+        },
+        "shortcut_qr" to {
+            sharedPreferences.lastCameraMode = CameraMode.QR
+        },
+    )
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -374,6 +388,11 @@ class MainActivity : AppCompatActivity() {
                 CameraState.RECORDING_VIDEO_PAUSED -> recording?.resume()
                 else -> throw Exception("videoRecordingStateButton clicked while in invalid state: $cameraState")
             }
+        }
+
+        // Handle shortcut intent
+        intent.action?.let {
+            shortcutActions[it]?.invoke()
         }
 
         // Initialize shutter drawable
