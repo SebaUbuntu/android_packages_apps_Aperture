@@ -15,17 +15,22 @@ android_app {
     platform_apis: true,
 
     static_libs: [
+        // DO NOT EDIT THIS SECTION MANUALLY
+        "androidx.core_core-ktx",
         "androidx.appcompat_appcompat",
-        "androidx.camera_camera-camera2",
-        "androidx.camera_camera-core",
-        "androidx.camera_camera-extensions",
-        "androidx.camera_camera-lifecycle",
-        "androidx.camera_camera-video",
-        "androidx.camera_camera-view",
         "androidx-constraintlayout_constraintlayout",
-        "androidx.core_core",
+        "androidx.lifecycle_lifecycle-viewmodel-ktx",
         "androidx.preference_preference",
-        "com.google.android.material_material",
+        "Aperture_com.google.android.material_material",
+        "Aperture_androidx.camera_camera-core",
+        "Aperture_androidx.camera_camera-camera2",
+        "Aperture_androidx.camera_camera-lifecycle",
+        "Aperture_androidx.camera_camera-video",
+        "Aperture_androidx.camera_camera-view",
+        "Aperture_androidx.camera_camera-extensions",
+        "Aperture_com.google.zxing_core",
+        "Aperture_io.coil-kt_coil",
+        "Aperture_io.coil-kt_coil-video",
     ],
     optional_uses_libs: [
         "androidx.camera.extensions.impl"
