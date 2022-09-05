@@ -11,6 +11,7 @@ android_app {
     resource_dirs: ["src/main/res"],
     manifest: "src/main/AndroidManifest.xml",
 
+    sdk_version: "current",
     product_specific: true,
     platform_apis: true,
 
