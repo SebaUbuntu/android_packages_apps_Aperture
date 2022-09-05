@@ -13,7 +13,6 @@ android_app {
 
     sdk_version: "current",
     product_specific: true,
-    platform_apis: true,
 
     static_libs: [
         "androidx.appcompat_appcompat",
