@@ -11,7 +11,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "org.lineageos.aperture"
+        applicationId = "org.lineageos.aperture.dev"
         minSdk = 31
         targetSdk = 33
         versionCode = 1
