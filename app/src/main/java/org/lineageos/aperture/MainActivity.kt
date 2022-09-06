@@ -131,8 +131,8 @@ class MainActivity : AppCompatActivity() {
     private var cameraState = CameraState.IDLE
         set(value) {
             field = value
-            updateSecondaryBarButtons(value)
-            updatePrimaryBarButtons(value)
+            updateSecondaryBarButtons()
+            updatePrimaryBarButtons()
         }
 
     private lateinit var camera: PhysicalCamera
@@ -873,7 +873,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Enable or disable secondary bar buttons
      */
-    private fun updateSecondaryBarButtons(cameraState: CameraState) {
+    private fun updateSecondaryBarButtons() {
         runOnUiThread {
             timerButton.isEnabled = cameraState == CameraState.IDLE
             aspectRatioButton.isEnabled = cameraState == CameraState.IDLE
@@ -890,7 +890,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Enable or disable primary bar buttons
      */
-    private fun updatePrimaryBarButtons(cameraState: CameraState) {
+    private fun updatePrimaryBarButtons() {
         runOnUiThread {
             galleryButton.isEnabled = cameraState == CameraState.IDLE
             // Shutter button must stay enabled
