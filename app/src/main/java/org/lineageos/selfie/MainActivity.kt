@@ -76,6 +76,7 @@ import org.lineageos.selfie.utils.CameraSoundsUtils
 import org.lineageos.selfie.utils.CameraState
 import org.lineageos.selfie.utils.GridMode
 import org.lineageos.selfie.utils.PhysicalCamera
+import org.lineageos.selfie.utils.ShortcutsUtils
 import org.lineageos.selfie.utils.StorageUtils
 import org.lineageos.selfie.utils.TimeUtils
 import java.util.concurrent.ExecutorService
@@ -224,15 +225,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val shortcutActions = mapOf(
-        "shortcut_selfie" to {
+        ShortcutsUtils.SHORTCUT_ID_SELFIE to {
             sharedPreferences.lastCameraMode = CameraMode.PHOTO
             sharedPreferences.lastCameraFacing = CameraFacing.FRONT
         },
-        "shortcut_video" to {
+        ShortcutsUtils.SHORTCUT_ID_VIDEO to {
             sharedPreferences.lastCameraMode = CameraMode.VIDEO
             sharedPreferences.lastCameraFacing = CameraFacing.BACK
         },
-        "shortcut_qr" to {
+        ShortcutsUtils.SHORTCUT_ID_QR to {
             sharedPreferences.lastCameraMode = CameraMode.QR
         },
     )
@@ -245,6 +246,9 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         setShowWhenLocked(true)
+
+        // Register shortcuts
+        ShortcutsUtils.registerShortcuts(this)
 
         // Request camera permissions
         if (!allPermissionsGranted()) {
