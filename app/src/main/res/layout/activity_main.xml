@@ -231,6 +231,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/galleryButtonCardView"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
