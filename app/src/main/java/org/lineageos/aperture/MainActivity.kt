@@ -178,10 +178,15 @@ class MainActivity : AppCompatActivity() {
 
     private var location: Location? = null
     private val locationListener = object : LocationListener {
-        override fun onLocationChanged(it: Location) {
-            if (location == null || location!!.accuracy >= it.accuracy) {
-                location = it
-            }
+        override fun onLocationChanged(location: Location) {
+            val mainActivity = this@MainActivity
+            mainActivity.location = mainActivity.location?.let {
+                if (it.accuracy >= location.accuracy) {
+                    location
+                } else {
+                    mainActivity.location
+                }
+            } ?: location
         }
 
         @SuppressLint("MissingPermission")
