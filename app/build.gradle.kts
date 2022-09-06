@@ -252,7 +252,6 @@ tasks.register("generateBp") {
                         dep == "org.jetbrains.kotlin:kotlin-stdlib-common" -> false
                         else -> true
                     }
-
                 }.toMutableList()
 
                 if (addNoDeps) {
