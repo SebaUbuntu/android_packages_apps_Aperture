@@ -844,25 +844,27 @@ class MainActivity : AppCompatActivity() {
      * Update the camera mode buttons reflecting the current mode
      */
     private fun updateCameraModeButtons() {
-        cameraMode.let {
-            qrModeButton.isEnabled = it != CameraMode.QR
-            photoModeButton.isEnabled = it != CameraMode.PHOTO
-            videoModeButton.isEnabled = it != CameraMode.VIDEO
-        }
+        runOnUiThread {
+            cameraMode.let {
+                qrModeButton.isEnabled = it != CameraMode.QR
+                photoModeButton.isEnabled = it != CameraMode.PHOTO
+                videoModeButton.isEnabled = it != CameraMode.VIDEO
+            }
 
-        // Animate camera mode change
-        (cameraModeHighlight.parent as View).doOnLayout {
-            ValueAnimator.ofFloat(
-                cameraModeHighlight.x, when (cameraMode) {
-                    CameraMode.QR -> qrModeButton.x
-                    CameraMode.PHOTO -> photoModeButton.x
-                    CameraMode.VIDEO -> videoModeButton.x
-                }
-            ).apply {
-                addUpdateListener {
-                    cameraModeHighlight.x = it.animatedValue as Float
-                }
-            }.start()
+            // Animate camera mode change
+            (cameraModeHighlight.parent as View).doOnLayout {
+                ValueAnimator.ofFloat(
+                    cameraModeHighlight.x, when (cameraMode) {
+                        CameraMode.QR -> qrModeButton.x
+                        CameraMode.PHOTO -> photoModeButton.x
+                        CameraMode.VIDEO -> videoModeButton.x
+                    }
+                ).apply {
+                    addUpdateListener {
+                        cameraModeHighlight.x = it.animatedValue as Float
+                    }
+                }.start()
+            }
         }
     }
 
