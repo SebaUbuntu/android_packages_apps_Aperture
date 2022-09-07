@@ -68,7 +68,7 @@ class SettingsActivity : AppCompatActivity() {
                     Preference.OnPreferenceChangeListener { _, newValue ->
                         if (newValue as Boolean) {
                             requestLocationPermissions.launch(
-                                MainActivity.REQUIRED_PERMISSIONS_LOCATION
+                                CameraActivity.REQUIRED_PERMISSIONS_LOCATION
                             )
                         }
                         true
@@ -79,7 +79,7 @@ class SettingsActivity : AppCompatActivity() {
 
         @SuppressLint("UnsafeOptInUsageError")
         private fun allLocationPermissionsGranted() =
-            MainActivity.REQUIRED_PERMISSIONS_LOCATION.all {
+            CameraActivity.REQUIRED_PERMISSIONS_LOCATION.all {
                 ContextCompat.checkSelfPermission(
                     requireContext(), it
                 ) == PackageManager.PERMISSION_GRANTED

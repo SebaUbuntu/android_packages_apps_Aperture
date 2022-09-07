@@ -11,7 +11,7 @@ import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.graphics.drawable.Icon
-import org.lineageos.aperture.MainActivity
+import org.lineageos.aperture.CameraActivity
 import org.lineageos.aperture.R
 
 object ShortcutsUtils {
@@ -30,7 +30,7 @@ object ShortcutsUtils {
                 .setLongLabel(context.getString(R.string.shortcut_selfie))
                 .setIcon(Icon.createWithResource(context, R.drawable.ic_shortcut_selfie))
                 .setIntent(
-                    Intent(context, MainActivity::class.java)
+                    Intent(context, CameraActivity::class.java)
                         .setAction(SHORTCUT_ID_SELFIE)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 )
@@ -40,7 +40,7 @@ object ShortcutsUtils {
                 .setLongLabel(context.getString(R.string.shortcut_video))
                 .setIcon(Icon.createWithResource(context, R.drawable.ic_shortcut_video))
                 .setIntent(
-                    Intent(context, MainActivity::class.java)
+                    Intent(context, CameraActivity::class.java)
                         .setAction(SHORTCUT_ID_VIDEO)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 )
@@ -50,7 +50,7 @@ object ShortcutsUtils {
                 .setLongLabel(context.getString(R.string.shortcut_qr))
                 .setIcon(Icon.createWithResource(context, R.drawable.ic_shortcut_qr))
                 .setIntent(
-                    Intent(context, MainActivity::class.java)
+                    Intent(context, CameraActivity::class.java)
                         .setAction(SHORTCUT_ID_QR)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 )

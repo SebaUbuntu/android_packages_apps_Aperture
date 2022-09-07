@@ -1,5 +1,7 @@
 <resources>
+    <!-- App/Activities -->
     <string name="app_name">Camera</string>
+    <string name="video_camera_label">Camcorder</string>
 
     <!-- Button descriptions -->
     <string name="aspect_ratio_button_description">Aspect ratio</string>

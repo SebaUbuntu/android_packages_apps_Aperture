@@ -19,7 +19,7 @@
     </style>
 
     <!-- Main activity theme. -->
-    <style name="Theme.Aperture.Main" parent="Theme.Aperture">
+    <style name="Theme.Aperture.Camera" parent="Theme.Aperture">
         <item name="android:windowBackground">?attr/colorOnPrimary</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

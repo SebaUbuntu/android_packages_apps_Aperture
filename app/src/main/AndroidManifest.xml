@@ -25,34 +25,92 @@
             android:required="false" />
 
         <activity
-            android:name=".MainActivity"
-            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
+            android:name=".CameraActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
-            android:theme="@style/Theme.Aperture.Main">
+            android:taskAffinity=".CameraActivity"
+            android:theme="@style/Theme.Aperture.Camera"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
+        <activity-alias
+            android:name=".CameraLauncher"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:targetActivity=".CameraActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity-alias>
 
+        <activity
+            android:name=".CaptureActivity"
+            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden"
+            android:exported="true"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.Aperture.Camera"
+            android:visibleToInstantApps="true"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.media.action.IMAGE_CAPTURE" />
-                <action android:name="android.media.action.IMAGE_CAPTURE_SECURE" />
-                <action android:name="android.media.action.STILL_IMAGE_CAMERA" />
-                <action android:name="android.media.action.STILL_IMAGE_CAMERA_SECURE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Video camera and capture use the Camcorder label and icon. -->
+        <activity-alias
+            android:name=".VideoCamera"
+            android:exported="true"
+            android:label="@string/video_camera_label"
+            android:targetActivity=".CaptureActivity">
+            <intent-filter>
                 <action android:name="android.media.action.VIDEO_CAMERA" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
                 <action android:name="android.media.action.VIDEO_CAPTURE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:name=".SecureCameraActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:taskAffinity=".SecureCameraActivity"
+            android:theme="@style/Theme.Aperture.Camera"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA_SECURE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE_SECURE" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".SettingsActivity"
+            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|keyboardHidden"
             android:exported="false"
             android:label="@string/title_activity_settings"
             android:theme="@style/Theme.Aperture.Settings" />

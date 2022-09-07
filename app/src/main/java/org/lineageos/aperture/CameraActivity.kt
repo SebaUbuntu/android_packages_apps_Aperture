@@ -86,7 +86,7 @@ import java.util.concurrent.Executors
 @androidx.camera.camera2.interop.ExperimentalCamera2Interop
 @androidx.camera.core.ExperimentalZeroShutterLag
 @androidx.camera.view.video.ExperimentalVideo
-class MainActivity : AppCompatActivity() {
+open class CameraActivity : AppCompatActivity() {
     private val aspectRatioButton by lazy { findViewById<ToggleButton>(R.id.aspectRatioButton) }
     private val cameraModeHighlight by lazy { findViewById<MaterialButton>(R.id.cameraModeHighlight) }
     private val countDownView by lazy { findViewById<CountDownView>(R.id.countDownView) }
@@ -181,12 +181,12 @@ class MainActivity : AppCompatActivity() {
     private var location: Location? = null
     private val locationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
-            val mainActivity = this@MainActivity
-            mainActivity.location = mainActivity.location?.let {
+            val cameraActivity = this@CameraActivity
+            cameraActivity.location = cameraActivity.location?.let {
                 if (it.accuracy >= location.accuracy) {
                     location
                 } else {
-                    mainActivity.location
+                    cameraActivity.location
                 }
             } ?: location
         }
@@ -251,7 +251,7 @@ class MainActivity : AppCompatActivity() {
 
         hideStatusBars()
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_camera)
         setShowWhenLocked(true)
 
         // Register shortcuts
@@ -566,7 +566,7 @@ class MainActivity : AppCompatActivity() {
         val outputOptions = StorageUtils.getPhotoMediaStoreOutputOptions(
             contentResolver,
             ImageCapture.Metadata().apply {
-                location = this@MainActivity.location
+                location = this@CameraActivity.location
             }
         )
 
