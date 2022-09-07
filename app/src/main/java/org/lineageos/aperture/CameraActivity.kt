@@ -231,7 +231,19 @@ open class CameraActivity : AppCompatActivity() {
         PauseToResume(R.drawable.avd_video_recording_resume),
     }
 
-    private val shortcutActions = mapOf(
+    private val intentActions = mapOf(
+        // Intents
+        MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA to {
+            cameraMode = CameraMode.PHOTO
+        },
+        MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA_SECURE to {
+            cameraMode = CameraMode.PHOTO
+        },
+        MediaStore.INTENT_ACTION_VIDEO_CAMERA to {
+            cameraMode = CameraMode.VIDEO
+        },
+
+        // Shortcuts
         ShortcutsUtils.SHORTCUT_ID_SELFIE to {
             cameraMode = CameraMode.PHOTO
             cameraFacing = CameraFacing.FRONT
@@ -282,7 +294,7 @@ open class CameraActivity : AppCompatActivity() {
 
         // Handle intent
         intent.action?.let {
-            shortcutActions[it]?.invoke()
+            intentActions[it]?.invoke()
         }
 
         // Set secondary bar button callbacks
