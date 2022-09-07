@@ -125,8 +125,8 @@ open class CameraActivity : AppCompatActivity() {
 
     private lateinit var cameraController: LifecycleCameraController
 
-    private val cameraMode: CameraMode
-        get() = sharedPreferences.lastCameraMode
+    private lateinit var cameraMode: CameraMode
+    private lateinit var cameraFacing: CameraFacing
 
     private var cameraState = CameraState.IDLE
         set(value) {
@@ -233,15 +233,15 @@ open class CameraActivity : AppCompatActivity() {
 
     private val shortcutActions = mapOf(
         ShortcutsUtils.SHORTCUT_ID_SELFIE to {
-            sharedPreferences.lastCameraMode = CameraMode.PHOTO
-            sharedPreferences.lastCameraFacing = CameraFacing.FRONT
+            cameraMode = CameraMode.PHOTO
+            cameraFacing = CameraFacing.FRONT
         },
         ShortcutsUtils.SHORTCUT_ID_VIDEO to {
-            sharedPreferences.lastCameraMode = CameraMode.VIDEO
-            sharedPreferences.lastCameraFacing = CameraFacing.BACK
+            cameraMode = CameraMode.VIDEO
+            cameraFacing = CameraFacing.BACK
         },
         ShortcutsUtils.SHORTCUT_ID_QR to {
-            sharedPreferences.lastCameraMode = CameraMode.QR
+            cameraMode = CameraMode.QR
         },
     )
 
@@ -275,6 +275,15 @@ open class CameraActivity : AppCompatActivity() {
 
         // Initialize sounds utils
         cameraSoundsUtils = CameraSoundsUtils(sharedPreferences)
+
+        // Initialize camera mode and facing
+        cameraMode = sharedPreferences.lastCameraMode
+        cameraFacing = sharedPreferences.lastCameraFacing
+
+        // Handle intent
+        intent.action?.let {
+            shortcutActions[it]?.invoke()
+        }
 
         // Set secondary bar button callbacks
         aspectRatioButton.setOnClickListener { cycleAspectRatio() }
@@ -399,11 +408,6 @@ open class CameraActivity : AppCompatActivity() {
                 CameraState.RECORDING_VIDEO_PAUSED -> recording?.resume()
                 else -> throw Exception("videoRecordingStateButton clicked while in invalid state: $cameraState")
             }
-        }
-
-        // Handle shortcut intent
-        intent.action?.let {
-            shortcutActions[it]?.invoke()
         }
 
         // Initialize shutter drawable
@@ -697,7 +701,7 @@ open class CameraActivity : AppCompatActivity() {
         // Select front/back camera
         var cameraSelector = when (cameraMode) {
             CameraMode.QR -> CameraSelector.DEFAULT_BACK_CAMERA
-            else -> when (sharedPreferences.lastCameraFacing) {
+            else -> when (cameraFacing) {
                 CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
                 CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
                 else -> CameraSelector.DEFAULT_BACK_CAMERA
@@ -818,7 +822,9 @@ open class CameraActivity : AppCompatActivity() {
             else -> {}
         }
 
+        this.cameraMode = cameraMode
         sharedPreferences.lastCameraMode = cameraMode
+
         bindCameraUseCases()
     }
 
@@ -832,12 +838,13 @@ open class CameraActivity : AppCompatActivity() {
 
         (flipCameraButton.drawable as AnimatedVectorDrawable).start()
 
-        sharedPreferences.lastCameraFacing = when (cameraController.physicalCamera?.cameraFacing) {
+        cameraFacing = when (cameraFacing) {
             // We can definitely do it better
             CameraFacing.FRONT -> CameraFacing.BACK
             CameraFacing.BACK -> CameraFacing.FRONT
             else -> CameraFacing.BACK
         }
+        sharedPreferences.lastCameraFacing = cameraFacing
 
         bindCameraUseCases()
     }
