@@ -74,7 +74,7 @@ class SettingsActivity : AppCompatActivity() {
                         true
                     }
             }
-            shutterSound?.isEnabled = !CameraSoundsUtils.mustPlaySounds
+            shutterSound?.isVisible = !CameraSoundsUtils.mustPlaySounds
         }
 
         @SuppressLint("UnsafeOptInUsageError")
