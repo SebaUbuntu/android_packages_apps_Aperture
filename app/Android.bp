@@ -14,6 +14,8 @@ android_app {
     sdk_version: "current",
     product_specific: true,
 
+    overrides: ["Camera2"],
+
     static_libs: [
         // DO NOT EDIT THIS SECTION MANUALLY
         "androidx.core_core-ktx",
