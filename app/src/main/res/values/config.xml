@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Mapping of camera IDs to camera types. The item index corresponds to the camera ID.
+         If your HAL has some holes in camera ID list (e.g. [0, 1, 3]) use unknown camera type
+         to fill the gap.
+         The default configuration is ID 0 and 1 as main camera types since they usually
+         correspond to back and front camera.
+         Unmapped cameras will be ignored by the app.
+         Camera types are defined in CameraType.kt. -->
+    <string-array name="cameraTypes">
+        <item>main</item> <!-- 0: Main back -->
+        <item>main</item> <!-- 1: Main front -->
+    </string-array>
+
+    <!-- Decide whether unmapped cameras and cameras with type unknown
+         should be ignored by the app. You may want to set this to false for debugging. -->
+    <bool name="filterUnknownCameras">true</bool>
+</resources>

@@ -26,6 +26,9 @@
     <string name="select_video">VIDEO</string>
     <string name="select_scan">SCAN</string>
 
+    <!-- Camera ID selector -->
+    <string name="camera_id_choice_title">Choose a camera ID</string>
+
     <!-- Permissions toast -->
     <string name="app_permissions_toast">Permissions not granted by the user.</string>
 

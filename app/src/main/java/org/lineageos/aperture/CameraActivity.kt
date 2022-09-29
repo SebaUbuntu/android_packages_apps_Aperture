@@ -34,9 +34,9 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import android.widget.ToggleButton
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.AspectRatio
-import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.TorchState
@@ -128,6 +128,10 @@ open class CameraActivity : AppCompatActivity() {
     private lateinit var cameraMode: CameraMode
     private lateinit var cameraFacing: CameraFacing
 
+    private lateinit var cameras: Cameras
+    private val cameraTypes by lazy { resources.getStringArray(R.array.cameraTypes) }
+    private val filterUnknownCameras by lazy { resources.getBoolean(R.bool.filterUnknownCameras) }
+
     private var cameraState = CameraState.IDLE
         set(value) {
             field = value
@@ -136,6 +140,7 @@ open class CameraActivity : AppCompatActivity() {
         }
 
     private lateinit var camera: PhysicalCamera
+    private var cameraId: Int = -1
 
     private lateinit var audioConfig: AudioConfig
 
@@ -413,6 +418,10 @@ open class CameraActivity : AppCompatActivity() {
         videoModeButton.setOnClickListener { changeCameraMode(CameraMode.VIDEO) }
 
         flipCameraButton.setOnClickListener { flipCamera() }
+        flipCameraButton.setOnLongClickListener {
+            selectCameraId()
+            true
+        }
 
         videoRecordingStateButton.setOnClickListener {
             when (cameraState) {
@@ -710,19 +719,24 @@ open class CameraActivity : AppCompatActivity() {
         // Hide grid until preview is ready
         gridView.alpha = 0f
 
-        // Select front/back camera
-        var cameraSelector = when (cameraMode) {
-            CameraMode.QR -> CameraSelector.DEFAULT_BACK_CAMERA
-            else -> when (cameraFacing) {
-                CameraFacing.FRONT -> CameraSelector.DEFAULT_FRONT_CAMERA
-                CameraFacing.BACK -> CameraSelector.DEFAULT_BACK_CAMERA
-                else -> CameraSelector.DEFAULT_BACK_CAMERA
-            }
-        }
+        // Get a list of cameras
+        cameras = cameraProvider.getCameras()
 
-        // Get a stable reference to CameraInfo
-        // We can hardcode the first one in the filter as long as we use DEFAULT_*_CAMERA
-        camera = PhysicalCamera(cameraSelector.filter(cameraProvider.availableCameraInfos).first())
+        // Get a list of cameras of the selected facing
+        val camerasOfFacing = cameras.filter(when (cameraMode) {
+            CameraMode.QR -> CameraFacing.BACK
+            else -> cameraFacing
+        })
+
+        // If first init or camera disappeared from the list default to first one available
+        if (!camerasOfFacing.containsKey(cameraId))
+            cameraId = camerasOfFacing.iterator().next().key
+
+        // Save a reference to the selected camera
+        camera = camerasOfFacing[cameraId]!!
+
+        // Get camera selector
+        var cameraSelector = camera.cameraSelector
 
         // Get the supported vendor extensions for the given camera selector
         supportedExtensionModes = extensionsManager.getSupportedModes(cameraSelector)
@@ -859,6 +873,56 @@ open class CameraActivity : AppCompatActivity() {
         sharedPreferences.lastCameraFacing = cameraFacing
 
         bindCameraUseCases()
+    }
+
+    /**
+     * Let the user select a camera ID and switch to that camera
+     */
+    @androidx.camera.camera2.interop.ExperimentalCamera2Interop
+    @androidx.camera.view.video.ExperimentalVideo
+    private fun selectCameraId() {
+        if (!canRestartCamera())
+            return
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.camera_id_choice_title))
+
+        // Get cameras that both matches the wanted camera facing and that
+        // doesn't have an unknown camera type
+        val knownCameras = cameras.filter(cameraFacing).filter {
+            !filterUnknownCameras || !it.value.getCameraType(cameraTypes).ignore
+        }
+
+        // No point in showing the menu to the user if only one camera is available
+        if (knownCameras.size < 2) {
+            return
+        }
+
+        // Match a description of the camera to its camera ID
+        val map = mutableMapOf<String, Int>()
+        for (camera in knownCameras) {
+            map["${camera.key} - ${camera.value.getCameraType(cameraTypes)}"] = camera.key
+        }
+
+        val items = map.keys.toTypedArray()
+        builder.setItems(items) { _, which ->
+            if (which < 0 || which > items.size)
+                return@setItems
+
+            val newCameraId = map[items[which]]!!
+            if (newCameraId == cameraId) {
+                return@setItems
+            }
+
+            cameraId = newCameraId
+
+            bindCameraUseCases()
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+
+        return
     }
 
     /**

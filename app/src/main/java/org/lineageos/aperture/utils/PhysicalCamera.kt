@@ -48,4 +48,20 @@ class PhysicalCamera(cameraInfo: CameraInfo) {
      */
     val supportedVideoQualities: MutableList<Quality> =
         QualitySelector.getSupportedQualities(cameraInfo)
+
+    /**
+     * CameraSelector object to filter out all the other cameras
+     */
+    val cameraSelector = cameraInfo.cameraSelector
+
+    /**
+     * Get camera type from RRO
+     */
+    fun getCameraType(cameraTypes: Array<String>): CameraType {
+        if (cameraTypes.size <= cameraId) {
+            return CameraType.UNKNOWN
+        }
+
+        return CameraType.fromOverlayName(cameraTypes[cameraId])
+    }
 }
