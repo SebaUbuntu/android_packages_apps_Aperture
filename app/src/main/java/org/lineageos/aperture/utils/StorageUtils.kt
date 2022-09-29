@@ -11,42 +11,38 @@ import android.content.ContentValues
 import android.location.Location
 import android.provider.MediaStore
 import androidx.camera.core.ImageCapture
-import androidx.camera.video.FileOutputOptions
 import androidx.camera.video.MediaStoreOutputOptions
 import androidx.camera.video.OutputOptions
-import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 object StorageUtils {
     private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
-    private const val STORAGE_DESTINATION = "DCIM/Aperture"
+
+    private const val INTERNAL_STORAGE_DESTINATION = "single_capture"
+    private const val EXTERNAL_STORAGE_DESTINATION = "DCIM/Aperture"
 
     /**
      * Returns a new ImageCapture.OutputFileOptions to use to store a JPEG photo.
-     * If non-null file is passed, output will be written there.
+     * If internal is set to true, file will be located inside app data.
      */
     fun getPhotoOutputOptions(
         contentResolver: ContentResolver,
         metadata: ImageCapture.Metadata,
-        file: File? = null,
+        internal: Boolean = false,
     ): ImageCapture.OutputFileOptions {
-        file?.let {
-            return ImageCapture.OutputFileOptions
-                .Builder(it)
-                .setMetadata(metadata)
-                .build()
-        }
-
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, getCurrentTimeString())
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-            put(MediaStore.Images.Media.RELATIVE_PATH, STORAGE_DESTINATION)
+            put(MediaStore.Images.Media.RELATIVE_PATH,
+                if (internal) INTERNAL_STORAGE_DESTINATION else EXTERNAL_STORAGE_DESTINATION)
         }
 
         return ImageCapture.OutputFileOptions
             .Builder(
-                contentResolver, MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                contentResolver,
+                if (internal) MediaStore.Images.Media.INTERNAL_CONTENT_URI
+                    else MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 contentValues
             )
             .setMetadata(metadata)
@@ -55,29 +51,27 @@ object StorageUtils {
 
     /**
      * Returns a new OutputOptions to use to store a MP4 video.
-     * If non-null file is passed, output will be written there.
+     * If internal is set to true, file will be located inside app data.
      */
     @androidx.camera.view.video.ExperimentalVideo
     fun getVideoOutputOptions(
         contentResolver: ContentResolver,
         location: Location?,
-        file: File? = null,
+        internal: Boolean = false,
     ): OutputOptions {
-        file?.let {
-            return FileOutputOptions
-                .Builder(it)
-                .setLocation(location)
-                .build()
-        }
-
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, getCurrentTimeString())
             put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4")
-            put(MediaStore.Video.Media.RELATIVE_PATH, STORAGE_DESTINATION)
+            put(MediaStore.Video.Media.RELATIVE_PATH,
+                if (internal) INTERNAL_STORAGE_DESTINATION else EXTERNAL_STORAGE_DESTINATION)
         }
 
         return MediaStoreOutputOptions
-            .Builder(contentResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
+            .Builder(
+                contentResolver,
+                if (internal) MediaStore.Video.Media.INTERNAL_CONTENT_URI
+                    else MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+            )
             .setContentValues(contentValues)
             .setLocation(location)
             .build()

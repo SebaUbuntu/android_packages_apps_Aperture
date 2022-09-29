@@ -77,7 +77,6 @@ import org.lineageos.aperture.ui.CountDownView
 import org.lineageos.aperture.ui.GridView
 import org.lineageos.aperture.ui.ImagePreviewFragment
 import org.lineageos.aperture.ui.VideoPreviewFragment
-import org.lineageos.aperture.utils.CacheUtils
 import org.lineageos.aperture.utils.CameraFacing
 import org.lineageos.aperture.utils.CameraMode
 import org.lineageos.aperture.utils.CameraSoundsUtils
@@ -287,8 +286,6 @@ open class CameraActivity : AppCompatActivity() {
             cameraMode = CameraMode.QR
         },
     )
-
-    private val cacheUtils by lazy { CacheUtils(cacheDir) }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -629,16 +626,13 @@ open class CameraActivity : AppCompatActivity() {
         cameraState = CameraState.TAKING_PHOTO
         shutterButton.isEnabled = false
 
-        // Prepare a file output in cache if we're in single capture mode
-        val file = if (singleCaptureMode) cacheUtils.prepareImageOutput() else null
-
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getPhotoOutputOptions(
             contentResolver,
             ImageCapture.Metadata().apply {
                 location = this@CameraActivity.location
             },
-            file
+            singleCaptureMode
         )
 
         // Set up image capture listener, which is triggered after photo has
@@ -689,11 +683,8 @@ open class CameraActivity : AppCompatActivity() {
         // Disallow state changes while we are about to prepare for recording video
         cameraState = CameraState.PRE_RECORDING_VIDEO
 
-        // Prepare a file output in cache if we're in single capture mode
-        val file = if (singleCaptureMode) cacheUtils.prepareVideoOutput() else null
-
         // Create output options object which contains file + metadata
-        val outputOptions = StorageUtils.getVideoOutputOptions(contentResolver, location, file)
+        val outputOptions = StorageUtils.getVideoOutputOptions(contentResolver, location, singleCaptureMode)
 
         // Play shutter sound
         val delayTime = if (cameraSoundsUtils.playStartVideoRecording()) 500L else 0L
