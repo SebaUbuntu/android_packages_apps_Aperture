@@ -11,7 +11,10 @@ import android.content.ContentValues
 import android.location.Location
 import android.provider.MediaStore
 import androidx.camera.core.ImageCapture
+import androidx.camera.video.FileOutputOptions
 import androidx.camera.video.MediaStoreOutputOptions
+import androidx.camera.video.OutputOptions
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -20,12 +23,21 @@ object StorageUtils {
     private const val STORAGE_DESTINATION = "DCIM/Aperture"
 
     /**
-     * Returns a new ImageCapture.OutputFileOptions to use to store a JPEG photo
+     * Returns a new ImageCapture.OutputFileOptions to use to store a JPEG photo.
+     * If non-null file is passed, output will be written there.
      */
-    fun getPhotoMediaStoreOutputOptions(
+    fun getPhotoOutputOptions(
         contentResolver: ContentResolver,
-        metadata: ImageCapture.Metadata
+        metadata: ImageCapture.Metadata,
+        file: File? = null,
     ): ImageCapture.OutputFileOptions {
+        file?.let {
+            return ImageCapture.OutputFileOptions
+                .Builder(it)
+                .setMetadata(metadata)
+                .build()
+        }
+
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, getCurrentTimeString())
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
@@ -42,13 +54,22 @@ object StorageUtils {
     }
 
     /**
-     * Returns a new OutputFileOptions to use to store a MP4 video
+     * Returns a new OutputOptions to use to store a MP4 video.
+     * If non-null file is passed, output will be written there.
      */
     @androidx.camera.view.video.ExperimentalVideo
-    fun getVideoMediaStoreOutputOptions(
+    fun getVideoOutputOptions(
         contentResolver: ContentResolver,
-        location: Location?
-    ): MediaStoreOutputOptions {
+        location: Location?,
+        file: File? = null,
+    ): OutputOptions {
+        file?.let {
+            return FileOutputOptions
+                .Builder(it)
+                .setLocation(location)
+                .build()
+        }
+
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, getCurrentTimeString())
             put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4")
