@@ -10,5 +10,4 @@ package org.lineageos.aperture
 // task affinity from others. This makes sure the regular camera activity is not
 // reused for IMAGE_CAPTURE or VIDEO_CAPTURE intents from other activities.
 @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-class CaptureActivity : CameraActivity() {
-}
+class CaptureActivity : CameraActivity()

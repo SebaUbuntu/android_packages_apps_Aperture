@@ -10,5 +10,4 @@ package org.lineageos.aperture
 // task affinity from others. This makes sure non-secure camera activity is not
 // started in secure lock screen.
 @androidx.camera.camera2.interop.ExperimentalCamera2Interop
-class SecureCameraActivity : CameraActivity() {
-}
+class SecureCameraActivity : CameraActivity()
