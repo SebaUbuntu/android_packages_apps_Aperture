@@ -71,6 +71,7 @@ import com.google.android.material.slider.Slider
 import org.lineageos.aperture.ui.CountDownView
 import org.lineageos.aperture.ui.GridView
 import org.lineageos.aperture.ui.LevelerView
+import org.lineageos.aperture.ui.VerticalSlider
 import org.lineageos.aperture.utils.Camera
 import org.lineageos.aperture.utils.CameraFacing
 import org.lineageos.aperture.utils.CameraMode
@@ -91,6 +92,7 @@ open class CameraActivity : AppCompatActivity() {
     private val cameraModeHighlight by lazy { findViewById<MaterialButton>(R.id.cameraModeHighlight) }
     private val countDownView by lazy { findViewById<CountDownView>(R.id.countDownView) }
     private val effectButton by lazy { findViewById<ImageButton>(R.id.effectButton) }
+    private val exposureLevel by lazy { findViewById<VerticalSlider>(R.id.exposureLevel) }
     private val flashButton by lazy { findViewById<ImageButton>(R.id.flashButton) }
     private val flipCameraButton by lazy { findViewById<ImageButton>(R.id.flipCameraButton) }
     private val galleryButton by lazy { findViewById<ImageView>(R.id.galleryButton) }
@@ -173,6 +175,9 @@ open class CameraActivity : AppCompatActivity() {
                 }
                 MSG_HIDE_FOCUS_RING -> {
                     viewFinderFocus.visibility = View.GONE
+                }
+                MSG_HIDE_EXPOSURE_SLIDER -> {
+                    exposureLevel.visibility = View.GONE
                 }
             }
         }
@@ -364,6 +369,7 @@ open class CameraActivity : AppCompatActivity() {
             return@setOnTouchListener false
         }
         viewFinder.setOnClickListener { view ->
+            exposureLevel.isVisible = true
             viewFinderTouchEvent?.let {
                 viewFinderFocus.x = it.x - (viewFinderFocus.width / 2)
                 viewFinderFocus.y = it.y - (viewFinderFocus.height / 2)
@@ -371,6 +377,8 @@ open class CameraActivity : AppCompatActivity() {
                 viewFinderFocus.x = (view.width - viewFinderFocus.width) / 2f
                 viewFinderFocus.y = (view.height - viewFinderFocus.height) / 2f
             }
+            handler.removeMessages(MSG_HIDE_EXPOSURE_SLIDER)
+            handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_EXPOSURE_SLIDER), 2000)
         }
 
         // Observe preview stream state
@@ -405,6 +413,19 @@ open class CameraActivity : AppCompatActivity() {
         }
         zoomLevel.setLabelFormatter {
             "%.1fx".format(cameraController.zoomState.value?.zoomRatio)
+        }
+
+        // Set expose level callback & text formatter
+        exposureLevel.onProgressChangedByUser = {
+            cameraController.cameraControl?.setExposureCompensationIndex(
+                Int.mapToRange(camera.exposureCompensationRange, it)
+            )
+
+            handler.removeMessages(MSG_HIDE_EXPOSURE_SLIDER)
+            handler.sendMessageDelayed(handler.obtainMessage(MSG_HIDE_EXPOSURE_SLIDER), 2000)
+        }
+        exposureLevel.textFormatter = {
+            Int.mapToRange(camera.exposureCompensationRange, it).toString()
         }
 
         // Set primary bar button callbacks
@@ -813,6 +834,11 @@ open class CameraActivity : AppCompatActivity() {
         setGridMode(sharedPreferences.lastGridMode)
         setFlashMode(sharedPreferences.photoFlashMode)
         setMicrophoneMode(sharedPreferences.lastMicMode)
+
+        // Reset exposure level
+        exposureLevel.progress = 0.5f
+        exposureLevel.steps =
+            camera.exposureCompensationRange.upper - camera.exposureCompensationRange.lower
 
         // Update icons from last state
         updateCameraModeButtons()
@@ -1373,5 +1399,6 @@ open class CameraActivity : AppCompatActivity() {
 
         private const val MSG_HIDE_ZOOM_SLIDER = 0
         private const val MSG_HIDE_FOCUS_RING = 1
+        private const val MSG_HIDE_EXPOSURE_SLIDER = 2
     }
 }

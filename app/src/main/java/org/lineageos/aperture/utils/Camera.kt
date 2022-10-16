@@ -28,6 +28,7 @@ class Camera(cameraInfo: CameraInfo) {
             else -> CameraFacing.UNKNOWN
         }
 
+    val exposureCompensationRange = cameraInfo.exposureState.exposureCompensationRange
     val hasFlashUnit = cameraInfo.hasFlashUnit()
 
     val supportedVideoQualities: MutableList<Quality> =
