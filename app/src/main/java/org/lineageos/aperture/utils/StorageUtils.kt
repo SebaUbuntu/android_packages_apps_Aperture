@@ -9,6 +9,7 @@ package org.lineageos.aperture.utils
 import android.content.ContentResolver
 import android.content.ContentValues
 import android.location.Location
+import android.os.Environment
 import android.provider.MediaStore
 import androidx.camera.core.ImageCapture
 import androidx.camera.video.MediaStoreOutputOptions
@@ -17,7 +18,7 @@ import java.util.Locale
 
 object StorageUtils {
     private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
-    private const val STORAGE_DESTINATION = "DCIM/Aperture"
+    private val STORAGE_DESTINATION = "${Environment.DIRECTORY_DCIM}/Camera"
 
     /**
      * Returns a new ImageCapture.OutputFileOptions to use to store a JPEG photo
