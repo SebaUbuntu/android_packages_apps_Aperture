@@ -207,7 +207,7 @@ tasks.register("generateBp") {
                     ret
                 }.flatten()
 
-        var targetSdkVersion = android.defaultConfig.minSdk
+        var targetSdkVersion = android.defaultConfig.targetSdk
         var minSdkVersion = 14
 
         // Extract AndroidManifest.xml for AARs
