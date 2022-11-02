@@ -30,9 +30,6 @@ class LensSelectorLayout(context: Context, attrs: AttributeSet?) : LinearLayoutC
     private val buttonToCamera = mutableMapOf<Button, Camera>()
     private val buttonToFocalLength = mutableMapOf<Button, Float>()
 
-    private val numLenses: Int
-        get() = if (usesFocalLength) buttonToFocalLength.size else buttonToCamera.size
-
     private var usesFocalLength = false
     private var currentFocalLength = 0f
 
