@@ -10,6 +10,8 @@ import androidx.camera.extensions.ExtensionsManager
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.LifecycleCameraController
 import org.lineageos.aperture.R
+import org.lineageos.aperture.getBoolean
+import org.lineageos.aperture.getStringArray
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -24,13 +26,13 @@ class CameraManager(context: Context) {
     val cameraExecutor: ExecutorService = Executors.newSingleThreadExecutor()
 
     private val enableAuxCameras by lazy {
-        context.resources.getBoolean(R.bool.config_enableAuxCameras)
+        context.resources.getBoolean(context, R.bool.config_enableAuxCameras)
     }
     private val ignoredAuxCameraIds by lazy {
-        context.resources.getStringArray(R.array.config_ignoredAuxCameraIds)
+        context.resources.getStringArray(context, R.array.config_ignoredAuxCameraIds)
     }
     private val ignoreLogicalAuxCameras by lazy {
-        context.resources.getBoolean(R.bool.config_ignoreLogicalAuxCameras)
+        context.resources.getBoolean(context, R.bool.config_ignoreLogicalAuxCameras)
     }
 
     private val cameras: Map<String, Camera>
