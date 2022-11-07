@@ -11,7 +11,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "org.lineageos.aperture.dev"
+        applicationId = "org.lineageos.aperture"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
@@ -35,6 +35,10 @@ android {
                     "proguard-rules.pro"
                 )
             )
+        }
+        getByName("debug") {
+            // Append .dev to package name so we won't conflict with AOSP build.
+            applicationIdSuffix = ".dev"
         }
     }
 
