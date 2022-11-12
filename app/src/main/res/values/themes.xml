@@ -27,6 +27,7 @@
     <style name="Theme.Aperture.Camera" parent="Theme.Aperture">
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">monospace</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowBackground">?attr/colorOnPrimary</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
