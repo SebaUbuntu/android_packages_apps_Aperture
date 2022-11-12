@@ -18,12 +18,8 @@ import java.util.concurrent.Executors
  */
 @androidx.camera.camera2.interop.ExperimentalCamera2Interop
 class CameraManager(context: Context) {
-    private val cameraProvider: ProcessCameraProvider = ProcessCameraProvider.getInstance(
-        context
-    ).get()
-    val extensionsManager: ExtensionsManager = ExtensionsManager.getInstanceAsync(
-        context, cameraProvider
-    ).get()
+    private val cameraProvider = ProcessCameraProvider.getInstance(context).get()
+    val extensionsManager = ExtensionsManager.getInstanceAsync(context, cameraProvider).get()!!
     val cameraController = LifecycleCameraController(context)
     val cameraExecutor: ExecutorService = Executors.newSingleThreadExecutor()
 
