@@ -29,7 +29,7 @@
         <!-- No camera is unignored by default. -->
     </string-array>
 
-    <!-- An array of triplets made of (camera ID, qualities, framerate).
+    <!-- An array of triplets made of (camera ID, qualities, framerates).
          These video modes will be added to the available
          quality/framerate combinations of a camera device.
          Make sure the device is able to handle those configurations
@@ -45,6 +45,7 @@
           - "24"
           - "30"
           - "60"
+          - "120"
          Example:
              <string-array name="config_additionalVideoConfigurations">
                  <item>0</item> <item>sd|hd|fhd</item> <item>60|120</item>
