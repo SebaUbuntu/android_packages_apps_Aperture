@@ -5,33 +5,19 @@
 
 package org.lineageos.aperture
 
-import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.net.Uri
 import androidx.camera.core.AspectRatio
 import androidx.camera.core.ImageCapture
 import androidx.camera.extensions.ExtensionMode
 import androidx.camera.video.Quality
+import androidx.core.content.edit
 import org.lineageos.aperture.utils.CameraFacing
 import org.lineageos.aperture.utils.CameraMode
 import org.lineageos.aperture.utils.FlashMode
 import org.lineageos.aperture.utils.Framerate
 import org.lineageos.aperture.utils.GridMode
 import org.lineageos.aperture.utils.StabilizationMode
-
-@SuppressLint("ApplySharedPref")
-inline fun SharedPreferences.edit(
-    commit: Boolean = false,
-    action: SharedPreferences.Editor.() -> Unit
-) {
-    val editor = edit()
-    action(editor)
-    if (commit) {
-        editor.commit()
-    } else {
-        editor.apply()
-    }
-}
 
 // Generic prefs
 private const val LAST_CAMERA_FACING_KEY = "last_camera_facing"
