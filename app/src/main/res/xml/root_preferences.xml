@@ -13,7 +13,7 @@
             app:defaultValue="false"
             app:iconSpaceReserved="false"
             app:key="bright_screen"
-            app:summary="@string/bright_screen_sumary"
+            app:summary="@string/bright_screen_summary"
             app:title="@string/bright_screen_title" />
 
         <SwitchPreference
