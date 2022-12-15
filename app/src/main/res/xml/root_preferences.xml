@@ -30,6 +30,13 @@
             app:summary="@string/shutter_sound_summary"
             app:title="@string/shutter_sound_title" />
 
+        <SwitchPreference
+            app:defaultValue="false"
+            app:iconSpaceReserved="false"
+            app:key="leveler"
+            app:summary="@string/leveler_summary"
+            app:title="@string/leveler_title" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -79,18 +86,6 @@
             app:summary="@string/video_stabilization_preview_summary"
             app:title="@string/video_stabilization_preview_title" />
 
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        app:iconSpaceReserved="false"
-        app:title="@string/advanced_header">
-
-        <SwitchPreference
-            app:defaultValue="false"
-            app:iconSpaceReserved="false"
-            app:key="leveler"
-            app:summary="@string/leveler_summary"
-            app:title="@string/leveler_title" />
     </PreferenceCategory>
 
 </PreferenceScreen>
