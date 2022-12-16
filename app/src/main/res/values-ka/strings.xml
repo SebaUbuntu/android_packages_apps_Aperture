@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">კამერა</string>
+    <string name="video_camera_label">ვიდეოჩამწერი</string>
+    <string name="flip_camera_button_description">კამერის შეტრიალება</string>
+    <string name="gallery_button_description">გალერეა</string>
+    <string name="photo_mode_button_description">ფოტოს რეჟიმზე გადართვა</string>
+    <string name="qr_mode_button_description">QR-კოდის წაკითხვის რეჟიმზე გადართვა</string>
+    <string name="settings_back_button_description">დაბრუნება კამერის რეჟიმზე</string>
+    <string name="shutter_button_description">ჩამკეტი</string>
+    <string name="video_mode_button_description">ვიდეოს რეჟიმზე გადართვა</string>
+    <string name="video_recording_state_button_description">ვიდეოს ჩაწერის შეჩერება/განგრძობა</string>
+    <string name="timer_off">ᲣᲙᲣᲗᲕᲚᲐ ᲒᲐᲛᲝᲠᲗ.</string>
+    <string name="timer_3">ᲣᲙᲣᲗᲕᲚᲐ 3ᲬᲛ</string>
+    <string name="timer_10">ᲣᲙᲣᲗᲕᲚᲐ 10ᲬᲛ</string>
+    <string name="video_framerate_auto">ᲙᲐᲓᲠ/ᲬᲛ ᲗᲕᲘᲗᲨᲔᲠᲩᲔᲕᲘᲗ</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> კადრ/წმ</string>
+    <string name="effect_none">ᲐᲠᲪᲔᲠᲗᲘ</string>
+    <string name="effect_night">ᲦᲐᲛᲘᲡ</string>
+    <string name="effect_face_retouch">ᲡᲐᲮᲘᲡ ᲨᲔᲡᲬᲝᲠᲔᲑᲐ</string>
+    <string name="effect_auto">ᲗᲕᲘᲗᲨᲔᲠᲩᲔᲕᲐ</string>
+    <string name="grid_off">ᲑᲐᲓᲔ ᲒᲐᲛᲝᲠᲗ.</string>
+    <string name="grid_on_3">ᲑᲐᲓᲔ 3x3</string>
+    <string name="grid_on_4">ᲑᲐᲓᲔ 4x4</string>
+    <string name="grid_on_goldenratio">ᲑᲐᲓᲔ φ</string>
+    <string name="mic_off">ᲛᲘᲙᲠ. ᲒᲐᲛᲝᲠᲗ.</string>
+    <string name="mic_on">ᲛᲘᲙᲠ. ᲩᲐᲠᲗ.</string>
+    <string name="settings">ᲞᲐᲠᲐᲛᲔᲢᲠᲔᲑᲘ</string>
+    <string name="selector_photo">ᲤᲝᲢᲝ</string>
+    <string name="select_video">ᲕᲘᲓᲔᲝ</string>
+    <string name="select_scan">ᲬᲐᲙᲘᲗᲮᲕᲐ</string>
+    <string name="app_permissions_toast">ნებადართული არაა მომხმარებლისგან.</string>
+    <string name="qr_copy_description">ასლის აღება</string>
+    <string name="qr_icon_description">ხატულა</string>
+    <string name="qr_share_description">გაზიარება</string>
+    <string name="qr_text">ტექსტი</string>
+    <string name="title_activity_settings">პარამეტრები</string>
+    <string name="general_header">ძირითადი</string>
+    <string name="photos_header">ფოტო</string>
+    <string name="video_header">ვიდეო</string>
+    <string name="bright_screen_title">კაშკაშა ეკრანი</string>
+    <string name="save_location_title">მდებარეობის მონაცემების შენახვა</string>
+    <string name="save_location_summary">ადგილმდებარეობის მონაცემების დართვა</string>
+    <string name="save_location_toast">მდებარეობასთან წვდომა ნებადართული არაა მომხმარებლისგან.</string>
+    <string name="shutter_sound_title">ჩამკეტის ხმა</string>
+    <string name="shutter_sound_summary">ხმა გადაღებისას</string>
+    <string name="leveler_title">თარაზო</string>
+    <string name="leveler_summary">მოწყობილობის მიმართულების მაჩვენებელი</string>
+    <string name="photo_capture_mode_title">გადაღების რეჟიმი</string>
+    <string name="photo_capture_mode_maximize_quality">უმაღლესი ხარისხი</string>
+    <string name="photo_capture_mode_minimize_latency">უმცირესი დაყოვნება</string>
+    <string name="photo_capture_mode_zsl">ჩამკეტის ნულოვანი დაყოვნება (საცდელი)</string>
+    <string name="image_stabilization_title">რყევის შემცირება, როცა ხელმისაწვდომია</string>
+    <string name="image_stabilization_summary">თუ აპარატურულად მხარდაჭერილია, ჩაირთვება კადრის ოპტიკური მდგრადობა</string>
+    <string name="video_stabilization_title">ვიდეოგადაღებისას რყევის შემცირება, როცა ხელმისაწვდომია</string>
+    <string name="video_stabilization_summary">როცა ხელმისაწვდომია, ჩაირთვება კადრის პროგრამული მდგრადობა (EIS)</string>
+    <string name="video_stabilization_ois_title">OIS ნაცვლად EIS-ისა, როცა ხელმისაწვდომია</string>
+    <string name="video_stabilization_ois_summary">თუ აპარატურულად მხარდაჭერილია, გამოიყენებს კადრის ოპტიკურ მდგრადობას (OIS) ნაცვლად პროგრამულისა (EIS)</string>
+    <string name="video_stabilization_preview_title">რყევის შემცირება შეთვალიერებისას, როცა ხელმისაწვდომია</string>
+    <string name="video_stabilization_preview_summary">თუ ხელმისაწვდომია, რყევის შემცირება აისახება შეთვალიერების დროსაც, ამასთანავე, აპარატურული მხარდაჭერისას თავისთავად ჩაირთვება კადრის ოპტიკური მდგრადობა (OIS) პროგრამულთან ერთად (EIS), თუ მოწყობილობა საჭიროდ მიიჩნევს. მხოლოდ Android 13 ან მომდევნო ვერსიის მქონე ზოგიერთ ახლადგამოსულ მოწყობილობაზეა ეს რეჟიმი მხარდაჭერილი.</string>
+    <string name="shortcut_selfie">სელფის გადაღება</string>
+    <string name="shortcut_video">ვიდეოს გადაღება</string>
+    <string name="shortcut_qr">შტრიხკოდის წაკითხვა</string>
+</resources>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Fotoaparat</string>
+    <string name="video_camera_label">Kamera</string>
+    <string name="camera_mode_highlight_description">Poudarek načina fotoaparata</string>
+    <string name="cancel_button_description">Prekliči</string>
+    <string name="confirm_button_description">Potrdi</string>
+    <string name="flash_button_description">Način bliskavice</string>
+    <string name="flip_camera_button_description">Obrni fotoaparat</string>
+    <string name="gallery_button_description">Galerija</string>
+    <string name="image_view_description">Predogled slike</string>
+    <string name="photo_mode_button_description">Preklopi na način fotografiranja</string>
+    <string name="pro_button_description">Pro nastavitve</string>
+    <string name="qr_mode_button_description">Preklopi na način QR bralnika</string>
+    <string name="settings_back_button_description">Pojdi nazaj na način fotoaparata</string>
+    <string name="shutter_button_description">Sprožilec</string>
+    <string name="video_mode_button_description">Preklopi na način videoposnetka</string>
+    <string name="video_recording_state_button_description">Premor/nadaljevanje snemanja videoposnetka</string>
+    <string name="timer_off">ODŠTEVALNIK IZKLOPLJEN</string>
+    <string name="timer_3">ODŠTEVALNIK 3s</string>
+    <string name="timer_10">ODŠTEVALNIK 10s</string>
+    <string name="video_framerate_auto">SAMODEJNO SL./S</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> SL./S</string>
+    <string name="effect_none">BREZ</string>
+    <string name="effect_night">PONOČI</string>
+    <string name="effect_face_retouch">RETUŠIRANJE OBRAZA</string>
+    <string name="effect_auto">SAMODEJNO</string>
+    <string name="grid_off">MREŽA IZKLOPLJENA</string>
+    <string name="grid_on_3">MREŽA 3x3</string>
+    <string name="grid_on_4">MREŽA 4x4</string>
+    <string name="grid_on_goldenratio">MREŽA φ</string>
+    <string name="mic_off">MIKROFON IZKLOPLJEN</string>
+    <string name="mic_on">MIKROFON VKLOPLJEN</string>
+    <string name="settings">NASTAVITVE</string>
+    <string name="selector_photo">FOTOGRAFIJA</string>
+    <string name="select_video">VIDEOPOSNETEK</string>
+    <string name="select_scan">BRALNIK</string>
+    <string name="app_permissions_toast">Dovoljenje ni odobreno od uporabnika</string>
+    <string name="camcorder_unsupported_toast">Noben fotoaparat ne podpira snemanja videoposnetkov.</string>
+    <string name="qr_copy_description">Kopiraj v odložišče</string>
+    <string name="qr_icon_description">Ikona</string>
+    <string name="qr_share_description">Deli</string>
+    <string name="qr_text">Besedilo</string>
+    <string name="title_activity_settings">Nastavitve</string>
+    <string name="general_header">Splošno</string>
+    <string name="photos_header">Fotografije</string>
+    <string name="video_header">Videoposnetek</string>
+    <string name="bright_screen_title">Svetel zaslon</string>
+    <string name="bright_screen_summary">Zaklene svetlost na 100%</string>
+    <string name="save_location_title">Shrani lokacijske podatke</string>
+    <string name="save_location_summary">Vključi GPS lokacijo v metapodatke</string>
+    <string name="save_location_toast">Dovoljenje za lokacijo ni odobreno od uporabnika</string>
+    <string name="shutter_sound_title">Zvok sprožilca</string>
+    <string name="shutter_sound_summary">Predvajaj zvok ob zajemu</string>
+    <string name="leveler_title">Merilnik</string>
+    <string name="leveler_summary">Kazalnik, ki kaže usmerjenost naprave</string>
+    <string name="photo_capture_mode_title">Način zajema</string>
+    <string name="photo_capture_mode_maximize_quality">Maksimiraj kakovost</string>
+    <string name="photo_capture_mode_minimize_latency">Minimiziraj zakasnitev</string>
+    <string name="photo_capture_mode_zsl">Ničelna zakasnitev sprožilca (poskusno)</string>
+    <string name="image_stabilization_title">Omogoči stabilizacijo slike, ko je na voljo</string>
+    <string name="image_stabilization_summary">Če jo strojna oprema podpira, omogoči optično stabilizacijo slike</string>
+    <string name="video_stabilization_title">Omogoči stabilizacijo videa, ko je na voljo</string>
+    <string name="video_stabilization_summary">Ko je na voljo, omogoči elektronsko stabilizacijo slike (EIS)</string>
+    <string name="video_stabilization_ois_title">Uporabi OIS namesto EIS, ko je na voljo</string>
+    <string name="video_stabilization_ois_summary">Če jo strojna oprema podpira, uporabi optično stabilizacijo slike (OIS) namesto elektronske stabilizacije slike (EIS)</string>
+    <string name="video_stabilization_preview_title">Omogoči stabilizacijo na predogledu, ko je na voljo</string>
+    <string name="video_stabilization_preview_summary">Če je na voljo, uveljavi stabilizacijo slike tudi na predogled, in če jo strojna oprema podpira, samodejno omogoči optično stabilizacijo slike (OIS) skupaj z elektronsko stabilizacijo slike (EIS), če naprava meni, da je to primerno. Samo nekaj naprav izdanih z Androidom 13 ali novejšim podpirajo ta način.</string>
+    <string name="shortcut_selfie">Posnemi sebek</string>
+    <string name="shortcut_video">Zajemi videoposnetek</string>
+    <string name="shortcut_qr">Preberi črtno kodo</string>
+</resources>

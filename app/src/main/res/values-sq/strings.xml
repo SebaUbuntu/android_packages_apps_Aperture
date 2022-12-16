@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Kamera</string>
+    <string name="video_camera_label">Video regjistrues</string>
+    <string name="flip_camera_button_description">Rrotulloje kamerën</string>
+    <string name="gallery_button_description">Galeria</string>
+    <string name="photo_mode_button_description">Kalo në modalitetin e fotografisë</string>
+    <string name="qr_mode_button_description">Kalo në modalitetin e skanerit QR</string>
+    <string name="settings_back_button_description">Kthehuni në modalitetin e kamerës</string>
+    <string name="shutter_button_description">Shkrepësi</string>
+    <string name="video_mode_button_description">Kalo në modalitetin e videos</string>
+    <string name="video_recording_state_button_description">Ndalo/rifillo regjistrimin e videos</string>
+    <string name="timer_off">KOHËMATESI FIKUR</string>
+    <string name="timer_3">KOHËMATESI 3s</string>
+    <string name="timer_10">KOHËMATESI 10s</string>
+    <string name="video_framerate_auto">AUTO FPS</string>
+    <string name="effect_none">ASNJË</string>
+    <string name="effect_night">NATË</string>
+    <string name="effect_face_retouch">FYTYRE RETUSH</string>
+    <string name="effect_auto">AUTO</string>
+    <string name="mic_off">MIC FIKUR</string>
+    <string name="mic_on">MIX NDEZUR</string>
+    <string name="settings">CILËSIMET</string>
+    <string name="selector_photo">FOTO</string>
+    <string name="select_video">VIDEO</string>
+    <string name="select_scan">SKANO</string>
+    <string name="app_permissions_toast">Lejet nuk janë dhënë nga përdoruesi.</string>
+    <string name="qr_copy_description">Kopjo në \'clipboard\'</string>
+    <string name="qr_icon_description">Ikonë</string>
+    <string name="qr_share_description">Shpërndaje</string>
+    <string name="qr_text">Tekst</string>
+    <string name="title_activity_settings">Cilësimet</string>
+    <string name="general_header">Të përgjithshme</string>
+    <string name="photos_header">Fotografitë</string>
+    <string name="video_header">Video</string>
+    <string name="bright_screen_title">Ekran i shndritshëm</string>
+    <string name="save_location_title">Ruani të dhënat e vendndodhjes</string>
+    <string name="save_location_summary">Përfshi vendndodhjen GPS në meta të dhëna</string>
+</resources>

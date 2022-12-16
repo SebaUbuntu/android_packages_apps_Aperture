@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Cameră</string>
+    <string name="video_camera_label">Cameră video</string>
+    <string name="camera_mode_highlight_description">Evidenţiere mod cameră foto</string>
+    <string name="cancel_button_description">Anulare</string>
+    <string name="confirm_button_description">Confirmă</string>
+    <string name="flash_button_description">Mod bliț</string>
+    <string name="flip_camera_button_description">Comutați camera foto</string>
+    <string name="gallery_button_description">Galerie</string>
+    <string name="image_view_description">Previzualizare imagine</string>
+    <string name="photo_mode_button_description">Comutare la modul fotografie</string>
+    <string name="pro_button_description">Setări Pro</string>
+    <string name="qr_mode_button_description">Comutare la modul de scanare QR</string>
+    <string name="settings_back_button_description">Înapoi la modul cameră</string>
+    <string name="shutter_button_description">Obturator</string>
+    <string name="video_mode_button_description">Comutare la modul video</string>
+    <string name="video_recording_state_button_description">Întrerupere/reluare înregistrare video</string>
+    <string name="timer_off">CRONOMETRU DEZACTIVAT</string>
+    <string name="timer_3">CRONOMETRU 3s</string>
+    <string name="timer_10">CRONOMETRU 10s</string>
+    <string name="video_framerate_auto">FPS AUTO</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">NICIUNUL</string>
+    <string name="effect_night">NOAPTE</string>
+    <string name="effect_face_retouch">RETUȘARE FACIALĂ</string>
+    <string name="effect_auto">AUTO</string>
+    <string name="grid_off">GRILĂ DEZACTIVATĂ</string>
+    <string name="grid_on_3">GRILĂ 3x3</string>
+    <string name="grid_on_4">GRILĂ 4x4</string>
+    <string name="grid_on_goldenratio">GRILĂ φ</string>
+    <string name="mic_off">MICROFON DEZACTIVAT</string>
+    <string name="mic_on">MICROFON ACTIVAT</string>
+    <string name="settings">SETĂRI</string>
+    <string name="selector_photo">FOTO</string>
+    <string name="select_video">VIDEO</string>
+    <string name="select_scan">SCANARE</string>
+    <string name="app_permissions_toast">Permisiuni care nu sunt acordate de utilizator.</string>
+    <string name="camcorder_unsupported_toast">Nicio cameră nu suportă înregistrarea video.</string>
+    <string name="qr_copy_description">Copiați în clipboard</string>
+    <string name="qr_icon_description">Iconiță</string>
+    <string name="qr_share_description">Distribuiți</string>
+    <string name="qr_text">Text</string>
+    <string name="title_activity_settings">Setări</string>
+    <string name="general_header">General</string>
+    <string name="photos_header">Fotografii</string>
+    <string name="video_header">Video</string>
+    <string name="bright_screen_title">Ecran luminos</string>
+    <string name="bright_screen_summary">Blochează luminozitatea la 100%</string>
+    <string name="save_location_title">Salvați locația</string>
+    <string name="save_location_summary">Include locația GPS în metadate</string>
+    <string name="save_location_toast">Permisiuni de localizare neacordate de utilizator.</string>
+    <string name="shutter_sound_title">Sunet obturator</string>
+    <string name="shutter_sound_summary">Redă un sunet la captură</string>
+    <string name="leveler_title">Boloboc</string>
+    <string name="leveler_summary">Indicator care arată orientarea dispozitivului</string>
+    <string name="photo_capture_mode_title">Modul de captură</string>
+    <string name="photo_capture_mode_maximize_quality">Maximizare calitate</string>
+    <string name="photo_capture_mode_minimize_latency">Minimizare latență</string>
+    <string name="photo_capture_mode_zsl">Zero decalaj de declanșare (experimental)</string>
+    <string name="image_stabilization_title">Activează stabilizarea imaginii atunci când este disponibilă</string>
+    <string name="image_stabilization_summary">Dacă hardware-ul o suportă, activează stabilizarea optică a imaginii</string>
+    <string name="video_stabilization_title">Activează stabilizarea video când este disponibilă</string>
+    <string name="video_stabilization_summary">Atunci când este disponibilă, activați stabilizarea electronică a imaginii (EIS)</string>
+    <string name="video_stabilization_ois_title">Utilizarea OIS în locul EIS atunci când este disponibilă</string>
+    <string name="video_stabilization_ois_summary">Dacă hardware-ul o suportă, utilizaţi stabilizarea optică a imaginii (OIS) în loc de stabilizarea electronică a imaginii (EIS)</string>
+    <string name="video_stabilization_preview_title">Activează stabilizarea pe previzualizare când este disponibilă</string>
+    <string name="video_stabilization_preview_summary">Dacă este disponibil, aplică stabilizarea imaginii și la previzualizare și, dacă hardware-ul o suportă, activează automat stabilizarea optică a imaginii (OIS) împreună cu stabilizarea electronică a imaginii (EIS), în cazul în care dispozitivul consideră că acest lucru este adecvat. Doar unele dispozitive lansate cu Android 13 sau mai nou suportă acest mod</string>
+    <string name="shortcut_selfie">Faceți un selfie</string>
+    <string name="shortcut_video">Faceți un videoclip</string>
+    <string name="shortcut_qr">Scanează un cod de bare</string>
+</resources>

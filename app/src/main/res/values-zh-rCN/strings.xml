@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">相机</string>
+    <string name="video_camera_label">摄像机</string>
+    <string name="flip_camera_button_description">翻转摄像头</string>
+    <string name="gallery_button_description">相册</string>
+    <string name="photo_mode_button_description">切换到拍照模式</string>
+    <string name="qr_mode_button_description">切换到二维码扫描模式</string>
+    <string name="settings_back_button_description">返回相机模式</string>
+    <string name="shutter_button_description">快门</string>
+    <string name="video_mode_button_description">切换到视频模式</string>
+    <string name="video_recording_state_button_description">暂停/继续视频录制</string>
+    <string name="timer_off">计时器已关闭</string>
+    <string name="timer_3">3秒</string>
+    <string name="timer_10">10秒</string>
+    <string name="video_framerate_auto">自动帧率</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">无</string>
+    <string name="effect_night">夜景</string>
+    <string name="effect_face_retouch">美颜</string>
+    <string name="effect_auto">自动</string>
+    <string name="grid_off">无网格</string>
+    <string name="grid_on_3">3x3 网格</string>
+    <string name="grid_on_4">4x4 网格</string>
+    <string name="grid_on_goldenratio">φ 网格</string>
+    <string name="mic_off">关闭麦克风</string>
+    <string name="mic_on">开启麦克风</string>
+    <string name="settings">设置</string>
+    <string name="selector_photo">照片</string>
+    <string name="select_video">视频</string>
+    <string name="select_scan">扫描</string>
+    <string name="app_permissions_toast">用户没有授予权限。</string>
+    <string name="camcorder_unsupported_toast">不支持视频录制。</string>
+    <string name="qr_copy_description">复制到剪贴板</string>
+    <string name="qr_icon_description">图标</string>
+    <string name="qr_share_description">分享</string>
+    <string name="qr_text">文本</string>
+    <string name="title_activity_settings">设置</string>
+    <string name="general_header">常规</string>
+    <string name="photos_header">照片</string>
+    <string name="video_header">视频</string>
+    <string name="bright_screen_title">屏幕亮度</string>
+    <string name="save_location_title">保存位置数据</string>
+    <string name="save_location_summary">在元数据中包含 GPS 位置</string>
+    <string name="save_location_toast">未授予位置权限。</string>
+    <string name="shutter_sound_title">快门声</string>
+    <string name="shutter_sound_summary">捕获时播放声音</string>
+    <string name="leveler_title">水平线</string>
+    <string name="leveler_summary">显示设备方向的指示器</string>
+    <string name="photo_capture_mode_title">拍摄模式</string>
+    <string name="photo_capture_mode_maximize_quality">最佳质量</string>
+    <string name="photo_capture_mode_minimize_latency">最小延迟</string>
+    <string name="photo_capture_mode_zsl">拍摄无延迟（试验性）</string>
+    <string name="image_stabilization_title">若图像防抖可用，则启用</string>
+    <string name="image_stabilization_summary">若硬件支持，则启用光学防抖</string>
+    <string name="video_stabilization_title">若视频防抖可用，则启用</string>
+    <string name="video_stabilization_summary">当电子防抖(EIS)可用时，则启用</string>
+    <string name="video_stabilization_ois_title">可用时优先启用光学防抖而不是电子防抖</string>
+    <string name="video_stabilization_ois_summary">若硬件支持，使用光学防抖(OIS)而不是电子防抖(EIS)</string>
+    <string name="video_stabilization_preview_title">若防抖功能可用，则预览时启用它</string>
+    <string name="video_stabilization_preview_summary">如果硬件支持，也在预览中应用防抖。 如果设备认为适当，自动启用光学防抖(OIS)和电子防抖(EIS)。 只有基于Android 13或更高版本的部分设备支持此模式</string>
+    <string name="shortcut_selfie">自拍</string>
+    <string name="shortcut_video">拍视频</string>
+    <string name="shortcut_qr">扫描条码</string>
+</resources>

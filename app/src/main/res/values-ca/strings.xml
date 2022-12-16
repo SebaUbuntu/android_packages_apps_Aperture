@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Càmera</string>
+    <string name="video_camera_label">Càmera de vídeo</string>
+    <string name="flip_camera_button_description">Canvia de càmera</string>
+    <string name="gallery_button_description">Galeria</string>
+    <string name="photo_mode_button_description">Canvia al mode foto</string>
+    <string name="qr_mode_button_description">Canvia al mode d\'escàner QR</string>
+    <string name="settings_back_button_description">Torna al mode de càmera</string>
+    <string name="shutter_button_description">Obturador</string>
+    <string name="video_mode_button_description">Canvia al mode vídeo</string>
+    <string name="video_recording_state_button_description">Pausa/reprèn la gravació de vídeo</string>
+    <string name="timer_off">TEMPORITZADOR DESACTIVAT</string>
+    <string name="timer_3">TEMPORITZADOR 3s</string>
+    <string name="timer_10">TEMPORITZADOR 10s</string>
+    <string name="video_framerate_auto">FPS AUTO</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">CAP</string>
+    <string name="effect_night">NIT</string>
+    <string name="effect_face_retouch">RETOC FACIAL</string>
+    <string name="effect_auto">AUTO</string>
+    <string name="grid_off">GRAELLA DESACTIVADA</string>
+    <string name="grid_on_3">GRAELLA 3x3</string>
+    <string name="grid_on_4">GRAELLA 4x4</string>
+    <string name="grid_on_goldenratio">GRAELLA φ</string>
+    <string name="mic_off">MICRÒFON DESACTIVAT</string>
+    <string name="mic_on">MICRÒFON ACTIVAT</string>
+    <string name="settings">CONFIGURACIÓ</string>
+    <string name="selector_photo">FOTO</string>
+    <string name="select_video">VÍDEO</string>
+    <string name="select_scan">ESCANEJA</string>
+    <string name="app_permissions_toast">Permisos no concedits per l\'usuari.</string>
+    <string name="qr_copy_description">Copia al porta-retalls</string>
+    <string name="qr_icon_description">Icona</string>
+    <string name="qr_share_description">Comparteix</string>
+    <string name="qr_text">Text</string>
+    <string name="title_activity_settings">Configuració</string>
+    <string name="general_header">General</string>
+    <string name="photos_header">Fotos</string>
+    <string name="video_header">Vídeo</string>
+    <string name="bright_screen_title">Pantalla brillant</string>
+    <string name="save_location_title">Desa les dades d\'ubicació</string>
+    <string name="save_location_summary">Inclou la ubicació GPS a les metadades</string>
+    <string name="save_location_toast">Permisos d\'ubicació no concedits per l\'usuari.</string>
+    <string name="shutter_sound_title">So de l\'obturador</string>
+    <string name="shutter_sound_summary">Reprodueix un so durant la captura</string>
+    <string name="leveler_title">Nivelador</string>
+    <string name="leveler_summary">Indicador que mostra l\'orientació del dispositiu</string>
+    <string name="photo_capture_mode_title">Mode de captura</string>
+    <string name="photo_capture_mode_maximize_quality">Maximitza la qualitat</string>
+    <string name="photo_capture_mode_minimize_latency">Minimitza la latència</string>
+    <string name="photo_capture_mode_zsl">Retard zero de l\'obturador (experimental)</string>
+    <string name="image_stabilization_title">Activa l\'estabilització d\'imatge quan estigui disponible</string>
+    <string name="image_stabilization_summary">Si el maquinari ho admet, activa l\'estabilització òptica d\'imatge</string>
+    <string name="video_stabilization_title">Activa l\'estabilització de vídeo quan estigui disponible</string>
+    <string name="video_stabilization_summary">Quan estigui disponible, activeu l\'estabilització electrònica d\'imatge (EIS)</string>
+    <string name="video_stabilization_ois_title">Utilitza OIS en comptes d\'EIS quan estigui disponible</string>
+    <string name="video_stabilization_ois_summary">Si el maquinari ho admet, utilitza l\'estabilització òptica d\'imatge (OIS) en lloc de l\'estabilització electrònica d\'imatge (EIS)</string>
+    <string name="video_stabilization_preview_title">Activa l\'estabilització a la vista prèvia quan estigui disponible</string>
+    <string name="video_stabilization_preview_summary">Si està disponible, aplica l\'estabilització d\'imatge també a la vista prèvia i, si el maquinari ho admet, activa automàticament l\'estabilització òptica d\'imatge (OIS) juntament amb l\'estabilització electrònica d\'imatge (EIS) si el dispositiu ho considera oportú. Només alguns dispositius amb Android 13 o posterior admeten aquest mode</string>
+    <string name="shortcut_selfie">Fes una selfie</string>
+    <string name="shortcut_video">Fes un vídeo</string>
+    <string name="shortcut_qr">Escaneja el codi de barres</string>
+</resources>

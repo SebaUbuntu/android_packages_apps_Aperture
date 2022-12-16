@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Camera</string>
+    <string name="video_camera_label">Camcorder</string>
+    <string name="flip_camera_button_description">Schakelen tussen camera\'s</string>
+    <string name="gallery_button_description">Galerij</string>
+    <string name="photo_mode_button_description">Overschakelen naar foto-modus</string>
+    <string name="qr_mode_button_description">Overschakelen naar QR-scanner modus</string>
+    <string name="settings_back_button_description">Ga terug naar de cameramodus</string>
+    <string name="shutter_button_description">Sluiter</string>
+    <string name="video_mode_button_description">Overschakelen naar videomodus</string>
+    <string name="video_recording_state_button_description">Video-opname onderbreken/hervatten</string>
+    <string name="timer_off">TIMER UIT</string>
+    <string name="timer_3">TIJDER 3 sec</string>
+    <string name="timer_10">TIMER 10s</string>
+    <string name="video_framerate_auto">AUTOMATISCH FPS</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">GEEN</string>
+    <string name="effect_night">NACHT</string>
+    <string name="effect_auto">AUTOMATISCH</string>
+    <string name="grid_off">GRID UIT</string>
+    <string name="grid_on_3">GRID 3x3</string>
+    <string name="grid_on_4">GRID 4x4</string>
+    <string name="mic_off">MIC UIT</string>
+    <string name="mic_on">MIC AAN</string>
+    <string name="settings">INSTELLINGEN</string>
+    <string name="selector_photo">FOTO</string>
+    <string name="select_video">VIDEO</string>
+    <string name="select_scan">SCAN</string>
+    <string name="app_permissions_toast">Machtigingen niet toegekend door de gebruiker.</string>
+    <string name="qr_copy_description">Kopieer naar klembord</string>
+    <string name="qr_icon_description">Pictogram</string>
+    <string name="qr_share_description">Deel</string>
+    <string name="qr_text">Tekst</string>
+    <string name="title_activity_settings">Instellingen</string>
+    <string name="general_header">Algemeen</string>
+    <string name="photos_header">Foto\'s</string>
+    <string name="video_header">Video</string>
+    <string name="bright_screen_title">Helder scherm</string>
+    <string name="save_location_title">Locatie gegevens opslaan</string>
+    <string name="save_location_summary">GPS locatie opnemen in metadata</string>
+    <string name="save_location_toast">Locatiemachtigingen niet verleend door de gebruiker.</string>
+    <string name="shutter_sound_title">Sluiter geluid</string>
+    <string name="shutter_sound_summary">Een geluid afspelen bij afdrukken</string>
+    <string name="leveler_title">Leveler</string>
+    <string name="leveler_summary">Indicator die apparaatoriëntatie toont</string>
+    <string name="photo_capture_mode_title">Opnamemodus</string>
+    <string name="photo_capture_mode_maximize_quality">Kwaliteit maximaliseren</string>
+    <string name="photo_capture_mode_minimize_latency">Minimaliseer latentie</string>
+    <string name="photo_capture_mode_zsl">Zero shutter lag (experimental)</string>
+    <string name="image_stabilization_title">Beeldstabilisatie inschakelen indien beschikbaar</string>
+    <string name="image_stabilization_summary">Als de hardware het ondersteunt, schakel dan optische beeldstabilisatie in</string>
+    <string name="video_stabilization_title">Beeldstabilisatie inschakelen indien beschikbaar</string>
+    <string name="video_stabilization_summary">Indien beschikbaar, elektronische beeldstabilisatie (EIS) inschakelen</string>
+    <string name="video_stabilization_ois_title">OIS gebruiken in plaats van EIS wanneer beschikbaar</string>
+    <string name="video_stabilization_ois_summary">Als de hardware het ondersteunt, gebruik dan optische beeldstabilisatie (OIS) in plaats van elektronische beeldstabilisatie (EIS)</string>
+    <string name="video_stabilization_preview_title">Stabilisatie op voorvertoning inschakelen indien beschikbaar</string>
+    <string name="video_stabilization_preview_summary">Indien beschikbaar, pas de beeldstabilisatie ook toe op het voorbeeld en als de hardware het ondersteunt schakelt optische beeldstabilisatie (OIS) automatisch in, samen met elektronische beeldstabilisatie (EIS) als het apparaat dit geschikt acht. Alleen sommige apparaten die gestart zijn met Android 13 of nieuwer ondersteunen deze modus</string>
+    <string name="shortcut_selfie">Maak een selfie</string>
+    <string name="shortcut_video">Maak een video</string>
+    <string name="shortcut_qr">Scan een barcode</string>
+</resources>

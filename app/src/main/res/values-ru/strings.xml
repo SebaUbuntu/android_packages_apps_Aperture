@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Камера</string>
+    <string name="video_camera_label">Видеокамера</string>
+    <string name="flip_camera_button_description">Смена камеры</string>
+    <string name="gallery_button_description">Галерея</string>
+    <string name="photo_mode_button_description">Переключить в режим фото</string>
+    <string name="qr_mode_button_description">Переключить в режим QR-сканера</string>
+    <string name="settings_back_button_description">Вернуться в режим камеры</string>
+    <string name="shutter_button_description">Затвор</string>
+    <string name="video_mode_button_description">Переключить в режим видео</string>
+    <string name="video_recording_state_button_description">Пауза/возобновление видеозаписи</string>
+    <string name="timer_off">АВТОСПУСК ОТКЛЮЧЕН</string>
+    <string name="timer_3">ТАЙМЕР 3 сек.</string>
+    <string name="timer_10">ТАЙМЕР 10 сек.</string>
+    <string name="video_framerate_auto">АВТО FPS</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">НЕТ</string>
+    <string name="effect_night">НОЧНАЯ СЪЕМКА</string>
+    <string name="effect_face_retouch">РЕТУШЬ ЛИЦА</string>
+    <string name="effect_auto">АВТО</string>
+    <string name="grid_off">СЕТКА ВЫКЛ</string>
+    <string name="grid_on_3">СЕТКА 3x3</string>
+    <string name="grid_on_4">СЕТКА 4x4</string>
+    <string name="grid_on_goldenratio">СЕТКА φ</string>
+    <string name="mic_off">МИКРОФОН ВЫКЛ</string>
+    <string name="mic_on">МИКРОФОН ВКЛ</string>
+    <string name="settings">НАСТРОЙКИ</string>
+    <string name="selector_photo">ФОТО</string>
+    <string name="select_video">ВИДЕО</string>
+    <string name="select_scan">СКАНИРОВАТЬ</string>
+    <string name="app_permissions_toast">Пользователь не предоставил разрешения.</string>
+    <string name="camcorder_unsupported_toast">Ни одна камера не поддерживает видеозапись.</string>
+    <string name="qr_copy_description">Скопировать в буфер обмена</string>
+    <string name="qr_icon_description">Значок</string>
+    <string name="qr_share_description">Поделиться</string>
+    <string name="qr_text">Текст</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="general_header">Общие</string>
+    <string name="photos_header">Фото</string>
+    <string name="video_header">Видео</string>
+    <string name="bright_screen_title">Яркий экран</string>
+    <string name="save_location_title">Сохранить данные о местоположении</string>
+    <string name="save_location_summary">Включите местоположение GPS в метаданные</string>
+    <string name="save_location_toast">Пользователь не предоставил разрешение на доступ к местоположению.</string>
+    <string name="shutter_sound_title">Звук затвора</string>
+    <string name="shutter_sound_summary">Воспроизвести звук при съемке</string>
+    <string name="leveler_title">Уровень</string>
+    <string name="leveler_summary">Индикатор, показывающий ориентацию устройства</string>
+    <string name="photo_capture_mode_title">Режим съемки</string>
+    <string name="photo_capture_mode_maximize_quality">Максимальное качество</string>
+    <string name="photo_capture_mode_minimize_latency">Минимальная задержка</string>
+    <string name="photo_capture_mode_zsl">Нулевая задержка затвора (экспериментально)</string>
+    <string name="image_stabilization_title">Включить стабилизацию изображения, если она доступна</string>
+    <string name="image_stabilization_summary">Если оборудование поддерживает эту функцию, включите оптическую стабилизацию изображения</string>
+    <string name="video_stabilization_title">Включите стабилизацию видео, если она доступна</string>
+    <string name="video_stabilization_summary">Включить электронную стабилизацию изображения (EIS), если она доступна.</string>
+    <string name="video_stabilization_ois_title">Использовать OIS вместо EIS, когда это возможно</string>
+    <string name="video_stabilization_ois_summary">Использовать оптическую стабилизацию изображения (OIS) вместо электронной (EIS), если ее поддерживает оборудование.</string>
+    <string name="video_stabilization_preview_title">Включить стабилизацию при предварительном просмотре, если она доступна</string>
+    <string name="video_stabilization_preview_summary">Если доступно, применять стабилизацию изображения также к предварительному просмотру и, если аппаратное обеспечение поддерживает это, автоматически включать оптическую стабилизацию изображения (OIS) вместе с электронной (EIS), если устройство сочтет это целесообразным. Этот режим поддерживают только некоторые устройства, работающие под управлением Android 13 или новее</string>
+    <string name="shortcut_selfie">Сделать селфи</string>
+    <string name="shortcut_video">Снять видео</string>
+    <string name="shortcut_qr">Сканировать штрих-код</string>
+</resources>

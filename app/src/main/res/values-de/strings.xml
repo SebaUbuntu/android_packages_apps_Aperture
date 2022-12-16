@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Kamera</string>
+    <string name="video_camera_label">Videorekorder</string>
+    <string name="flip_camera_button_description">Kamera wechseln</string>
+    <string name="gallery_button_description">Galerie</string>
+    <string name="photo_mode_button_description">Zum Fotomodus wechseln</string>
+    <string name="settings_back_button_description">Zurück zum Kameramodus</string>
+    <string name="shutter_button_description">Auslöser</string>
+    <string name="video_mode_button_description">Zum Videomodus wechseln</string>
+    <string name="video_recording_state_button_description">Videoaufnahme pausieren/fortsetzen</string>
+    <string name="timer_off">TIMER AUS</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="grid_off">RASTER AUS</string>
+    <string name="grid_on_3">RASTER 3 x 3</string>
+    <string name="grid_on_4">RASTER 4 x 4</string>
+    <string name="settings">EINSTELLUNGEN</string>
+    <string name="selector_photo">FOTO</string>
+    <string name="select_video">VIDEO</string>
+    <string name="select_scan">SCANNEN</string>
+    <string name="app_permissions_toast">Berechtigung vom Nutzer nicht erteilt.</string>
+    <string name="camcorder_unsupported_toast">Keine Kamera mit Videounterstützung vorhanden.</string>
+    <string name="qr_copy_description">In die Zwischenablage kopieren</string>
+    <string name="qr_icon_description">Symbol</string>
+    <string name="qr_share_description">Teilen</string>
+    <string name="qr_text">Text</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="general_header">Allgemein</string>
+    <string name="photos_header">Fotos</string>
+    <string name="video_header">Video</string>
+    <string name="save_location_title">Standortdaten speichern</string>
+    <string name="save_location_summary">GPS-Standort in Metadaten speichern</string>
+    <string name="save_location_toast">Standortberechtigung vom Nutzer nicht erteilt.</string>
+    <string name="photo_capture_mode_title">Aufnahmemodus</string>
+    <string name="video_stabilization_preview_title">Stabilisierung in der Vorschau anwenden, falls verfügbar</string>
+    <string name="shortcut_selfie">Selfie aufnehmen</string>
+    <string name="shortcut_video">Video aufnehmen</string>
+    <string name="shortcut_qr">Barcode scannen</string>
+</resources>
