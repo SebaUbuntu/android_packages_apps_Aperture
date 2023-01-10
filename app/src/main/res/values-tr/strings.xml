@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Kamera</string>
+    <string name="video_camera_label">Video Kamera</string>
+    <string name="camera_mode_highlight_description">Kamera modu vurgusu</string>
+    <string name="cancel_button_description">İptal</string>
+    <string name="confirm_button_description">Onayla</string>
+    <string name="flash_button_description">Flaş modu</string>
+    <string name="flip_camera_button_description">Kamerayı çevir</string>
+    <string name="gallery_button_description">Galeri</string>
+    <string name="image_view_description">Resim ön izleme</string>
+    <string name="photo_mode_button_description">Fotoğraf moduna geç</string>
+    <string name="pro_button_description">Pro ayarları</string>
+    <string name="qr_mode_button_description">Kare kod okuyucusuna geç</string>
+    <string name="settings_back_button_description">Kamera moduna dön</string>
+    <string name="shutter_button_description">Deklanşör</string>
+    <string name="video_mode_button_description">Video moduna geç</string>
+    <string name="video_recording_state_button_description">Video kaydını duraklat/devam ettir</string>
+    <string name="timer_off">ZAMANLAYICI KAPALI</string>
+    <string name="timer_3">ZAMANLAYICI 3s</string>
+    <string name="timer_10">ZAMANLAYICI 10s</string>
+    <string name="video_framerate_auto">Otomatik FPS</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">YOK</string>
+    <string name="effect_night">GECE</string>
+    <string name="effect_face_retouch">YÜZ RÖTUŞU</string>
+    <string name="effect_auto">OTOMATİK</string>
+    <string name="grid_off">ÇRÇV KPL</string>
+    <string name="grid_on_3">ÇRÇV 3x3</string>
+    <string name="grid_on_4">ÇRÇV 4x4</string>
+    <string name="grid_on_goldenratio">ÇRÇV φ</string>
+    <string name="mic_off">MİK KPL</string>
+    <string name="mic_on">MİK AÇK</string>
+    <string name="settings">AYARLAR</string>
+    <string name="selector_photo">FOTOĞRAF</string>
+    <string name="select_video">VİDEO</string>
+    <string name="select_scan">TARAMA</string>
+    <string name="app_permissions_toast">Kullanıcı izinleri vermedi.</string>
+    <string name="camcorder_unsupported_toast">Video kaydını destekleyen kamera yok.</string>
+    <string name="qr_copy_description">Panoya kopyala</string>
+    <string name="qr_icon_description">Simge</string>
+    <string name="qr_share_description">Paylaş</string>
+    <string name="qr_text">Metin</string>
+    <string name="title_activity_settings">Ayarlar</string>
+    <string name="general_header">Genel</string>
+    <string name="photos_header">Fotoğraflar</string>
+    <string name="video_header">Video</string>
+    <string name="bright_screen_title">Parlak ekran</string>
+    <string name="bright_screen_summary">Parlaklığı %100\'e kilitler</string>
+    <string name="save_location_title">Konum verisini kaydet</string>
+    <string name="save_location_summary">Metadataya GPS konumunu dahil et</string>
+    <string name="save_location_toast">Kullanıcı konum izinlerini vermedi.</string>
+    <string name="shutter_sound_title">Deklanşör sesi</string>
+    <string name="shutter_sound_summary">Çekim yaparken ses çal</string>
+    <string name="leveler_title">Eşitleyici</string>
+    <string name="leveler_summary">Cihaz yönünü gösteren gösterge</string>
+    <string name="photo_capture_mode_title">Çekim modu</string>
+    <string name="photo_capture_mode_maximize_quality">En yüksek kalite</string>
+    <string name="photo_capture_mode_minimize_latency">Gecikmeyi düşür</string>
+    <string name="photo_capture_mode_zsl">Gecikmesiz yakalama (deneysel)</string>
+    <string name="image_stabilization_title">Mümkün olduğunda görüntüyü dengele</string>
+    <string name="image_stabilization_summary">Donanım destekliyorsa optik dengelemeyi etkinleştir</string>
+    <string name="video_stabilization_title">Uygun olduğunda video stabilizasyonunu aktifleştir</string>
+    <string name="video_stabilization_summary">Uygun olduğunda elektronik görüntü stabilizasyonunu (EIS) aktifleştir</string>
+    <string name="video_stabilization_ois_title">Uygun olduğunda EIS yerine OIS kullan</string>
+    <string name="video_stabilization_ois_summary">Donanım destekliyorsa, elektronik görüntü sabitleme (EIS) yerine optik görüntü sabitleme (OIS) kullanın.</string>
+    <string name="video_stabilization_preview_title">Mümkün olduğunda önizlemede sabitlemeyi etkinleştir</string>
+    <string name="video_stabilization_preview_summary">Varsa görüntü sabitlemeyi önizlemeye de uygular ve donanım destekliyorsa, cihaz izin verirse elektronik görüntü sabitleme (EIS) ile birlikte optik görüntü sabitlemeyi (OIS) otomatik olarak etkinleştirin. Yalnızca Android 13 veya daha yeni sürüm mevcut olan bazı cihazlar bu modu destekler</string>
+    <string name="shortcut_selfie">Selfie çekin</string>
+    <string name="shortcut_video">Video çekin</string>
+    <string name="shortcut_qr">Barkod tara</string>
+</resources>

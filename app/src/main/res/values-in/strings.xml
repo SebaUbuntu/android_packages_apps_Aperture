@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Kamera</string>
+    <string name="video_camera_label">Perekam video</string>
+    <string name="confirm_button_description">Konfirmasi</string>
+    <string name="gallery_button_description">Galeri</string>
+    <string name="video_framerate_auto">FPS OTOMATIS</string>
+    <string name="video_framerate_value"><xliff:g contoh="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">TIDAK ADA</string>
+    <string name="qr_icon_description">Ikon</string>
+    <string name="qr_share_description">Bagikan</string>
+    <string name="qr_text">Teks</string>
+    <string name="general_header">Umum</string>
+    <string name="video_header">Video</string>
+    <string name="save_location_title">Lokasi penyimpanan data</string>
+    <string name="shutter_sound_title">Suara rana</string>
+</resources>

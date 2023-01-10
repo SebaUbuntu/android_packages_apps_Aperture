@@ -6,9 +6,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Камера</string>
     <string name="video_camera_label">Видеокамера</string>
+    <string name="camera_mode_highlight_description">Подсветка режима камеры</string>
+    <string name="cancel_button_description">Отмена</string>
+    <string name="confirm_button_description">Подтвердить</string>
+    <string name="flash_button_description">Режим вспышки</string>
     <string name="flip_camera_button_description">Смена камеры</string>
     <string name="gallery_button_description">Галерея</string>
+    <string name="image_view_description">Предпросмотр изображения</string>
     <string name="photo_mode_button_description">Переключить в режим фото</string>
+    <string name="pro_button_description">Профессиональные настройки</string>
     <string name="qr_mode_button_description">Переключить в режим QR-сканера</string>
     <string name="settings_back_button_description">Вернуться в режим камеры</string>
     <string name="shutter_button_description">Затвор</string>
@@ -44,6 +50,7 @@
     <string name="photos_header">Фото</string>
     <string name="video_header">Видео</string>
     <string name="bright_screen_title">Яркий экран</string>
+    <string name="bright_screen_summary">Фиксация яркости на 100%</string>
     <string name="save_location_title">Сохранить данные о местоположении</string>
     <string name="save_location_summary">Включите местоположение GPS в метаданные</string>
     <string name="save_location_toast">Пользователь не предоставил разрешение на доступ к местоположению.</string>

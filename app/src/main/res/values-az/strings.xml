@@ -6,9 +6,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Kamera</string>
     <string name="video_camera_label">Video Kamera</string>
+    <string name="camera_mode_highlight_description">Kamera rejimi vurğusu</string>
+    <string name="cancel_button_description">İmtina</string>
+    <string name="confirm_button_description">Təsdiqlə</string>
+    <string name="flash_button_description">Fənər rejimi</string>
     <string name="flip_camera_button_description">Kameranı çevir</string>
     <string name="gallery_button_description">Qalereya</string>
+    <string name="image_view_description">Şəklə önbaxış</string>
     <string name="photo_mode_button_description">Foto rejiminə keç</string>
+    <string name="pro_button_description">Pro tənzimləmələr</string>
     <string name="qr_mode_button_description">QR skaner rejiminə keç</string>
     <string name="settings_back_button_description">Kamera rejiminə qayıt</string>
     <string name="shutter_button_description">Sürgü</string>
@@ -44,6 +50,7 @@
     <string name="photos_header">Fotolar</string>
     <string name="video_header">Video</string>
     <string name="bright_screen_title">Parlaq ekran</string>
+    <string name="bright_screen_summary">Parlaqlığı 100%-ə kilidləyir</string>
     <string name="save_location_title">Yer məlumatını saxla</string>
     <string name="save_location_summary">Metadataya GPS yerini daxil et</string>
     <string name="save_location_toast">İstifadəçi tərəfindən verilməyən yerləşmə icazələri.</string>

@@ -6,9 +6,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Kamera</string>
     <string name="video_camera_label">Video regjistrues</string>
+    <string name="camera_mode_highlight_description">Theksimi i modalitetit të kamerës</string>
+    <string name="cancel_button_description">Anullo</string>
+    <string name="confirm_button_description">Konfirmo</string>
+    <string name="flash_button_description">Modaliteti i blicit</string>
     <string name="flip_camera_button_description">Rrotulloje kamerën</string>
     <string name="gallery_button_description">Galeria</string>
+    <string name="image_view_description">Trego imazhin</string>
     <string name="photo_mode_button_description">Kalo në modalitetin e fotografisë</string>
+    <string name="pro_button_description">Cilësimet PRO</string>
     <string name="qr_mode_button_description">Kalo në modalitetin e skanerit QR</string>
     <string name="settings_back_button_description">Kthehuni në modalitetin e kamerës</string>
     <string name="shutter_button_description">Shkrepësi</string>
@@ -18,10 +24,15 @@
     <string name="timer_3">KOHËMATESI 3s</string>
     <string name="timer_10">KOHËMATESI 10s</string>
     <string name="video_framerate_auto">AUTO FPS</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
     <string name="effect_none">ASNJË</string>
     <string name="effect_night">NATË</string>
     <string name="effect_face_retouch">FYTYRE RETUSH</string>
     <string name="effect_auto">AUTO</string>
+    <string name="grid_off">Pa RRJETË</string>
+    <string name="grid_on_3">RRJETË 3x3</string>
+    <string name="grid_on_4">RRJETË 4x4</string>
+    <string name="grid_on_goldenratio">RRJETË φ</string>
     <string name="mic_off">MIC FIKUR</string>
     <string name="mic_on">MIX NDEZUR</string>
     <string name="settings">CILËSIMET</string>
@@ -29,6 +40,7 @@
     <string name="select_video">VIDEO</string>
     <string name="select_scan">SKANO</string>
     <string name="app_permissions_toast">Lejet nuk janë dhënë nga përdoruesi.</string>
+    <string name="camcorder_unsupported_toast">Asnjë kamer nuk mundëson regjistrimin e videos.</string>
     <string name="qr_copy_description">Kopjo në \'clipboard\'</string>
     <string name="qr_icon_description">Ikonë</string>
     <string name="qr_share_description">Shpërndaje</string>
@@ -38,6 +50,27 @@
     <string name="photos_header">Fotografitë</string>
     <string name="video_header">Video</string>
     <string name="bright_screen_title">Ekran i shndritshëm</string>
+    <string name="bright_screen_summary">Mbyll ndriçimin në 100%</string>
     <string name="save_location_title">Ruani të dhënat e vendndodhjes</string>
     <string name="save_location_summary">Përfshi vendndodhjen GPS në meta të dhëna</string>
+    <string name="save_location_toast">Leja për vendodhjen nuk ështe lejuar nga përdoruesi.</string>
+    <string name="shutter_sound_title">Tingulli i shkrepjes</string>
+    <string name="shutter_sound_summary">Luaj nje muzikë kur shkrep</string>
+    <string name="leveler_title">Nivelues</string>
+    <string name="leveler_summary">Tregues i cili shfaq orientimin e paisjes.</string>
+    <string name="photo_capture_mode_title">Metoda e kapjes</string>
+    <string name="photo_capture_mode_maximize_quality">Maksimizo kualitetin</string>
+    <string name="photo_capture_mode_minimize_latency">Minimizo vonesën</string>
+    <string name="photo_capture_mode_zsl">Shkrepje pa vonesë (eksperimentale)</string>
+    <string name="image_stabilization_title">Përdor stabilizimin e imazhit kur është e mundur.</string>
+    <string name="image_stabilization_summary">Nëse paisja e mundëson, përdor stabilizimin optik të imazhit</string>
+    <string name="video_stabilization_title">Përdor stabilizimin e videos kur është e mundur</string>
+    <string name="video_stabilization_summary">Nese e mundur, përdor stabilizim elektronik të imazhit (EIS)</string>
+    <string name="video_stabilization_ois_title">Përdor OIS në vënd të EIS kur është e mundur</string>
+    <string name="video_stabilization_ois_summary">Nëse paisja e lejon këtë, përdor stabilizim optik të imazhit (OIS) në vënd të stabilizimit elektronik të imazhit (EIS)</string>
+    <string name="video_stabilization_preview_title">Përdor stabilizimin në tregues nëse mundësohet</string>
+    <string name="video_stabilization_preview_summary">Nëse mundet, apliko stabilizimin e imazhit dhe në shfaqje, dhe nëse paisja e mundëson përdor automatikisht stabilizimin optik të imazhit njëkohësisht me atë elektronik. Nëse paisja mund të përcaktojë më të mirën. Vetëm disa paisje me Android 13 ose më të re e mundëson këtë</string>
+    <string name="shortcut_selfie">Bën një selfie</string>
+    <string name="shortcut_video">Kap një video</string>
+    <string name="shortcut_qr">Skano një Barcode</string>
 </resources>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Kamera</string>
+    <string name="video_camera_label">Videókamera</string>
+    <string name="camera_mode_highlight_description">A Kameramód összegzése</string>
+    <string name="cancel_button_description">Mégsem</string>
+    <string name="confirm_button_description">Megerősítés</string>
+    <string name="flash_button_description">Vakumód</string>
+    <string name="flip_camera_button_description">Kamerakép tükrözése</string>
+    <string name="gallery_button_description">Galéria</string>
+    <string name="image_view_description">Képelőnézet</string>
+    <string name="photo_mode_button_description">Váltás fotómódra</string>
+    <string name="pro_button_description">Pro-beállítások</string>
+    <string name="qr_mode_button_description">Váltás QR-kódolvasó módra</string>
+    <string name="settings_back_button_description">Visszatérés kameramódba</string>
+    <string name="shutter_button_description">Exponálógomb</string>
+    <string name="video_mode_button_description">Váltás videómódra</string>
+    <string name="video_recording_state_button_description">Videófelvétel megállítása/folytatása</string>
+    <string name="timer_off">IDŐZÍTŐ KI</string>
+    <string name="timer_3">IDŐZÍTŐ 3mp</string>
+    <string name="timer_10">IDŐZÍTŐ 10mp</string>
+    <string name="video_framerate_auto">AUTO FPS</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">NINCS</string>
+    <string name="effect_night">ÉJSZAKA</string>
+    <string name="effect_face_retouch">ARC RETUS</string>
+    <string name="effect_auto">AUTO</string>
+    <string name="grid_off">RÁCS KI</string>
+    <string name="grid_on_3">RÁCS 3x3</string>
+    <string name="grid_on_4">RÁCS 4x4</string>
+    <string name="grid_on_goldenratio">RÁCS φ</string>
+    <string name="mic_off">MIKROFON KI</string>
+    <string name="mic_on">MIKROFON BE</string>
+    <string name="settings">BEÁLLÍTÁSOK</string>
+    <string name="selector_photo">FOTÓ</string>
+    <string name="select_video">VIDEÓ</string>
+    <string name="select_scan">BEOLVASÁS</string>
+    <string name="app_permissions_toast">A jogosultságot a felhasználó nem adta meg.</string>
+    <string name="camcorder_unsupported_toast">Nincs videófelvételt támogató kamera.</string>
+    <string name="qr_copy_description">Másolás a vágólapra</string>
+    <string name="qr_icon_description">Ikon</string>
+    <string name="qr_share_description">Megosztás</string>
+    <string name="qr_text">Szöveg</string>
+    <string name="title_activity_settings">Beállítások</string>
+    <string name="general_header">Általános</string>
+    <string name="photos_header">Fotók</string>
+    <string name="video_header">Videó</string>
+    <string name="bright_screen_title">Fényes képernyő</string>
+    <string name="bright_screen_summary">Fényerő rögzítése 100%-on</string>
+    <string name="save_location_title">Helyinformációk elmentése</string>
+    <string name="save_location_summary">GPS-helyinformációk tárolása a metaadatokban</string>
+    <string name="save_location_toast">Helyinformációs jogosultságokat a felhasználó nem adta meg.</string>
+    <string name="shutter_sound_title">Zárhang</string>
+    <string name="shutter_sound_summary">Hang lejátszása képkészítéskor</string>
+    <string name="leveler_title">Szintező</string>
+    <string name="leveler_summary">A készülék tájolását mutató jelző</string>
+    <string name="photo_capture_mode_title">Képkészítési mód</string>
+    <string name="photo_capture_mode_maximize_quality">Minőség maximalizálása</string>
+    <string name="photo_capture_mode_minimize_latency">Késleltetés minimalizálása</string>
+    <string name="photo_capture_mode_zsl">Zéró zárkésleltetés (kísérleti)</string>
+    <string name="image_stabilization_title">Képstabilizáció engedélyezése ha elérhető</string>
+    <string name="image_stabilization_summary">Ha a hardver támogatja, az optikai képstabilizáció legyen engedélyezve</string>
+    <string name="video_stabilization_title">Videóstabilizáció engedélyezése ha elérhető</string>
+    <string name="video_stabilization_summary">Ha elérhető, legyen engedélyezve az elektronikus képstabilizáció (EIS)</string>
+    <string name="video_stabilization_ois_title">OIS használata EIS helyett ha elérhető</string>
+    <string name="video_stabilization_ois_summary">Ha a hardver támogatja, használjon optikai képstabilizációt (OIS) az elektronikus képstabilizáció (EIS) helyett</string>
+    <string name="video_stabilization_preview_title">Engedélyezze a stabilizálást az előnézeten ha elérhető</string>
+    <string name="video_stabilization_preview_summary">Ha rendelkezésre áll, alkalmazza a képstabilizációt az előnézetre is, és ha a hardver támogatja, automatikusan engedélyezze az optikai képstabilizációt (OIS) az elektronikus képstabilizálással (EIS) együtt, ha a készülék ezt megfelelőnek ítéli. Csak néhány Android 13-as vagy újabb rendszerrel kiadott készülék támogatja ezt az üzemmódot</string>
+    <string name="shortcut_selfie">Szelfi készítése</string>
+    <string name="shortcut_video">Videó készítése</string>
+    <string name="shortcut_qr">Vonalkód beolvasása</string>
+</resources>

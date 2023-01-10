@@ -6,9 +6,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">相机</string>
     <string name="video_camera_label">摄像机</string>
+    <string name="camera_mode_highlight_description">相机模式高亮</string>
+    <string name="cancel_button_description">取消</string>
+    <string name="confirm_button_description">确认</string>
+    <string name="flash_button_description">闪光灯模式</string>
     <string name="flip_camera_button_description">翻转摄像头</string>
     <string name="gallery_button_description">相册</string>
+    <string name="image_view_description">图像预览</string>
     <string name="photo_mode_button_description">切换到拍照模式</string>
+    <string name="pro_button_description">专业设置</string>
     <string name="qr_mode_button_description">切换到二维码扫描模式</string>
     <string name="settings_back_button_description">返回相机模式</string>
     <string name="shutter_button_description">快门</string>
@@ -44,6 +50,7 @@
     <string name="photos_header">照片</string>
     <string name="video_header">视频</string>
     <string name="bright_screen_title">屏幕亮度</string>
+    <string name="bright_screen_summary">锁定亮度为 100%</string>
     <string name="save_location_title">保存位置数据</string>
     <string name="save_location_summary">在元数据中包含 GPS 位置</string>
     <string name="save_location_toast">未授予位置权限。</string>

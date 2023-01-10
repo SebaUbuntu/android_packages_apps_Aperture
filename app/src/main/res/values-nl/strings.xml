@@ -6,9 +6,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Camera</string>
     <string name="video_camera_label">Camcorder</string>
+    <string name="camera_mode_highlight_description">Camera modus markeren</string>
+    <string name="cancel_button_description">Annuleer</string>
+    <string name="confirm_button_description">Bevestig</string>
+    <string name="flash_button_description">Flitsmodus</string>
     <string name="flip_camera_button_description">Schakelen tussen camera\'s</string>
     <string name="gallery_button_description">Galerij</string>
+    <string name="image_view_description">Voorbeeld afbeelding</string>
     <string name="photo_mode_button_description">Overschakelen naar foto-modus</string>
+    <string name="pro_button_description">Pro instellingen</string>
     <string name="qr_mode_button_description">Overschakelen naar QR-scanner modus</string>
     <string name="settings_back_button_description">Ga terug naar de cameramodus</string>
     <string name="shutter_button_description">Sluiter</string>
@@ -41,6 +47,7 @@
     <string name="photos_header">Foto\'s</string>
     <string name="video_header">Video</string>
     <string name="bright_screen_title">Helder scherm</string>
+    <string name="bright_screen_summary">Vergrendelt helderheid op 100%</string>
     <string name="save_location_title">Locatie gegevens opslaan</string>
     <string name="save_location_summary">GPS locatie opnemen in metadata</string>
     <string name="save_location_toast">Locatiemachtigingen niet verleend door de gebruiker.</string>

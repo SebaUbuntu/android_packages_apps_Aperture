@@ -6,9 +6,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">カメラ</string>
     <string name="video_camera_label">ビデオカメラ</string>
+    <string name="camera_mode_highlight_description">カメラモードのハイライト</string>
+    <string name="cancel_button_description">キャンセル</string>
+    <string name="confirm_button_description">確認</string>
+    <string name="flash_button_description">フラッシュモード</string>
     <string name="flip_camera_button_description">フリップカメラ</string>
     <string name="gallery_button_description">ギャラリー</string>
+    <string name="image_view_description">画像プレビュー</string>
     <string name="photo_mode_button_description">写真モードに切り替える</string>
+    <string name="pro_button_description">プロ設定</string>
     <string name="qr_mode_button_description">QR スキャナモードに切り替える</string>
     <string name="settings_back_button_description">カメラモードに戻る</string>
     <string name="shutter_button_description">シャッター</string>
@@ -43,4 +49,5 @@
     <string name="general_header">全般</string>
     <string name="photos_header">写真</string>
     <string name="video_header">ビデオ</string>
+    <string name="bright_screen_summary">明るさを100%に固定</string>
 </resources>

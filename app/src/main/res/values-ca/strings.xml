@@ -6,9 +6,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Càmera</string>
     <string name="video_camera_label">Càmera de vídeo</string>
+    <string name="camera_mode_highlight_description">Ressalta el mode de càmera</string>
+    <string name="cancel_button_description">Cancel·la</string>
+    <string name="confirm_button_description">Confirma</string>
+    <string name="flash_button_description">Mode de flaix</string>
     <string name="flip_camera_button_description">Canvia de càmera</string>
     <string name="gallery_button_description">Galeria</string>
+    <string name="image_view_description">Vista prèvia de la imatge</string>
     <string name="photo_mode_button_description">Canvia al mode foto</string>
+    <string name="pro_button_description">Configuració pro</string>
     <string name="qr_mode_button_description">Canvia al mode d\'escàner QR</string>
     <string name="settings_back_button_description">Torna al mode de càmera</string>
     <string name="shutter_button_description">Obturador</string>
@@ -34,6 +40,7 @@
     <string name="select_video">VÍDEO</string>
     <string name="select_scan">ESCANEJA</string>
     <string name="app_permissions_toast">Permisos no concedits per l\'usuari.</string>
+    <string name="camcorder_unsupported_toast">Cap càmera admet la gravació de vídeo.</string>
     <string name="qr_copy_description">Copia al porta-retalls</string>
     <string name="qr_icon_description">Icona</string>
     <string name="qr_share_description">Comparteix</string>
@@ -43,6 +50,7 @@
     <string name="photos_header">Fotos</string>
     <string name="video_header">Vídeo</string>
     <string name="bright_screen_title">Pantalla brillant</string>
+    <string name="bright_screen_summary">Bloqueja la brillantor al 100%</string>
     <string name="save_location_title">Desa les dades d\'ubicació</string>
     <string name="save_location_summary">Inclou la ubicació GPS a les metadades</string>
     <string name="save_location_toast">Permisos d\'ubicació no concedits per l\'usuari.</string>
