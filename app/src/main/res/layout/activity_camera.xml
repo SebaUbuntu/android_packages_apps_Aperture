@@ -236,6 +236,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
         <ImageButton
             android:id="@+id/proButton"
             style="@style/Theme.Aperture.Camera.SecondaryBottomBarButton"
@@ -272,7 +279,6 @@
         android:id="@+id/primaryBarLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/primary_bar_layout_background"
         android:paddingTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/modeSelectorLayout"
         app:layout_constraintEnd_toEndOf="parent"
