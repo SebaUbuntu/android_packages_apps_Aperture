@@ -11,7 +11,7 @@
 
     <!-- Main activity theme. -->
     <style name="Theme.Aperture.Camera" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/black</item>
         <item name="android:statusBarColor">@color/black</item>
         <item name="android:windowBackground">@color/black</item>
         <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="O_MR1">
