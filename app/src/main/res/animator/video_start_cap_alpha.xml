@@ -6,7 +6,7 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <objectAnimator
         android:propertyName="fillColor"
-        android:valueTo="@color/white" />
+        android:valueTo="@android:color/white" />
 
     <objectAnimator
         android:duration="300"

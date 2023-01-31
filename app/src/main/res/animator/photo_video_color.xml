@@ -8,5 +8,5 @@
         android:duration="300"
         android:propertyName="fillColor"
         android:valueFrom="@color/gray_60"
-        android:valueTo="@color/white" />
+        android:valueTo="@android:color/white" />
 </set>

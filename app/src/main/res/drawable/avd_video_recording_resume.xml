@@ -17,7 +17,7 @@
                 android:fillColor="@color/gray_60"
                 android:pathData="M 16 1 C 12.023 1 8.205 2.581 5.393 5.393 C 2.581 8.205 1 12.023 1 16 C 1 19.977 2.581 23.795 5.393 26.607 C 8.205 29.419 12.023 31 16 31 C 19.976 31 23.794 29.419 26.606 26.607 C 29.418 23.795 31 19.977 31 16 C 31 12.023 29.418 8.205 26.606 5.393 C 23.794 2.581 19.976 1 16 1 Z"
                 android:strokeWidth="2"
-                android:strokeColor="@color/white" />
+                android:strokeColor="@android:color/white" />
             <group
                 android:name="ic_pause"
                 android:pivotX="16"
@@ -37,7 +37,7 @@
                 android:pivotY="16">
                 <path
                     android:name="play"
-                    android:fillColor="@color/white"
+                    android:fillColor="@android:color/white"
                     android:pathData="M 11.5 9 L 22.5 16 L 11.5 23 L 11.5 9 Z" />
             </group>
         </vector>

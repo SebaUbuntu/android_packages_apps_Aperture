@@ -27,7 +27,7 @@
         android:id="@+id/previewBlurView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/black"
+        android:background="@android:color/black"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
         app:layout_constraintEnd_toEndOf="@+id/viewFinder"
@@ -89,8 +89,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:thumbColor="@color/white"
-        app:thumbTextColor="@color/black"
+        app:thumbColor="@android:color/white"
+        app:thumbTextColor="@android:color/black"
         app:thumbTextSize="10dp"
         app:trackColor="#7FCCCCCC" />
 
@@ -103,8 +103,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewFinder"
-        app:thumbColor="@color/white"
-        app:thumbTextColor="@color/black"
+        app:thumbColor="@android:color/white"
+        app:thumbTextColor="@android:color/black"
         app:thumbTextSize="10dp"
         app:trackColor="#7FCCCCCC" />
 
