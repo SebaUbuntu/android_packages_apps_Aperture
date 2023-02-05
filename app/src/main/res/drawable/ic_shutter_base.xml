@@ -36,7 +36,7 @@
         android:scaleY="1.0">
         <path
             android:name="capture_src"
-            android:fillColor="@color/gray_60"
+            android:fillColor="?attr/colorSecondaryContainer"
             android:fillType="evenOdd"
             android:pathData="M68 36C68 53.6731 53.6731 68 36 68C18.3269 68 4 53.6731 4 36C4 18.3269 18.3269 4 36 4C53.6731 4 68 18.3269 68 36Z" />
     </group>
