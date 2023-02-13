@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -16,7 +16,6 @@
     <string name="photo_mode_button_description">Switch to photo mode</string>
     <string name="pro_button_description">Pro settings</string>
     <string name="qr_mode_button_description">Switch to QR scanner mode</string>
-    <string name="settings_back_button_description">Go back to camera mode</string>
     <string name="shutter_button_description">Shutter</string>
     <string name="video_mode_button_description">Switch to video mode</string>
     <string name="video_recording_state_button_description">Pause/resume video recording</string>
@@ -50,7 +49,7 @@
     <string name="photos_header">Photos</string>
     <string name="video_header">Video</string>
     <string name="bright_screen_title">Bright screen</string>
-    <string name="bright_screen_summary">Locks brightness to 100%</string>
+    <string name="bright_screen_summary" formatted="false">Locks brightness to 100%</string>
     <string name="save_location_title">Save location data</string>
     <string name="save_location_summary">Include GPS location in metadata</string>
     <string name="save_location_toast">Location permissions not granted by the user.</string>
@@ -73,4 +72,8 @@
     <string name="shortcut_selfie">Take a selfie</string>
     <string name="shortcut_video">Take a video</string>
     <string name="shortcut_qr">Scan a barcode</string>
+    <string name="location_permission_dialog_title">Add photo and video locations</string>
+    <string name="location_permission_dialog_description">Map your memories by including location metadata with each capture.</string>
+    <string name="location_permission_dialog_later">Later</string>
+    <string name="location_permission_dialog_turn_on">Turn on</string>
 </resources>

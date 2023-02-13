@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -12,11 +12,11 @@
     <string name="flash_button_description">Режим вспышки</string>
     <string name="flip_camera_button_description">Смена камеры</string>
     <string name="gallery_button_description">Галерея</string>
+    <string name="google_lens_button_description">Открыть Google Lens</string>
     <string name="image_view_description">Предпросмотр изображения</string>
     <string name="photo_mode_button_description">Переключить в режим фото</string>
     <string name="pro_button_description">Профессиональные настройки</string>
     <string name="qr_mode_button_description">Переключить в режим QR-сканера</string>
-    <string name="settings_back_button_description">Вернуться в режим камеры</string>
     <string name="shutter_button_description">Затвор</string>
     <string name="video_mode_button_description">Переключить в режим видео</string>
     <string name="video_recording_state_button_description">Пауза/возобновление видеозаписи</string>
@@ -44,13 +44,15 @@
     <string name="qr_copy_description">Скопировать в буфер обмена</string>
     <string name="qr_icon_description">Значок</string>
     <string name="qr_share_description">Поделиться</string>
+    <string name="qr_wifi_title">Подключиться к этой сети Wi-Fi</string>
+    <string name="qr_dpp_description">Настроить это устройство</string>
     <string name="qr_text">Текст</string>
     <string name="title_activity_settings">Настройки</string>
     <string name="general_header">Общие</string>
     <string name="photos_header">Фото</string>
     <string name="video_header">Видео</string>
     <string name="bright_screen_title">Яркий экран</string>
-    <string name="bright_screen_summary">Фиксация яркости на 100%</string>
+    <string name="bright_screen_summary" formatted="false">Фиксация яркости на 100%</string>
     <string name="save_location_title">Сохранить данные о местоположении</string>
     <string name="save_location_summary">Включите местоположение GPS в метаданные</string>
     <string name="save_location_toast">Пользователь не предоставил разрешение на доступ к местоположению.</string>
@@ -73,4 +75,8 @@
     <string name="shortcut_selfie">Сделать селфи</string>
     <string name="shortcut_video">Снять видео</string>
     <string name="shortcut_qr">Сканировать штрих-код</string>
+    <string name="location_permission_dialog_title">Добавлять данные о местоположении к фото и видео</string>
+    <string name="location_permission_dialog_description">Составьте карту ваших воспоминаний, включив метаданные о местоположении в каждый снимок.</string>
+    <string name="location_permission_dialog_later">Позже</string>
+    <string name="location_permission_dialog_turn_on">Включить</string>
 </resources>

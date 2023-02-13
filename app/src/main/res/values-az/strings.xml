@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -16,7 +16,6 @@
     <string name="photo_mode_button_description">Foto rejiminə keç</string>
     <string name="pro_button_description">Pro tənzimləmələr</string>
     <string name="qr_mode_button_description">QR skaner rejiminə keç</string>
-    <string name="settings_back_button_description">Kamera rejiminə qayıt</string>
     <string name="shutter_button_description">Sürgü</string>
     <string name="video_mode_button_description">Video rejiminə keç</string>
     <string name="video_recording_state_button_description">Videoyazıya fasilə ver/davam etdir</string>
@@ -50,7 +49,7 @@
     <string name="photos_header">Fotolar</string>
     <string name="video_header">Video</string>
     <string name="bright_screen_title">Parlaq ekran</string>
-    <string name="bright_screen_summary">Parlaqlığı 100%-ə kilidləyir</string>
+    <string name="bright_screen_summary" formatted="false">Parlaqlığı 100%-ə kilidləyir</string>
     <string name="save_location_title">Yer məlumatını saxla</string>
     <string name="save_location_summary">Metadataya GPS yerini daxil et</string>
     <string name="save_location_toast">İstifadəçi tərəfindən verilməyən yerləşmə icazələri.</string>
@@ -73,4 +72,8 @@
     <string name="shortcut_selfie">Selfi çək</string>
     <string name="shortcut_video">Video çək</string>
     <string name="shortcut_qr">Barkod skan et</string>
+    <string name="location_permission_dialog_title">Foto və video yeri əlavə et</string>
+    <string name="location_permission_dialog_description">Hər çəkilişə yerləşmənin meta məlumatlarını daxil edərək xatirələrinizi xəritələndirin.</string>
+    <string name="location_permission_dialog_later">Daha sonra</string>
+    <string name="location_permission_dialog_turn_on">İşə sal</string>
 </resources>

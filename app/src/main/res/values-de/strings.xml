@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -16,7 +16,6 @@
     <string name="photo_mode_button_description">Zum Fotomodus wechseln</string>
     <string name="pro_button_description">Profi-Einstellungen</string>
     <string name="qr_mode_button_description">Zum QR-Scanner-Modus wechseln</string>
-    <string name="settings_back_button_description">Zurück zum Kameramodus</string>
     <string name="shutter_button_description">Auslöser</string>
     <string name="video_mode_button_description">Zum Videomodus wechseln</string>
     <string name="video_recording_state_button_description">Videoaufnahme pausieren/fortsetzen</string>
@@ -49,10 +48,12 @@
     <string name="general_header">Allgemein</string>
     <string name="photos_header">Fotos</string>
     <string name="video_header">Video</string>
-    <string name="bright_screen_summary">Helligkeit auf 100% festlegen</string>
+    <string name="bright_screen_summary" formatted="false">Helligkeit auf 100% festlegen</string>
     <string name="save_location_title">Standortdaten speichern</string>
     <string name="save_location_summary">GPS-Standort in Metadaten speichern</string>
     <string name="save_location_toast">Standortberechtigung vom Nutzer nicht erteilt.</string>
+    <string name="shutter_sound_title">Auslöser-Ton</string>
+    <string name="shutter_sound_summary">Bei Bildaufnahme einen Ton abspielen</string>
     <string name="leveler_title">Wasserwaage</string>
     <string name="leveler_summary">Anzeige für horizontale Ausrichtung des Geräts</string>
     <string name="photo_capture_mode_title">Aufnahmemodus</string>
@@ -64,7 +65,9 @@
     <string name="video_stabilization_title">Videostabilisierung aktivieren, falls vorhanden</string>
     <string name="video_stabilization_summary">Elektronische Bildstabilisierung (EIS) aktivieren, falls vorhanden</string>
     <string name="video_stabilization_ois_title">OIS statt EIS verwenden, falls vorhanden</string>
+    <string name="video_stabilization_ois_summary">Wenn die Hardware dies unterstützt, optische Bildstabilisierung (OIS) statt elektronischer Bildstabilisierung (EIS) verwenden</string>
     <string name="video_stabilization_preview_title">Stabilisierung in der Vorschau anwenden, falls verfügbar</string>
+    <string name="video_stabilization_preview_summary">Wenn verfügbar, die Bildstabilisierung auch auf die Vorschau anwenden und, falls die Hardware dies unterstützt, automatisch die optische Bildstabilisierung (OIS) zusammen mit der elektronischen Bildstabilisierung (EIS) aktivieren, wenn das Gerät dies für sinnvoll hält. Nur einige Geräte, die mit Android 13 oder neuer auf den Markt kommen, unterstützen diesen Modus</string>
     <string name="shortcut_selfie">Selfie aufnehmen</string>
     <string name="shortcut_video">Video aufnehmen</string>
     <string name="shortcut_qr">Barcode scannen</string>

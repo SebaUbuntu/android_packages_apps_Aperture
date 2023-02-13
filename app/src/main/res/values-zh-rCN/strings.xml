@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -12,11 +12,11 @@
     <string name="flash_button_description">闪光灯模式</string>
     <string name="flip_camera_button_description">翻转摄像头</string>
     <string name="gallery_button_description">相册</string>
+    <string name="google_lens_button_description">打开 Google Lens</string>
     <string name="image_view_description">图像预览</string>
     <string name="photo_mode_button_description">切换到拍照模式</string>
     <string name="pro_button_description">专业设置</string>
     <string name="qr_mode_button_description">切换到二维码扫描模式</string>
-    <string name="settings_back_button_description">返回相机模式</string>
     <string name="shutter_button_description">快门</string>
     <string name="video_mode_button_description">切换到视频模式</string>
     <string name="video_recording_state_button_description">暂停/继续视频录制</string>
@@ -44,13 +44,15 @@
     <string name="qr_copy_description">复制到剪贴板</string>
     <string name="qr_icon_description">图标</string>
     <string name="qr_share_description">分享</string>
+    <string name="qr_wifi_title">连接到此 Wi-Fi 网络</string>
+    <string name="qr_dpp_description">配置此设备</string>
     <string name="qr_text">文本</string>
     <string name="title_activity_settings">设置</string>
     <string name="general_header">常规</string>
     <string name="photos_header">照片</string>
     <string name="video_header">视频</string>
     <string name="bright_screen_title">屏幕亮度</string>
-    <string name="bright_screen_summary">锁定亮度为 100%</string>
+    <string name="bright_screen_summary" formatted="false">锁定亮度为 100%</string>
     <string name="save_location_title">保存位置数据</string>
     <string name="save_location_summary">在元数据中包含 GPS 位置</string>
     <string name="save_location_toast">未授予位置权限。</string>
@@ -73,4 +75,8 @@
     <string name="shortcut_selfie">自拍</string>
     <string name="shortcut_video">拍视频</string>
     <string name="shortcut_qr">扫描条码</string>
+    <string name="location_permission_dialog_title">为照片和视频添加地理位置</string>
+    <string name="location_permission_dialog_description">在每次拍摄的照片视频中包含位置元数据便于日后回忆</string>
+    <string name="location_permission_dialog_later">稍后</string>
+    <string name="location_permission_dialog_turn_on">开启</string>
 </resources>

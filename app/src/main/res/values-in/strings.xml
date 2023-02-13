@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Kamera</string>
     <string name="video_camera_label">Perekam video</string>
+    <string name="cancel_button_description">Batalkan</string>
     <string name="confirm_button_description">Konfirmasi</string>
+    <string name="flash_button_description">Mode flash</string>
     <string name="gallery_button_description">Galeri</string>
+    <string name="image_view_description">Pratinjau gambar</string>
     <string name="video_framerate_auto">FPS OTOMATIS</string>
     <string name="video_framerate_value"><xliff:g contoh="60" id="fps">%d</xliff:g> FPS</string>
     <string name="effect_none">TIDAK ADA</string>
+    <string name="effect_night">MALAM</string>
+    <string name="effect_auto">OTOMATIS</string>
+    <string name="settings">PENGATURAN</string>
+    <string name="selector_photo">FOTO</string>
+    <string name="select_video">VIDEO</string>
+    <string name="select_scan">PINDAI</string>
+    <string name="qr_copy_description">Salin ke papan klip</string>
     <string name="qr_icon_description">Ikon</string>
     <string name="qr_share_description">Bagikan</string>
     <string name="qr_text">Teks</string>
+    <string name="title_activity_settings">Pengaturan</string>
     <string name="general_header">Umum</string>
     <string name="video_header">Video</string>
+    <string name="bright_screen_title">Kecerahan layar</string>
+    <string name="bright_screen_summary" formatted="false">Kunci kecerahan ke 100%</string>
     <string name="save_location_title">Lokasi penyimpanan data</string>
     <string name="shutter_sound_title">Suara rana</string>
+    <string name="photo_capture_mode_maximize_quality">Maksimalkan kualitas</string>
+    <string name="photo_capture_mode_minimize_latency">Minimalkan latensi</string>
+    <string name="shortcut_selfie">Ambil foto selfie</string>
+    <string name="shortcut_video">Ambil video</string>
+    <string name="shortcut_qr">Pindai barcode</string>
+    <string name="location_permission_dialog_title">Tambahkan lokasi foto dan video</string>
+    <string name="location_permission_dialog_later">Nanti</string>
+    <string name="location_permission_dialog_turn_on">Hidupkan</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -12,11 +12,11 @@
     <string name="flash_button_description">Flitsmodus</string>
     <string name="flip_camera_button_description">Schakelen tussen camera\'s</string>
     <string name="gallery_button_description">Galerij</string>
+    <string name="google_lens_button_description">Open Google Lens</string>
     <string name="image_view_description">Voorbeeld afbeelding</string>
     <string name="photo_mode_button_description">Overschakelen naar foto-modus</string>
     <string name="pro_button_description">Pro instellingen</string>
     <string name="qr_mode_button_description">Overschakelen naar QR-scanner modus</string>
-    <string name="settings_back_button_description">Ga terug naar de cameramodus</string>
     <string name="shutter_button_description">Sluiter</string>
     <string name="video_mode_button_description">Overschakelen naar videomodus</string>
     <string name="video_recording_state_button_description">Video-opname onderbreken/hervatten</string>
@@ -41,13 +41,15 @@
     <string name="qr_copy_description">Kopieer naar klembord</string>
     <string name="qr_icon_description">Pictogram</string>
     <string name="qr_share_description">Deel</string>
+    <string name="qr_wifi_title">Verbinding maken met dit wifi-netwerk</string>
+    <string name="qr_dpp_description">Configureer dit apparaat</string>
     <string name="qr_text">Tekst</string>
     <string name="title_activity_settings">Instellingen</string>
     <string name="general_header">Algemeen</string>
     <string name="photos_header">Foto\'s</string>
     <string name="video_header">Video</string>
     <string name="bright_screen_title">Helder scherm</string>
-    <string name="bright_screen_summary">Vergrendelt helderheid op 100%</string>
+    <string name="bright_screen_summary" formatted="false">Vergrendelt helderheid op 100%</string>
     <string name="save_location_title">Locatie gegevens opslaan</string>
     <string name="save_location_summary">GPS locatie opnemen in metadata</string>
     <string name="save_location_toast">Locatiemachtigingen niet verleend door de gebruiker.</string>
@@ -70,4 +72,8 @@
     <string name="shortcut_selfie">Maak een selfie</string>
     <string name="shortcut_video">Maak een video</string>
     <string name="shortcut_qr">Scan een barcode</string>
+    <string name="location_permission_dialog_title">Voeg foto- en videolocaties toe</string>
+    <string name="location_permission_dialog_description">Markeer uw herinneringen aan de hand van metadata van de locatie met elke opname.</string>
+    <string name="location_permission_dialog_later">Later</string>
+    <string name="location_permission_dialog_turn_on">Schakel in</string>
 </resources>

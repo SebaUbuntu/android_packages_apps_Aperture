@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -16,7 +16,6 @@
     <string name="photo_mode_button_description">Fotoğraf moduna geç</string>
     <string name="pro_button_description">Pro ayarları</string>
     <string name="qr_mode_button_description">Kare kod okuyucusuna geç</string>
-    <string name="settings_back_button_description">Kamera moduna dön</string>
     <string name="shutter_button_description">Deklanşör</string>
     <string name="video_mode_button_description">Video moduna geç</string>
     <string name="video_recording_state_button_description">Video kaydını duraklat/devam ettir</string>
@@ -50,7 +49,7 @@
     <string name="photos_header">Fotoğraflar</string>
     <string name="video_header">Video</string>
     <string name="bright_screen_title">Parlak ekran</string>
-    <string name="bright_screen_summary">Parlaklığı %100\'e kilitler</string>
+    <string name="bright_screen_summary" formatted="false">Parlaklığı %100\'e kilitler</string>
     <string name="save_location_title">Konum verisini kaydet</string>
     <string name="save_location_summary">Metadataya GPS konumunu dahil et</string>
     <string name="save_location_toast">Kullanıcı konum izinlerini vermedi.</string>

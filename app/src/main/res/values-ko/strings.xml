@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">카메라</string>
+    <string name="video_camera_label">캠코더</string>
+    <string name="cancel_button_description">취소</string>
+    <string name="confirm_button_description">확인</string>
+    <string name="flash_button_description">플래시 모드</string>
+    <string name="flip_camera_button_description">카메라 회전</string>
+    <string name="gallery_button_description">갤러리</string>
+    <string name="image_view_description">이미지 미리보기</string>
+    <string name="photo_mode_button_description">사진 모드로 전환</string>
+    <string name="qr_mode_button_description">QR 코드 스캐너 모드로 전환</string>
+    <string name="shutter_button_description">셔터</string>
+    <string name="video_recording_state_button_description">영상 녹화 일시 정지/다시 시작</string>
+    <string name="timer_off">타이머 꺼짐</string>
+    <string name="timer_3">타이머 3초</string>
+    <string name="timer_10">타이머 10초</string>
+    <string name="video_framerate_auto">FPS 자동</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">없음</string>
+    <string name="effect_night">야간</string>
+    <string name="effect_auto">자동</string>
+    <string name="grid_off">격자 꺼짐</string>
+    <string name="grid_on_3">3x3 격자</string>
+    <string name="grid_on_4">4x4 격자</string>
+    <string name="grid_on_goldenratio">φ 격자</string>
+    <string name="mic_off">마이크 꺼짐</string>
+    <string name="mic_on">마이크 켜짐</string>
+    <string name="location_permission_dialog_later">나중에</string>
+</resources>

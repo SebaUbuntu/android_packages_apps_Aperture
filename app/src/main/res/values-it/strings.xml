@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Fotocamera</string>
+    <string name="video_camera_label">Videocamera</string>
+    <string name="camera_mode_highlight_description">Evidenziazione modalità fotocamera</string>
+    <string name="cancel_button_description">Annulla</string>
+    <string name="confirm_button_description">Conferma</string>
+    <string name="flash_button_description">Flash</string>
+    <string name="flip_camera_button_description">Capovolgi fotocamera</string>
+    <string name="gallery_button_description">Galleria</string>
+    <string name="image_view_description">Anteprima immagine</string>
+    <string name="photo_mode_button_description">Passa alla modalità foto</string>
+    <string name="pro_button_description">Impostazioni Pro</string>
+    <string name="qr_mode_button_description">Passa alla modalità scanner QR</string>
+    <string name="shutter_button_description">Otturatore</string>
+    <string name="video_mode_button_description">Passa alla modalità video</string>
+    <string name="video_recording_state_button_description">Pausa/riprendi registrazione video</string>
+    <string name="timer_off">TIMER OFF</string>
+    <string name="timer_3">TIMER 3s</string>
+    <string name="timer_10">TIMER 10s</string>
+    <string name="video_framerate_auto">FPS AUTO</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">NESSUNO</string>
+    <string name="effect_night">NOTTE</string>
+    <string name="effect_face_retouch">RITOCCO DEL VISO</string>
+    <string name="effect_auto">AUTO</string>
+    <string name="grid_off">GRIGLIA OFF</string>
+    <string name="grid_on_3">GRIGLIA 3x3</string>
+    <string name="grid_on_4">GRIGLIA 4x4</string>
+    <string name="grid_on_goldenratio">GRIGLIA φ</string>
+    <string name="mic_off">MICROFONO OFF</string>
+    <string name="mic_on">MICROFONO ON</string>
+    <string name="settings">IMPOSTAZIONI</string>
+    <string name="selector_photo">FOTO</string>
+    <string name="select_video">VIDEO</string>
+    <string name="select_scan">SCANSIONE</string>
+    <string name="app_permissions_toast">Autorizzazioni non concesse dall\'utente.</string>
+    <string name="camcorder_unsupported_toast">Nessuna fotocamera supporta la registrazione video.</string>
+    <string name="qr_copy_description">Copia negli appunti</string>
+    <string name="qr_icon_description">Icona</string>
+    <string name="qr_share_description">Condividi</string>
+    <string name="qr_text">Testo</string>
+    <string name="title_activity_settings">Impostazioni</string>
+    <string name="general_header">Generali</string>
+    <string name="photos_header">Foto</string>
+    <string name="video_header">Video</string>
+    <string name="bright_screen_title">Schermo luminoso</string>
+    <string name="bright_screen_summary" formatted="false">Fissa la luminosità al 100%</string>
+    <string name="save_location_title">Salva dati della posizione</string>
+    <string name="save_location_summary">Includi la posizione GPS nei metadati</string>
+    <string name="save_location_toast">Accesso sulla posizione negato dall\'utente.</string>
+    <string name="shutter_sound_title">Suono otturatore</string>
+    <string name="shutter_sound_summary">Riproduci un suono durante la cattura</string>
+    <string name="leveler_title">Livella</string>
+    <string name="leveler_summary">Indicatore che mostra l\'orientamento del dispositivo</string>
+    <string name="photo_capture_mode_title">Modalità di cattura</string>
+    <string name="photo_capture_mode_maximize_quality">Massimizza qualità</string>
+    <string name="photo_capture_mode_minimize_latency">Minimizza latenza</string>
+    <string name="photo_capture_mode_zsl">Zero ritardo dell\'otturatore (sperimentale)</string>
+    <string name="image_stabilization_title">Abilita la stabilizzazione delle immagini quando disponibile</string>
+    <string name="image_stabilization_summary">Se l\'hardware lo supporta, abilita la stabilizzazione ottica delle immagini</string>
+    <string name="video_stabilization_title">Abilita la stabilizzazione video quando disponibile</string>
+    <string name="video_stabilization_summary">Se disponibile, abilita la stabilizzazione elettronica delle immagini (EIS)</string>
+    <string name="video_stabilization_ois_title">Usa OIS invece di EIS quando disponibile</string>
+    <string name="video_stabilization_ois_summary">Se l\'hardware lo supporta, utilizza la stabilizzazione ottica delle immagini (OIS) invece della stabilizzazione elettronica delle immagini (EIS)</string>
+    <string name="video_stabilization_preview_title">Abilita la stabilizzazione sull\'anteprima quando disponibile</string>
+    <string name="video_stabilization_preview_summary">Se disponibile, applica la stabilizzazione dell\'immagine anche sull\'anteprima e, se l\'hardware lo supporta, abilita automaticamente la stabilizzazione ottica delle immagini (OIS) insieme alla stabilizzazione elettronica delle immagini (EIS) se il dispositivo lo ritiene opportuno. Solo alcuni dispositivi lanciati con Android 13 o più recenti supportano questa modalità</string>
+    <string name="shortcut_selfie">Scatta un selfie</string>
+    <string name="shortcut_video">Registra un video</string>
+    <string name="shortcut_qr">Scansiona codice a barre</string>
+    <string name="location_permission_dialog_title">Aggiungi la posizione delle foto e dei video</string>
+    <string name="location_permission_dialog_description">Mappa i tuoi ricordi includendo informazioni sulla posizione in ogni acquisizione.</string>
+    <string name="location_permission_dialog_later">Più tardi</string>
+    <string name="location_permission_dialog_turn_on">Attiva</string>
+</resources>

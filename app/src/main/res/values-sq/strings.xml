@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -16,7 +16,6 @@
     <string name="photo_mode_button_description">Kalo në modalitetin e fotografisë</string>
     <string name="pro_button_description">Cilësimet PRO</string>
     <string name="qr_mode_button_description">Kalo në modalitetin e skanerit QR</string>
-    <string name="settings_back_button_description">Kthehuni në modalitetin e kamerës</string>
     <string name="shutter_button_description">Shkrepësi</string>
     <string name="video_mode_button_description">Kalo në modalitetin e videos</string>
     <string name="video_recording_state_button_description">Ndalo/rifillo regjistrimin e videos</string>
@@ -50,7 +49,7 @@
     <string name="photos_header">Fotografitë</string>
     <string name="video_header">Video</string>
     <string name="bright_screen_title">Ekran i shndritshëm</string>
-    <string name="bright_screen_summary">Mbyll ndriçimin në 100%</string>
+    <string name="bright_screen_summary" formatted="false">Mbyll ndriçimin në 100%</string>
     <string name="save_location_title">Ruani të dhënat e vendndodhjes</string>
     <string name="save_location_summary">Përfshi vendndodhjen GPS në meta të dhëna</string>
     <string name="save_location_toast">Leja për vendodhjen nuk ështe lejuar nga përdoruesi.</string>
@@ -73,4 +72,8 @@
     <string name="shortcut_selfie">Bën një selfie</string>
     <string name="shortcut_video">Kap një video</string>
     <string name="shortcut_qr">Skano një Barcode</string>
+    <string name="location_permission_dialog_title">Shtoni vendndodhjen e fotove dhe videove</string>
+    <string name="location_permission_dialog_description">Hartoni kujtimet tuaja duke përfshirë meta të dhënat e vendndodhjes me çdo kapje.</string>
+    <string name="location_permission_dialog_later">Më vonë</string>
+    <string name="location_permission_dialog_turn_on">Ndiz</string>
 </resources>

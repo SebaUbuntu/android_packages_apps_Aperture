@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -16,7 +16,6 @@
     <string name="photo_mode_button_description">Preklopi na način fotografiranja</string>
     <string name="pro_button_description">Pro nastavitve</string>
     <string name="qr_mode_button_description">Preklopi na način QR bralnika</string>
-    <string name="settings_back_button_description">Pojdi nazaj na način fotoaparata</string>
     <string name="shutter_button_description">Sprožilec</string>
     <string name="video_mode_button_description">Preklopi na način videoposnetka</string>
     <string name="video_recording_state_button_description">Premor/nadaljevanje snemanja videoposnetka</string>
@@ -50,7 +49,7 @@
     <string name="photos_header">Fotografije</string>
     <string name="video_header">Videoposnetek</string>
     <string name="bright_screen_title">Svetel zaslon</string>
-    <string name="bright_screen_summary">Zaklene svetlost na 100%</string>
+    <string name="bright_screen_summary" formatted="false">Zaklene svetlost na 100%</string>
     <string name="save_location_title">Shrani lokacijske podatke</string>
     <string name="save_location_summary">Vključi GPS lokacijo v metapodatke</string>
     <string name="save_location_toast">Dovoljenje za lokacijo ni odobreno od uporabnika</string>
@@ -73,4 +72,8 @@
     <string name="shortcut_selfie">Posnemi sebek</string>
     <string name="shortcut_video">Zajemi videoposnetek</string>
     <string name="shortcut_qr">Preberi črtno kodo</string>
+    <string name="location_permission_dialog_title">Dodaj lokacije fotografije in videoposnetka</string>
+    <string name="location_permission_dialog_description">Dodajte vaše spomine na zemljevid z vključitvijo lokacijskih metapodatkov z vsakim zajemom.</string>
+    <string name="location_permission_dialog_later">Pozneje</string>
+    <string name="location_permission_dialog_turn_on">Vklopi</string>
 </resources>

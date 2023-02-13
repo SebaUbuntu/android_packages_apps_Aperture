@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -12,11 +12,11 @@
     <string name="flash_button_description">Mod bliț</string>
     <string name="flip_camera_button_description">Comutați camera foto</string>
     <string name="gallery_button_description">Galerie</string>
+    <string name="google_lens_button_description">Deschide Google Lens</string>
     <string name="image_view_description">Previzualizare imagine</string>
     <string name="photo_mode_button_description">Comutare la modul fotografie</string>
     <string name="pro_button_description">Setări Pro</string>
     <string name="qr_mode_button_description">Comutare la modul de scanare QR</string>
-    <string name="settings_back_button_description">Înapoi la modul cameră</string>
     <string name="shutter_button_description">Obturator</string>
     <string name="video_mode_button_description">Comutare la modul video</string>
     <string name="video_recording_state_button_description">Întrerupere/reluare înregistrare video</string>
@@ -44,13 +44,15 @@
     <string name="qr_copy_description">Copiați în clipboard</string>
     <string name="qr_icon_description">Iconiță</string>
     <string name="qr_share_description">Distribuiți</string>
+    <string name="qr_wifi_title">Conectați-vă la această rețea Wi-Fi</string>
+    <string name="qr_dpp_description">Configurați acest dispozitiv</string>
     <string name="qr_text">Text</string>
     <string name="title_activity_settings">Setări</string>
     <string name="general_header">General</string>
     <string name="photos_header">Fotografii</string>
     <string name="video_header">Video</string>
     <string name="bright_screen_title">Ecran luminos</string>
-    <string name="bright_screen_summary">Blochează luminozitatea la 100%</string>
+    <string name="bright_screen_summary" formatted="false">Blochează luminozitatea la 100%</string>
     <string name="save_location_title">Salvați locația</string>
     <string name="save_location_summary">Include locația GPS în metadate</string>
     <string name="save_location_toast">Permisiuni de localizare neacordate de utilizator.</string>
@@ -73,4 +75,8 @@
     <string name="shortcut_selfie">Faceți un selfie</string>
     <string name="shortcut_video">Faceți un videoclip</string>
     <string name="shortcut_qr">Scanează un cod de bare</string>
+    <string name="location_permission_dialog_title">Adaugă locația fotografiilor și a videoclipurilor</string>
+    <string name="location_permission_dialog_description">Mapează amintirile incluzând metadata locației în fiecare captură.</string>
+    <string name="location_permission_dialog_later">Mai târziu</string>
+    <string name="location_permission_dialog_turn_on">Activare</string>
 </resources>

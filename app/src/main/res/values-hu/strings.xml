@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -16,7 +16,6 @@
     <string name="photo_mode_button_description">Váltás fotómódra</string>
     <string name="pro_button_description">Pro-beállítások</string>
     <string name="qr_mode_button_description">Váltás QR-kódolvasó módra</string>
-    <string name="settings_back_button_description">Visszatérés kameramódba</string>
     <string name="shutter_button_description">Exponálógomb</string>
     <string name="video_mode_button_description">Váltás videómódra</string>
     <string name="video_recording_state_button_description">Videófelvétel megállítása/folytatása</string>
@@ -50,7 +49,7 @@
     <string name="photos_header">Fotók</string>
     <string name="video_header">Videó</string>
     <string name="bright_screen_title">Fényes képernyő</string>
-    <string name="bright_screen_summary">Fényerő rögzítése 100%-on</string>
+    <string name="bright_screen_summary" formatted="false">Fényerő rögzítése 100%-on</string>
     <string name="save_location_title">Helyinformációk elmentése</string>
     <string name="save_location_summary">GPS-helyinformációk tárolása a metaadatokban</string>
     <string name="save_location_toast">Helyinformációs jogosultságokat a felhasználó nem adta meg.</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -16,7 +16,6 @@
     <string name="photo_mode_button_description">Canvia al mode foto</string>
     <string name="pro_button_description">Configuració pro</string>
     <string name="qr_mode_button_description">Canvia al mode d\'escàner QR</string>
-    <string name="settings_back_button_description">Torna al mode de càmera</string>
     <string name="shutter_button_description">Obturador</string>
     <string name="video_mode_button_description">Canvia al mode vídeo</string>
     <string name="video_recording_state_button_description">Pausa/reprèn la gravació de vídeo</string>
@@ -50,7 +49,7 @@
     <string name="photos_header">Fotos</string>
     <string name="video_header">Vídeo</string>
     <string name="bright_screen_title">Pantalla brillant</string>
-    <string name="bright_screen_summary">Bloqueja la brillantor al 100%</string>
+    <string name="bright_screen_summary" formatted="false">Bloqueja la brillantor al 100%</string>
     <string name="save_location_title">Desa les dades d\'ubicació</string>
     <string name="save_location_summary">Inclou la ubicació GPS a les metadades</string>
     <string name="save_location_toast">Permisos d\'ubicació no concedits per l\'usuari.</string>
@@ -73,4 +72,8 @@
     <string name="shortcut_selfie">Fes una selfie</string>
     <string name="shortcut_video">Fes un vídeo</string>
     <string name="shortcut_qr">Escaneja el codi de barres</string>
+    <string name="location_permission_dialog_title">Afegeix ubicacions de fotos i vídeos</string>
+    <string name="location_permission_dialog_description">Mapegeu els vostres records incloent metadades d\'ubicació amb cada captura.</string>
+    <string name="location_permission_dialog_later">Més tard</string>
+    <string name="location_permission_dialog_turn_on">Activa</string>
 </resources>
