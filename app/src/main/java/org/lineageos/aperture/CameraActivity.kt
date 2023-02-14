@@ -1182,7 +1182,7 @@ open class CameraActivity : AppCompatActivity() {
         sharedPreferences.lastCameraMode = cameraMode
 
         // Hide secondary top bar
-        secondaryTopBarLayout.slideDown()
+        secondaryTopBarLayout.isVisible = false
 
         bindCameraUseCases()
     }
