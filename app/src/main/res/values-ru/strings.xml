@@ -64,14 +64,8 @@
     <string name="photo_capture_mode_maximize_quality">Максимальное качество</string>
     <string name="photo_capture_mode_minimize_latency">Минимальная задержка</string>
     <string name="photo_capture_mode_zsl">Нулевая задержка затвора (экспериментально)</string>
-    <string name="image_stabilization_title">Включить стабилизацию изображения, если она доступна</string>
-    <string name="image_stabilization_summary">Если оборудование поддерживает эту функцию, включите оптическую стабилизацию изображения</string>
-    <string name="video_stabilization_title">Включите стабилизацию видео, если она доступна</string>
-    <string name="video_stabilization_summary">Включить электронную стабилизацию изображения (EIS), если она доступна.</string>
-    <string name="video_stabilization_ois_title">Использовать OIS вместо EIS, когда это возможно</string>
-    <string name="video_stabilization_ois_summary">Использовать оптическую стабилизацию изображения (OIS) вместо электронной (EIS), если ее поддерживает оборудование.</string>
-    <string name="video_stabilization_preview_title">Включить стабилизацию при предварительном просмотре, если она доступна</string>
-    <string name="video_stabilization_preview_summary">Если доступно, применять стабилизацию изображения также к предварительному просмотру и, если аппаратное обеспечение поддерживает это, автоматически включать оптическую стабилизацию изображения (OIS) вместе с электронной (EIS), если устройство сочтет это целесообразным. Этот режим поддерживают только некоторые устройства, работающие под управлением Android 13 или новее</string>
+    <string name="video_stabilization_title">Включить стабилизацию видео</string>
+    <string name="video_stabilization_summary">Включить стабилизацию видео для уменьшения вибрации камеры во время записи (если доступно)</string>
     <string name="shortcut_selfie">Сделать селфи</string>
     <string name="shortcut_video">Снять видео</string>
     <string name="shortcut_qr">Сканировать штрих-код</string>

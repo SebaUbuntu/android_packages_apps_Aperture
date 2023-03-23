@@ -12,6 +12,7 @@
     <string name="flash_button_description">Modaliteti i blicit</string>
     <string name="flip_camera_button_description">Rrotulloje kamerën</string>
     <string name="gallery_button_description">Galeria</string>
+    <string name="google_lens_button_description">Hap Google Lens</string>
     <string name="image_view_description">Trego imazhin</string>
     <string name="photo_mode_button_description">Kalo në modalitetin e fotografisë</string>
     <string name="pro_button_description">Cilësimet PRO</string>
@@ -43,6 +44,8 @@
     <string name="qr_copy_description">Kopjo në \'clipboard\'</string>
     <string name="qr_icon_description">Ikonë</string>
     <string name="qr_share_description">Shpërndaje</string>
+    <string name="qr_wifi_title">Lidhu me këtë rrjet Wi-Fi</string>
+    <string name="qr_dpp_description">Konfiguro këtë pajisje</string>
     <string name="qr_text">Tekst</string>
     <string name="title_activity_settings">Cilësimet</string>
     <string name="general_header">Të përgjithshme</string>
@@ -61,14 +64,6 @@
     <string name="photo_capture_mode_maximize_quality">Maksimizo kualitetin</string>
     <string name="photo_capture_mode_minimize_latency">Minimizo vonesën</string>
     <string name="photo_capture_mode_zsl">Shkrepje pa vonesë (eksperimentale)</string>
-    <string name="image_stabilization_title">Përdor stabilizimin e imazhit kur është e mundur.</string>
-    <string name="image_stabilization_summary">Nëse paisja e mundëson, përdor stabilizimin optik të imazhit</string>
-    <string name="video_stabilization_title">Përdor stabilizimin e videos kur është e mundur</string>
-    <string name="video_stabilization_summary">Nese e mundur, përdor stabilizim elektronik të imazhit (EIS)</string>
-    <string name="video_stabilization_ois_title">Përdor OIS në vënd të EIS kur është e mundur</string>
-    <string name="video_stabilization_ois_summary">Nëse paisja e lejon këtë, përdor stabilizim optik të imazhit (OIS) në vënd të stabilizimit elektronik të imazhit (EIS)</string>
-    <string name="video_stabilization_preview_title">Përdor stabilizimin në tregues nëse mundësohet</string>
-    <string name="video_stabilization_preview_summary">Nëse mundet, apliko stabilizimin e imazhit dhe në shfaqje, dhe nëse paisja e mundëson përdor automatikisht stabilizimin optik të imazhit njëkohësisht me atë elektronik. Nëse paisja mund të përcaktojë më të mirën. Vetëm disa paisje me Android 13 ose më të re e mundëson këtë</string>
     <string name="shortcut_selfie">Bën një selfie</string>
     <string name="shortcut_video">Kap një video</string>
     <string name="shortcut_qr">Skano një Barcode</string>

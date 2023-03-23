@@ -61,14 +61,8 @@
     <string name="photo_capture_mode_maximize_quality">Kwaliteit maximaliseren</string>
     <string name="photo_capture_mode_minimize_latency">Minimaliseer latentie</string>
     <string name="photo_capture_mode_zsl">Zero shutter lag (experimental)</string>
-    <string name="image_stabilization_title">Beeldstabilisatie inschakelen indien beschikbaar</string>
-    <string name="image_stabilization_summary">Als de hardware het ondersteunt, schakel dan optische beeldstabilisatie in</string>
-    <string name="video_stabilization_title">Beeldstabilisatie inschakelen indien beschikbaar</string>
-    <string name="video_stabilization_summary">Indien beschikbaar, elektronische beeldstabilisatie (EIS) inschakelen</string>
-    <string name="video_stabilization_ois_title">OIS gebruiken in plaats van EIS wanneer beschikbaar</string>
-    <string name="video_stabilization_ois_summary">Als de hardware het ondersteunt, gebruik dan optische beeldstabilisatie (OIS) in plaats van elektronische beeldstabilisatie (EIS)</string>
-    <string name="video_stabilization_preview_title">Stabilisatie op voorvertoning inschakelen indien beschikbaar</string>
-    <string name="video_stabilization_preview_summary">Indien beschikbaar, pas de beeldstabilisatie ook toe op het voorbeeld en als de hardware het ondersteunt schakelt optische beeldstabilisatie (OIS) automatisch in, samen met elektronische beeldstabilisatie (EIS) als het apparaat dit geschikt acht. Alleen sommige apparaten die gestart zijn met Android 13 of nieuwer ondersteunen deze modus</string>
+    <string name="video_stabilization_title">Schakel videostabilisatie in</string>
+    <string name="video_stabilization_summary">Schakel videostabilisatie in, indien beschikbaar, om camera-trillingen te verminderen tijdens opname</string>
     <string name="shortcut_selfie">Maak een selfie</string>
     <string name="shortcut_video">Maak een video</string>
     <string name="shortcut_qr">Scan een barcode</string>

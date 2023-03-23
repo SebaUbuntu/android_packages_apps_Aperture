@@ -64,14 +64,8 @@
     <string name="photo_capture_mode_maximize_quality">უმაღლესი ხარისხი</string>
     <string name="photo_capture_mode_minimize_latency">უმცირესი დაყოვნება</string>
     <string name="photo_capture_mode_zsl">ჩამკეტის ნულოვანი დაყოვნება (საცდელი)</string>
-    <string name="image_stabilization_title">რყევის შემცირება, როცა ხელმისაწვდომია</string>
-    <string name="image_stabilization_summary">თუ აპარატურულად მხარდაჭერილია, ჩაირთვება კადრის ოპტიკური მდგრადობა</string>
-    <string name="video_stabilization_title">ვიდეოგადაღებისას რყევის შემცირება, როცა ხელმისაწვდომია</string>
-    <string name="video_stabilization_summary">როცა ხელმისაწვდომია, ჩაირთვება კადრის პროგრამული მდგრადობა (EIS)</string>
-    <string name="video_stabilization_ois_title">გამოიყენება OIS ნაცვლად EIS-ისა, თუ ხელმისაწვდომია</string>
-    <string name="video_stabilization_ois_summary">თუ აპარატურულად მხარდაჭერილია, გამოიყენებს კადრის ოპტიკურ მდგრადობას (OIS) ნაცვლად პროგრამულისა (EIS)</string>
-    <string name="video_stabilization_preview_title">რყევის შემცირება შეთვალიერებისას, როცა ხელმისაწვდომია</string>
-    <string name="video_stabilization_preview_summary">თუ ხელმისაწვდომია, რყევის შემცირება აისახება შეთვალიერების დროსაც, ამასთანავე, აპარატურული მხარდაჭერისას თავისთავად ჩაირთვება კადრის ოპტიკური მდგრადობა (OIS) პროგრამულთან ერთად (EIS), თუ მოწყობილობა საჭიროდ მიიჩნევს. მხოლოდ Android 13 ან მომდევნო ვერსიის მქონე ზოგიერთ ახლადგამოსულ მოწყობილობაზეა ეს რეჟიმი მხარდაჭერილი.</string>
+    <string name="video_stabilization_title">ვიდეოგადაღებისას რყევის შემცირება</string>
+    <string name="video_stabilization_summary">როცა კი შესაძლებელია, რყევის შემამცირებელი შთანთქავს კამერის მოძრაობას გადაღებისას</string>
     <string name="shortcut_selfie">სელფის გადაღება</string>
     <string name="shortcut_video">ვიდეოს გადაღება</string>
     <string name="shortcut_qr">შტრიხკოდის წაკითხვა</string>

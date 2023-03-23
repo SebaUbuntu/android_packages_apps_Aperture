@@ -12,6 +12,7 @@
     <string name="flash_button_description">Blitzmodus</string>
     <string name="flip_camera_button_description">Kamera wechseln</string>
     <string name="gallery_button_description">Galerie</string>
+    <string name="google_lens_button_description">Google Lens öffnen</string>
     <string name="image_view_description">Bildvorschau</string>
     <string name="photo_mode_button_description">Zum Fotomodus wechseln</string>
     <string name="pro_button_description">Profi-Einstellungen</string>
@@ -43,11 +44,14 @@
     <string name="qr_copy_description">In die Zwischenablage kopieren</string>
     <string name="qr_icon_description">Symbol</string>
     <string name="qr_share_description">Teilen</string>
+    <string name="qr_wifi_title">Mit diesem WLAN-Netzwerk verbinden</string>
+    <string name="qr_dpp_description">Dieses Gerät konfigurieren</string>
     <string name="qr_text">Text</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="general_header">Allgemein</string>
     <string name="photos_header">Fotos</string>
     <string name="video_header">Video</string>
+    <string name="bright_screen_title">Max. Bildschirmhelligkeit</string>
     <string name="bright_screen_summary" formatted="false">Helligkeit auf 100% festlegen</string>
     <string name="save_location_title">Standortdaten speichern</string>
     <string name="save_location_summary">GPS-Standort in Metadaten speichern</string>
@@ -60,15 +64,11 @@
     <string name="photo_capture_mode_maximize_quality">Maximale Qualität</string>
     <string name="photo_capture_mode_minimize_latency">Minimale Verzögerung</string>
     <string name="photo_capture_mode_zsl">Keine Auslöseverzögerung (experimentell)</string>
-    <string name="image_stabilization_title">Bildstabilisierung aktivieren, falls vorhanden</string>
-    <string name="image_stabilization_summary">Optische Bildstabilisierung (OIS) aktivieren, sofern von der Hardware unterstützt</string>
-    <string name="video_stabilization_title">Videostabilisierung aktivieren, falls vorhanden</string>
-    <string name="video_stabilization_summary">Elektronische Bildstabilisierung (EIS) aktivieren, falls vorhanden</string>
-    <string name="video_stabilization_ois_title">OIS statt EIS verwenden, falls vorhanden</string>
-    <string name="video_stabilization_ois_summary">Wenn die Hardware dies unterstützt, optische Bildstabilisierung (OIS) statt elektronischer Bildstabilisierung (EIS) verwenden</string>
-    <string name="video_stabilization_preview_title">Stabilisierung in der Vorschau anwenden, falls verfügbar</string>
-    <string name="video_stabilization_preview_summary">Wenn verfügbar, die Bildstabilisierung auch auf die Vorschau anwenden und, falls die Hardware dies unterstützt, automatisch die optische Bildstabilisierung (OIS) zusammen mit der elektronischen Bildstabilisierung (EIS) aktivieren, wenn das Gerät dies für sinnvoll hält. Nur einige Geräte, die mit Android 13 oder neuer auf den Markt kommen, unterstützen diesen Modus</string>
     <string name="shortcut_selfie">Selfie aufnehmen</string>
     <string name="shortcut_video">Video aufnehmen</string>
     <string name="shortcut_qr">Barcode scannen</string>
+    <string name="location_permission_dialog_title">Standortdaten von Fotos und Videos speichern</string>
+    <string name="location_permission_dialog_description">Füge jeder Aufnahme Standort-Metadaten hinzu, um deine Erinnerungen zuzuordnen.</string>
+    <string name="location_permission_dialog_later">Später</string>
+    <string name="location_permission_dialog_turn_on">Einschalten</string>
 </resources>

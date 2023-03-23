@@ -12,6 +12,7 @@
     <string name="flash_button_description">Flaş modu</string>
     <string name="flip_camera_button_description">Kamerayı çevir</string>
     <string name="gallery_button_description">Galeri</string>
+    <string name="google_lens_button_description">Google Lens\' i aç</string>
     <string name="image_view_description">Resim ön izleme</string>
     <string name="photo_mode_button_description">Fotoğraf moduna geç</string>
     <string name="pro_button_description">Pro ayarları</string>
@@ -43,6 +44,8 @@
     <string name="qr_copy_description">Panoya kopyala</string>
     <string name="qr_icon_description">Simge</string>
     <string name="qr_share_description">Paylaş</string>
+    <string name="qr_wifi_title">Bu Wi-Fi ağına bağlan</string>
+    <string name="qr_dpp_description">Bu cihazı ayarla</string>
     <string name="qr_text">Metin</string>
     <string name="title_activity_settings">Ayarlar</string>
     <string name="general_header">Genel</string>
@@ -61,15 +64,11 @@
     <string name="photo_capture_mode_maximize_quality">En yüksek kalite</string>
     <string name="photo_capture_mode_minimize_latency">Gecikmeyi düşür</string>
     <string name="photo_capture_mode_zsl">Gecikmesiz yakalama (deneysel)</string>
-    <string name="image_stabilization_title">Mümkün olduğunda görüntüyü dengele</string>
-    <string name="image_stabilization_summary">Donanım destekliyorsa optik dengelemeyi etkinleştir</string>
-    <string name="video_stabilization_title">Uygun olduğunda video stabilizasyonunu aktifleştir</string>
-    <string name="video_stabilization_summary">Uygun olduğunda elektronik görüntü stabilizasyonunu (EIS) aktifleştir</string>
-    <string name="video_stabilization_ois_title">Uygun olduğunda EIS yerine OIS kullan</string>
-    <string name="video_stabilization_ois_summary">Donanım destekliyorsa, elektronik görüntü sabitleme (EIS) yerine optik görüntü sabitleme (OIS) kullanın.</string>
-    <string name="video_stabilization_preview_title">Mümkün olduğunda önizlemede sabitlemeyi etkinleştir</string>
-    <string name="video_stabilization_preview_summary">Varsa görüntü sabitlemeyi önizlemeye de uygular ve donanım destekliyorsa, cihaz izin verirse elektronik görüntü sabitleme (EIS) ile birlikte optik görüntü sabitlemeyi (OIS) otomatik olarak etkinleştirin. Yalnızca Android 13 veya daha yeni sürüm mevcut olan bazı cihazlar bu modu destekler</string>
     <string name="shortcut_selfie">Selfie çekin</string>
     <string name="shortcut_video">Video çekin</string>
     <string name="shortcut_qr">Barkod tara</string>
+    <string name="location_permission_dialog_title">Fotoğraf ve videolara konum ekle</string>
+    <string name="location_permission_dialog_description">Her çekime konum bilgilerini dâhil ederek anılarınızı haritalayın.</string>
+    <string name="location_permission_dialog_later">Daha sonra</string>
+    <string name="location_permission_dialog_turn_on">Etkinleştir</string>
 </resources>

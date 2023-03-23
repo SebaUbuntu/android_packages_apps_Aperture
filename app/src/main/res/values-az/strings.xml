@@ -12,6 +12,7 @@
     <string name="flash_button_description">Fənər rejimi</string>
     <string name="flip_camera_button_description">Kameranı çevir</string>
     <string name="gallery_button_description">Qalereya</string>
+    <string name="google_lens_button_description">Google Lens-i aç</string>
     <string name="image_view_description">Şəklə önbaxış</string>
     <string name="photo_mode_button_description">Foto rejiminə keç</string>
     <string name="pro_button_description">Pro tənzimləmələr</string>
@@ -43,6 +44,8 @@
     <string name="qr_copy_description">Lövhəyə kopyala</string>
     <string name="qr_icon_description">Nişan</string>
     <string name="qr_share_description">Paylaş</string>
+    <string name="qr_wifi_title">Bu Wi-Fi şəbəkəsinə bağlan</string>
+    <string name="qr_dpp_description">Bu cihazı konfiqurasiya et</string>
     <string name="qr_text">Mətn</string>
     <string name="title_activity_settings">Tənzimləmələr</string>
     <string name="general_header">Ümumi</string>
@@ -61,14 +64,6 @@
     <string name="photo_capture_mode_maximize_quality">Maksimum keyfiyyət</string>
     <string name="photo_capture_mode_minimize_latency">Minimum gecikmə</string>
     <string name="photo_capture_mode_zsl">Sıfır sürgü gecikməsi (təcrübi)</string>
-    <string name="image_stabilization_title">Əlçatan olduqda görüntü stabilləşdirməni fəallaşdır</string>
-    <string name="image_stabilization_summary">Avadanlıq dəstəkləyirsə, optik görüntü stabilləşdirməni fəallaşdır</string>
-    <string name="video_stabilization_title">Əlçatan olduqda video stabilləşdirməni fəallaşdır</string>
-    <string name="video_stabilization_summary">Əlçatan olduqda, elektronik görüntü stabilləşdirməni (EIS) fəallaşdır</string>
-    <string name="video_stabilization_ois_title">Əlçatan olduqda EIS əvəzinə OIS istifadə et</string>
-    <string name="video_stabilization_ois_summary">Avadanlıq dəstəkləyirsə, elektronik görüntü stabilləşdirmə (EIS) əvəzinə optik görüntü stabilləşdirməni (OIS) istifadə et</string>
-    <string name="video_stabilization_preview_title">Əlçatan olduqda önbaxışda stabilləşdirməni fəallaşdır</string>
-    <string name="video_stabilization_preview_summary">Əlçatan olduqda, görüntü stabilləşdirməni önbaxışa da tətbiq et və avadanlıq dəstəkləyirsə, cihaz uyğun hesab edirsə, elektronik görüntü stabilləşdirmə (EIS) ilə birlikdə optik görüntü stabilləşdirməni (OIS) avtomatik fəallaşdırın. Yalnız Android 13 və ya daha yeni versiyalarla başladılmış bəzi cihazla bunu dəstəkləyir</string>
     <string name="shortcut_selfie">Selfi çək</string>
     <string name="shortcut_video">Video çək</string>
     <string name="shortcut_qr">Barkod skan et</string>

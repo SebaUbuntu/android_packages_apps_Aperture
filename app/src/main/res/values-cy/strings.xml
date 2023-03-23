@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Camera</string>
+    <string name="video_camera_label">Camera Fideo</string>
+    <string name="camera_mode_highlight_description">Uwcholeuo modd camera</string>
+    <string name="cancel_button_description">Diddymu</string>
+    <string name="confirm_button_description">Cadarnhau</string>
+    <string name="flash_button_description">Modd fflachio</string>
+    <string name="flip_camera_button_description">Fflipio\'r camera</string>
+    <string name="gallery_button_description">Oriel</string>
+    <string name="google_lens_button_description">Agor Google Lens</string>
+    <string name="image_view_description">Rhagolwg llun</string>
+    <string name="photo_mode_button_description">Newid i fodd llun</string>
+    <string name="pro_button_description">Gosodiadau pro</string>
+    <string name="qr_mode_button_description">Newid i fodd sganio QR</string>
+    <string name="shutter_button_description">Caead</string>
+    <string name="video_mode_button_description">Newid i fodd fideo</string>
+    <string name="video_recording_state_button_description">Oedi/parhau i recordio fideo</string>
+    <string name="timer_off">AMSERYDD I FFWRDD</string>
+    <string name="timer_3">AMSERYDD 3e</string>
+    <string name="timer_10">AMSERYDD 10e</string>
+    <string name="video_framerate_auto">FF/E AWTO</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> Ff/e</string>
+    <string name="effect_none">DIM</string>
+    <string name="effect_night">NOS</string>
+    <string name="effect_face_retouch">ATGYFFWRDD WYNEB</string>
+    <string name="effect_auto">AWTO</string>
+    <string name="grid_off">GRID I FFWRDD</string>
+    <string name="grid_on_3">GRID 3x3</string>
+    <string name="grid_on_4">GRID 4x4</string>
+    <string name="grid_on_goldenratio">GRID φ</string>
+    <string name="mic_off">MEIC I FFWRDD</string>
+    <string name="mic_on">MEIC YMLAEN</string>
+    <string name="settings">GOSODIADAU</string>
+    <string name="selector_photo">LLUN</string>
+    <string name="select_video">FIDEO</string>
+    <string name="select_scan">SGANIO</string>
+    <string name="app_permissions_toast">Ni roddwyd caniatâd gan y defnyddiwr.</string>
+    <string name="camcorder_unsupported_toast">Does dim camera yn gallu recordio fideo.</string>
+    <string name="qr_copy_description">Copïo i\'r clipfwrdd</string>
+    <string name="qr_icon_description">Eicon</string>
+    <string name="qr_share_description">Rhannu</string>
+    <string name="qr_wifi_title">Cysylltu â\'r rhwydwaith Wi-Fi hwn</string>
+    <string name="qr_dpp_description">Ffurfweddu\'r ddyfais hon</string>
+    <string name="qr_text">Testun</string>
+    <string name="title_activity_settings">Gosodiadau</string>
+    <string name="general_header">Cyffredinol</string>
+    <string name="photos_header">Lluniau</string>
+    <string name="video_header">Fideo</string>
+    <string name="bright_screen_title">Sgrin ddisglair</string>
+    <string name="bright_screen_summary" formatted="false">Mae\'n cloi\'r disgleirdeb i 100%</string>
+    <string name="save_location_title">Cadw data lleoliad</string>
+    <string name="save_location_summary">Cynnwys lleoliad GPS mewn metaddata</string>
+    <string name="save_location_toast">Ni roddwyd caniatâd lleoliad gan y defnyddiwr.</string>
+    <string name="shutter_sound_title">Sain caead</string>
+    <string name="shutter_sound_summary">Chwarae sain wrth gymryd llun</string>
+    <string name="leveler_title">Lefelydd</string>
+    <string name="leveler_summary">Dangosydd i ddangos gorweddiad y ddyfais</string>
+    <string name="photo_capture_mode_title">Modd cipio</string>
+    <string name="photo_capture_mode_maximize_quality">Ansawdd gorau</string>
+    <string name="photo_capture_mode_minimize_latency">Cuddni lleiaf</string>
+    <string name="photo_capture_mode_zsl">Dim oediad caead (arbrofol)</string>
+    <string name="shortcut_selfie">Tynnu hunlun</string>
+    <string name="shortcut_video">Tynnu fideo</string>
+    <string name="shortcut_qr">Sganoi cod bar</string>
+    <string name="location_permission_dialog_title">Ychwanegu lleoliadau lluniau a fideos</string>
+    <string name="location_permission_dialog_description">Mapia dy atgofion gan gynnwyd metaddata lleoliad gyda phob ffeil.</string>
+    <string name="location_permission_dialog_later">Yn hwyrach</string>
+    <string name="location_permission_dialog_turn_on">Troi ymlaen</string>
+</resources>

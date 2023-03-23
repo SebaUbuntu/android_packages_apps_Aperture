@@ -64,14 +64,8 @@
     <string name="photo_capture_mode_maximize_quality">Μεγιστοποίηση ποιότητας</string>
     <string name="photo_capture_mode_minimize_latency">Ελαχιστοποίηση καθυστέρησης</string>
     <string name="photo_capture_mode_zsl">Μηδενική καθυστέρηση κλείστρου (πειραματικό)</string>
-    <string name="image_stabilization_title">Ενεργοποίηση σταθεροποίησης εικόνας όταν είναι διαθέσιμη</string>
-    <string name="image_stabilization_summary">Εάν το υλικό το υποστηρίζει, ενεργοποίηση της οπτικής σταθεροποίησης εικόνας</string>
-    <string name="video_stabilization_title">Ενεργοποίηση σταθεροποίησης βίντεο όταν είναι διαθέσιμη</string>
-    <string name="video_stabilization_summary">Όταν είναι διαθέσιμη, ενεργοποίηση της ηλεκτρονικής σταθεροποίησης εικόνας (EIS)</string>
-    <string name="video_stabilization_ois_title">Χρήση της OIS αντί της EIS όταν είναι διαθέσιμη</string>
-    <string name="video_stabilization_ois_summary">Εάν το υλικό το υποστηρίζει, χρησιμοποιήστε οπτική σταθεροποίηση εικόνας (OIS) αντί για ηλεκτρονική σταθεροποίηση εικόνας (EIS)</string>
-    <string name="video_stabilization_preview_title">Ενεργοποίηση σταθεροποίησης στην προεπισκόπηση όταν είναι διαθέσιμη</string>
-    <string name="video_stabilization_preview_summary">Αν είναι διαθέσιμη, εφαρμογή σταθεροποίησης εικόνας και στην προεπισκόπηση και, αν το υλικό το υποστηρίζει, αυτόματη ενεργοποίηση της οπτικής σταθεροποίησης εικόνας (OIS) μαζί με την ηλεκτρονική σταθεροποίηση εικόνας (EIS), εάν η συσκευή το κρίνει σκόπιμο. Μόνο μερικές συσκευές που κυκλοφόρησαν με Android 13 ή νεότερη υποστηρίζουν αυτή τη λειτουργία</string>
+    <string name="video_stabilization_title">Ενεργοποίηση σταθεροποίησης βίντεο</string>
+    <string name="video_stabilization_summary">Αν είναι διαθέσιμη, ενεργοποιήστε τη σταθεροποίηση βίντεο για να μειώσετε τους κραδασμούς της κάμερας κατά την εγγραφή</string>
     <string name="shortcut_selfie">Λήψη σέλφι</string>
     <string name="shortcut_video">Λήψη βίντεο</string>
     <string name="shortcut_qr">Σάρωση barcode</string>

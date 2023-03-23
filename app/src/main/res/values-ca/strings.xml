@@ -12,6 +12,7 @@
     <string name="flash_button_description">Mode de flaix</string>
     <string name="flip_camera_button_description">Canvia de càmera</string>
     <string name="gallery_button_description">Galeria</string>
+    <string name="google_lens_button_description">Obre el Google Lens</string>
     <string name="image_view_description">Vista prèvia de la imatge</string>
     <string name="photo_mode_button_description">Canvia al mode foto</string>
     <string name="pro_button_description">Configuració pro</string>
@@ -43,6 +44,8 @@
     <string name="qr_copy_description">Copia al porta-retalls</string>
     <string name="qr_icon_description">Icona</string>
     <string name="qr_share_description">Comparteix</string>
+    <string name="qr_wifi_title">Connecta a aquesta xarxa Wi-Fi</string>
+    <string name="qr_dpp_description">Configura aquest dispositiu</string>
     <string name="qr_text">Text</string>
     <string name="title_activity_settings">Configuració</string>
     <string name="general_header">General</string>
@@ -61,14 +64,8 @@
     <string name="photo_capture_mode_maximize_quality">Maximitza la qualitat</string>
     <string name="photo_capture_mode_minimize_latency">Minimitza la latència</string>
     <string name="photo_capture_mode_zsl">Retard zero de l\'obturador (experimental)</string>
-    <string name="image_stabilization_title">Activa l\'estabilització d\'imatge quan estigui disponible</string>
-    <string name="image_stabilization_summary">Si el maquinari ho admet, activa l\'estabilització òptica d\'imatge</string>
-    <string name="video_stabilization_title">Activa l\'estabilització de vídeo quan estigui disponible</string>
-    <string name="video_stabilization_summary">Quan estigui disponible, activeu l\'estabilització electrònica d\'imatge (EIS)</string>
-    <string name="video_stabilization_ois_title">Utilitza OIS en comptes d\'EIS quan estigui disponible</string>
-    <string name="video_stabilization_ois_summary">Si el maquinari ho admet, utilitza l\'estabilització òptica d\'imatge (OIS) en lloc de l\'estabilització electrònica d\'imatge (EIS)</string>
-    <string name="video_stabilization_preview_title">Activa l\'estabilització a la vista prèvia quan estigui disponible</string>
-    <string name="video_stabilization_preview_summary">Si està disponible, aplica l\'estabilització d\'imatge també a la vista prèvia i, si el maquinari ho admet, activa automàticament l\'estabilització òptica d\'imatge (OIS) juntament amb l\'estabilització electrònica d\'imatge (EIS) si el dispositiu ho considera oportú. Només alguns dispositius amb Android 13 o posterior admeten aquest mode</string>
+    <string name="video_stabilization_title">Activa l\'estabilització de vídeo</string>
+    <string name="video_stabilization_summary">Quan estigui disponible, activeu l\'estabilització de vídeo per reduir les vibracions de la càmera durant la gravació</string>
     <string name="shortcut_selfie">Fes una selfie</string>
     <string name="shortcut_video">Fes un vídeo</string>
     <string name="shortcut_qr">Escaneja el codi de barres</string>

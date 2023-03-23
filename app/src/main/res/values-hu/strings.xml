@@ -61,14 +61,6 @@
     <string name="photo_capture_mode_maximize_quality">Minőség maximalizálása</string>
     <string name="photo_capture_mode_minimize_latency">Késleltetés minimalizálása</string>
     <string name="photo_capture_mode_zsl">Zéró zárkésleltetés (kísérleti)</string>
-    <string name="image_stabilization_title">Képstabilizáció engedélyezése ha elérhető</string>
-    <string name="image_stabilization_summary">Ha a hardver támogatja, az optikai képstabilizáció legyen engedélyezve</string>
-    <string name="video_stabilization_title">Videóstabilizáció engedélyezése ha elérhető</string>
-    <string name="video_stabilization_summary">Ha elérhető, legyen engedélyezve az elektronikus képstabilizáció (EIS)</string>
-    <string name="video_stabilization_ois_title">OIS használata EIS helyett ha elérhető</string>
-    <string name="video_stabilization_ois_summary">Ha a hardver támogatja, használjon optikai képstabilizációt (OIS) az elektronikus képstabilizáció (EIS) helyett</string>
-    <string name="video_stabilization_preview_title">Engedélyezze a stabilizálást az előnézeten ha elérhető</string>
-    <string name="video_stabilization_preview_summary">Ha rendelkezésre áll, alkalmazza a képstabilizációt az előnézetre is, és ha a hardver támogatja, automatikusan engedélyezze az optikai képstabilizációt (OIS) az elektronikus képstabilizálással (EIS) együtt, ha a készülék ezt megfelelőnek ítéli. Csak néhány Android 13-as vagy újabb rendszerrel kiadott készülék támogatja ezt az üzemmódot</string>
     <string name="shortcut_selfie">Szelfi készítése</string>
     <string name="shortcut_video">Videó készítése</string>
     <string name="shortcut_qr">Vonalkód beolvasása</string>

@@ -12,6 +12,7 @@
     <string name="flash_button_description">Način bliskavice</string>
     <string name="flip_camera_button_description">Obrni fotoaparat</string>
     <string name="gallery_button_description">Galerija</string>
+    <string name="google_lens_button_description">Odpri Google Lens</string>
     <string name="image_view_description">Predogled slike</string>
     <string name="photo_mode_button_description">Preklopi na način fotografiranja</string>
     <string name="pro_button_description">Pro nastavitve</string>
@@ -43,6 +44,8 @@
     <string name="qr_copy_description">Kopiraj v odložišče</string>
     <string name="qr_icon_description">Ikona</string>
     <string name="qr_share_description">Deli</string>
+    <string name="qr_wifi_title">Vzpostavite povezavo s tem omrežjem Wi-Fi</string>
+    <string name="qr_dpp_description">Nastavite to napravo</string>
     <string name="qr_text">Besedilo</string>
     <string name="title_activity_settings">Nastavitve</string>
     <string name="general_header">Splošno</string>
@@ -61,14 +64,8 @@
     <string name="photo_capture_mode_maximize_quality">Maksimiraj kakovost</string>
     <string name="photo_capture_mode_minimize_latency">Minimiziraj zakasnitev</string>
     <string name="photo_capture_mode_zsl">Ničelna zakasnitev sprožilca (poskusno)</string>
-    <string name="image_stabilization_title">Omogoči stabilizacijo slike, ko je na voljo</string>
-    <string name="image_stabilization_summary">Če jo strojna oprema podpira, omogoči optično stabilizacijo slike</string>
-    <string name="video_stabilization_title">Omogoči stabilizacijo videa, ko je na voljo</string>
-    <string name="video_stabilization_summary">Ko je na voljo, omogoči elektronsko stabilizacijo slike (EIS)</string>
-    <string name="video_stabilization_ois_title">Uporabi OIS namesto EIS, ko je na voljo</string>
-    <string name="video_stabilization_ois_summary">Če jo strojna oprema podpira, uporabi optično stabilizacijo slike (OIS) namesto elektronske stabilizacije slike (EIS)</string>
-    <string name="video_stabilization_preview_title">Omogoči stabilizacijo na predogledu, ko je na voljo</string>
-    <string name="video_stabilization_preview_summary">Če je na voljo, uveljavi stabilizacijo slike tudi na predogled, in če jo strojna oprema podpira, samodejno omogoči optično stabilizacijo slike (OIS) skupaj z elektronsko stabilizacijo slike (EIS), če naprava meni, da je to primerno. Samo nekaj naprav izdanih z Androidom 13 ali novejšim podpirajo ta način.</string>
+    <string name="video_stabilization_title">Omogoči stabilizacijo videa</string>
+    <string name="video_stabilization_summary">Ko je na voljo, omogoči stabilizacijo videa za zmanjšanje vibracij fotoaparata med snemanjem</string>
     <string name="shortcut_selfie">Posnemi sebek</string>
     <string name="shortcut_video">Zajemi videoposnetek</string>
     <string name="shortcut_qr">Preberi črtno kodo</string>

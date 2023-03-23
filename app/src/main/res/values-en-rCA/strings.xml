@@ -12,6 +12,7 @@
     <string name="flash_button_description">Flash mode</string>
     <string name="flip_camera_button_description">Flip camera</string>
     <string name="gallery_button_description">Gallery</string>
+    <string name="google_lens_button_description">Open Google Lens</string>
     <string name="image_view_description">Image preview</string>
     <string name="photo_mode_button_description">Switch to photo mode</string>
     <string name="pro_button_description">Pro settings</string>
@@ -43,6 +44,8 @@
     <string name="qr_copy_description">Copy to clipboard</string>
     <string name="qr_icon_description">Icon</string>
     <string name="qr_share_description">Share</string>
+    <string name="qr_wifi_title">Connect to this Wi-Fi network</string>
+    <string name="qr_dpp_description">Configure this device</string>
     <string name="qr_text">Text</string>
     <string name="title_activity_settings">Settings</string>
     <string name="general_header">General</string>
@@ -61,14 +64,6 @@
     <string name="photo_capture_mode_maximize_quality">Maximize quality</string>
     <string name="photo_capture_mode_minimize_latency">Minimize latency</string>
     <string name="photo_capture_mode_zsl">Zero shutter lag (experimental)</string>
-    <string name="image_stabilization_title">Enable image stabilization when available</string>
-    <string name="image_stabilization_summary">If the hardware supports it, enable optical image stabilization</string>
-    <string name="video_stabilization_title">Enable video stabilization when available</string>
-    <string name="video_stabilization_summary">When available, enable electronic image stabilization (EIS)</string>
-    <string name="video_stabilization_ois_title">Use OIS instead of EIS when available</string>
-    <string name="video_stabilization_ois_summary">If the hardware supports it, use optical image stabilization (OIS) instead of electronic image stabilization (EIS)</string>
-    <string name="video_stabilization_preview_title">Enable stabilization on preview when available</string>
-    <string name="video_stabilization_preview_summary">If available, apply image stabilization also to the preview and, if the hardware supports it, automatically enable optical image stabilization (OIS) together with electronic image stabilization (EIS) if the device deems that appropriate. Only some devices launched with Android 13 or newer supports this mode</string>
     <string name="shortcut_selfie">Take a selfie</string>
     <string name="shortcut_video">Take a video</string>
     <string name="shortcut_qr">Scan a barcode</string>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Appareil photo</string>
+    <string name="video_camera_label">Caméra</string>
+    <string name="camera_mode_highlight_description">Surbrillance du mode caméra</string>
+    <string name="cancel_button_description">Annuler</string>
+    <string name="confirm_button_description">Confirmer</string>
+    <string name="flash_button_description">Mode Flash</string>
+    <string name="flip_camera_button_description">Inverser la caméra</string>
+    <string name="gallery_button_description">Galerie</string>
+    <string name="google_lens_button_description">Ouvrir Google Lens</string>
+    <string name="image_view_description">Aperçu de l\'image</string>
+    <string name="photo_mode_button_description">Basculer en mode photo</string>
+    <string name="pro_button_description">Paramètres pro</string>
+    <string name="qr_mode_button_description">Passer en mode scanner QR Code</string>
+    <string name="shutter_button_description">Obturateur</string>
+    <string name="video_mode_button_description">Basculer en mode vidéo</string>
+    <string name="video_recording_state_button_description">Mettre en pause/reprendre l\'enregistrement vidéo</string>
+    <string name="timer_off">RETARDATEUR DÉSACTIVÉ</string>
+    <string name="timer_3">RETARDATEUR 3s</string>
+    <string name="timer_10">RETARDATEUR 10s</string>
+    <string name="video_framerate_auto">IPS AUTO</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> IPS</string>
+    <string name="effect_none">AUCUN</string>
+    <string name="effect_night">NUIT</string>
+    <string name="effect_face_retouch">RETOUCHE DU VISAGE</string>
+    <string name="effect_auto">AUTO</string>
+    <string name="grid_off">GRILLE DÉSACTIVÉE</string>
+    <string name="grid_on_3">GRILLE 3x3</string>
+    <string name="grid_on_4">GRILLE 4x4</string>
+    <string name="grid_on_goldenratio">GRILLE φ</string>
+    <string name="mic_off">MICRO DÉSACTIVÉ</string>
+    <string name="mic_on">MICRO ACTIVÉ</string>
+    <string name="settings">PARAMÈTRES</string>
+    <string name="selector_photo">PHOTO</string>
+    <string name="select_video">VIDÉO</string>
+    <string name="select_scan">NUMÉRISER</string>
+    <string name="app_permissions_toast">Autorisations non accordées par l\'utilisateur.</string>
+    <string name="camcorder_unsupported_toast">Aucune caméra ne prend en charge l\'enregistrement vidéo.</string>
+    <string name="qr_copy_description">Copier dans le presse-papiers</string>
+    <string name="qr_icon_description">Icône</string>
+    <string name="qr_share_description">Partager</string>
+    <string name="qr_wifi_title">Se connecter à ce réseau Wi-Fi</string>
+    <string name="qr_dpp_description">Configurer cet appareil</string>
+    <string name="qr_text">Texte</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="general_header">Général</string>
+    <string name="photos_header">Photos</string>
+    <string name="video_header">Vidéo</string>
+    <string name="bright_screen_title">Luminosité maximale</string>
+    <string name="bright_screen_summary" formatted="false">Verrouille la luminosité à 100%</string>
+    <string name="save_location_title">Enregistrer les données de localisation</string>
+    <string name="save_location_summary">Inclure la localisation GPS dans les métadonnées</string>
+    <string name="save_location_toast">Autorisations de localisation non accordées par l\'utilisateur.</string>
+    <string name="shutter_sound_title">Son de l\'obturateur</string>
+    <string name="shutter_sound_summary">Jouer un son lors de la capture</string>
+    <string name="leveler_title">Indicateur d\'inclinaison</string>
+    <string name="leveler_summary">Indicateur de l\'orientation de l\'appareil</string>
+    <string name="photo_capture_mode_title">Mode de capture</string>
+    <string name="photo_capture_mode_maximize_quality">Optimiser la qualité</string>
+    <string name="photo_capture_mode_minimize_latency">Optimiser la latence</string>
+    <string name="photo_capture_mode_zsl">Aucun retard de l\'obturateur (expérimental)</string>
+    <string name="shortcut_selfie">Prendre un selfie</string>
+    <string name="shortcut_video">Prendre une vidéo</string>
+    <string name="shortcut_qr">Scanner un code-barre</string>
+    <string name="location_permission_dialog_title">Ajouter la localisation des photos et vidéos</string>
+    <string name="location_permission_dialog_description">Cartographiez vos souvenirs en incluant les métadonnées de localisation à chaque capture.</string>
+    <string name="location_permission_dialog_later">Plus tard</string>
+    <string name="location_permission_dialog_turn_on">Activer</string>
+</resources>
