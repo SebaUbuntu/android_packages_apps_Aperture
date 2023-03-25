@@ -1065,6 +1065,7 @@ open class CameraActivity : AppCompatActivity() {
                 if (!supportedVideoQualities.contains(sharedPreferences.videoQuality)) {
                     sharedPreferences.videoQuality = supportedVideoQualities.first()
                 }
+                cameraController.videoCaptureTargetQuality = null // FIXME: video preview restart
                 cameraController.videoCaptureTargetQuality = sharedPreferences.videoQuality
 
                 // Set proper video framerate
