@@ -874,6 +874,9 @@ open class CameraActivity : AppCompatActivity() {
                 if (!singleCaptureMode) {
                     location = this@CameraActivity.location
                 }
+                if (camera.cameraFacing == CameraFacing.FRONT) {
+                    isReversedHorizontal = sharedPreferences.photoFfcMirror
+                }
             },
             photoOutputStream
         )

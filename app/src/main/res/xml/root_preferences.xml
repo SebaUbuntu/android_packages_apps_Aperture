@@ -52,6 +52,13 @@
             app:title="@string/photo_capture_mode_title"
             app:useSimpleSummaryProvider="true" />
 
+        <SwitchPreference
+            app:defaultValue="true"
+            app:iconSpaceReserved="false"
+            app:key="photo_ffc_mirror"
+            app:summary="@string/photo_ffc_mirror_summary"
+            app:title="@string/photo_ffc_mirror_title" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

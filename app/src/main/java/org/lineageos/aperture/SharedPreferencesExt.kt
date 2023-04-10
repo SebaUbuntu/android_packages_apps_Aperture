@@ -139,6 +139,15 @@ internal var SharedPreferences.photoCaptureMode: Int
         )
     }
 
+private const val PHOTO_FFC_MIRROR = "photo_ffc_mirror"
+private const val PHOTO_FFC_MIRROR_DEFAULT = true
+
+internal var SharedPreferences.photoFfcMirror: Boolean
+    get() = getBoolean(PHOTO_FFC_MIRROR, PHOTO_FFC_MIRROR_DEFAULT)
+    set(value) = edit {
+        putBoolean(PHOTO_FFC_MIRROR, value)
+    }
+
 private const val PHOTO_FLASH_MODE_KEY = "photo_flash_mode"
 private const val PHOTO_FLASH_MODE_DEFAULT = "auto"
 
