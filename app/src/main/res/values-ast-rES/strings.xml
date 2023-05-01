@@ -11,4 +11,6 @@
     <string name="title_activity_settings">Configuración</string>
     <string name="general_header">Xeneral</string>
     <string name="photos_header">Semeyes</string>
+    <string name="photo_ffc_mirror_title">Espeyar la cámara d\'alantre</string>
+    <string name="photo_ffc_mirror_summary">Guarda les semeyes de la cámara d\'alantre tal cuál apaecen na previsualización</string>
 </resources>

@@ -65,7 +65,7 @@
     <string name="photo_capture_mode_minimize_latency">Giảm thiểu độ trễ</string>
     <string name="photo_capture_mode_zsl">Độ trễ chụp bằng không (thử nghiệm)</string>
     <string name="photo_ffc_mirror_title">Lật camera trước</string>
-    <string name="photo_ffc_mirror_summary">Lưu ảnh từ camera trước khi chúng xuất hiện trong bản xem trước</string>
+    <string name="photo_ffc_mirror_summary">Lưu ảnh từ camera như lúc chúng xuất hiện trong bản xem trước</string>
     <string name="video_stabilization_title">Bật tính năng ổn định video</string>
     <string name="video_stabilization_summary">Nếu khả dụng, hãy bật tính năng ổn định video để giảm rung máy ảnh trong khi quay</string>
     <string name="shortcut_selfie">Chụp một ảnh tự sướng</string>

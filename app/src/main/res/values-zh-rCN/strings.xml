@@ -64,6 +64,8 @@
     <string name="photo_capture_mode_maximize_quality">最佳质量</string>
     <string name="photo_capture_mode_minimize_latency">最小延迟</string>
     <string name="photo_capture_mode_zsl">拍摄无延迟（试验性）</string>
+    <string name="photo_ffc_mirror_title">镜像前置摄像头</string>
+    <string name="photo_ffc_mirror_summary">保存预览中显示的前置摄像头照片</string>
     <string name="video_stabilization_title">启用视频防抖</string>
     <string name="video_stabilization_summary">如果可用，启用视频防抖以减少录制时的抖动</string>
     <string name="shortcut_selfie">自拍</string>

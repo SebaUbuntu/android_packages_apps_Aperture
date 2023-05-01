@@ -64,6 +64,8 @@
     <string name="photo_capture_mode_maximize_quality">Massimizza qualità</string>
     <string name="photo_capture_mode_minimize_latency">Minimizza latenza</string>
     <string name="photo_capture_mode_zsl">Zero ritardo dell\'otturatore (sperimentale)</string>
+    <string name="photo_ffc_mirror_title">Fotocamera frontale a specchio</string>
+    <string name="photo_ffc_mirror_summary">Salva le foto della fotocamera frontale come appaiono nell\'anteprima</string>
     <string name="video_stabilization_title">Abilita la stabilizzazione dei video</string>
     <string name="video_stabilization_summary">Se disponibile, abilita la stabilizzazione dei video per ridurre le vibrazioni della fotocamera durante la registrazione</string>
     <string name="shortcut_selfie">Scatta un selfie</string>
