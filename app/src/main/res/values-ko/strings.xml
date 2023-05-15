@@ -53,7 +53,6 @@
     <string name="shutter_sound_summary">촬영을 시작할 때 소리 재생</string>
     <string name="photo_capture_mode_maximize_quality">최고 품질</string>
     <string name="photo_capture_mode_minimize_latency">반응 속도 최대화</string>
-    <string name="photo_capture_mode_zsl">셔터 랙 제거 (실험 기능)</string>
     <string name="shortcut_selfie">셀피 찍기</string>
     <string name="shortcut_qr">바코드 스캔</string>
     <string name="location_permission_dialog_title">사진 및 동영상 위치 추가</string>

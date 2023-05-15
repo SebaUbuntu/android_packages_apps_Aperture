@@ -63,7 +63,12 @@
     <string name="photo_capture_mode_title">Çekim modu</string>
     <string name="photo_capture_mode_maximize_quality">En yüksek kalite</string>
     <string name="photo_capture_mode_minimize_latency">Gecikmeyi düşür</string>
-    <string name="photo_capture_mode_zsl">Gecikmesiz yakalama (deneysel)</string>
+    <string name="enable_zsl_title">Kullanılabilir olduğunda ZSL\'yi etkinleştir</string>
+    <string name="enable_zsl_summary">Kamera destekliyorsa sıfır deklanşör gecikmesi modunu kullan. Bu modda fotoğraf efektleri devre dışı bırakılır. Bu modun şimdilik deneysel olduğunu göz önünde bulundurun.</string>
+    <string name="photo_ffc_mirror_title">Ön kamerayı ters çevir</string>
+    <string name="photo_ffc_mirror_summary">Ön kamera fotoğraflarını önizlemede göründükleri gibi kaydedin</string>
+    <string name="video_stabilization_title">Video sabitlemeyi etkinleştir</string>
+    <string name="video_stabilization_summary">Mevcut olduğunda, kayıt esnasında sarsıntıları önlemek için video sabitleme kullan.</string>
     <string name="shortcut_selfie">Selfie çekin</string>
     <string name="shortcut_video">Video çekin</string>
     <string name="shortcut_qr">Barkod tara</string>

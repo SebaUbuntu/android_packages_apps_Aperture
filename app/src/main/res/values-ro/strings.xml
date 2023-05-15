@@ -63,7 +63,8 @@
     <string name="photo_capture_mode_title">Modul de captură</string>
     <string name="photo_capture_mode_maximize_quality">Maximizare calitate</string>
     <string name="photo_capture_mode_minimize_latency">Minimizare latență</string>
-    <string name="photo_capture_mode_zsl">Zero decalaj de declanșare (experimental)</string>
+    <string name="enable_zsl_title">Activează ZSL când este disponibil</string>
+    <string name="enable_zsl_summary">Utilizează modul Zero-Shutter Lag atunci când camera îl suportă. În acest mod efectele fotografiei sunt dezactivate. Rețineți că acest mod este în prezent experimental</string>
     <string name="photo_ffc_mirror_title">Oglindire camera frontală</string>
     <string name="photo_ffc_mirror_summary">Salvează fotografiile camerei frontale așa cum apar ele în previzualizare</string>
     <string name="video_stabilization_title">Activează stabilizarea video</string>

@@ -52,6 +52,8 @@
     <string name="photos_header">写真</string>
     <string name="video_header">ビデオ</string>
     <string name="bright_screen_summary" formatted="false">明るさを100%に固定</string>
+    <string name="enable_zsl_title">利用可能な場合は ZSL を有効にする</string>
+    <string name="enable_zsl_summary">カメラが対応している場合、ゼロシャッターラグモードを使用します。このモードでは写真のエフェクトは無効になります。このモードは実験的であることに注意してください。</string>
     <string name="photo_ffc_mirror_title">フロントカメラを反転</string>
     <string name="photo_ffc_mirror_summary">フロントカメラの写真をプレビュー表示と同じ向きで保存します</string>
     <string name="video_stabilization_title">動画の安定化を有効にする</string>

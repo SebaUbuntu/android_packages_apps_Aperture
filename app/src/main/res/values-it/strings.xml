@@ -63,7 +63,8 @@
     <string name="photo_capture_mode_title">Modalità di cattura</string>
     <string name="photo_capture_mode_maximize_quality">Massimizza qualità</string>
     <string name="photo_capture_mode_minimize_latency">Minimizza latenza</string>
-    <string name="photo_capture_mode_zsl">Zero ritardo dell\'otturatore (sperimentale)</string>
+    <string name="enable_zsl_title">Abilita ZSL quando disponibile</string>
+    <string name="enable_zsl_summary">Usa la modalità Zero-Shutter Lag (ritardo di scatto nullo) quando la fotocamera lo supporta. In questa modalità gli effetti delle foto sono disabilitati. Nota che questa modalità attualmente è sperimentale</string>
     <string name="photo_ffc_mirror_title">Fotocamera frontale a specchio</string>
     <string name="photo_ffc_mirror_summary">Salva le foto della fotocamera frontale come appaiono nell\'anteprima</string>
     <string name="video_stabilization_title">Abilita la stabilizzazione dei video</string>

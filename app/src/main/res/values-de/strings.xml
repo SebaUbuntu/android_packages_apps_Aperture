@@ -63,7 +63,10 @@
     <string name="photo_capture_mode_title">Aufnahmemodus</string>
     <string name="photo_capture_mode_maximize_quality">Maximale Qualität</string>
     <string name="photo_capture_mode_minimize_latency">Minimale Verzögerung</string>
-    <string name="photo_capture_mode_zsl">Keine Auslöseverzögerung (experimentell)</string>
+    <string name="photo_ffc_mirror_title">Frontkamera spiegeln</string>
+    <string name="photo_ffc_mirror_summary">Frontkamerafotos so speichern, wie sie in der Vorschau erscheinen</string>
+    <string name="video_stabilization_title">Videostabilisierung aktivieren</string>
+    <string name="video_stabilization_summary">Wenn möglich, die Videostabilisierung aktivieren, um Kameravibrationen während der Aufnahme zu reduzieren</string>
     <string name="shortcut_selfie">Selfie aufnehmen</string>
     <string name="shortcut_video">Video aufnehmen</string>
     <string name="shortcut_qr">Barcode scannen</string>

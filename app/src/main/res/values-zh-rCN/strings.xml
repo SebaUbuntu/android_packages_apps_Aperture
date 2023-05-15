@@ -63,7 +63,8 @@
     <string name="photo_capture_mode_title">拍摄模式</string>
     <string name="photo_capture_mode_maximize_quality">最佳质量</string>
     <string name="photo_capture_mode_minimize_latency">最小延迟</string>
-    <string name="photo_capture_mode_zsl">拍摄无延迟（试验性）</string>
+    <string name="enable_zsl_title">可用时启用 ZSL</string>
+    <string name="enable_zsl_summary">当相机支持零快门延迟模式时使用它。此模式下相片效果被禁用。请注意此模式当前处于实验状态</string>
     <string name="photo_ffc_mirror_title">镜像前置摄像头</string>
     <string name="photo_ffc_mirror_summary">保存预览中显示的前置摄像头照片</string>
     <string name="video_stabilization_title">启用视频防抖</string>

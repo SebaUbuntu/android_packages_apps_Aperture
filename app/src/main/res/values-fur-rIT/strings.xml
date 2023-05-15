@@ -63,7 +63,8 @@
     <string name="photo_capture_mode_title">Modalitât di acuisizion</string>
     <string name="photo_capture_mode_maximize_quality">Massimize cualitât</string>
     <string name="photo_capture_mode_minimize_latency">Minimize ritart di rispueste</string>
-    <string name="photo_capture_mode_zsl">Ritart zero dal oturadôr (sperimentâl)</string>
+    <string name="enable_zsl_title">Abilite ZSL se disponibil</string>
+    <string name="enable_zsl_summary">Dopre la modalitât Zero-Shutter Lag (ritart zero dal oturadôr) se la fotocjamare lu supuarte. In cheste modalitât i efiets des fotos a son disabilitâts. Note che cheste modalitât e je pal moment sperimentâl</string>
     <string name="photo_ffc_mirror_title">Fotocjamare frontâl spielade</string>
     <string name="photo_ffc_mirror_summary">Salve lis fotos de fotocjamare frontâl compagnis a cemût che a vegnin fûr te anteprime</string>
     <string name="video_stabilization_title">Abilite la stabilizazion dai videos</string>

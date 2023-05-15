@@ -60,7 +60,6 @@
     <string name="photo_capture_mode_title">Képkészítési mód</string>
     <string name="photo_capture_mode_maximize_quality">Minőség maximalizálása</string>
     <string name="photo_capture_mode_minimize_latency">Késleltetés minimalizálása</string>
-    <string name="photo_capture_mode_zsl">Zéró zárkésleltetés (kísérleti)</string>
     <string name="shortcut_selfie">Szelfi készítése</string>
     <string name="shortcut_video">Videó készítése</string>
     <string name="shortcut_qr">Vonalkód beolvasása</string>

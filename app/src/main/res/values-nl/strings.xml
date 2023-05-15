@@ -28,7 +28,7 @@
     <string name="effect_none">GEEN</string>
     <string name="effect_night">NACHT</string>
     <string name="effect_auto">AUTOMATISCH</string>
-    <string name="grid_off">GRID UIT</string>
+    <string name="grid_off">RASTER UIT</string>
     <string name="grid_on_3">GRID 3x3</string>
     <string name="grid_on_4">GRID 4x4</string>
     <string name="mic_off">MIC UIT</string>
@@ -60,7 +60,6 @@
     <string name="photo_capture_mode_title">Opnamemodus</string>
     <string name="photo_capture_mode_maximize_quality">Kwaliteit maximaliseren</string>
     <string name="photo_capture_mode_minimize_latency">Minimaliseer latentie</string>
-    <string name="photo_capture_mode_zsl">Zero shutter lag (experimental)</string>
     <string name="photo_ffc_mirror_title">Camera aan de voorzijde spiegelen</string>
     <string name="photo_ffc_mirror_summary">Sla foto\'s van de voorste camera op zoals ze worden weergegeven in het voorbeeld</string>
     <string name="video_stabilization_title">Schakel videostabilisatie in</string>

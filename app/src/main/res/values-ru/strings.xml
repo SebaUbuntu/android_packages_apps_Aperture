@@ -63,7 +63,8 @@
     <string name="photo_capture_mode_title">Режим съемки</string>
     <string name="photo_capture_mode_maximize_quality">Максимальное качество</string>
     <string name="photo_capture_mode_minimize_latency">Минимальная задержка</string>
-    <string name="photo_capture_mode_zsl">Нулевая задержка затвора (экспериментально)</string>
+    <string name="enable_zsl_title">По возможности использовать ZSL</string>
+    <string name="enable_zsl_summary">Использовать режим Zero-Shutter Lag, если камера его поддерживает. В этом режиме фотоэффекты отключены. Обратите внимание, что в настоящее время этот режим является экспериментальным</string>
     <string name="photo_ffc_mirror_title">Зеркалировать фронтальную камеру</string>
     <string name="photo_ffc_mirror_summary">Сохранять фото с фронтальной камеры в том виде, в котором они отображаются при предварительном просмотре</string>
     <string name="video_stabilization_title">Включить стабилизацию видео</string>

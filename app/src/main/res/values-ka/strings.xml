@@ -63,7 +63,10 @@
     <string name="photo_capture_mode_title">გადაღების რეჟიმი</string>
     <string name="photo_capture_mode_maximize_quality">უმაღლესი ხარისხი</string>
     <string name="photo_capture_mode_minimize_latency">უმცირესი დაყოვნება</string>
-    <string name="photo_capture_mode_zsl">ჩამკეტის ნულოვანი დაყოვნება (საცდელი)</string>
+    <string name="enable_zsl_title">დაუყოვნებლივი ჩამკეტი, როცა კი ხელმისაწვდომია</string>
+    <string name="enable_zsl_summary">დაუყოვნებლივი ჩამკეტის რეჟიმი, როცა კამერას აქვს მხარდაჭერა. ამ რეჟიმში ფოტოზე ზემოქმედება გათიშულია. გაითვალისწინეთ, რომ ჯერჯერობით საცდელია.</string>
+    <string name="photo_ffc_mirror_title">სარკისებრი წინა კამერა</string>
+    <string name="photo_ffc_mirror_summary">წინა კამერით გადაღებულის შენახვა ისე, როგორც შეთვალიერებისას ჩანს</string>
     <string name="video_stabilization_title">ვიდეოგადაღებისას რყევის შემცირება</string>
     <string name="video_stabilization_summary">როცა კი შესაძლებელია, რყევის შემამცირებელი შთანთქავს კამერის მოძრაობას გადაღებისას</string>
     <string name="shortcut_selfie">სელფის გადაღება</string>
