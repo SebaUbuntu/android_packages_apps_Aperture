@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Myndavél</string>
+    <string name="video_camera_label">Myndbandstökuvél</string>
+    <string name="cancel_button_description">Hætta við</string>
+    <string name="confirm_button_description">Staðfesta</string>
+    <string name="flash_button_description">Leifturljóshamur</string>
+    <string name="flip_camera_button_description">Skipt milli myndavéla</string>
+    <string name="gallery_button_description">Myndasafn</string>
+    <string name="google_lens_button_description">Opna Google Lens</string>
+    <string name="image_view_description">Forskoðun myndar</string>
+    <string name="photo_mode_button_description">Skipta yfir í ljósmyndaham</string>
+    <string name="pro_button_description">Atvinnustillingar</string>
+    <string name="qr_mode_button_description">Skipta yfir í QR-skönnunarham</string>
+    <string name="shutter_button_description">Lokari</string>
+    <string name="video_mode_button_description">Skipta yfir í myndskeiðsham</string>
+    <string name="video_recording_state_button_description">Halda áfram/Bíða með upptöku myndskeiðs</string>
+    <string name="timer_off">SLÖKKT Á NIÐURTELJARA</string>
+    <string name="timer_3">NIÐURTALN. 3s</string>
+    <string name="timer_10">NIÐURTALN. 10s</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> RPS</string>
+    <string name="effect_none">EKKERT</string>
+    <string name="effect_night">NÓTT</string>
+    <string name="effect_auto">SJÁLFVIRKT</string>
+    <string name="grid_off">REITIR AF</string>
+    <string name="grid_on_3">REITIR 3x3</string>
+    <string name="grid_on_4">REITIR 4x4</string>
+    <string name="grid_on_goldenratio">REITIR φ</string>
+    <string name="mic_off">HLJÓÐN. AF</string>
+    <string name="mic_on">HLJÓÐN. Á</string>
+    <string name="settings">STILLINGAR</string>
+    <string name="selector_photo">LJÓSMYND</string>
+    <string name="select_video">MYNDSKEIÐ</string>
+    <string name="select_scan">SKANNA</string>
+    <string name="app_permissions_toast">Heimildir ekki veittar af notandanum.</string>
+    <string name="camcorder_unsupported_toast">Engin myndavél styður upptöku myndskeiða.</string>
+    <string name="qr_copy_description">Afrita á klippispjald</string>
+    <string name="qr_icon_description">Táknmynd</string>
+    <string name="qr_share_description">Deila</string>
+    <string name="qr_wifi_title">Tengjast við þetta Wi-Fi netkerfi</string>
+    <string name="qr_dpp_description">Stilla þetta tæki</string>
+    <string name="qr_text">Texti</string>
+    <string name="title_activity_settings">Stillingar</string>
+    <string name="general_header">Almennt</string>
+    <string name="photos_header">Ljósmyndir</string>
+    <string name="video_header">Myndskeið</string>
+    <string name="bright_screen_title">Bjartur skjár</string>
+    <string name="bright_screen_summary" formatted="false">Læsir birtustig í 100%</string>
+    <string name="save_location_title">Vista staðsetningargögn</string>
+    <string name="save_location_summary">Hafa GPS-hnattstaðsetningu með í lýsigögnum</string>
+    <string name="save_location_toast">Staðsetningarheimildir ekki veittar af notandanum.</string>
+    <string name="shutter_sound_title">Hljóð lokara</string>
+    <string name="shutter_sound_summary">Spila hljóð við töku myndar</string>
+    <string name="leveler_title">Hallamál</string>
+    <string name="photo_capture_mode_title">Upptökuhamur</string>
+    <string name="photo_capture_mode_maximize_quality">Hámarka gæði</string>
+    <string name="photo_capture_mode_minimize_latency">Lágmarka töf</string>
+    <string name="enable_zsl_title">Virkja ZSL þegar það er tiltækt</string>
+    <string name="photo_ffc_mirror_title">Spegla frammyndavél</string>
+    <string name="video_stabilization_title">Virkja stöðugleikajöfnun myndmerkis</string>
+    <string name="shortcut_selfie">Taka sjálfsmynd</string>
+    <string name="shortcut_video">Taka myndskeið</string>
+    <string name="shortcut_qr">Skanna strikamerki</string>
+    <string name="location_permission_dialog_title">Bæta við staðsetningum ljósmynda og myndskeiða</string>
+    <string name="location_permission_dialog_later">Síðar</string>
+    <string name="location_permission_dialog_turn_on">Kveikja á</string>
+</resources>

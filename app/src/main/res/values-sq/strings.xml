@@ -63,6 +63,8 @@
     <string name="photo_capture_mode_title">Metoda e kapjes</string>
     <string name="photo_capture_mode_maximize_quality">Maksimizo kualitetin</string>
     <string name="photo_capture_mode_minimize_latency">Minimizo vonesën</string>
+    <string name="enable_zsl_title">Aktivizo ZSL kur është e disponueshme</string>
+    <string name="enable_zsl_summary">Përdorni modalitetin Zero-Shutter Lag kur kamera e mbështet atë. Në këtë modalitet, efektet e fotografisë janë të çaktivizuara. Vini re se kjo mënyrë është aktualisht eksperimentale</string>
     <string name="photo_ffc_mirror_title">Pasqyra e Kamerës së përparme</string>
     <string name="photo_ffc_mirror_summary">Ruani fotot e kamerës së përparme siç shfaqen në pamjen paraprake</string>
     <string name="video_stabilization_title">Aktivizo stabilizimin e videos</string>

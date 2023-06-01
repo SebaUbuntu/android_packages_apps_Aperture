@@ -63,6 +63,8 @@
     <string name="photo_capture_mode_title">Λειτουργία σύλληψης εικόνας</string>
     <string name="photo_capture_mode_maximize_quality">Μεγιστοποίηση ποιότητας</string>
     <string name="photo_capture_mode_minimize_latency">Ελαχιστοποίηση καθυστέρησης</string>
+    <string name="enable_zsl_title">Ενεργοποίηση ZSL όταν είναι διαθέσιμο</string>
+    <string name="enable_zsl_summary">Χρήση της λειτουργίας Zero-Shutter Lag όταν η κάμερα την υποστηρίζει. Σε αυτή τη λειτουργία τα εφέ φωτογραφίας είναι απενεργοποιημένα. Σημειώστε ότι αυτή η λειτουργία είναι προς το παρόν πειραματική</string>
     <string name="photo_ffc_mirror_title">Καθρεπτισμός εμπρόσθιας κάμερας</string>
     <string name="photo_ffc_mirror_summary">Αποθηκεύστε τις φωτογραφίες της μπροστινής κάμερας όπως εμφανίζονται στην προεπισκόπηση</string>
     <string name="video_stabilization_title">Ενεργοποίηση σταθεροποίησης βίντεο</string>

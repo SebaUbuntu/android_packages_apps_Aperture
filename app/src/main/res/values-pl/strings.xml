@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Aparat</string>
+    <string name="video_camera_label">Kamera</string>
+    <string name="camera_mode_highlight_description">Podświetlenie trybu aparatu</string>
+    <string name="cancel_button_description">Anuluj</string>
+    <string name="confirm_button_description">Potwierdź</string>
+    <string name="flash_button_description">Tryb błysku</string>
+    <string name="flip_camera_button_description">Obróć kamerę</string>
+    <string name="gallery_button_description">Galeria</string>
+    <string name="google_lens_button_description">Otwórz Obiektyw Google</string>
+    <string name="image_view_description">Podgląd obrazu</string>
+    <string name="photo_mode_button_description">Przełącz na tryb zdjęć</string>
+    <string name="pro_button_description">Zaawansowane</string>
+    <string name="qr_mode_button_description">Przełącz na tryb skanera kodów QR</string>
+    <string name="shutter_button_description">Migawka</string>
+    <string name="video_mode_button_description">Przełącz na tryb wideo</string>
+    <string name="video_recording_state_button_description">Wstrzymaj/wznawiaj nagrywanie wideo</string>
+    <string name="timer_off">TIMER WYŁ.</string>
+    <string name="timer_3">TIMER 3s</string>
+    <string name="timer_10">TIMER 10s</string>
+    <string name="video_framerate_auto">AUTOMATYCZNE Kl/s</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> Kl/s</string>
+    <string name="effect_none">BRAK</string>
+    <string name="effect_night">NOC</string>
+    <string name="effect_face_retouch">RETUSZ TWARZY</string>
+    <string name="effect_auto">AUTOMATYCZNY</string>
+    <string name="grid_off">SIATKA WYŁ.</string>
+    <string name="grid_on_3">SIATKA 3x3</string>
+    <string name="grid_on_4">SIATKA 4x4</string>
+    <string name="grid_on_goldenratio">SIATKA φ</string>
+    <string name="mic_off">MIK WYŁ.</string>
+    <string name="mic_on">MIK WŁ.</string>
+    <string name="settings">USTAWIENIA</string>
+    <string name="selector_photo">ZDJĘCIE</string>
+    <string name="select_video">WIDEO</string>
+    <string name="select_scan">SKANER</string>
+    <string name="app_permissions_toast">Uprawnienia nie zostały przyznane przez użytkownika.</string>
+    <string name="camcorder_unsupported_toast">Żaden aparat nie obsługuje nagrywania wideo.</string>
+    <string name="qr_copy_description">Skopiuj do schowka</string>
+    <string name="qr_icon_description">Ikona</string>
+    <string name="qr_share_description">Udostępnij</string>
+    <string name="qr_wifi_title">Połącz z tą siecią Wi-Fi</string>
+    <string name="qr_dpp_description">Skonfiguruj to urządzenie</string>
+    <string name="qr_text">Tekst</string>
+    <string name="title_activity_settings">Ustawienia</string>
+    <string name="general_header">Ogólne</string>
+    <string name="photos_header">Zdjęcia</string>
+    <string name="video_header">Wideo</string>
+    <string name="bright_screen_title">Jasny ekran</string>
+    <string name="bright_screen_summary" formatted="false">Ustawia maksymalną jasność ekranu</string>
+    <string name="save_location_title">Zapisz dane lokalizacji</string>
+    <string name="save_location_summary">Uwzględnia pozycję GPS w metadanych</string>
+    <string name="save_location_toast">Uprawnienia lokalizacji nie zostały przyznane przez użytkownika.</string>
+    <string name="shutter_sound_title">Dźwięk migawki</string>
+    <string name="shutter_sound_summary">Odtwórz dźwięk przy przechwytywaniu</string>
+    <string name="leveler_title">Poziomica</string>
+    <string name="leveler_summary">Wskaźnik pokazujący orientację urządzenia</string>
+    <string name="photo_capture_mode_title">Tryb fotografowania</string>
+    <string name="photo_capture_mode_maximize_quality">Maksymalizuj jakość</string>
+    <string name="photo_capture_mode_minimize_latency">Minimalizuj opóźnienie</string>
+    <string name="enable_zsl_title">Włącz ZSL, jeżeli dostępny </string>
+    <string name="enable_zsl_summary">Używanie trybu zerowego opóźnienia migawki, jeśli aparat go obsługuje. W tym trybie dodatkowe efekty zdjęć są wyłączone. Ten tryb jest obecnie w wersji testowej.</string>
+    <string name="photo_ffc_mirror_title">Lustrzane odbicie przedniego aparatu</string>
+    <string name="photo_ffc_mirror_summary">Zapisywanie zdjęć z przedniego aparatu tak, jak są widoczne na podglądzie</string>
+    <string name="video_stabilization_title">Włącz stabilizację wideo</string>
+    <string name="video_stabilization_summary">Włącz stabilizację wideo, aby zmniejszyć wibracje kamery podczas nagrywania</string>
+    <string name="shortcut_selfie">Zrób selfie</string>
+    <string name="shortcut_video">Nagraj wideo</string>
+    <string name="shortcut_qr">Zeskanuj kod kreskowy</string>
+    <string name="location_permission_dialog_title">Dodaj lokalizacje zdjęć oraz filmów</string>
+    <string name="location_permission_dialog_description">Mapuj swoje wspomnienia, dołączając metadane lokalizacji do każdego zdjęcia.</string>
+    <string name="location_permission_dialog_later">Później</string>
+    <string name="location_permission_dialog_turn_on">Włącz</string>
+</resources>

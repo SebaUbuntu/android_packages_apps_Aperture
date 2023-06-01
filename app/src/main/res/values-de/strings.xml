@@ -63,6 +63,8 @@
     <string name="photo_capture_mode_title">Aufnahmemodus</string>
     <string name="photo_capture_mode_maximize_quality">Maximale Qualität</string>
     <string name="photo_capture_mode_minimize_latency">Minimale Verzögerung</string>
+    <string name="enable_zsl_title">„Keine Auslöseverzögerung“ (ZSL) aktivieren, wenn verfügbar</string>
+    <string name="enable_zsl_summary">Verwende den Modus \"Keine Auslöseverzögerung\", wenn die Kamera ihn unterstützt. In diesem Modus sind die Fotoeffekte deaktiviert. Beachte, dass dieser Modus derzeit experimentell ist</string>
     <string name="photo_ffc_mirror_title">Frontkamera spiegeln</string>
     <string name="photo_ffc_mirror_summary">Frontkamerafotos so speichern, wie sie in der Vorschau erscheinen</string>
     <string name="video_stabilization_title">Videostabilisierung aktivieren</string>

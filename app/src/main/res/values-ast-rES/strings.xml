@@ -7,10 +7,31 @@
     <string name="app_name">Cámara</string>
     <string name="video_camera_label">Videocámara</string>
     <string name="gallery_button_description">Galería</string>
+    <string name="pro_button_description">Configuración Pro</string>
+    <string name="shutter_button_description">Obturador</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_face_retouch">RETOQUE FACIAL</string>
+    <string name="grid_off">REXÁU NON</string>
+    <string name="grid_on_3">REXÁU 3x3</string>
+    <string name="grid_on_4">REXÁU 4x4</string>
+    <string name="grid_on_goldenratio">REXÁU φ</string>
+    <string name="mic_off">MIC NON</string>
+    <string name="mic_on">MIC SÍ</string>
     <string name="settings">CONFIGURACIÓN</string>
+    <string name="selector_photo">SEMEYA</string>
+    <string name="select_video">VÍDEU</string>
+    <string name="select_scan">ESCANÉU</string>
     <string name="title_activity_settings">Configuración</string>
     <string name="general_header">Xeneral</string>
     <string name="photos_header">Semeyes</string>
+    <string name="video_header">Vídeos</string>
+    <string name="shutter_sound_title">Soníu del obturador</string>
+    <string name="shutter_sound_summary">Reproduz un soníu al capturar</string>
+    <string name="leveler_title">Nivelador</string>
+    <string name="leveler_summary">Un indicador qu\'amuesa la orientación del preséu</string>
+    <string name="photo_capture_mode_maximize_quality">Maximizar la calidá</string>
     <string name="photo_ffc_mirror_title">Espeyar la cámara d\'alantre</string>
     <string name="photo_ffc_mirror_summary">Guarda les semeyes de la cámara d\'alantre tal cuál apaecen na previsualización</string>
+    <string name="location_permission_dialog_later">Dempués</string>
+    <string name="location_permission_dialog_turn_on">Activar</string>
 </resources>
