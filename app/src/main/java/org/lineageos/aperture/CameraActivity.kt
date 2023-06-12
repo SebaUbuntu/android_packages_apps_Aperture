@@ -1295,6 +1295,7 @@ open class CameraActivity : AppCompatActivity() {
      */
     private fun updateSecondaryBarButtons() {
         runOnUiThread {
+            // Top
             timerButton.isEnabled = cameraState == CameraState.IDLE
             aspectRatioButton.isEnabled = cameraState == CameraState.IDLE
             videoQualityButton.isEnabled = cameraState == CameraState.IDLE
@@ -1306,6 +1307,11 @@ open class CameraActivity : AppCompatActivity() {
                 cameraMode != CameraMode.PHOTO || cameraState == CameraState.IDLE
             micButton.isEnabled = cameraState == CameraState.IDLE || audioConfig.audioEnabled
             settingsButton.isEnabled = cameraState == CameraState.IDLE
+
+            // Bottom
+            lensSelectorLayout.children.forEach {
+                it.isSoundEffectsEnabled = cameraState == CameraState.IDLE
+            }
         }
     }
 
