@@ -65,6 +65,8 @@
     <string name="photo_capture_mode_minimize_latency">Minimitza la latència</string>
     <string name="enable_zsl_title">Activa el ZSL quan estigui disponible</string>
     <string name="enable_zsl_summary">Utilitza el mode Zero-Shutter Lag (sense retard de l\'obturador) quan la càmera ho admeti. En aquest mode, els efectes fotogràfics estan desactivats. Tingueu en compte que aquest mode és actualment experimental</string>
+    <string name="photo_ffc_mirror_title">Càmera frontal en mirall</string>
+    <string name="photo_ffc_mirror_summary">Desa les fotos de la càmera frontal tal com apareixen a la vista prèvia</string>
     <string name="video_stabilization_title">Activa l\'estabilització de vídeo</string>
     <string name="video_stabilization_summary">Quan estigui disponible, activeu l\'estabilització de vídeo per reduir les vibracions de la càmera durant la gravació</string>
     <string name="shortcut_selfie">Fes una selfie</string>
