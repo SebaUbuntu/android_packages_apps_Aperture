@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Câmera</string>
+    <string name="video_camera_label">Filmadora</string>
+    <string name="cancel_button_description">Cancelar</string>
+    <string name="confirm_button_description">Confirmar</string>
+    <string name="flip_camera_button_description">Virar câmera</string>
+    <string name="gallery_button_description">Galeria</string>
+    <string name="google_lens_button_description">Abrir Google Lens</string>
+    <string name="image_view_description">Pré-visualização da imagem</string>
+    <string name="pro_button_description">Modo Pro</string>
+    <string name="shutter_button_description">Obturador</string>
+    <string name="video_recording_state_button_description">Pausar/retomar gravação </string>
+    <string name="timer_off">Temporizador desativado</string>
+    <string name="timer_3">Temporizador 3s</string>
+    <string name="timer_10">Temporizador 10s</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> QPS</string>
+    <string name="effect_none">NENHUM</string>
+    <string name="effect_night">NOITE</string>
+    <string name="effect_face_retouch">RETOQUE FACIAL</string>
+    <string name="effect_auto">AUTOMÁTICO</string>
+    <string name="grid_off">GRADE DESATIVADA</string>
+    <string name="grid_on_3">GRADE 3x3</string>
+    <string name="grid_on_4">GRADE 4x4</string>
+    <string name="grid_on_goldenratio">GRADE φ</string>
+    <string name="settings">CONFIGURAÇÕES</string>
+    <string name="selector_photo">FOTO</string>
+    <string name="select_video">VÍDEO</string>
+    <string name="select_scan">DIGITALIZAR</string>
+    <string name="app_permissions_toast">Permissões não concedidas pelo usuário.</string>
+    <string name="qr_copy_description">Copiar para a área de transferência</string>
+    <string name="qr_icon_description">Ícone</string>
+    <string name="qr_share_description">Compartilhar</string>
+    <string name="qr_wifi_title">Conectar-se a esta rede Wi-Fi</string>
+    <string name="qr_dpp_description">Configurar este dispositivo</string>
+    <string name="qr_text">Texto</string>
+    <string name="title_activity_settings">Configurações</string>
+    <string name="general_header">Geral</string>
+    <string name="photos_header">Fotos</string>
+    <string name="video_header">Vídeo</string>
+    <string name="shutter_sound_title">Som do obturador</string>
+    <string name="shutter_sound_summary">Tocar um som ao capturar</string>
+    <string name="leveler_title">Nivelador</string>
+    <string name="leveler_summary">Indicador que mostra a orientação do dispositivo</string>
+    <string name="photo_capture_mode_title">Modo de captura</string>
+    <string name="photo_capture_mode_minimize_latency">Minimizar latência</string>
+    <string name="enable_zsl_title">Ativar ZSL quando disponível</string>
+    <string name="photo_ffc_mirror_title">Espelhar câmera frontal</string>
+    <string name="video_stabilization_title">Ativar estabilização de vídeo</string>
+    <string name="shortcut_selfie">Tirar uma selfie</string>
+    <string name="shortcut_video">Gravar um vídeo</string>
+    <string name="shortcut_qr">Escanear código de barras</string>
+    <string name="location_permission_dialog_title">Adicionar a localização em fotos e vídeos</string>
+    <string name="location_permission_dialog_description">Mapeie suas memórias ao incluir metadados de localização em cada captura.</string>
+    <string name="location_permission_dialog_later">Mais tarde</string>
+</resources>

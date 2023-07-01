@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Kamera</string>
+    <string name="video_camera_label">Videokamera</string>
+    <string name="camera_mode_highlight_description">Fremhævning af kameratilstand</string>
+    <string name="cancel_button_description">Annuller</string>
+    <string name="confirm_button_description">Bekræft</string>
+    <string name="flash_button_description">Blitztilstand</string>
+    <string name="flip_camera_button_description">Vend kamera</string>
+    <string name="gallery_button_description">Galleri</string>
+    <string name="google_lens_button_description">Åbn Google Lens</string>
+    <string name="image_view_description">Billedeksempel</string>
+    <string name="photo_mode_button_description">Skift til billede tilstand</string>
+    <string name="pro_button_description">Pro indstillinger</string>
+    <string name="qr_mode_button_description">Skift til QR-skannertilstand</string>
+    <string name="shutter_button_description">Udløser</string>
+    <string name="video_mode_button_description">Skift til video tilstand</string>
+    <string name="video_recording_state_button_description">Pause/genoptag videooptagelse</string>
+    <string name="timer_off">NEDTÆLLING FRA</string>
+    <string name="timer_3">TIMER 3s</string>
+    <string name="timer_10">TIMER 10s</string>
+    <string name="video_framerate_auto">AUTOMATISK FPS</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">INGEN</string>
+    <string name="effect_night">NAT</string>
+    <string name="effect_face_retouch">ANSIGTS RETUCH</string>
+    <string name="effect_auto">AUTOMATISK</string>
+    <string name="grid_off">GRID FRA</string>
+    <string name="grid_on_3">GRID 3x3</string>
+    <string name="grid_on_4">GRID 4x4</string>
+    <string name="grid_on_goldenratio">GRID φ</string>
+    <string name="mic_off">MIKROFON FRA</string>
+    <string name="mic_on">MIKROFON TIL</string>
+    <string name="settings">INDSTILLINGER</string>
+    <string name="selector_photo">FOTO</string>
+    <string name="select_video">VIDEO</string>
+    <string name="select_scan">SCAN</string>
+    <string name="app_permissions_toast">Tilladelser ikke tillads af brugeren.</string>
+    <string name="camcorder_unsupported_toast">Intet kamera understøtter videooptagelse.</string>
+    <string name="qr_copy_description">Kopiér til udklipsholder</string>
+    <string name="qr_icon_description">Ikon</string>
+    <string name="qr_share_description">Del</string>
+    <string name="qr_wifi_title">Opret forbindelse til dette Wi-Fi netværk</string>
+    <string name="qr_dpp_description">Konfigurér enheden</string>
+    <string name="qr_text">Tekst</string>
+    <string name="title_activity_settings">Indstillinger</string>
+    <string name="general_header">Generelt</string>
+    <string name="photos_header">Fotos</string>
+    <string name="video_header">Video</string>
+    <string name="bright_screen_title">Lys skærm</string>
+    <string name="bright_screen_summary" formatted="false">Låser lysstyrke til 100%</string>
+    <string name="save_location_title">Gem lokationsdata</string>
+    <string name="save_location_summary">Inkluder GPS-placering i metadata</string>
+    <string name="save_location_toast">Placeringstilladelser ikke tildelt af brugeren.</string>
+    <string name="shutter_sound_title">Udløser lyd</string>
+    <string name="shutter_sound_summary">Afspil en lyd ved optagelse</string>
+    <string name="leveler_title">Leveler</string>
+    <string name="leveler_summary">Indikator, der viser enhedens orientering</string>
+    <string name="photo_capture_mode_title">Optagelses tilstand</string>
+    <string name="photo_capture_mode_maximize_quality">Maksimér kvalitet</string>
+    <string name="photo_capture_mode_minimize_latency">Minimér ventetid</string>
+    <string name="enable_zsl_title">Aktiver ZSL når tilgængelig</string>
+    <string name="enable_zsl_summary">Brug Zero-Shutter Lag-tilstand når kameraet understøtter det. I denne tilstand er fotoeffekter deaktiveret. Bemærk at denne tilstand er eksperimentel</string>
+    <string name="photo_ffc_mirror_title">Spejl frontkamera</string>
+    <string name="photo_ffc_mirror_summary">Gem frontkamera billeder, som de vises i forhåndsvisningen</string>
+    <string name="video_stabilization_title">Aktiver videostabilisering</string>
+    <string name="video_stabilization_summary">Aktivér videostabilisering, når det er tilgængeligt, for at reducere kameravibrationer under optagelse</string>
+    <string name="shortcut_selfie">Tag en selfie</string>
+    <string name="shortcut_video">Optag en video</string>
+    <string name="shortcut_qr">Scan stregkode</string>
+    <string name="location_permission_dialog_title">Tilføj foto- og videoplaceringer</string>
+    <string name="location_permission_dialog_description">Kortlæg dine minder ved at inkludere placerings metadata med hver optagelse.</string>
+    <string name="location_permission_dialog_later">Senere</string>
+    <string name="location_permission_dialog_turn_on">Slå til</string>
+</resources>

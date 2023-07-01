@@ -56,8 +56,10 @@
     <string name="shutter_sound_summary">Reproduz un soníu al capturar</string>
     <string name="leveler_title">Nivelador</string>
     <string name="leveler_summary">Un indicador qu\'amuesa la orientación del preséu</string>
+    <string name="photo_capture_mode_title">Mou de captura</string>
     <string name="photo_capture_mode_maximize_quality">Maximizar la calidá</string>
     <string name="enable_zsl_title">Activar el mou ZSL cuando tea disponible</string>
+    <string name="enable_zsl_summary">Usa\'l mou Zero-Shutter Lag (obturador ensin retardu) cuando la cámara seya compatible. Con esti mou desactívense los efeutos de les semeyes. Decátate qu\'esti mou ye esperimental.</string>
     <string name="photo_ffc_mirror_title">Espeyar la cámara d\'alantre</string>
     <string name="photo_ffc_mirror_summary">Guarda les semeyes de la cámara d\'alantre tal cuál apaecen na previsualización</string>
     <string name="video_stabilization_title">Activar la estabilización del videu</string>
@@ -65,6 +67,8 @@
     <string name="shortcut_selfie">Facer un autorretratu</string>
     <string name="shortcut_video">Grabar un videu</string>
     <string name="shortcut_qr">Escaniar un códigu de barres</string>
+    <string name="location_permission_dialog_title">Llugares de les semeyes ya los vídeos</string>
+    <string name="location_permission_dialog_description">Recuerda d\'onde son los tos recuerdos pente la inclusión de metadatos en cada captura.</string>
     <string name="location_permission_dialog_later">Dempués</string>
     <string name="location_permission_dialog_turn_on">Activar</string>
 </resources>
