@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">相機</string>
+    <string name="video_camera_label">攝影機</string>
+    <string name="camera_mode_highlight_description">相機模式重點標示</string>
+    <string name="cancel_button_description">取消</string>
+    <string name="confirm_button_description">確認</string>
+    <string name="flash_button_description">閃光燈模式</string>
+    <string name="flip_camera_button_description">翻轉鏡頭</string>
+    <string name="gallery_button_description">相簿</string>
+    <string name="google_lens_button_description">開啟 Google 智慧鏡頭</string>
+    <string name="image_view_description">圖像預覽</string>
+    <string name="photo_mode_button_description">切換到相片模式</string>
+    <string name="pro_button_description">專業設定</string>
+    <string name="qr_mode_button_description">切換到 QR 掃描器模式</string>
+    <string name="shutter_button_description">快門</string>
+    <string name="video_mode_button_description">切換到影片模式</string>
+    <string name="video_recording_state_button_description">暫停/繼續影片錄製</string>
+    <string name="timer_off">計時器已關閉</string>
+    <string name="timer_3">3 秒</string>
+    <string name="timer_10">10 秒</string>
+    <string name="video_framerate_auto">自動 FPS</string>
+    <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
+    <string name="effect_none">無</string>
+    <string name="effect_night">夜景</string>
+    <string name="effect_face_retouch">美顏</string>
+    <string name="effect_auto">自動</string>
+    <string name="grid_off">無格線</string>
+    <string name="grid_on_3">3x3</string>
+    <string name="grid_on_4">4x4</string>
+    <string name="grid_on_goldenratio">φ</string>
+    <string name="mic_off">麥克風關閉</string>
+    <string name="mic_on">麥克風開啟</string>
+    <string name="settings">設定</string>
+    <string name="selector_photo">相片</string>
+    <string name="select_video">影片</string>
+    <string name="select_scan">掃描</string>
+    <string name="app_permissions_toast">使用者未授予權限。</string>
+    <string name="camcorder_unsupported_toast">沒有支援影片錄製的鏡頭。</string>
+    <string name="qr_copy_description">複製到剪貼簿</string>
+    <string name="qr_icon_description">圖示</string>
+    <string name="qr_share_description">分享</string>
+    <string name="qr_wifi_title">連線至此 Wi-Fi 網路</string>
+    <string name="qr_dpp_description">設定此裝置</string>
+    <string name="qr_text">文字</string>
+    <string name="title_activity_settings">設定</string>
+    <string name="general_header">一般</string>
+    <string name="photos_header">相片</string>
+    <string name="video_header">影片</string>
+    <string name="bright_screen_title">明亮螢幕</string>
+    <string name="bright_screen_summary" formatted="false">將螢幕亮度鎖定至 100%</string>
+    <string name="save_location_title">儲存位置資料</string>
+    <string name="save_location_summary">在中繼資料中包含 GPS 位置</string>
+    <string name="save_location_toast">使用者未授予位置權限。</string>
+    <string name="shutter_sound_title">快門音效</string>
+    <string name="shutter_sound_summary">拍攝時播放音效</string>
+    <string name="leveler_title">水平線</string>
+    <string name="leveler_summary">顯示裝置方向的指示器</string>
+    <string name="photo_capture_mode_title">拍攝模式</string>
+    <string name="photo_capture_mode_maximize_quality">最大品質</string>
+    <string name="photo_capture_mode_minimize_latency">最小延遲</string>
+    <string name="enable_zsl_title">啟用 ZSL (可用時)</string>
+    <string name="enable_zsl_summary">在相機支援時啟用零快門延遲 (ZSL) 模式，此模式將會停用相片效果。注意，此模式為實驗性功能</string>
+    <string name="photo_ffc_mirror_title">鏡像前置鏡頭</string>
+    <string name="photo_ffc_mirror_summary">儲存預覽中顯示的前置鏡頭相片</string>
+    <string name="video_stabilization_title">啟用影片防震</string>
+    <string name="video_stabilization_summary">在可用時啟用影片防震以減少錄影時的相機震動</string>
+    <string name="shortcut_selfie">自拍</string>
+    <string name="shortcut_video">拍攝影片</string>
+    <string name="shortcut_qr">掃描條碼</string>
+    <string name="location_permission_dialog_title">新增相片和影片位置</string>
+    <string name="location_permission_dialog_description">使用每次拍攝中包含的位置中繼資料來定位您的回憶</string>
+    <string name="location_permission_dialog_later">稍後再說</string>
+    <string name="location_permission_dialog_turn_on">開啟</string>
+</resources>

@@ -5,6 +5,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="google_lens_button_description">Адкрыць Google Lens</string>
+    <string name="settings">НАЛАДЫ</string>
     <string name="qr_wifi_title">Падключыцца да гэтай сеткі Wi-Fi</string>
+    <string name="save_location_title">Захаваць даныя месцазнаходжання</string>
     <string name="location_permission_dialog_later">Пазней</string>
+    <string name="location_permission_dialog_turn_on">Уключыць</string>
 </resources>
