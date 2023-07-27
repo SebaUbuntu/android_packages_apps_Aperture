@@ -1952,7 +1952,7 @@ open class CameraActivity : AppCompatActivity() {
         val newFlashMode = if (currentFlashMode != FlashMode.TORCH) {
             FlashMode.TORCH
         } else {
-            FlashMode.OFF
+            sharedPreferences.photoFlashMode
         }
 
         changeFlashMode(newFlashMode)
