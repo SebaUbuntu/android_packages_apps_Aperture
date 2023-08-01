@@ -56,16 +56,19 @@
     <string name="shutter_sound_title">Hljóð lokara</string>
     <string name="shutter_sound_summary">Spila hljóð við töku myndar</string>
     <string name="leveler_title">Hallamál</string>
+    <string name="leveler_summary">Vísir sem sýnir stefnu tækis</string>
     <string name="photo_capture_mode_title">Upptökuhamur</string>
     <string name="photo_capture_mode_maximize_quality">Hámarka gæði</string>
     <string name="photo_capture_mode_minimize_latency">Lágmarka töf</string>
     <string name="enable_zsl_title">Virkja ZSL þegar það er tiltækt</string>
+    <string name="enable_zsl_summary">Notaðu tafarlausa myndatöku (Zero-Shutter Lag - ZSL) þegar myndavélin styður slíkt. Sjónbrellur á myndir eru ekki virkar í þessum ham. Athugaðu að þetta er eiginleiki á tilraunastigi</string>
     <string name="photo_ffc_mirror_title">Spegla frammyndavél</string>
     <string name="video_stabilization_title">Virkja stöðugleikajöfnun myndmerkis</string>
     <string name="shortcut_selfie">Taka sjálfsmynd</string>
     <string name="shortcut_video">Taka myndskeið</string>
     <string name="shortcut_qr">Skanna strikamerki</string>
     <string name="location_permission_dialog_title">Bæta við staðsetningum ljósmynda og myndskeiða</string>
+    <string name="location_permission_dialog_description">Kortleggðu minningarnar þínar með því að hafa með lýsigögn staðsetningar í hverri myndatöku.</string>
     <string name="location_permission_dialog_later">Síðar</string>
     <string name="location_permission_dialog_turn_on">Kveikja á</string>
 </resources>

@@ -64,6 +64,10 @@
     <string name="photo_ffc_mirror_summary">Guarda les semeyes de la cámara d\'alantre tal cuál apaecen na previsualización</string>
     <string name="video_stabilization_title">Activar la estabilización del videu</string>
     <string name="video_stabilization_summary">Cuando esta opción ta disponible, actívase la función qu\'amenorga\'l cimblíu demientres la grabación de vídeos</string>
+    <string name="edge_mode_high_quality">Calidá alta</string>
+    <string name="color_correction_aberration_mode_high_quality">Calidá alta</string>
+    <string name="distortion_correction_mode_high_quality">Calidá alta</string>
+    <string name="hot_pixel_mode_high_quality">Calidá alta</string>
     <string name="shortcut_selfie">Facer un autorretratu</string>
     <string name="shortcut_video">Grabar un videu</string>
     <string name="shortcut_qr">Escaniar un códigu de barres</string>
@@ -71,4 +75,9 @@
     <string name="location_permission_dialog_description">Recuerda d\'onde son los tos recuerdos pente la inclusión de metadatos en cada captura.</string>
     <string name="location_permission_dialog_later">Dempués</string>
     <string name="location_permission_dialog_turn_on">Activar</string>
+    <string name="error_camera_fatal_error">Atopóse un error fatal. Prueba a reaniciar el preséu.</string>
+    <string name="gesture_action_shutter">Obturador</string>
+    <string name="gesture_action_zoom">Zoom</string>
+    <string name="gesture_action_volume">Volume</string>
+    <string name="gesture_action_nothing">Nada</string>
 </resources>
