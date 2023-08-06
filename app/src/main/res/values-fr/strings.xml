@@ -69,6 +69,7 @@
     <string name="photo_ffc_mirror_summary">Enregistrer les clichés de l\'appareil photo frontal tels qu\'affichés dans l\'aperçu</string>
     <string name="video_stabilization_title">Activer la stabilisation vidéo</string>
     <string name="video_stabilization_summary">Si disponible, activer la stabilisation vidéo pour réduire les vibrations de la caméra pendant l\'enregistrement</string>
+    <string name="noise_reduction_mode_title">Réduction du bruit</string>
     <string name="shortcut_selfie">Prendre un selfie</string>
     <string name="shortcut_video">Prendre une vidéo</string>
     <string name="shortcut_qr">Scanner un code-barre</string>
