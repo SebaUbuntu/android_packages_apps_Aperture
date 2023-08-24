@@ -278,12 +278,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/primaryBarLayoutGroupPhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="galleryButtonCardView,shutterButton,flipCameraButton" />
-
         <ImageButton
             android:id="@+id/shutterButton"
             android:layout_width="75dp"
@@ -319,19 +313,6 @@
         </androidx.cardview.widget.CardView>
 
         <ImageButton
-            android:id="@+id/googleLensButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="32dp"
-            android:background="@null"
-            android:contentDescription="@string/google_lens_button_description"
-            android:scaleType="center"
-            android:src="@drawable/ic_google_lens"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
             android:id="@+id/flipCameraButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -358,6 +339,19 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ImageButton
+        android:id="@+id/googleLensButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:background="@null"
+        android:contentDescription="@string/google_lens_button_description"
+        android:scaleType="center"
+        android:src="@drawable/ic_google_lens"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/modeSelectorLayout"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/modeSelectorLayout"
         android:layout_width="match_parent"
@@ -366,6 +360,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/cameraModeButtonsGroup"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="cameraModeHighlight,photoModeButton,videoModeButton,qrModeButton" />
 
         <Button
             android:id="@+id/cameraModeHighlight"
@@ -429,7 +429,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/videoDuration"
+            android:id="@+id/videoDurationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/rec_red"
