@@ -276,7 +276,7 @@ java_library_static {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-common-nodeps",
-    aars: ["androidx/media3/media3-common/1.0.2/media3-common-1.0.2.aar"],
+    aars: ["androidx/media3/media3-common/1.1.1/media3-common-1.1.1.aar"],
     sdk_version: "33",
     min_sdk_version: "14",
     apex_available: [
@@ -297,7 +297,7 @@ android_library {
         "//apex_available:platform",
         "//apex_available:anyapex",
     ],
-    manifest: "androidx/media3/media3-common/1.0.2/AndroidManifest.xml",
+    manifest: "androidx/media3/media3-common/1.1.1/AndroidManifest.xml",
     static_libs: [
         "Aperture_androidx.media3_media3-common-nodeps",
         "guava",
@@ -307,8 +307,38 @@ android_library {
 }
 
 android_library_import {
+    name: "Aperture_androidx.media3_media3-container-nodeps",
+    aars: ["androidx/media3/media3-container/1.1.1/media3-container-1.1.1.aar"],
+    sdk_version: "33",
+    min_sdk_version: "14",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
+        "Aperture_androidx.media3_media3-common",
+    ],
+}
+
+android_library {
+    name: "Aperture_androidx.media3_media3-container",
+    sdk_version: "33",
+    min_sdk_version: "14",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    manifest: "androidx/media3/media3-container/1.1.1/AndroidManifest.xml",
+    static_libs: [
+        "Aperture_androidx.media3_media3-container-nodeps",
+        "Aperture_androidx.media3_media3-common",
+    ],
+    java_version: "1.7",
+}
+
+android_library_import {
     name: "Aperture_androidx.media3_media3-database-nodeps",
-    aars: ["androidx/media3/media3-database/1.0.2/media3-database-1.0.2.aar"],
+    aars: ["androidx/media3/media3-database/1.1.1/media3-database-1.1.1.aar"],
     sdk_version: "33",
     min_sdk_version: "14",
     apex_available: [
@@ -328,7 +358,7 @@ android_library {
         "//apex_available:platform",
         "//apex_available:anyapex",
     ],
-    manifest: "androidx/media3/media3-database/1.0.2/AndroidManifest.xml",
+    manifest: "androidx/media3/media3-database/1.1.1/AndroidManifest.xml",
     static_libs: [
         "Aperture_androidx.media3_media3-database-nodeps",
         "Aperture_androidx.media3_media3-common",
@@ -338,7 +368,7 @@ android_library {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-datasource-nodeps",
-    aars: ["androidx/media3/media3-datasource/1.0.2/media3-datasource-1.0.2.aar"],
+    aars: ["androidx/media3/media3-datasource/1.1.1/media3-datasource-1.1.1.aar"],
     sdk_version: "33",
     min_sdk_version: "14",
     apex_available: [
@@ -359,7 +389,7 @@ android_library {
         "//apex_available:platform",
         "//apex_available:anyapex",
     ],
-    manifest: "androidx/media3/media3-datasource/1.0.2/AndroidManifest.xml",
+    manifest: "androidx/media3/media3-datasource/1.1.1/AndroidManifest.xml",
     static_libs: [
         "Aperture_androidx.media3_media3-datasource-nodeps",
         "Aperture_androidx.media3_media3-common",
@@ -370,7 +400,7 @@ android_library {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-decoder-nodeps",
-    aars: ["androidx/media3/media3-decoder/1.0.2/media3-decoder-1.0.2.aar"],
+    aars: ["androidx/media3/media3-decoder/1.1.1/media3-decoder-1.1.1.aar"],
     sdk_version: "33",
     min_sdk_version: "14",
     apex_available: [
@@ -390,7 +420,7 @@ android_library {
         "//apex_available:platform",
         "//apex_available:anyapex",
     ],
-    manifest: "androidx/media3/media3-decoder/1.0.2/AndroidManifest.xml",
+    manifest: "androidx/media3/media3-decoder/1.1.1/AndroidManifest.xml",
     static_libs: [
         "Aperture_androidx.media3_media3-decoder-nodeps",
         "Aperture_androidx.media3_media3-common",
@@ -400,7 +430,7 @@ android_library {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-exoplayer-nodeps",
-    aars: ["androidx/media3/media3-exoplayer/1.0.2/media3-exoplayer-1.0.2.aar"],
+    aars: ["androidx/media3/media3-exoplayer/1.1.1/media3-exoplayer-1.1.1.aar"],
     sdk_version: "33",
     min_sdk_version: "14",
     apex_available: [
@@ -409,6 +439,7 @@ android_library_import {
     ],
     static_libs: [
         "Aperture_androidx.media3_media3-common",
+        "Aperture_androidx.media3_media3-container",
         "Aperture_androidx.media3_media3-datasource",
         "Aperture_androidx.media3_media3-decoder",
         "Aperture_androidx.media3_media3-extractor",
@@ -425,10 +456,11 @@ android_library {
         "//apex_available:platform",
         "//apex_available:anyapex",
     ],
-    manifest: "androidx/media3/media3-exoplayer/1.0.2/AndroidManifest.xml",
+    manifest: "androidx/media3/media3-exoplayer/1.1.1/AndroidManifest.xml",
     static_libs: [
         "Aperture_androidx.media3_media3-exoplayer-nodeps",
         "Aperture_androidx.media3_media3-common",
+        "Aperture_androidx.media3_media3-container",
         "Aperture_androidx.media3_media3-datasource",
         "Aperture_androidx.media3_media3-decoder",
         "Aperture_androidx.media3_media3-extractor",
@@ -440,7 +472,7 @@ android_library {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-extractor-nodeps",
-    aars: ["androidx/media3/media3-extractor/1.0.2/media3-extractor-1.0.2.aar"],
+    aars: ["androidx/media3/media3-extractor/1.1.1/media3-extractor-1.1.1.aar"],
     sdk_version: "33",
     min_sdk_version: "14",
     apex_available: [
@@ -449,6 +481,7 @@ android_library_import {
     ],
     static_libs: [
         "Aperture_androidx.media3_media3-common",
+        "Aperture_androidx.media3_media3-container",
         "Aperture_androidx.media3_media3-decoder",
     ],
 }
@@ -461,10 +494,11 @@ android_library {
         "//apex_available:platform",
         "//apex_available:anyapex",
     ],
-    manifest: "androidx/media3/media3-extractor/1.0.2/AndroidManifest.xml",
+    manifest: "androidx/media3/media3-extractor/1.1.1/AndroidManifest.xml",
     static_libs: [
         "Aperture_androidx.media3_media3-extractor-nodeps",
         "Aperture_androidx.media3_media3-common",
+        "Aperture_androidx.media3_media3-container",
         "Aperture_androidx.media3_media3-decoder",
     ],
     java_version: "1.7",
@@ -472,7 +506,7 @@ android_library {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-ui-nodeps",
-    aars: ["androidx/media3/media3-ui/1.0.2/media3-ui-1.0.2.aar"],
+    aars: ["androidx/media3/media3-ui/1.1.1/media3-ui-1.1.1.aar"],
     sdk_version: "33",
     min_sdk_version: "14",
     apex_available: [
@@ -494,7 +528,7 @@ android_library {
         "//apex_available:platform",
         "//apex_available:anyapex",
     ],
-    manifest: "androidx/media3/media3-ui/1.0.2/AndroidManifest.xml",
+    manifest: "androidx/media3/media3-ui/1.1.1/AndroidManifest.xml",
     static_libs: [
         "Aperture_androidx.media3_media3-ui-nodeps",
         "Aperture_androidx.media3_media3-common",
