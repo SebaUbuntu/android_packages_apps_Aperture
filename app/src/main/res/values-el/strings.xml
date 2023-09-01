@@ -72,6 +72,7 @@
     <string name="video_stabilization_title">Ενεργοποίηση σταθεροποίησης βίντεο</string>
     <string name="video_stabilization_summary">Αν είναι διαθέσιμη, ενεργοποιήστε τη σταθεροποίηση βίντεο για να μειώσετε τους κραδασμούς της κάμερας κατά την εγγραφή</string>
     <string name="processing_title">Επεξεργασία</string>
+    <string name="processing_info">Στη λειτουργία φωτογραφίας, όταν χρησιμοποιείται η λειτουργία ZSL, θα ληφθούν υπόψη μόνο οι επιλογές \"προεπιλογή\" και \"ανενεργή\". Στη λειτουργία βίντεο, θα ληφθούν υπόψη μόνο οι επιλογές \"προεπιλογή\", \"ανενεργή\" και \"γρήγορη\".</string>
     <string name="edge_mode_title">Όξυνση</string>
     <string name="edge_mode_summary">Η όξυνση βελτιώνει την ευκρίνεια και τις λεπτομέρειες στην καταγεγραμμένη εικόνα.</string>
     <string name="edge_mode_default">Προεπιλογή</string>
@@ -116,4 +117,23 @@
     <string name="location_permission_dialog_description">Χαρτογραφήστε τις μνήμες σας, συμπεριλαμβάνοντας τα μεταδεδομένα τοποθεσίας με κάθε κλικ.</string>
     <string name="location_permission_dialog_later">Αργότερα</string>
     <string name="location_permission_dialog_turn_on">Ενεργοποίηση</string>
+    <string name="error_max_cameras_in_use">Ο μέγιστος αριθμός ανοικτών φωτογραφικών μηχανών έχει επιτευχθεί, προσπαθήστε να κλείσετε άλλες εφαρμογές που χρησιμοποιούν τις κάμερες της συσκευής.</string>
+    <string name="error_camera_in_use">Αυτή η κάμερα είναι ήδη σε χρήση, δοκιμάστε να κλείσετε την εφαρμογή που τη χρησιμοποιεί.</string>
+    <string name="error_stream_config">Παρουσιάστηκε σφάλμα κατά την προετοιμασία της ροής. Παρακαλώ αναφέρετε αυτό το σφάλμα στους προγραμματιστές.</string>
+    <string name="error_other_recoverable_error">Σφάλμα κατά τη ρύθμιση της συνεδρίας. Η εφαρμογή θα προσπαθήσει να ανακάμψει.</string>
+    <string name="error_camera_disabled">Η κάμερα είναι απενεργοποιημένη. Αυτό μπορεί να προκληθεί από την πολιτική της συσκευής.</string>
+    <string name="error_camera_fatal_error">Παρουσιάστηκε ένα κρίσιμο σφάλμα. Προσπαθήστε να επανεκκινήσετε τη συσκευή σας.</string>
+    <string name="error_do_not_disturb_mode_enabled">Η λειτουργία \"Μην ενοχλείτε\" είναι ενεργοποιημένη. Απενεργοποιήστε την και ανοίξτε ξανά την εφαρμογή.</string>
+    <string name="error_unknown_recoverable">Βρέθηκε ένα ανακτήσιμο άγνωστο σφάλμα. Παρακαλώ αναφέρετε αυτό το σφάλμα στους προγραμματιστές.</string>
+    <string name="error_unknown_critical">Βρέθηκε ένα κρίσιμο άγνωστο σφάλμα. Παρακαλώ αναφέρετε αυτό το σφάλμα στους προγραμματιστές.</string>
+    <string name="gesture_action_shutter">Κλείστρο</string>
+    <string name="gesture_action_zoom">Μεγέθυνση</string>
+    <string name="gesture_action_volume">Ένταση</string>
+    <string name="gesture_action_nothing">Τίποτα</string>
+    <string name="thermal_status_moderate">Μέτριος θερμικός περιορισμός, βεβαιωθείτε ότι η συσκευή δε βρίσκεται κάτω από το άμεσο ηλιακό φως.</string>
+    <string name="thermal_status_severe">Σοβαρός θερμικός περιορισμός, συνιστάται να αφήσετε τη συσκευή να κρυώσει λίγο.</string>
+    <string name="thermal_status_critical">Κρίσιμος θερμικός περιορισμός, η εφαρμογή μπορεί να κλείσει σύντομα.</string>
+    <string name="thermal_status_emergency">Θερμικός περιορισμός έκτακτης ανάγκης, η εφαρμογή θα κλείσει τώρα.</string>
+    <string name="thermal_status_shutdown">Σοβαρός θερμικός περιορισμός, η συσκευή θα απενεργοποιηθεί.</string>
+    <string name="force_torch_help">Στη λειτουργία φωτογραφίας, μπορείτε να πιέσετε παρατεταμένα το κουμπί φλας για να μεταβείτε σε λειτουργία φακού.</string>
 </resources>

@@ -26,6 +26,7 @@
     <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
     <string name="effect_none">없음</string>
     <string name="effect_night">야간</string>
+    <string name="effect_face_retouch">얼굴 보정</string>
     <string name="effect_auto">자동</string>
     <string name="grid_off">격자 꺼짐</string>
     <string name="grid_on_3">3x3 격자</string>
@@ -49,6 +50,7 @@
     <string name="general_header">일반</string>
     <string name="photos_header">사진</string>
     <string name="video_header">동영상</string>
+    <string name="advanced_header">고급</string>
     <string name="bright_screen_title">밝은 화면으로 보기</string>
     <string name="bright_screen_summary" formatted="false">화면 밝기를 최대로 고정</string>
     <string name="save_location_title">위치 데이터 저장</string>
@@ -56,15 +58,19 @@
     <string name="save_location_toast">사용자에 의해 위치 권한이 허용되어 있지 않습니다.</string>
     <string name="shutter_sound_title">촬영음</string>
     <string name="shutter_sound_summary">촬영을 시작할 때 소리 재생</string>
+    <string name="leveler_title">레벨러</string>
+    <string name="leveler_summary">기기 회전을 보여주는 인디케이터</string>
     <string name="photo_capture_mode_title">캡처 모드</string>
     <string name="photo_capture_mode_maximize_quality">최고 품질</string>
     <string name="photo_capture_mode_minimize_latency">반응 속도 최대화</string>
+    <string name="photo_ffc_mirror_summary">미리 보기에 보이는 대로 전면 카메라 사진 저장</string>
     <string name="video_stabilization_title">동영상 떨림 안정화 사용</string>
     <string name="video_stabilization_summary">사용할 수 있을 경우, 동영상 떨림 안정화를 사용하여 동영상 촬영 중 카메라 떨림을 줄입니다.</string>
     <string name="shortcut_selfie">셀피 찍기</string>
     <string name="shortcut_video">동영상 촬영</string>
     <string name="shortcut_qr">바코드 스캔</string>
     <string name="location_permission_dialog_title">사진 및 동영상 위치 추가</string>
+    <string name="location_permission_dialog_description">각 사진에 위치 메타데이터를 포함해 위치를 기억합니다.</string>
     <string name="location_permission_dialog_later">나중에</string>
     <string name="location_permission_dialog_turn_on">켜기</string>
 </resources>
