@@ -8,7 +8,7 @@
     android:layout_width="320dp"
     android:layout_height="wrap_content"
     android:background="@drawable/location_permissions_dialog_background"
-    android:backgroundTint="@color/gray_70">
+    android:backgroundTint="?attr/colorSurface">
 
     <ImageView
         android:id="@+id/locationPermissionsDialogImage"
@@ -33,21 +33,23 @@
 
         <TextView
             android:id="@+id/locationPermissionsDialogTitle"
+            style="@style/TextAppearance.Material3.TitleLarge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/location_permission_dialog_title"
             android:textAlignment="center"
-            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/locationPermissionsDialogDescription"
+            style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/location_permission_dialog_description"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationPermissionsDialogTitle" />
@@ -61,25 +63,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationPermissionsDialogDescription">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/locationPermissionsDialogLaterButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/gray_70"
                 android:text="@string/location_permission_dialog_later"
-                android:textColor="@color/blue"
-                app:layout_constraintEnd_toStartOf="@+id/locationPermissionsDialogTurnOnButton"
+                android:textColor="?attr/colorAccent"
+                app:backgroundTint="@android:color/transparent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/locationPermissionsDialogTurnOnButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/gray_70"
                 android:text="@string/location_permission_dialog_turn_on"
-                android:textColor="@color/blue"
+                android:textColor="?attr/colorAccent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:backgroundTint="@android:color/transparent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
