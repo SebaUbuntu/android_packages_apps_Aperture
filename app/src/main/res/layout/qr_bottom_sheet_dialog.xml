@@ -8,7 +8,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/qr_bottom_sheet_dialog_background"
     android:paddingHorizontal="16dp">
 
     <ImageView
@@ -22,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/gray_50"
+        app:tint="?attr/colorOnSurface"
         tools:ignore="ContentDescription" />
 
     <androidx.cardview.widget.CardView
@@ -32,7 +31,7 @@
         android:layout_marginTop="12dp"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
-        app:cardBackgroundColor="@color/gray_60"
+        app:cardBackgroundColor="?attr/colorSurfaceContainerHighest"
         app:cardCornerRadius="12dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,6 +72,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:singleLine="true"
+                    android:textColor="?attr/colorOnSurface"
                     android:textStyle="bold"
                     android:typeface="normal"
                     app:layout_constraintBottom_toTopOf="@+id/data"
@@ -87,6 +87,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:singleLine="true"
+                    android:textColor="?attr/colorOnSurfaceVariant"
                     android:textStyle="normal"
                     android:typeface="normal"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +112,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/copy"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/gray_30" />
+                app:tint="?attr/colorOnSurface" />
 
             <ImageButton
                 android:id="@+id/copy"
@@ -127,7 +128,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/gray_30" />
+                app:tint="?attr/colorOnSurface" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

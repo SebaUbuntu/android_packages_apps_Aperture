@@ -11,10 +11,10 @@
     android:letterSpacing="0.0"
     android:textAlignment="center"
     android:textAllCaps="false"
-    android:textColor="@color/gray_30"
+    android:textColor="?attr/colorOnSurface"
     android:textSize="15sp"
     android:textStyle="normal"
     android:typeface="normal"
     app:cornerRadius="8dp"
-    app:strokeColor="@color/gray_40"
+    app:strokeColor="?attr/colorOnSurfaceVariant"
     app:strokeWidth="1dp" />
