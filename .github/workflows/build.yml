@@ -18,6 +18,14 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew assembleDebug
 
+    - name: Generate Android.bp
+      run: |
+        ./gradlew app:generateBp
+        if [[ ! -z $(git status -s) ]]; then
+          git status
+          exit -1
+        fi
+
     - uses: actions/upload-artifact@v3
       with:
         name: app-debug.apk
