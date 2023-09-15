@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Камера</string>
     <string name="video_camera_label">Видеокамера</string>
-    <string name="camera_mode_highlight_description">Подсветка режима камеры</string>
     <string name="cancel_button_description">Отмена</string>
     <string name="confirm_button_description">Подтвердить</string>
     <string name="flash_button_description">Режим вспышки</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Галерея</string>
     <string name="google_lens_button_description">Открыть Google Lens</string>
     <string name="image_view_description">Предпросмотр изображения</string>
-    <string name="photo_mode_button_description">Переключить в режим фото</string>
     <string name="pro_button_description">Профессиональные настройки</string>
-    <string name="qr_mode_button_description">Переключить в режим QR-сканера</string>
     <string name="shutter_button_description">Затвор</string>
-    <string name="video_mode_button_description">Переключить в режим видео</string>
     <string name="video_recording_state_button_description">Пауза/возобновление видеозаписи</string>
     <string name="timer_off">АВТОСПУСК ОТКЛЮЧЕН</string>
     <string name="timer_3">ТАЙМЕР 3 сек.</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">МИКРОФОН ВЫКЛ</string>
     <string name="mic_on">МИКРОФОН ВКЛ</string>
     <string name="settings">НАСТРОЙКИ</string>
-    <string name="selector_photo">ФОТО</string>
-    <string name="select_video">ВИДЕО</string>
-    <string name="select_scan">СКАНИРОВАТЬ</string>
     <string name="app_permissions_toast">Пользователь не предоставил разрешения.</string>
     <string name="camcorder_unsupported_toast">Ни одна камера не поддерживает видеозапись.</string>
     <string name="qr_copy_description">Скопировать в буфер обмена</string>
@@ -136,4 +129,7 @@
     <string name="thermal_status_emergency">Экстремальное тепловое воздействие, приложение будет закрыто.</string>
     <string name="thermal_status_shutdown">Завершение теплового воздействия, устройство выключается.</string>
     <string name="force_torch_help">В режиме фото вы можете удерживать кнопку вспышки, чтобы переключиться в режим фонарика.</string>
+    <string name="camera_mode_photo">Фото</string>
+    <string name="camera_mode_video">Видео</string>
+    <string name="camera_mode_qr">Сканер</string>
 </resources>

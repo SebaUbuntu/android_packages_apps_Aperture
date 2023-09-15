@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Càmera</string>
     <string name="video_camera_label">Càmera de vídeo</string>
-    <string name="camera_mode_highlight_description">Ressalta el mode de càmera</string>
     <string name="cancel_button_description">Cancel·la</string>
     <string name="confirm_button_description">Confirma</string>
     <string name="flash_button_description">Mode de flaix</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Galeria</string>
     <string name="google_lens_button_description">Obre el Google Lens</string>
     <string name="image_view_description">Vista prèvia de la imatge</string>
-    <string name="photo_mode_button_description">Canvia al mode foto</string>
     <string name="pro_button_description">Configuració pro</string>
-    <string name="qr_mode_button_description">Canvia al mode d\'escàner QR</string>
     <string name="shutter_button_description">Obturador</string>
-    <string name="video_mode_button_description">Canvia al mode vídeo</string>
     <string name="video_recording_state_button_description">Pausa/reprèn la gravació de vídeo</string>
     <string name="timer_off">TEMPORITZADOR DESACTIVAT</string>
     <string name="timer_3">TEMPORITZADOR 3s</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">MICRÒFON DESACTIVAT</string>
     <string name="mic_on">MICRÒFON ACTIVAT</string>
     <string name="settings">CONFIGURACIÓ</string>
-    <string name="selector_photo">FOTO</string>
-    <string name="select_video">VÍDEO</string>
-    <string name="select_scan">ESCANEJA</string>
     <string name="app_permissions_toast">Permisos no concedits per l\'usuari.</string>
     <string name="camcorder_unsupported_toast">Cap càmera admet la gravació de vídeo.</string>
     <string name="qr_copy_description">Copia al porta-retalls</string>

@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Máy ảnh</string>
     <string name="video_camera_label">Máy quay phim</string>
-    <string name="camera_mode_highlight_description">Làm nổi bật chế độ máy ảnh</string>
     <string name="cancel_button_description">Hủy</string>
     <string name="confirm_button_description">Xác nhận</string>
     <string name="flash_button_description">Chế độ đèn flash</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Thư viện</string>
     <string name="google_lens_button_description">Mở Google Ống kính</string>
     <string name="image_view_description">Xem trước hình ảnh</string>
-    <string name="photo_mode_button_description">Chuyển sang chế độ ảnh</string>
     <string name="pro_button_description">Cài đặt chuyên nghiệp</string>
-    <string name="qr_mode_button_description">Chuyển sang chế độ quét QR</string>
     <string name="shutter_button_description">Màn trập</string>
-    <string name="video_mode_button_description">Chuyển sang chế độ video</string>
     <string name="video_recording_state_button_description">Tạm dừng/tiếp tục quay phim</string>
     <string name="timer_off">TẮT BỘ TÍNH GIỜ</string>
     <string name="timer_3">HẸN GIỜ 3s</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">TẮT MIC</string>
     <string name="mic_on">BẬT MIC</string>
     <string name="settings">CÀI ĐẶT</string>
-    <string name="selector_photo">ẢNH</string>
-    <string name="select_video">VIDEO</string>
-    <string name="select_scan">QUÉT</string>
     <string name="app_permissions_toast">Quyền không được cấp bởi người dùng.</string>
     <string name="camcorder_unsupported_toast">Không có máy ảnh nào hỗ trợ quay phim.</string>
     <string name="qr_copy_description">Sao chép vào bộ nhớ tạm</string>

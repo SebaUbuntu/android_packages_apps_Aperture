@@ -12,11 +12,8 @@
     <string name="flip_camera_button_description">Camudar la cámara</string>
     <string name="gallery_button_description">Galería</string>
     <string name="google_lens_button_description">Abrir Google Lens</string>
-    <string name="photo_mode_button_description">Cambiar al mou de semeyes</string>
     <string name="pro_button_description">Configuración Pro</string>
-    <string name="qr_mode_button_description">Cambiar al mou d\'escaniar QR</string>
     <string name="shutter_button_description">Obturador</string>
-    <string name="video_mode_button_description">Cambiar al mou de videu</string>
     <string name="video_recording_state_button_description">Posar/siguir cola grabación de videu</string>
     <string name="timer_off">ENSIN TEMPORIZADOR</string>
     <string name="timer_3">TEMPORIZADOR A 3s</string>
@@ -34,9 +31,6 @@
     <string name="mic_off">MIC NON</string>
     <string name="mic_on">MIC SÍ</string>
     <string name="settings">CONFIGURACIÓN</string>
-    <string name="selector_photo">SEMEYA</string>
-    <string name="select_video">VÍDEU</string>
-    <string name="select_scan">ESCANÉU</string>
     <string name="app_permissions_toast">L\'usuariu nun concedió los permisos.</string>
     <string name="camcorder_unsupported_toast">Nun hai nenguna cámara que seya compatible cola grabación de vídeos.</string>
     <string name="qr_copy_description">Copiar nel cartafueyu</string>

@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Kamera</string>
     <string name="video_camera_label">Video Kamera</string>
-    <string name="camera_mode_highlight_description">Kamera rejimi vurğusu</string>
     <string name="cancel_button_description">İmtina</string>
     <string name="confirm_button_description">Təsdiqlə</string>
     <string name="flash_button_description">Fənər rejimi</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Qalereya</string>
     <string name="google_lens_button_description">Google Lens-i aç</string>
     <string name="image_view_description">Şəklə önbaxış</string>
-    <string name="photo_mode_button_description">Foto rejiminə keç</string>
     <string name="pro_button_description">Pro tənzimləmələr</string>
-    <string name="qr_mode_button_description">QR skaner rejiminə keç</string>
     <string name="shutter_button_description">Sürgü</string>
-    <string name="video_mode_button_description">Video rejiminə keç</string>
     <string name="video_recording_state_button_description">Videoyazıya fasilə ver/davam etdir</string>
     <string name="timer_off">TAYMER BAĞLIDIR</string>
     <string name="timer_3">TAYMER 3 san</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">MİKRF BAĞLIDIR</string>
     <string name="mic_on">MİKRF AÇIQDIR</string>
     <string name="settings">TƏNZİMLƏMƏLƏR</string>
-    <string name="selector_photo">FOTO</string>
-    <string name="select_video">VİDEO</string>
-    <string name="select_scan">SKAN</string>
     <string name="app_permissions_toast">İstifadəçi tərəfindən verilməyən icazələr.</string>
     <string name="camcorder_unsupported_toast">Heç bir kamera videoyazını dəstəkləmir.</string>
     <string name="qr_copy_description">Lövhəyə kopyala</string>
@@ -136,4 +129,7 @@
     <string name="thermal_status_emergency">Fövqəladə termal boğma, tətbiq indi bağlanacaq.</string>
     <string name="thermal_status_shutdown">Söndürmə termal boğma, cihaz söndürüləcək.</string>
     <string name="force_torch_help">Foto rejimində, fənər rejiminə keçmək üçün fənər düyməsinə uzun basa bilərsiniz.</string>
+    <string name="camera_mode_photo">Foto</string>
+    <string name="camera_mode_video">Video</string>
+    <string name="camera_mode_qr">Skan</string>
 </resources>

@@ -28,9 +28,6 @@
     <string name="grid_on_4">GRADE 4x4</string>
     <string name="grid_on_goldenratio">GRADE φ</string>
     <string name="settings">CONFIGURAÇÕES</string>
-    <string name="selector_photo">FOTO</string>
-    <string name="select_video">VÍDEO</string>
-    <string name="select_scan">DIGITALIZAR</string>
     <string name="app_permissions_toast">Permissões não concedidas pelo usuário.</string>
     <string name="qr_copy_description">Copiar para a área de transferência</string>
     <string name="qr_icon_description">Ícone</string>

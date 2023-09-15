@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Cameră</string>
     <string name="video_camera_label">Cameră video</string>
-    <string name="camera_mode_highlight_description">Evidenţiere mod cameră foto</string>
     <string name="cancel_button_description">Anulare</string>
     <string name="confirm_button_description">Confirmă</string>
     <string name="flash_button_description">Mod bliț</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Galerie</string>
     <string name="google_lens_button_description">Deschide Google Lens</string>
     <string name="image_view_description">Previzualizare imagine</string>
-    <string name="photo_mode_button_description">Comutare la modul fotografie</string>
     <string name="pro_button_description">Setări Pro</string>
-    <string name="qr_mode_button_description">Comutare la modul de scanare QR</string>
     <string name="shutter_button_description">Obturator</string>
-    <string name="video_mode_button_description">Comutare la modul video</string>
     <string name="video_recording_state_button_description">Întrerupere/reluare înregistrare video</string>
     <string name="timer_off">CRONOMETRU DEZACTIVAT</string>
     <string name="timer_3">CRONOMETRU 3s</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">MICROFON DEZACTIVAT</string>
     <string name="mic_on">MICROFON ACTIVAT</string>
     <string name="settings">SETĂRI</string>
-    <string name="selector_photo">FOTO</string>
-    <string name="select_video">VIDEO</string>
-    <string name="select_scan">SCANARE</string>
     <string name="app_permissions_toast">Permisiuni care nu sunt acordate de utilizator.</string>
     <string name="camcorder_unsupported_toast">Nicio cameră nu suportă înregistrarea video.</string>
     <string name="qr_copy_description">Copiați în clipboard</string>
@@ -136,4 +129,7 @@
     <string name="thermal_status_emergency">Throttling termic de urgenţă, aplicaţia se va închide acum.</string>
     <string name="thermal_status_shutdown">Throttling termic de oprire, dispozitivul se va închide.</string>
     <string name="force_torch_help">În modul fotografie, puteți apăsa lung butonul flash pentru a comuta în modul lanternă.</string>
+    <string name="camera_mode_photo">Foto</string>
+    <string name="camera_mode_video">Video</string>
+    <string name="camera_mode_qr">Scanare</string>
 </resources>

@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Kamera</string>
     <string name="video_camera_label">Videokamera</string>
-    <string name="camera_mode_highlight_description">Fremhævning af kameratilstand</string>
     <string name="cancel_button_description">Annuller</string>
     <string name="confirm_button_description">Bekræft</string>
     <string name="flash_button_description">Blitztilstand</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Galleri</string>
     <string name="google_lens_button_description">Åbn Google Lens</string>
     <string name="image_view_description">Billedeksempel</string>
-    <string name="photo_mode_button_description">Skift til billede tilstand</string>
     <string name="pro_button_description">Pro indstillinger</string>
-    <string name="qr_mode_button_description">Skift til QR-skannertilstand</string>
     <string name="shutter_button_description">Udløser</string>
-    <string name="video_mode_button_description">Skift til video tilstand</string>
     <string name="video_recording_state_button_description">Pause/genoptag videooptagelse</string>
     <string name="timer_off">NEDTÆLLING FRA</string>
     <string name="timer_3">TIMER 3s</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">MIKROFON FRA</string>
     <string name="mic_on">MIKROFON TIL</string>
     <string name="settings">INDSTILLINGER</string>
-    <string name="selector_photo">FOTO</string>
-    <string name="select_video">VIDEO</string>
-    <string name="select_scan">SCAN</string>
     <string name="app_permissions_toast">Tilladelser ikke tillads af brugeren.</string>
     <string name="camcorder_unsupported_toast">Intet kamera understøtter videooptagelse.</string>
     <string name="qr_copy_description">Kopiér til udklipsholder</string>

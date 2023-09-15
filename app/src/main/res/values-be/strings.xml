@@ -10,4 +10,6 @@
     <string name="save_location_title">Захаваць даныя месцазнаходжання</string>
     <string name="location_permission_dialog_later">Пазней</string>
     <string name="location_permission_dialog_turn_on">Уключыць</string>
+    <string name="camera_mode_video">Відэа</string>
+    <string name="camera_mode_qr">Сканіраванне</string>
 </resources>

@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Kamera</string>
     <string name="video_camera_label">Video Kamera</string>
-    <string name="camera_mode_highlight_description">Kamera modu vurgusu</string>
     <string name="cancel_button_description">İptal</string>
     <string name="confirm_button_description">Onayla</string>
     <string name="flash_button_description">Flaş modu</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Galeri</string>
     <string name="google_lens_button_description">Google Lens\' i aç</string>
     <string name="image_view_description">Resim ön izleme</string>
-    <string name="photo_mode_button_description">Fotoğraf moduna geç</string>
     <string name="pro_button_description">Pro ayarları</string>
-    <string name="qr_mode_button_description">Kare kod okuyucusuna geç</string>
     <string name="shutter_button_description">Deklanşör</string>
-    <string name="video_mode_button_description">Video moduna geç</string>
     <string name="video_recording_state_button_description">Video kaydını duraklat/devam ettir</string>
     <string name="timer_off">ZAMANLAYICI KAPALI</string>
     <string name="timer_3">ZAMANLAYICI 3s</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">MİK KPL</string>
     <string name="mic_on">MİK AÇK</string>
     <string name="settings">AYARLAR</string>
-    <string name="selector_photo">FOTOĞRAF</string>
-    <string name="select_video">VİDEO</string>
-    <string name="select_scan">TARAMA</string>
     <string name="app_permissions_toast">Kullanıcı izinleri vermedi.</string>
     <string name="camcorder_unsupported_toast">Video kaydını destekleyen kamera yok.</string>
     <string name="qr_copy_description">Panoya kopyala</string>

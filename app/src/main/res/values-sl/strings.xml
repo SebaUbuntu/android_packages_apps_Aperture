@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Fotoaparat</string>
     <string name="video_camera_label">Kamera</string>
-    <string name="camera_mode_highlight_description">Poudarek načina fotoaparata</string>
     <string name="cancel_button_description">Prekliči</string>
     <string name="confirm_button_description">Potrdi</string>
     <string name="flash_button_description">Način bliskavice</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Galerija</string>
     <string name="google_lens_button_description">Odpri Google Lens</string>
     <string name="image_view_description">Predogled slike</string>
-    <string name="photo_mode_button_description">Preklopi na način fotografiranja</string>
     <string name="pro_button_description">Pro nastavitve</string>
-    <string name="qr_mode_button_description">Preklopi na način QR bralnika</string>
     <string name="shutter_button_description">Sprožilec</string>
-    <string name="video_mode_button_description">Preklopi na način videoposnetka</string>
     <string name="video_recording_state_button_description">Premor/nadaljevanje snemanja videoposnetka</string>
     <string name="timer_off">ODŠTEVALNIK IZKLOPLJEN</string>
     <string name="timer_3">ODŠTEVALNIK 3s</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">MIKROFON IZKLOPLJEN</string>
     <string name="mic_on">MIKROFON VKLOPLJEN</string>
     <string name="settings">NASTAVITVE</string>
-    <string name="selector_photo">FOTO</string>
-    <string name="select_video">VIDEO</string>
-    <string name="select_scan">BRALNIK</string>
     <string name="app_permissions_toast">Dovoljenje ni odobreno od uporabnika</string>
     <string name="camcorder_unsupported_toast">Noben fotoaparat ne podpira snemanja videoposnetkov.</string>
     <string name="qr_copy_description">Kopiraj v odložišče</string>
@@ -136,4 +129,7 @@
     <string name="thermal_status_emergency">Nujno termalno dušenje, aplikacija se bo zdaj zaprla.</string>
     <string name="thermal_status_shutdown">Zaustavitveno termalno dušenje, naprava se bo izklopila.</string>
     <string name="force_torch_help">V načinu fotografiranja, lahko pridržite gumb bliskavice za preklop na način svetilke.</string>
+    <string name="camera_mode_photo">Fotografija</string>
+    <string name="camera_mode_video">Videoposnetek</string>
+    <string name="camera_mode_qr">Branje</string>
 </resources>

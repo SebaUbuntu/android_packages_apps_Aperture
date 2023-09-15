@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Camera</string>
     <string name="video_camera_label">Camcorder</string>
-    <string name="camera_mode_highlight_description">Camera mode highlight</string>
     <string name="cancel_button_description">Cancel</string>
     <string name="confirm_button_description">Confirm</string>
     <string name="flash_button_description">Flash mode</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Gallery</string>
     <string name="google_lens_button_description">Open Google Lens</string>
     <string name="image_view_description">Image preview</string>
-    <string name="photo_mode_button_description">Switch to photo mode</string>
     <string name="pro_button_description">Pro settings</string>
-    <string name="qr_mode_button_description">Switch to QR scanner mode</string>
     <string name="shutter_button_description">Shutter</string>
-    <string name="video_mode_button_description">Switch to video mode</string>
     <string name="video_recording_state_button_description">Pause/resume video recording</string>
     <string name="timer_off">TIMER OFF</string>
     <string name="timer_3">TIMER 3s</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">MIC OFF</string>
     <string name="mic_on">MIC ON</string>
     <string name="settings">SETTINGS</string>
-    <string name="selector_photo">PHOTO</string>
-    <string name="select_video">VIDEO</string>
-    <string name="select_scan">SCAN</string>
     <string name="app_permissions_toast">Permissions not granted by the user.</string>
     <string name="camcorder_unsupported_toast">No camera supports video recording.</string>
     <string name="qr_copy_description">Copy to clipboard</string>

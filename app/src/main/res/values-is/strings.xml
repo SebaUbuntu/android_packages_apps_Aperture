@@ -13,11 +13,8 @@
     <string name="gallery_button_description">Myndasafn</string>
     <string name="google_lens_button_description">Opna Google Lens</string>
     <string name="image_view_description">Forskoðun myndar</string>
-    <string name="photo_mode_button_description">Skipta yfir í ljósmyndaham</string>
     <string name="pro_button_description">Atvinnustillingar</string>
-    <string name="qr_mode_button_description">Skipta yfir í QR-skönnunarham</string>
     <string name="shutter_button_description">Lokari</string>
-    <string name="video_mode_button_description">Skipta yfir í myndskeiðsham</string>
     <string name="video_recording_state_button_description">Halda áfram/Bíða með upptöku myndskeiðs</string>
     <string name="timer_off">SLÖKKT Á NIÐURTELJARA</string>
     <string name="timer_3">NIÐURTALN. 3s</string>
@@ -33,9 +30,6 @@
     <string name="mic_off">HLJÓÐN. AF</string>
     <string name="mic_on">HLJÓÐN. Á</string>
     <string name="settings">STILLINGAR</string>
-    <string name="selector_photo">LJÓSMYND</string>
-    <string name="select_video">MYNDSKEIÐ</string>
-    <string name="select_scan">SKANNA</string>
     <string name="app_permissions_toast">Heimildir ekki veittar af notandanum.</string>
     <string name="camcorder_unsupported_toast">Engin myndavél styður upptöku myndskeiða.</string>
     <string name="qr_copy_description">Afrita á klippispjald</string>

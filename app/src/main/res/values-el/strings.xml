@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Φωτογραφική μηχανή</string>
     <string name="video_camera_label">Βιντεοκάμερα</string>
-    <string name="camera_mode_highlight_description">Επισήμανση λειτουργίας κάμερας</string>
     <string name="cancel_button_description">Ακύρωση</string>
     <string name="confirm_button_description">Επιβεβαίωση</string>
     <string name="flash_button_description">Λειτουργία φλας</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Συλλογή</string>
     <string name="google_lens_button_description">Άνοιγμα Google Lens</string>
     <string name="image_view_description">Προεπισκόπηση εικόνας</string>
-    <string name="photo_mode_button_description">Εναλλαγή σε λειτουργία φωτογραφίας</string>
     <string name="pro_button_description">Προηγμένες ρυθμίσεις</string>
-    <string name="qr_mode_button_description">Εναλλαγή σε λειτουργία σάρωσης QR</string>
     <string name="shutter_button_description">Κλείστρο</string>
-    <string name="video_mode_button_description">Εναλλαγή σε λειτουργία βίντεο</string>
     <string name="video_recording_state_button_description">Παύση/συνέχιση της εγγραφής βίντεο</string>
     <string name="timer_off">ΧΡΟΝΟΜΕΤΡΟ OFF</string>
     <string name="timer_3">ΧΡΟΝΟΜΕΤΡΟ 3δ</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">ΜΙΚΡΟΦΩΝΟ OFF</string>
     <string name="mic_on">ΜΙΚΡΟΦΩΝΟ ON</string>
     <string name="settings">ΡΥΘΜΙΣΕΙΣ</string>
-    <string name="selector_photo">ΦΩΤΟ</string>
-    <string name="select_video">ΒΙΝΤΕΟ</string>
-    <string name="select_scan">ΣΑΡΩΣΗ</string>
     <string name="app_permissions_toast">Οι άδειες δε χορηγήθηκαν από το χρήστη.</string>
     <string name="camcorder_unsupported_toast">Καμία κάμερα δεν υποστηρίζει εγγραφή βίντεο.</string>
     <string name="qr_copy_description">Αντιγραφή στο πρόχειρο</string>

@@ -20,9 +20,6 @@
     <string name="effect_night">MALAM</string>
     <string name="effect_auto">OTOMATIS</string>
     <string name="settings">PENGATURAN</string>
-    <string name="selector_photo">FOTO</string>
-    <string name="select_video">VIDEO</string>
-    <string name="select_scan">PINDAI</string>
     <string name="qr_copy_description">Salin ke papan klip</string>
     <string name="qr_icon_description">Ikon</string>
     <string name="qr_share_description">Bagikan</string>

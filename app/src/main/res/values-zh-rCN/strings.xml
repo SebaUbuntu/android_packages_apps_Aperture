@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">相机</string>
     <string name="video_camera_label">摄像机</string>
-    <string name="camera_mode_highlight_description">相机模式高亮</string>
     <string name="cancel_button_description">取消</string>
     <string name="confirm_button_description">确认</string>
     <string name="flash_button_description">闪光灯模式</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">相册</string>
     <string name="google_lens_button_description">打开 Google Lens</string>
     <string name="image_view_description">图像预览</string>
-    <string name="photo_mode_button_description">切换到拍照模式</string>
     <string name="pro_button_description">专业设置</string>
-    <string name="qr_mode_button_description">切换到二维码扫描模式</string>
     <string name="shutter_button_description">快门</string>
-    <string name="video_mode_button_description">切换到视频模式</string>
     <string name="video_recording_state_button_description">暂停/继续视频录制</string>
     <string name="timer_off">计时器已关闭</string>
     <string name="timer_3">3秒</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">关闭麦克风</string>
     <string name="mic_on">开启麦克风</string>
     <string name="settings">设置</string>
-    <string name="selector_photo">照片</string>
-    <string name="select_video">视频</string>
-    <string name="select_scan">扫描</string>
     <string name="app_permissions_toast">用户没有授予权限。</string>
     <string name="camcorder_unsupported_toast">不支持视频录制。</string>
     <string name="qr_copy_description">复制到剪贴板</string>
@@ -136,4 +129,7 @@
     <string name="thermal_status_emergency">设备严重过热，应用将立刻关闭。</string>
     <string name="thermal_status_shutdown">已达到温度极限，即将关机。</string>
     <string name="force_torch_help">在拍照模式下，您可以长按闪光灯按钮切换到手电筒模式。</string>
+    <string name="camera_mode_photo">照片</string>
+    <string name="camera_mode_video">视频</string>
+    <string name="camera_mode_qr">扫描</string>
 </resources>

@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Camera</string>
     <string name="video_camera_label">Camcorder</string>
-    <string name="camera_mode_highlight_description">Camera modus markeren</string>
     <string name="cancel_button_description">Annuleer</string>
     <string name="confirm_button_description">Bevestig</string>
     <string name="flash_button_description">Flitsmodus</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Galerij</string>
     <string name="google_lens_button_description">Open Google Lens</string>
     <string name="image_view_description">Voorbeeld afbeelding</string>
-    <string name="photo_mode_button_description">Overschakelen naar foto-modus</string>
     <string name="pro_button_description">Pro-instellingen</string>
-    <string name="qr_mode_button_description">Overschakelen naar QR-scanner modus</string>
     <string name="shutter_button_description">Sluiter</string>
-    <string name="video_mode_button_description">Overschakelen naar videomodus</string>
     <string name="video_recording_state_button_description">Video-opname onderbreken/hervatten</string>
     <string name="timer_off">TIMER UIT</string>
     <string name="timer_3">TIMER 3s</string>
@@ -34,9 +30,6 @@
     <string name="mic_off">MIC UIT</string>
     <string name="mic_on">MIC AAN</string>
     <string name="settings">INSTELLINGEN</string>
-    <string name="selector_photo">FOTO</string>
-    <string name="select_video">VIDEO</string>
-    <string name="select_scan">SCAN</string>
     <string name="app_permissions_toast">Machtigingen niet toegekend door de gebruiker.</string>
     <string name="qr_copy_description">Kopieer naar klembord</string>
     <string name="qr_icon_description">Pictogram</string>
@@ -131,4 +124,7 @@
     <string name="thermal_status_emergency">Noodgeval thermische beperking; de app wordt nu afgesloten.</string>
     <string name="thermal_status_shutdown">Het apparaat wordt vanwege oververhitting uitgeschakeld.</string>
     <string name="force_torch_help">In de foto-modus kun je lang op de flash-knop drukken om te schakelen naar zaklampmodus.</string>
+    <string name="camera_mode_photo">Foto</string>
+    <string name="camera_mode_video">Video</string>
+    <string name="camera_mode_qr">Scannen</string>
 </resources>

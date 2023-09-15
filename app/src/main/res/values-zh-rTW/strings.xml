@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">相機</string>
     <string name="video_camera_label">攝影機</string>
-    <string name="camera_mode_highlight_description">相機模式重點標示</string>
     <string name="cancel_button_description">取消</string>
     <string name="confirm_button_description">確認</string>
     <string name="flash_button_description">閃光燈模式</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">相簿</string>
     <string name="google_lens_button_description">開啟 Google 智慧鏡頭</string>
     <string name="image_view_description">圖像預覽</string>
-    <string name="photo_mode_button_description">切換到相片模式</string>
     <string name="pro_button_description">專業設定</string>
-    <string name="qr_mode_button_description">切換到 QR 掃描器模式</string>
     <string name="shutter_button_description">快門</string>
-    <string name="video_mode_button_description">切換到影片模式</string>
     <string name="video_recording_state_button_description">暫停/繼續影片錄製</string>
     <string name="timer_off">計時器已關閉</string>
     <string name="timer_3">3 秒</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">麥克風關閉</string>
     <string name="mic_on">麥克風開啟</string>
     <string name="settings">設定</string>
-    <string name="selector_photo">相片</string>
-    <string name="select_video">影片</string>
-    <string name="select_scan">掃描</string>
     <string name="app_permissions_toast">使用者未授予權限。</string>
     <string name="camcorder_unsupported_toast">沒有支援影片錄製的鏡頭。</string>
     <string name="qr_copy_description">複製到剪貼簿</string>
@@ -136,4 +129,7 @@
     <string name="thermal_status_emergency">緊急的溫度調節，應用程式將立即關閉。</string>
     <string name="thermal_status_shutdown">關機的溫度調節，裝置將會關機。</string>
     <string name="force_torch_help">在相片模式中，您可以長按閃光燈按鈕以切換至手電筒模式。</string>
+    <string name="camera_mode_photo">相片</string>
+    <string name="camera_mode_video">影片</string>
+    <string name="camera_mode_qr">掃描</string>
 </resources>

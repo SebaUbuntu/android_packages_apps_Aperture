@@ -4,6 +4,7 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="photo_ffc_mirror_title">Peilaa etukamera</string>
     <string name="edge_mode_title">Terävöitys</string>
     <string name="edge_mode_summary">Reunojen parannus terävöittää ja tarkentaa kaapatun kuvan yksityiskohtia.</string>
     <string name="edge_mode_default">Oletus</string>

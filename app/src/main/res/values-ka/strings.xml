@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">კამერა</string>
     <string name="video_camera_label">ვიდეოჩამწერი</string>
-    <string name="camera_mode_highlight_description">კამერის რეჟიმი გამოკვეთილი</string>
     <string name="cancel_button_description">გაუქმება</string>
     <string name="confirm_button_description">დასტური</string>
     <string name="flash_button_description">განათების რეჟიმი</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">გალერეა</string>
     <string name="google_lens_button_description">გაიხსნას Google Lens</string>
     <string name="image_view_description">სურათის შეთვალიერება</string>
-    <string name="photo_mode_button_description">ფოტოს რეჟიმზე გადართვა</string>
     <string name="pro_button_description">გამოცდილთათვის</string>
-    <string name="qr_mode_button_description">QR-წამკითხველის რეჟიმზე გადართვა</string>
     <string name="shutter_button_description">ჩამკეტი</string>
-    <string name="video_mode_button_description">ვიდეოს რეჟიმზე გადართვა</string>
     <string name="video_recording_state_button_description">ვიდეოს ჩაწერის შეჩერება/განგრძობა</string>
     <string name="timer_off">ᲣᲙᲣᲗᲕᲚᲐ ᲒᲐᲛᲝᲠᲗ.</string>
     <string name="timer_3">ᲣᲙᲣᲗᲕᲚᲐ 3ᲬᲛ</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">ᲛᲘᲙᲠ. ᲒᲐᲛᲝᲠᲗ.</string>
     <string name="mic_on">ᲛᲘᲙᲠ. ᲩᲐᲠᲗ.</string>
     <string name="settings">ᲞᲐᲠᲐᲛᲔᲢᲠᲔᲑᲘ</string>
-    <string name="selector_photo">ᲤᲝᲢᲝ</string>
-    <string name="select_video">ᲕᲘᲓᲔᲝ</string>
-    <string name="select_scan">ᲡᲙᲐᲜᲔᲠᲘ</string>
     <string name="app_permissions_toast">ნებადართული არაა მომხმარებლისგან.</string>
     <string name="camcorder_unsupported_toast">ვიდეოჩამწერი კამერა არ მოიძებნა.</string>
     <string name="qr_copy_description">ასლის აღება</string>
@@ -136,4 +129,7 @@
     <string name="thermal_status_emergency">გადახურების დაუყოვნებლივ არიდება, აპი ახლავე დაიხურება.</string>
     <string name="thermal_status_shutdown">კვების შეწყვეტა გადახურების გამო, მოწყობილობა გაითიშება.</string>
     <string name="force_torch_help">ფოტოგადაღებისას ელვანათების ღილაკზე ხანგრძლივი დაჭერით ჩაირთვება სანათი.</string>
+    <string name="camera_mode_photo">ფოტო</string>
+    <string name="camera_mode_video">ვიდეო</string>
+    <string name="camera_mode_qr">სკანერი</string>
 </resources>

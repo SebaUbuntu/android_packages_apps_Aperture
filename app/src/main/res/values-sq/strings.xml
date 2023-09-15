@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Kamera</string>
     <string name="video_camera_label">Video regjistrues</string>
-    <string name="camera_mode_highlight_description">Theksimi i modalitetit të kamerës</string>
     <string name="cancel_button_description">Anullo</string>
     <string name="confirm_button_description">Konfirmo</string>
     <string name="flash_button_description">Modaliteti i blicit</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Galeria</string>
     <string name="google_lens_button_description">Hap Google Lens</string>
     <string name="image_view_description">Trego imazhin</string>
-    <string name="photo_mode_button_description">Kalo në modalitetin e fotografisë</string>
     <string name="pro_button_description">Cilësimet PRO</string>
-    <string name="qr_mode_button_description">Kalo në modalitetin e skanerit QR</string>
     <string name="shutter_button_description">Shkrepësi</string>
-    <string name="video_mode_button_description">Kalo në modalitetin e videos</string>
     <string name="video_recording_state_button_description">Ndalo/rifillo regjistrimin e videos</string>
     <string name="timer_off">KOHËMATESI FIKUR</string>
     <string name="timer_3">KOHËMATESI 3s</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">MIC FIKUR</string>
     <string name="mic_on">MIX NDEZUR</string>
     <string name="settings">CILËSIMET</string>
-    <string name="selector_photo">FOTO</string>
-    <string name="select_video">VIDEO</string>
-    <string name="select_scan">SKANO</string>
     <string name="app_permissions_toast">Lejet nuk janë dhënë nga përdoruesi.</string>
     <string name="camcorder_unsupported_toast">Asnjë kamer nuk mundëson regjistrimin e videos.</string>
     <string name="qr_copy_description">Kopjo në \'clipboard\'</string>
@@ -136,4 +129,7 @@
     <string name="thermal_status_emergency">Mbyllja termike e urgjencës, aplikacioni do të mbyllet tani.</string>
     <string name="thermal_status_shutdown">Fikja e mbytjes termike, pajisja do të fiket.</string>
     <string name="force_torch_help">Në modalitetin e fotografisë, mund të shtypni gjatë butonin e blicit për të kaluar në modalitetin e pishtarit.</string>
+    <string name="camera_mode_photo">Foto</string>
+    <string name="camera_mode_video">Video</string>
+    <string name="camera_mode_qr">Skano</string>
 </resources>

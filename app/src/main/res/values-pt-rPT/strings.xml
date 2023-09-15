@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Câmara</string>
     <string name="video_camera_label">Câmara de vídeo</string>
-    <string name="camera_mode_highlight_description">Modo de câmara destacado</string>
     <string name="cancel_button_description">Cancelar</string>
     <string name="confirm_button_description">Confirmar</string>
     <string name="flash_button_description">Modo do flash</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Galeria</string>
     <string name="google_lens_button_description">Abrir o Google Lens</string>
     <string name="image_view_description">Pré-visualização da imagem</string>
-    <string name="photo_mode_button_description">Mudar para o modo de fotografia</string>
     <string name="pro_button_description">Definições avançadas</string>
-    <string name="qr_mode_button_description">Mudar para o modo de digitalizador de QR</string>
     <string name="shutter_button_description">Obturador</string>
-    <string name="video_mode_button_description">Mudar para o modo de vídeo</string>
     <string name="video_recording_state_button_description">Pausar/continuar gravação</string>
     <string name="timer_off">TEMPORIZADOR DESLIGADO</string>
     <string name="timer_3">TEMPORIZADOR 3s</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">MICROFONE DESLIGADO</string>
     <string name="mic_on">MICROFONE LIGADO</string>
     <string name="settings">DEFINIÇÕES</string>
-    <string name="selector_photo">FOTOGRAFIA</string>
-    <string name="select_video">VÍDEO</string>
-    <string name="select_scan">DIGITALIZAR</string>
     <string name="app_permissions_toast">Permissões não concedidas pelo utilizador.</string>
     <string name="camcorder_unsupported_toast">Nenhuma câmara suporta gravação de vídeo.</string>
     <string name="qr_copy_description">Copiar para a área de transferência</string>

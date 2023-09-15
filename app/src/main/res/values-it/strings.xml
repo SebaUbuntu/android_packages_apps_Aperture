@@ -6,7 +6,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Fotocamera</string>
     <string name="video_camera_label">Videocamera</string>
-    <string name="camera_mode_highlight_description">Evidenziazione modalità fotocamera</string>
     <string name="cancel_button_description">Annulla</string>
     <string name="confirm_button_description">Conferma</string>
     <string name="flash_button_description">Flash</string>
@@ -14,11 +13,8 @@
     <string name="gallery_button_description">Galleria</string>
     <string name="google_lens_button_description">Apri Google Lens</string>
     <string name="image_view_description">Anteprima immagine</string>
-    <string name="photo_mode_button_description">Passa alla modalità foto</string>
     <string name="pro_button_description">Impostazioni Pro</string>
-    <string name="qr_mode_button_description">Passa alla modalità scanner QR</string>
     <string name="shutter_button_description">Otturatore</string>
-    <string name="video_mode_button_description">Passa alla modalità video</string>
     <string name="video_recording_state_button_description">Pausa/riprendi registrazione video</string>
     <string name="timer_off">TIMER OFF</string>
     <string name="timer_3">TIMER 3s</string>
@@ -36,9 +32,6 @@
     <string name="mic_off">MICROFONO OFF</string>
     <string name="mic_on">MICROFONO ON</string>
     <string name="settings">IMPOSTAZIONI</string>
-    <string name="selector_photo">FOTO</string>
-    <string name="select_video">VIDEO</string>
-    <string name="select_scan">SCANSIONE</string>
     <string name="app_permissions_toast">Autorizzazioni non concesse dall\'utente.</string>
     <string name="camcorder_unsupported_toast">Nessuna fotocamera supporta la registrazione video.</string>
     <string name="qr_copy_description">Copia negli appunti</string>
@@ -136,4 +129,7 @@
     <string name="thermal_status_emergency">Limitazione termica d\'emergenza in atto, l\'app verrà chiusa ora.</string>
     <string name="thermal_status_shutdown">Limitazione termica da spegnimento in atto, il dispositivo si spegnerà.</string>
     <string name="force_torch_help">In modalità foto, puoi tenere premuto il pulsante del flash per attivare la torcia.</string>
+    <string name="camera_mode_photo">Foto</string>
+    <string name="camera_mode_video">Video</string>
+    <string name="camera_mode_qr">Scansione</string>
 </resources>
