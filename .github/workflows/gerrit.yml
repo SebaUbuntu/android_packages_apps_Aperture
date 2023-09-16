@@ -14,11 +14,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: lineageos-infra/fetch-gerrit-change@main
-        with:
-          repository: ${{ github.repository }}
-          gerrit-ref: ${{ inputs.gerrit-ref }}
-          ref: ${{ inputs.ref }}
+    - uses: lineageos-infra/fetch-gerrit-change@main
+      with:
+        repository: ${{ github.repository }}
+        gerrit-ref: ${{ inputs.gerrit-ref }}
+        ref: ${{ inputs.ref }}
 
     - name: Setup JDK 17
       uses: actions/setup-java@v3
