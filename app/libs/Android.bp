@@ -629,7 +629,7 @@ java_library_static {
 
 java_import {
     name: "Aperture_com.google.zxing_core-nodeps",
-    jars: ["com/google/zxing/core/3.5.0/core-3.5.0.jar"],
+    jars: ["com/google/zxing/core/3.5.2/core-3.5.2.jar"],
     sdk_version: "33",
     min_sdk_version: "14",
     apex_available: [
