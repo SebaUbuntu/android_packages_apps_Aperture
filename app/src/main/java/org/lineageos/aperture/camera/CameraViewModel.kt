@@ -92,6 +92,11 @@ class CameraViewModel : ViewModel() {
     val videoFrameRate = MutableLiveData<FrameRate?>()
 
     /**
+     * Video dynamic range.
+     */
+    val videoDynamicRange = MutableLiveData<VideoDynamicRange>()
+
+    /**
      * Video mic mode.
      */
     val videoMicMode = MutableLiveData<Boolean>()
