@@ -131,4 +131,5 @@
     <string name="force_torch_help">En mode photo, vous pouvez appuyer longuement sur le bouton flash pour basculer sur la lampe torche.</string>
     <string name="camera_mode_photo">Photo</string>
     <string name="camera_mode_video">Vidéo</string>
+    <string name="camera_mode_qr">Scanner</string>
 </resources>

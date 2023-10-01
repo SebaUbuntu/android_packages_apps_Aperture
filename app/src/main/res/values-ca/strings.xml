@@ -129,4 +129,7 @@
     <string name="thermal_status_emergency">L\'acceleració tèrmica està en estat d\'emergència, l\'aplicació es tancarà ara.</string>
     <string name="thermal_status_shutdown">Apagada deguda a l\'acceleració tèrmica, el dispositiu s\'apagarà.</string>
     <string name="force_torch_help">En mode foto, podeu prémer prolongadament el botó del flaix per activar el flaix.</string>
+    <string name="camera_mode_photo">Foto</string>
+    <string name="camera_mode_video">Vídeo</string>
+    <string name="camera_mode_qr">Escaneja</string>
 </resources>

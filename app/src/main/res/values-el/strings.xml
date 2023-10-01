@@ -129,4 +129,7 @@
     <string name="thermal_status_emergency">Θερμικός περιορισμός έκτακτης ανάγκης, η εφαρμογή θα κλείσει τώρα.</string>
     <string name="thermal_status_shutdown">Σοβαρός θερμικός περιορισμός, η συσκευή θα απενεργοποιηθεί.</string>
     <string name="force_torch_help">Στη λειτουργία φωτογραφίας, μπορείτε να πιέσετε παρατεταμένα το κουμπί φλας για να μεταβείτε σε λειτουργία φακού.</string>
+    <string name="camera_mode_photo">Φώτο</string>
+    <string name="camera_mode_video">Βίντεο</string>
+    <string name="camera_mode_qr">Σάρωση</string>
 </resources>

@@ -129,7 +129,7 @@
     <string name="thermal_status_emergency">Nujno termalno dušenje, aplikacija se bo zdaj zaprla.</string>
     <string name="thermal_status_shutdown">Zaustavitveno termalno dušenje, naprava se bo izklopila.</string>
     <string name="force_torch_help">V načinu fotografiranja, lahko pridržite gumb bliskavice za preklop na način svetilke.</string>
-    <string name="camera_mode_photo">Fotografija</string>
-    <string name="camera_mode_video">Videoposnetek</string>
+    <string name="camera_mode_photo">Foto</string>
+    <string name="camera_mode_video">Video</string>
     <string name="camera_mode_qr">Branje</string>
 </resources>
