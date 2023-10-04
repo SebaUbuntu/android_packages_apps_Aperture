@@ -9,6 +9,7 @@ runs:
       with:
         distribution: 'zulu'
         java-version: 17
+        cache: 'gradle'
 
     - name: Build with Gradle
       shell: bash
