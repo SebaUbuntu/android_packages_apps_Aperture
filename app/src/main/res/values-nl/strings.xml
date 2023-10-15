@@ -23,14 +23,17 @@
     <string name="video_framerate_value"><xliff:g example="60" id="fps">%d</xliff:g> FPS</string>
     <string name="effect_none">GEEN</string>
     <string name="effect_night">NACHT</string>
+    <string name="effect_face_retouch">GEZICHT RETOUCH</string>
     <string name="effect_auto">AUTOMATISCH</string>
     <string name="grid_off">RASTER UIT</string>
     <string name="grid_on_3">GRID 3x3</string>
     <string name="grid_on_4">GRID 4x4</string>
+    <string name="grid_on_goldenratio">ROOSTER φ</string>
     <string name="mic_off">MIC UIT</string>
     <string name="mic_on">MIC AAN</string>
     <string name="settings">INSTELLINGEN</string>
     <string name="app_permissions_toast">Machtigingen niet toegekend door de gebruiker.</string>
+    <string name="camcorder_unsupported_toast">Geen camera ondersteunt video-opname.</string>
     <string name="qr_copy_description">Kopieer naar klembord</string>
     <string name="qr_icon_description">Pictogram</string>
     <string name="qr_share_description">Deel</string>
@@ -55,10 +58,13 @@
     <string name="photo_capture_mode_title">Opnamemodus</string>
     <string name="photo_capture_mode_maximize_quality">Kwaliteit maximaliseren</string>
     <string name="photo_capture_mode_minimize_latency">Minimaliseer latentie</string>
+    <string name="enable_zsl_title">Schakel ZSL in indien beschikbaar</string>
+    <string name="enable_zsl_summary">Zero-Shutter Lag gebruiken als de camera het ondersteunt. In deze modus zijn foto-effecten uitgeschakeld. Let op dat deze modus momenteel experimenteel is</string>
     <string name="photo_ffc_mirror_title">Camera aan de voorzijde spiegelen</string>
     <string name="photo_ffc_mirror_summary">Sla foto\'s van de voorste camera op zoals ze worden weergegeven in het voorbeeld</string>
     <string name="video_stabilization_title">Schakel videostabilisatie in</string>
     <string name="video_stabilization_summary">Schakel videostabilisatie in, indien beschikbaar, om camera-trillingen te verminderen tijdens opname</string>
+    <string name="video_mirror_mode_title">Schakel video spiegeling in</string>
     <string name="processing_title">Wordt verwerkt</string>
     <string name="processing_info">In de foto-modus, wanneer ZSL-modus wordt gebruikt, worden alleen standaard- en uit-waarden in aanmerking genomen. Voor de videomodus worden alleen default, off en snelle waarden in aanmerking genomen.</string>
     <string name="edge_mode_title">Verscherpen</string>
@@ -127,4 +133,7 @@
     <string name="camera_mode_photo">Foto</string>
     <string name="camera_mode_video">Video</string>
     <string name="camera_mode_qr">Scannen</string>
+    <string name="video_mirror_mode_off">Uit</string>
+    <string name="video_mirror_mode_on">Aan</string>
+    <string name="video_mirror_mode_on_ffc_only">Alleen camera aan de voorkant</string>
 </resources>

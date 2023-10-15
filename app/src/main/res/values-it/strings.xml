@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">Salva le foto della fotocamera frontale come appaiono nell\'anteprima</string>
     <string name="video_stabilization_title">Abilita la stabilizzazione dei video</string>
     <string name="video_stabilization_summary">Se disponibile, abilita la stabilizzazione dei video per ridurre le vibrazioni della fotocamera durante la registrazione</string>
+    <string name="video_mirror_mode_title">Abilita la riflessione del video</string>
     <string name="processing_title">Elaborazione delle immagini</string>
     <string name="processing_info">In modalità foto, quando viene utilizzata la modalità ZSL, saranno presi in considerazione solo i valori \"Predefinito\" e \"Disattivato\". In modalità video, saranno presi in considerazione i valori \"Predefinito\", \"Disattivato\" e \"Veloce\".</string>
     <string name="edge_mode_title">Nitidezza</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">Foto</string>
     <string name="camera_mode_video">Video</string>
     <string name="camera_mode_qr">Scansione</string>
+    <string name="video_mirror_mode_off">Disattivata</string>
+    <string name="video_mirror_mode_on">Attiva</string>
+    <string name="video_mirror_mode_on_ffc_only">Solo fotocamera frontale</string>
 </resources>

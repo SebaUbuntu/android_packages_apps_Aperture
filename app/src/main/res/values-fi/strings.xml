@@ -5,6 +5,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="photo_ffc_mirror_title">Peilaa etukamera</string>
+    <string name="photo_ffc_mirror_summary">Tallenna etukameran kuvat kuten ne näkyvät esikatselussa.</string>
+    <string name="video_mirror_mode_title">Käytä videon peilausta</string>
     <string name="edge_mode_title">Terävöitys</string>
     <string name="edge_mode_summary">Reunojen parannus terävöittää ja tarkentaa kaapatun kuvan yksityiskohtia.</string>
     <string name="edge_mode_default">Oletus</string>
@@ -32,4 +34,5 @@
     <string name="hot_pixel_mode_off">Ei käytössä</string>
     <string name="hot_pixel_mode_fast">Nopea</string>
     <string name="hot_pixel_mode_high_quality">Korkealaatuinen</string>
+    <string name="video_mirror_mode_on_ffc_only">Vain etukamera</string>
 </resources>

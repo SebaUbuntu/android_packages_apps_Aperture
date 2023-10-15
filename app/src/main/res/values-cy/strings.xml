@@ -44,6 +44,7 @@
     <string name="general_header">Cyffredinol</string>
     <string name="photos_header">Lluniau</string>
     <string name="video_header">Fideo</string>
+    <string name="advanced_header">Uwch</string>
     <string name="bright_screen_title">Sgrin ddisglair</string>
     <string name="bright_screen_summary" formatted="false">Mae\'n cloi\'r disgleirdeb i 100%</string>
     <string name="save_location_title">Cadw data lleoliad</string>
@@ -56,6 +57,16 @@
     <string name="photo_capture_mode_title">Modd cipio</string>
     <string name="photo_capture_mode_maximize_quality">Ansawdd gorau</string>
     <string name="photo_capture_mode_minimize_latency">Cuddni lleiaf</string>
+    <string name="processing_title">Prosesu</string>
+    <string name="edge_mode_default">Rhagosodedig</string>
+    <string name="edge_mode_off">I ffwrdd</string>
+    <string name="edge_mode_fast">Cyflym</string>
+    <string name="edge_mode_high_quality">Ansawdd uchel</string>
+    <string name="noise_reduction_mode_off">I ffwrdd</string>
+    <string name="shading_mode_off">I ffwrdd</string>
+    <string name="color_correction_aberration_mode_off">I ffwrdd</string>
+    <string name="distortion_correction_mode_off">I ffwrdd</string>
+    <string name="hot_pixel_mode_off">I ffwrdd</string>
     <string name="shortcut_selfie">Tynnu hunlun</string>
     <string name="shortcut_video">Tynnu fideo</string>
     <string name="shortcut_qr">Sganoi cod bar</string>
@@ -63,4 +74,6 @@
     <string name="location_permission_dialog_description">Mapia dy atgofion gan gynnwyd metaddata lleoliad gyda phob ffeil.</string>
     <string name="location_permission_dialog_later">Yn hwyrach</string>
     <string name="location_permission_dialog_turn_on">Troi ymlaen</string>
+    <string name="video_mirror_mode_off">I ffwrdd</string>
+    <string name="video_mirror_mode_on">Ymlaen</string>
 </resources>

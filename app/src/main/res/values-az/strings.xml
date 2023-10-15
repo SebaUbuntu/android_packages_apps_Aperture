@@ -13,7 +13,7 @@
     <string name="gallery_button_description">Qalereya</string>
     <string name="google_lens_button_description">Google Lens-i aç</string>
     <string name="image_view_description">Şəklə önbaxış</string>
-    <string name="pro_button_description">Pro tənzimləmələr</string>
+    <string name="pro_button_description">Pro ayarları</string>
     <string name="shutter_button_description">Sürgü</string>
     <string name="video_recording_state_button_description">Videoyazıya fasilə ver/davam etdir</string>
     <string name="timer_off">TAYMER BAĞLIDIR</string>
@@ -31,7 +31,7 @@
     <string name="grid_on_goldenratio">TOR φ</string>
     <string name="mic_off">MİKRF BAĞLIDIR</string>
     <string name="mic_on">MİKRF AÇIQDIR</string>
-    <string name="settings">TƏNZİMLƏMƏLƏR</string>
+    <string name="settings">AYARLAR</string>
     <string name="app_permissions_toast">İstifadəçi tərəfindən verilməyən icazələr.</string>
     <string name="camcorder_unsupported_toast">Heç bir kamera videoyazını dəstəkləmir.</string>
     <string name="qr_copy_description">Lövhəyə kopyala</string>
@@ -40,7 +40,7 @@
     <string name="qr_wifi_title">Bu Wi-Fi şəbəkəsinə bağlan</string>
     <string name="qr_dpp_description">Bu cihazı konfiqurasiya et</string>
     <string name="qr_text">Mətn</string>
-    <string name="title_activity_settings">Tənzimləmələr</string>
+    <string name="title_activity_settings">Ayarlar</string>
     <string name="general_header">Ümumi</string>
     <string name="photos_header">Fotolar</string>
     <string name="video_header">Video</string>
@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">Ön kamera fotolarını önbaxışda göründüyü kimi saxla</string>
     <string name="video_stabilization_title">Video sabitləməni fəallaşdır</string>
     <string name="video_stabilization_summary">Mövcuddursa, çəkiliş əsnasında kamera titrəmələrini azaltmaq üçün video sabitləməni fəallaşdır</string>
+    <string name="video_mirror_mode_title">Videonun əks etdirilməsini fəallaşdır</string>
     <string name="processing_title">Emal olunur</string>
     <string name="processing_info">Foto rejimində, ZSL rejimi istifadə edildikdə, yalnız ilkin və bağlı dəyərlər nəzərə alınacaq. Video rejimi üçün yalnız ilkin, bağlı və sürətli dəyərlər nəzərə alınacaq.</string>
     <string name="edge_mode_title">Kəskinlik</string>
@@ -73,7 +74,7 @@
     <string name="edge_mode_fast">Sürətli</string>
     <string name="edge_mode_high_quality">Yüksək keyfiyyət</string>
     <string name="noise_reduction_mode_title">Səs-küyü azaltma</string>
-    <string name="noise_reduction_mode_summary">Səs-küy azaltm alqoritmi, xüsusilə qaranlıq şəraitdə, yaxalama prosesi tərəfindən əlavə edilən həddən artıq səs-küyü aradan qaldıraraq təsvir keyfiyyətini yaxşılaşdırır.</string>
+    <string name="noise_reduction_mode_summary">Səs-küy azaltma alqoritmi, xüsusilə qaranlıq şəraitdə, yaxalama prosesi tərəfindən əlavə edilən həddən artıq səs-küyü aradan qaldıraraq təsvir keyfiyyətini yaxşılaşdırır.</string>
     <string name="noise_reduction_mode_default">İlkin</string>
     <string name="noise_reduction_mode_off">Bağlı</string>
     <string name="noise_reduction_mode_fast">Sürətli</string>
@@ -112,13 +113,13 @@
     <string name="location_permission_dialog_turn_on">İşə sal</string>
     <string name="error_max_cameras_in_use">Maksimum açıq kamera sayına çatıldı, cihazın kameralarını istifadə edərək digər tətbiqləri bağlamağa çalışın.</string>
     <string name="error_camera_in_use">Bu kamera artıq istifadədədir, onu istifadə edərək tətbiqi bağlamağa çalışın.</string>
-    <string name="error_stream_config">Axın hazırlanarkən bir xəta baş verdi. Zəhmət olmasa bunu tərtibatçılara bildirin.</string>
+    <string name="error_stream_config">Axın hazırlanarkən bir xəta baş verdi. Lütfən bunu tərtibatçılara bildirin.</string>
     <string name="error_other_recoverable_error">Seans qurularkən xəta baş verdi. Tətbiq bərpa etməyə çalışacaq.</string>
     <string name="error_camera_disabled">Kamera sıradan çıxarıldı. Bunun səbəbi cihaz siyasəti ola bilər.</string>
     <string name="error_camera_fatal_error">Qaçılmaz xəta ilə qarşılaşıldı. Cihazınızı yenidən başlatmağa çalışın.</string>
     <string name="error_do_not_disturb_mode_enabled">Narahat Etməyin rejimi fəaldır. Sıradan çıxardıb tətbiqi yenidən açın.</string>
-    <string name="error_unknown_recoverable">Bərpa edilə bilən bir bilinməyən xəta tapıldı. Zəhmət olmasa bunu tərtibatçılara bildirin.</string>
-    <string name="error_unknown_critical">Kritik bir bilinməyən xəta tapıldı. Zəhmət olmasa bunu tərtibatçılara bildirin.</string>
+    <string name="error_unknown_recoverable">Bərpa edilə bilən bir bilinməyən xəta tapıldı. Lütfən bunu tərtibatçılara bildirin.</string>
+    <string name="error_unknown_critical">Kritik bir bilinməyən xəta tapıldı. Lütfən bunu tərtibatçılara bildirin.</string>
     <string name="gesture_action_shutter">Sürgü</string>
     <string name="gesture_action_zoom">Yaxınlaşdır</string>
     <string name="gesture_action_volume">Səs</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">Foto</string>
     <string name="camera_mode_video">Video</string>
     <string name="camera_mode_qr">Skan</string>
+    <string name="video_mirror_mode_off">Bağlı</string>
+    <string name="video_mirror_mode_on">Açıq</string>
+    <string name="video_mirror_mode_on_ffc_only">Yalnız önə baxan kamera</string>
 </resources>

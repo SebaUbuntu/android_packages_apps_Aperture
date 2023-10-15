@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">Shrani fotografije sprednjega fotoaparata, kot se prikažejo na predogledu</string>
     <string name="video_stabilization_title">Omogoči stabilizacijo videa</string>
     <string name="video_stabilization_summary">Ko je na voljo, omogoči stabilizacijo videa za zmanjšanje vibracij fotoaparata med snemanjem</string>
+    <string name="video_mirror_mode_title">Omogoči zrcaljenje videoposnetka</string>
     <string name="processing_title">Obdelovanje</string>
     <string name="processing_info">V načinu fotografiranja, ko je uporabljen način ZSL, bodo upoštevane samo privzete in izklopljene vrednosti. Za način videoposnetka bodo upoštevane samo privzete, izklopljene in hitre vrednosti.</string>
     <string name="edge_mode_title">Ostrenje</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">Foto</string>
     <string name="camera_mode_video">Video</string>
     <string name="camera_mode_qr">Branje</string>
+    <string name="video_mirror_mode_off">Izklopljeno</string>
+    <string name="video_mirror_mode_on">Vklopljeno</string>
+    <string name="video_mirror_mode_on_ffc_only">Samo sprednji fotoaparat</string>
 </resources>

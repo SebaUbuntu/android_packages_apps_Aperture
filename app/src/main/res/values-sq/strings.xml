@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">Ruani fotot e kamerës së përparme siç shfaqen në pamjen paraprake</string>
     <string name="video_stabilization_title">Aktivizo stabilizimin e videos</string>
     <string name="video_stabilization_summary">Kur disponohet, aktivizoni stabilizimin e videos për të reduktuar dridhjet e kamerës gjatë regjistrimit</string>
+    <string name="video_mirror_mode_title">Aktivizo pasqyrimin e videos</string>
     <string name="processing_title">Përpunim</string>
     <string name="processing_info">Në modalitetin e fotografisë, kur përdoret modaliteti ZSL, do të merren parasysh vetëm vlerat e paracaktuara dhe të çaktivizuara.  Për modalitetin e videos, do të merren parasysh vetëm vlerat e paracaktuara, të çaktivizuara dhe të shpejta.</string>
     <string name="edge_mode_title">Mprehje</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">Foto</string>
     <string name="camera_mode_video">Video</string>
     <string name="camera_mode_qr">Skano</string>
+    <string name="video_mirror_mode_off">Fikur</string>
+    <string name="video_mirror_mode_on">Ndezur</string>
+    <string name="video_mirror_mode_on_ffc_only">Vetëm kamera e përparme</string>
 </resources>

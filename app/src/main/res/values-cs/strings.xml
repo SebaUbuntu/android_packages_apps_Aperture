@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">Uložit fotky z předního fotoaparátu tak, jak se zobrazují v náhledu</string>
     <string name="video_stabilization_title">Povolit stabilizaci videa</string>
     <string name="video_stabilization_summary">Povolte stabilizaci videa (pokud je k dispozici) pro snížení vibrací kamery při záznamu</string>
+    <string name="video_mirror_mode_title">Povolit zrcadlení videa</string>
     <string name="processing_title">Zpracování</string>
     <string name="processing_info">Při použití režimu ZSL v režimu fotografie se zohlední pouze výchozí a vypnuté hodnoty. U režimu videa budou brány v úvahu pouze výchozí, vypnuté a rychlé hodnoty.</string>
     <string name="edge_mode_title">Zaostření</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">Fotografie</string>
     <string name="camera_mode_video">Video</string>
     <string name="camera_mode_qr">Skenovat</string>
+    <string name="video_mirror_mode_off">Vypnuto</string>
+    <string name="video_mirror_mode_on">Zapnuto</string>
+    <string name="video_mirror_mode_on_ffc_only">Pouze přední fotoaparát</string>
 </resources>

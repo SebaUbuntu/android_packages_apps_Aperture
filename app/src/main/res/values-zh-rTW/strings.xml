@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">儲存預覽中顯示的前置鏡頭相片</string>
     <string name="video_stabilization_title">啟用影片防震</string>
     <string name="video_stabilization_summary">在可用時啟用影片防震以減少錄影時的相機震動</string>
+    <string name="video_mirror_mode_title">啟用視訊鏡像</string>
     <string name="processing_title">處理中</string>
     <string name="processing_info">在相片模式中，使用 ZSL 模式時，將僅考量預設值和關閉值。對於影片模式，將僅考量預設值、關閉值和快速值。</string>
     <string name="edge_mode_title">銳利化</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">相片</string>
     <string name="camera_mode_video">影片</string>
     <string name="camera_mode_qr">掃描</string>
+    <string name="video_mirror_mode_off">關閉</string>
+    <string name="video_mirror_mode_on">開啟</string>
+    <string name="video_mirror_mode_on_ffc_only">僅前鏡頭</string>
 </resources>

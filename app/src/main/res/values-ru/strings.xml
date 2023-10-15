@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">Сохранять фото с фронтальной камеры в том виде, в котором они отображаются при предварительном просмотре</string>
     <string name="video_stabilization_title">Включить стабилизацию видео</string>
     <string name="video_stabilization_summary">Включить стабилизацию видео для уменьшения вибрации камеры во время записи (если доступно)</string>
+    <string name="video_mirror_mode_title">Зеркалирование видео</string>
     <string name="processing_title">Обработка</string>
     <string name="processing_info">В режиме фото, при использовании режима ZSL, учитываются только значения по умолчанию и выключено. Для режима видео учитываются только значения по умолчанию, выключено и быстро.</string>
     <string name="edge_mode_title">Резкость</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">Фото</string>
     <string name="camera_mode_video">Видео</string>
     <string name="camera_mode_qr">Сканер</string>
+    <string name="video_mirror_mode_off">Выкл</string>
+    <string name="video_mirror_mode_on">Вкл</string>
+    <string name="video_mirror_mode_on_ffc_only">Только для фронтальной камеры</string>
 </resources>

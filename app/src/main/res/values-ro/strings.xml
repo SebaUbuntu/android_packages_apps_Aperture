@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">Salvează fotografiile camerei frontale așa cum apar ele în previzualizare</string>
     <string name="video_stabilization_title">Activează stabilizarea video</string>
     <string name="video_stabilization_summary">Atunci când este disponibilă, activează stabilizarea video pentru a reduce vibrațiile camerei în timpul înregistrării</string>
+    <string name="video_mirror_mode_title">Activare oglindire video</string>
     <string name="processing_title">Procesare</string>
     <string name="processing_info">În modul fotografie, atunci când modul ZSL este utilizat, vor fi luate în considerare doar valorile implicite şi off. Pentru modul video, vor fi luate în considerare numai valorile implicite, off și rapid.</string>
     <string name="edge_mode_title">Sharpening</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">Foto</string>
     <string name="camera_mode_video">Video</string>
     <string name="camera_mode_qr">Scanare</string>
+    <string name="video_mirror_mode_off">Oprit</string>
+    <string name="video_mirror_mode_on">Pornit</string>
+    <string name="video_mirror_mode_on_ffc_only">Doar camera frontală</string>
 </resources>

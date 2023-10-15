@@ -53,6 +53,7 @@
     <string name="photo_ffc_mirror_summary">フロントカメラの写真をプレビュー表示と同じ向きで保存します</string>
     <string name="video_stabilization_title">動画の安定化を有効にする</string>
     <string name="video_stabilization_summary">利用可能な場合、録画中にカメラの手ぶれを減らすためにビデオの安定化を有効化します</string>
+    <string name="video_mirror_mode_title">ビデオミラーリングを有効化</string>
     <string name="processing_title">処理中</string>
     <string name="processing_info">フォトモードでは、ZSLモードを使用する場合デフォルトとオフ値のみが考慮されます。 ビデオモードの場合、デフォルト、オフと高速の値のみが考慮されます。</string>
     <string name="edge_mode_title">シャープニング</string>
@@ -114,4 +115,7 @@
     <string name="camera_mode_photo">写真</string>
     <string name="camera_mode_video">動画</string>
     <string name="camera_mode_qr">スキャン</string>
+    <string name="video_mirror_mode_off">OFF</string>
+    <string name="video_mirror_mode_on">ON</string>
+    <string name="video_mirror_mode_on_ffc_only">フロントカメラのみ</string>
 </resources>

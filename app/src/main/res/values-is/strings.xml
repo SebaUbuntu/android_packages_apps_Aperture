@@ -58,6 +58,8 @@
     <string name="enable_zsl_summary">Notaðu tafarlausa myndatöku (Zero-Shutter Lag - ZSL) þegar myndavélin styður slíkt. Sjónbrellur á myndir eru ekki virkar í þessum ham. Athugaðu að þetta er eiginleiki á tilraunastigi</string>
     <string name="photo_ffc_mirror_title">Spegla frammyndavél</string>
     <string name="video_stabilization_title">Virkja stöðugleikajöfnun myndmerkis</string>
+    <string name="color_correction_aberration_mode_title">Litskekkjuleiðrétting</string>
+    <string name="distortion_correction_mode_title">Leiðrétting linsuskekkingar</string>
     <string name="shortcut_selfie">Taka sjálfsmynd</string>
     <string name="shortcut_video">Taka myndskeið</string>
     <string name="shortcut_qr">Skanna strikamerki</string>

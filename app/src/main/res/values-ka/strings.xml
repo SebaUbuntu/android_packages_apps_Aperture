@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">წინა კამერით გადაღებულის შენახვა ისე, როგორც შეთვალიერებისას ჩანს</string>
     <string name="video_stabilization_title">ვიდეოგადაღებისას რყევის შემცირება</string>
     <string name="video_stabilization_summary">როცა კი შესაძლებელია, რყევის შემამცირებელი შთანთქავს კამერის მოძრაობას გადაღებისას</string>
+    <string name="video_mirror_mode_title">ვიდეოგადაღება სარკისებურად</string>
     <string name="processing_title">მუშავდება</string>
     <string name="processing_info">ფოტოგადაღებისას, როცა გამოიყენება ZSL, გათვალისწინებული იქნება მხოლოდ „ნაგულისხმევი“ და „გამორთული“ მნიშვნელობები. ვიდეოგადაღებისას კი მხოლოდ „ნაგულისხმევი“, „გამორთული“ და „სწრაფი“.</string>
     <string name="edge_mode_title">გამკვეთრება</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">ფოტო</string>
     <string name="camera_mode_video">ვიდეო</string>
     <string name="camera_mode_qr">სკანერი</string>
+    <string name="video_mirror_mode_off">გამორთ.</string>
+    <string name="video_mirror_mode_on">ჩართ.</string>
+    <string name="video_mirror_mode_on_ffc_only">მხოლოდ წინა კამერაზე</string>
 </resources>

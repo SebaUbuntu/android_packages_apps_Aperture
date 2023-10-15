@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">Zapisywanie zdjęć z przedniego aparatu tak, jak są widoczne na podglądzie</string>
     <string name="video_stabilization_title">Włącz stabilizację wideo</string>
     <string name="video_stabilization_summary">Jeżeli możliwe, włącz stabilizację wideo, aby zredukować drgania kamery podczas nagrywania</string>
+    <string name="video_mirror_mode_title">Włącz lustrzane odbicie wideo</string>
     <string name="processing_title">Przetwarzanie</string>
     <string name="processing_info">W trybie zdjęcia, gdy używany jest tryb ZSL, brane są pod uwagę tylko wartości domyślne i wyłączone. W trybie wideo brane są pod uwagę tylko wartości domyślne, wyłączone i szybkie.</string>
     <string name="edge_mode_title">Wyostrzanie</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">Zdjęcie</string>
     <string name="camera_mode_video">Wideo</string>
     <string name="camera_mode_qr">Skaner</string>
+    <string name="video_mirror_mode_off">Wyłączono</string>
+    <string name="video_mirror_mode_on">Włączono</string>
+    <string name="video_mirror_mode_on_ffc_only">Tylko przedni aparat</string>
 </resources>
