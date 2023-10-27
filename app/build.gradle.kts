@@ -18,7 +18,7 @@ apply {
 
 buildscript {
     repositories {
-        maven("https://raw.githubusercontent.com/lineage-next/gradle-generatebp/v1.3/.m2")
+        maven("https://raw.githubusercontent.com/lineage-next/gradle-generatebp/v1.4/.m2")
     }
 
     dependencies {
@@ -124,6 +124,7 @@ configure<GenerateBpPluginExtension> {
             }
             module.group.startsWith("org.jetbrains") -> true
             module.group == "com.google.auto.value" -> true
+            module.group == "com.google.errorprone" -> true
             module.group == "com.google.guava" -> true
             module.group == "junit" -> true
             else -> false

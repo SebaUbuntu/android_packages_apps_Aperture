@@ -568,7 +568,7 @@ android_library_import {
         "androidx.transition_transition",
         "androidx.vectordrawable_vectordrawable",
         "androidx.viewpager2_viewpager2",
-        "Aperture_com.google.errorprone_error_prone_annotations",
+        "error_prone_annotations",
     ],
 }
 
@@ -597,32 +597,7 @@ android_library {
         "androidx.transition_transition",
         "androidx.vectordrawable_vectordrawable",
         "androidx.viewpager2_viewpager2",
-        "Aperture_com.google.errorprone_error_prone_annotations",
-    ],
-    java_version: "1.7",
-}
-
-java_import {
-    name: "Aperture_com.google.errorprone_error_prone_annotations-nodeps",
-    jars: ["com/google/errorprone/error_prone_annotations/2.15.0/error_prone_annotations-2.15.0.jar"],
-    sdk_version: "33",
-    min_sdk_version: "14",
-    apex_available: [
-        "//apex_available:platform",
-        "//apex_available:anyapex",
-    ],
-}
-
-java_library_static {
-    name: "Aperture_com.google.errorprone_error_prone_annotations",
-    sdk_version: "33",
-    min_sdk_version: "14",
-    apex_available: [
-        "//apex_available:platform",
-        "//apex_available:anyapex",
-    ],
-    static_libs: [
-        "Aperture_com.google.errorprone_error_prone_annotations-nodeps",
+        "error_prone_annotations",
     ],
     java_version: "1.7",
 }
