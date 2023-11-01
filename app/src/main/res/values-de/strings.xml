@@ -67,11 +67,13 @@
     <string name="video_mirror_mode_title">Videospiegelung aktivieren</string>
     <string name="processing_info">Im Fotomodus werden bei Verwendung des ZSL-Modus nur die Werte Standard und Aus berücksichtigt. Im Videomodus werden nur die Werte Standard, Aus und Schnell berücksichtigt.</string>
     <string name="edge_mode_title">Schärfen</string>
+    <string name="edge_mode_summary">Die Kantenverbesserung verbessert die Schärfe und die Details des aufgenommenen Bildes.</string>
     <string name="edge_mode_default">Standard</string>
     <string name="edge_mode_off">Aus</string>
     <string name="edge_mode_fast">Schnell</string>
     <string name="edge_mode_high_quality">Hohe Qualität</string>
     <string name="noise_reduction_mode_title">Entrauschen</string>
+    <string name="noise_reduction_mode_summary">Der Algorithmus zur Rauschunterdrückung versucht, die Bildqualität zu verbessern, indem er übermäßiges, durch den Aufnahmeprozess hinzugefügtes Rauschen entfernt, insbesondere bei dunklen Bedingungen.</string>
     <string name="noise_reduction_mode_default">Standard</string>
     <string name="noise_reduction_mode_off">Aus</string>
     <string name="noise_reduction_mode_fast">Schnell</string>
@@ -91,6 +93,7 @@
     <string name="distortion_correction_mode_off">Aus</string>
     <string name="distortion_correction_mode_fast">Schnell</string>
     <string name="distortion_correction_mode_high_quality">Hohe Qualität</string>
+    <string name="hot_pixel_mode_title">Hotpixel-Korrektur</string>
     <string name="hot_pixel_mode_default">Standard</string>
     <string name="hot_pixel_mode_off">Aus</string>
     <string name="hot_pixel_mode_fast">Schnell</string>

@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">Save front camera photos as they appear in the preview</string>
     <string name="video_stabilization_title">Enable video stabilisation</string>
     <string name="video_stabilization_summary">When available, enable video stabilisation to reduce camera vibrations during recording</string>
+    <string name="video_mirror_mode_title">Enable video mirroring</string>
     <string name="processing_title">Processing</string>
     <string name="processing_info">In photo mode, when ZSL mode is used, only default and off values will be taken into consideration. For video mode, only default, off and fast values will be taken into consideration.</string>
     <string name="edge_mode_title">Sharpening</string>
@@ -132,4 +133,7 @@
     <string name="camera_mode_photo">Photo</string>
     <string name="camera_mode_video">Video</string>
     <string name="camera_mode_qr">Scan</string>
+    <string name="video_mirror_mode_off">Off</string>
+    <string name="video_mirror_mode_on">On</string>
+    <string name="video_mirror_mode_on_ffc_only">Front facing camera only</string>
 </resources>

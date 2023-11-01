@@ -132,5 +132,6 @@
     <string name="camera_mode_photo">Photo</string>
     <string name="camera_mode_video">Vidéo</string>
     <string name="camera_mode_qr">Scanner</string>
+    <string name="video_mirror_mode_off">Désactivé</string>
     <string name="video_mirror_mode_on_ffc_only">Caméra frontale uniquement</string>
 </resources>
