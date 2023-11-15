@@ -65,6 +65,7 @@
     <string name="video_stabilization_title">Videostabilisierung aktivieren</string>
     <string name="video_stabilization_summary">Wenn möglich, die Videostabilisierung aktivieren, um Kameravibrationen während der Aufnahme zu reduzieren</string>
     <string name="video_mirror_mode_title">Videospiegelung aktivieren</string>
+    <string name="processing_title">Bearbeitung</string>
     <string name="processing_info">Im Fotomodus werden bei Verwendung des ZSL-Modus nur die Werte Standard und Aus berücksichtigt. Im Videomodus werden nur die Werte Standard, Aus und Schnell berücksichtigt.</string>
     <string name="edge_mode_title">Schärfen</string>
     <string name="edge_mode_summary">Die Kantenverbesserung verbessert die Schärfe und die Details des aufgenommenen Bildes.</string>
@@ -85,10 +86,14 @@
     <string name="shading_mode_off">Aus</string>
     <string name="shading_mode_fast">Schnell</string>
     <string name="shading_mode_high_quality">Hohe Qualität</string>
+    <string name="color_correction_aberration_mode_title">Korrektur von Farbabweichungen</string>
+    <string name="color_correction_aberration_mode_summary">Chromatische (Farb-)Abweichung wird dadurch verursacht, dass verschiedene Wellenlängen des Lichts nach dem Austritt aus dem Objektiv nicht auf denselben Punkt fokussiert werden können.</string>
     <string name="color_correction_aberration_mode_default">Standard</string>
     <string name="color_correction_aberration_mode_off">Aus</string>
     <string name="color_correction_aberration_mode_fast">Schnell</string>
     <string name="color_correction_aberration_mode_high_quality">Hohe Qualität</string>
+    <string name="distortion_correction_mode_title">Verzerrungskorrektur</string>
+    <string name="distortion_correction_mode_summary">Modus der Korrektur der Objektivverzerrung.</string>
     <string name="distortion_correction_mode_default">Standard</string>
     <string name="distortion_correction_mode_off">Aus</string>
     <string name="distortion_correction_mode_fast">Schnell</string>

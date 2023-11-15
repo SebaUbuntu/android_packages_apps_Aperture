@@ -31,7 +31,7 @@
     <string name="grid_on_goldenratio">MREŽA φ</string>
     <string name="mic_off">MIKROFON IZKLOPLJEN</string>
     <string name="mic_on">MIKROFON VKLOPLJEN</string>
-    <string name="settings">NASTAVITVE</string>
+    <string name="settings">NAST.</string>
     <string name="app_permissions_toast">Dovoljenje ni odobreno od uporabnika</string>
     <string name="camcorder_unsupported_toast">Noben fotoaparat ne podpira snemanja videoposnetkov.</string>
     <string name="qr_copy_description">Kopiraj v odložišče</string>

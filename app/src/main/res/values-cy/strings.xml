@@ -63,6 +63,8 @@
     <string name="edge_mode_fast">Cyflym</string>
     <string name="edge_mode_high_quality">Ansawdd uchel</string>
     <string name="noise_reduction_mode_off">I ffwrdd</string>
+    <string name="noise_reduction_mode_fast">Cyflym</string>
+    <string name="noise_reduction_mode_high_quality">Ansawdd uchel</string>
     <string name="shading_mode_off">I ffwrdd</string>
     <string name="color_correction_aberration_mode_off">I ffwrdd</string>
     <string name="distortion_correction_mode_off">I ffwrdd</string>
