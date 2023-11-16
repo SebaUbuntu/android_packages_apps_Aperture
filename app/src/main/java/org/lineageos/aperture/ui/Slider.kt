@@ -41,9 +41,12 @@ abstract class Slider @JvmOverloads constructor(
         style = Paint.Style.FILL
         xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC)
         setShadowLayer(3f, 0f, 0f, Color.BLACK)
+        isAntiAlias = true
     }
 
-    private val thumbTextPaint = Paint()
+    private val thumbTextPaint = Paint().apply {
+        isAntiAlias = true
+    }
 
     private var gradientColors: IntArray
 
