@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">„არ შემაწუხო“ რეჟიმია ჩართული. გათიშეთ და ხელახლა გახსენით პროგრამა.</string>
     <string name="error_unknown_recoverable">გამოსწორებადი უცნობი შეცდომაა ნაპოვნი. გთხოვთ, მოახსენოთ შემმუშავებლებს.</string>
     <string name="error_unknown_critical">გადამწყვეტი მნიშვნელობის უცნობი შეცდომაა ნაპოვნი. გთხოვთ, მოახსენოთ შემმუშავებლებს.</string>
+    <string name="error_no_cameras_available">კამერა ვერ მოიძებნა მოწყობილობაზე, პროგრამა ვერ გაეშვება.</string>
     <string name="gesture_action_shutter">ჩამკეტი</string>
     <string name="gesture_action_zoom">მოახლოება</string>
     <string name="gesture_action_volume">ხმოვანება</string>

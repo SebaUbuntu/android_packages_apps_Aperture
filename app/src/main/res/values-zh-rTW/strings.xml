@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">零打擾模式已啟用，請將其停用並重新開啟應用程式。</string>
     <string name="error_unknown_recoverable">發現可復原的未知錯誤，請向開發人員回報。</string>
     <string name="error_unknown_critical">發現未預期的未知錯誤，請向開發人員回報。</string>
+    <string name="error_no_cameras_available">未在設備上找到相機，無法啟動應用程式。</string>
     <string name="gesture_action_shutter">快門</string>
     <string name="gesture_action_zoom">縮放</string>
     <string name="gesture_action_volume">音量</string>

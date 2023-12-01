@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">Tryb \"Nie przeszkadzać\" jest włączony. Wyłącz go i otwórz aplikację ponownie.</string>
     <string name="error_unknown_recoverable">Znaleziono nieznany błąd do odzyskania. Prosimy zgłosić go programistom.</string>
     <string name="error_unknown_critical">Znaleziono krytyczny, nieznany błąd. Prosimy zgłosić go programistom.</string>
+    <string name="error_no_cameras_available">Nie znaleziono żadnego aparatu w urządzeniu, dlatego nie można uruchomić aplikacji.</string>
     <string name="gesture_action_shutter">Migawka</string>
     <string name="gesture_action_zoom">Powiększenie</string>
     <string name="gesture_action_volume">Głośność</string>

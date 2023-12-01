@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">La modalitât No Sta Disturbâ e je ative. Disativile e torne vierç la aplicazion.</string>
     <string name="error_unknown_recoverable">Al è stât cjatât un erôr no cognossût reversibil. Par plasê segnalilu ai svilupadôrs.</string>
     <string name="error_unknown_critical">Al è stât cjatât un erôr critic no cognossût. Par plasê segnalilu ai svilupadôrs.</string>
+    <string name="error_no_cameras_available">No je stade cjatade nissune fotocjamare sul dispositîf, impussibil inviâ la aplicazion.</string>
     <string name="gesture_action_shutter">Oturadôr</string>
     <string name="gesture_action_zoom">Zoom</string>
     <string name="gesture_action_volume">Volum</string>

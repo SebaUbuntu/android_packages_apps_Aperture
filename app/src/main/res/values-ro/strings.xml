@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">Modul Nu deranjați este activat. Dezactivați-l și redeschideți aplicația.</string>
     <string name="error_unknown_recoverable">A fost găsită o eroare necunoscută recuperabilă. Vă rugăm să raportați acest lucru dezvoltatorilor.</string>
     <string name="error_unknown_critical">A fost găsită o eroare critică necunoscută. Vă rugăm să raportați acest lucru dezvoltatorilor.</string>
+    <string name="error_no_cameras_available">Nu au fost găsite camere pe dispozitiv, nu se poate porni aplicația.</string>
     <string name="gesture_action_shutter">Obturator</string>
     <string name="gesture_action_zoom">Zoom</string>
     <string name="gesture_action_volume">Volum</string>

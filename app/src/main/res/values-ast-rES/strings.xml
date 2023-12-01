@@ -70,6 +70,7 @@
     <string name="location_permission_dialog_later">Dempués</string>
     <string name="location_permission_dialog_turn_on">Activar</string>
     <string name="error_camera_fatal_error">Atopóse un error fatal. Prueba a reaniciar el preséu.</string>
+    <string name="error_no_cameras_available">Nun s\'atopó nenguna cámara nel preséu y nun se pue aniciar l\'aplicación.</string>
     <string name="gesture_action_shutter">Obturador</string>
     <string name="gesture_action_zoom">Zoom</string>
     <string name="gesture_action_volume">Volume</string>

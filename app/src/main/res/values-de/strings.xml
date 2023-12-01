@@ -99,6 +99,7 @@
     <string name="distortion_correction_mode_fast">Schnell</string>
     <string name="distortion_correction_mode_high_quality">Hohe Qualität</string>
     <string name="hot_pixel_mode_title">Hotpixel-Korrektur</string>
+    <string name="hot_pixel_mode_summary">Die Hotpixel-Korrektur interpoliert oder entfernt andernfalls Pixel, die das einfallende Licht nicht genau genug erfassen (d. h. Pixel, die auf einem willkürlichen Wert hängen bleiben oder überempfindlich sind).</string>
     <string name="hot_pixel_mode_default">Standard</string>
     <string name="hot_pixel_mode_off">Aus</string>
     <string name="hot_pixel_mode_fast">Schnell</string>
@@ -117,6 +118,8 @@
     <string name="error_camera_disabled">Die Kamera ist deaktiviert. Dies kann durch die Geräterichtlinie verursacht werden.</string>
     <string name="error_camera_fatal_error">Es ist ein schwerwiegender Fehler aufgetreten. Versuche, dein Gerät neu zu starten.</string>
     <string name="error_do_not_disturb_mode_enabled">Der Modus \"Bitte nicht stören\" ist aktiviert. Deaktiviere ihn und öffne die App erneut.</string>
+    <string name="error_unknown_recoverable">Ein behebbarer, unbekannter Fehler wurde gefunden. Bitte melde dies den Entwicklern.</string>
+    <string name="error_unknown_critical">Ein kritischer unbekannter Fehler wurde gefunden. Bitte melde dies den Entwicklern.</string>
     <string name="gesture_action_shutter">Auslöser</string>
     <string name="gesture_action_zoom">Zoom</string>
     <string name="gesture_action_volume">Lautstärke</string>

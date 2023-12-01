@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">Modaliteti \"Mos shqetëso\" është aktivizuar.  Çaktivizojeni atë dhe rihapni aplikacionin.</string>
     <string name="error_unknown_recoverable">Është gjetur një gabim i panjohur i rikuperueshëm.  Ju lutemi raportoni këtë te zhvilluesit.</string>
     <string name="error_unknown_critical">Është gjetur një gabim kritik i panjohur.  Ju lutemi raportoni këtë te zhvilluesit.</string>
+    <string name="error_no_cameras_available">Nuk u gjet asnjë kamera në pajisje, aplikacioni nuk mund të niset</string>
     <string name="gesture_action_shutter">Shkrepësi</string>
     <string name="gesture_action_zoom">Zmadho</string>
     <string name="gesture_action_volume">Volumi</string>

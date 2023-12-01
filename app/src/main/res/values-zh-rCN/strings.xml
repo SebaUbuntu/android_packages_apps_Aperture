@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">勿扰模式已启用。请关闭勿扰模式并重新打开应用。</string>
     <string name="error_unknown_recoverable">发现可恢复的未知错误。  请将此情况报告给开发商。</string>
     <string name="error_unknown_critical">发现严重的未知错误。  请将此情况报告给开发商。</string>
+    <string name="error_no_cameras_available">未发现设备上的相机，无法启动应用程序。</string>
     <string name="gesture_action_shutter">快门</string>
     <string name="gesture_action_zoom">缩放</string>
     <string name="gesture_action_volume">音量</string>

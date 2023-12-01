@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">La modalità Non disturbare è attiva. Disattivala e riapri l\'app.</string>
     <string name="error_unknown_recoverable">Si è verificato un errore sconosciuto rimediabile. Si prega di segnalarlo agli sviluppatori.</string>
     <string name="error_unknown_critical">Si è verificato un errore sconosciuto critico. Si prega di segnalarlo agli sviluppatori.</string>
+    <string name="error_no_cameras_available">Nessuna fotocamera trovata sul dispositivo, impossibile avviare l\'app.</string>
     <string name="gesture_action_shutter">Scatto</string>
     <string name="gesture_action_zoom">Zoom</string>
     <string name="gesture_action_volume">Regolazione volume</string>

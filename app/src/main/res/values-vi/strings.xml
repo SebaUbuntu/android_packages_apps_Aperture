@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">Chế độ Không làm phiền đã được bật. Vui lòng tắt chế độ này và mở lại ứng dụng.</string>
     <string name="error_unknown_recoverable">Một lỗi không xác định có thể khôi phục đã được tìm thấy. Vui lòng báo điều này cho nhà phát triển.</string>
     <string name="error_unknown_critical">Một lỗi nghiêm trọng không xác định đã được tìm thấy. Vui lòng báo điều này cho nhà phát triển.</string>
+    <string name="error_no_cameras_available">Không có camera nào được tìm thấy trên thiết bị, không thể khởi động ứng dụng.</string>
     <string name="gesture_action_shutter">Màn trập</string>
     <string name="gesture_action_zoom">Thu phóng</string>
     <string name="gesture_action_volume">Âm lượng</string>

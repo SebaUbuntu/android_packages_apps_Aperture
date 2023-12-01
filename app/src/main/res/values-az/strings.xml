@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">Narahat Etməyin rejimi fəaldır. Sıradan çıxardıb tətbiqi yenidən açın.</string>
     <string name="error_unknown_recoverable">Bərpa edilə bilən bir bilinməyən xəta tapıldı. Lütfən bunu tərtibatçılara bildirin.</string>
     <string name="error_unknown_critical">Kritik bir bilinməyən xəta tapıldı. Lütfən bunu tərtibatçılara bildirin.</string>
+    <string name="error_no_cameras_available">Cihazda kamera tapılmadı, tətbiq başladıla bilmir.</string>
     <string name="gesture_action_shutter">Sürgü</string>
     <string name="gesture_action_zoom">Yaxınlaşdır</string>
     <string name="gesture_action_volume">Səs</string>

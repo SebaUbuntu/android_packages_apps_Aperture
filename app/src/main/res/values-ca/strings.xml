@@ -120,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">El mode No Molestis està activat. Desactiveu-lo i torneu a obrir l\'aplicació.</string>
     <string name="error_unknown_recoverable">S\'ha trobat un error desconegut recuperable. Informeu als desenvolupadors.</string>
     <string name="error_unknown_critical">S\'ha trobat un error crític desconegut. Informeu als desenvolupadors.</string>
+    <string name="error_no_cameras_available">No s\'han trobat càmeres al dispositiu, no es pot iniciar l\'aplicació.</string>
     <string name="gesture_action_shutter">Obturador</string>
     <string name="gesture_action_zoom">Amplia</string>
     <string name="gesture_action_volume">Volum</string>
