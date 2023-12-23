@@ -12,7 +12,7 @@
     <string name="flip_camera_button_description">Kameranı çevir</string>
     <string name="gallery_button_description">Qalereya</string>
     <string name="google_lens_button_description">Google Lens-i aç</string>
-    <string name="image_view_description">Şəklə önbaxış</string>
+    <string name="image_view_description">Təsviri önizlə</string>
     <string name="pro_button_description">Pro ayarları</string>
     <string name="shutter_button_description">Sürgü</string>
     <string name="video_recording_state_button_description">Videoyazıya fasilə ver/davam etdir</string>
@@ -61,7 +61,7 @@
     <string name="enable_zsl_title">Əlçatan olduqda ZSL-i fəallaşdır</string>
     <string name="enable_zsl_summary">Kamera dəstəklədikdə Sıfır Sürgü Gecikməsi (ZSL) rejimini istifadə edin. Bu rejimdə foto effektlər sıradan çıxardılır. Unutmayın ki, bu, hazırda təcrübi rejimdir.</string>
     <string name="photo_ffc_mirror_title">Güzgü ön kamera</string>
-    <string name="photo_ffc_mirror_summary">Ön kamera fotolarını önbaxışda göründüyü kimi saxla</string>
+    <string name="photo_ffc_mirror_summary">Ön kamera fotolarını önizləmədə göründüyü kimi saxla</string>
     <string name="video_stabilization_title">Video sabitləməni fəallaşdır</string>
     <string name="video_stabilization_summary">Mövcuddursa, çəkiliş əsnasında kamera titrəmələrini azaltmaq üçün video sabitləməni fəallaşdır</string>
     <string name="video_mirror_mode_title">Videonun əks etdirilməsini fəallaşdır</string>

@@ -120,10 +120,16 @@
     <string name="error_do_not_disturb_mode_enabled">Der Modus \"Bitte nicht stören\" ist aktiviert. Deaktiviere ihn und öffne die App erneut.</string>
     <string name="error_unknown_recoverable">Ein behebbarer, unbekannter Fehler wurde gefunden. Bitte melde dies den Entwicklern.</string>
     <string name="error_unknown_critical">Ein kritischer unbekannter Fehler wurde gefunden. Bitte melde dies den Entwicklern.</string>
+    <string name="error_no_cameras_available">Es wurden keine Kameras in dem Gerät gefunden, die App kann nicht gestartet werden.</string>
     <string name="gesture_action_shutter">Auslöser</string>
     <string name="gesture_action_zoom">Zoom</string>
     <string name="gesture_action_volume">Lautstärke</string>
     <string name="gesture_action_nothing">Keine Aktion</string>
+    <string name="thermal_status_moderate">Mäßige thermische Drosselung; achte darauf, dass das Gerät nicht direkter Sonneneinstrahlung ausgesetzt ist.</string>
+    <string name="thermal_status_severe">Starke thermische Drosselung; es wird empfohlen, das Gerät etwas abkühlen zu lassen.</string>
+    <string name="thermal_status_critical">Kritische thermische Drosselung; die App wird möglicherweise bald geschlossen.</string>
+    <string name="thermal_status_emergency">Thermische Notdrosselung; die App wird jetzt geschlossen.</string>
+    <string name="thermal_status_shutdown">Abschaltung wegen thermischer Drosselung; das Gerät wird ausgeschaltet.</string>
     <string name="force_torch_help">Im Fotomodus kannst du die Blitztaste lange drücken, um in den Taschenlampenmodus zu wechseln.</string>
     <string name="camera_mode_photo">Foto</string>
     <string name="camera_mode_video">Video</string>
