@@ -54,7 +54,7 @@
     <string name="video_stabilization_title">動画の安定化を有効にする</string>
     <string name="video_stabilization_summary">利用可能な場合、録画中にカメラの手ぶれを減らすためにビデオの安定化を有効化します</string>
     <string name="video_mirror_mode_title">ビデオミラーリングを有効化</string>
-    <string name="processing_title">処理中</string>
+    <string name="processing_title">処理</string>
     <string name="processing_info">フォトモードでは、ZSLモードを使用する場合デフォルトとオフ値のみが考慮されます。 ビデオモードの場合、デフォルト、オフと高速の値のみが考慮されます。</string>
     <string name="edge_mode_title">シャープニング</string>
     <string name="edge_mode_summary">エッジを強調し、撮影した画像の鮮明さとディテールを向上させます。</string>
