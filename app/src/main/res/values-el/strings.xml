@@ -64,6 +64,7 @@
     <string name="photo_ffc_mirror_summary">Αποθηκεύστε τις φωτογραφίες της μπροστινής κάμερας όπως εμφανίζονται στην προεπισκόπηση</string>
     <string name="video_stabilization_title">Ενεργοποίηση σταθεροποίησης βίντεο</string>
     <string name="video_stabilization_summary">Αν είναι διαθέσιμη, ενεργοποιήστε τη σταθεροποίηση βίντεο για να μειώσετε τους κραδασμούς της κάμερας κατά την εγγραφή</string>
+    <string name="video_mirror_mode_title">Ενεργοποίηση κατοπτρισμού βίντεο</string>
     <string name="processing_title">Επεξεργασία</string>
     <string name="processing_info">Στη λειτουργία φωτογραφίας, όταν χρησιμοποιείται η λειτουργία ZSL, θα ληφθούν υπόψη μόνο οι επιλογές \"προεπιλογή\" και \"ανενεργή\". Στη λειτουργία βίντεο, θα ληφθούν υπόψη μόνο οι επιλογές \"προεπιλογή\", \"ανενεργή\" και \"γρήγορη\".</string>
     <string name="edge_mode_title">Όξυνση</string>
@@ -119,6 +120,7 @@
     <string name="error_do_not_disturb_mode_enabled">Η λειτουργία \"Μην ενοχλείτε\" είναι ενεργοποιημένη. Απενεργοποιήστε την και ανοίξτε ξανά την εφαρμογή.</string>
     <string name="error_unknown_recoverable">Βρέθηκε ένα ανακτήσιμο άγνωστο σφάλμα. Παρακαλώ αναφέρετε αυτό το σφάλμα στους προγραμματιστές.</string>
     <string name="error_unknown_critical">Βρέθηκε ένα κρίσιμο άγνωστο σφάλμα. Παρακαλώ αναφέρετε αυτό το σφάλμα στους προγραμματιστές.</string>
+    <string name="error_no_cameras_available">Δε βρέθηκαν κάμερες στη συσκευή, η εφαρμογή δεν μπορεί να ξεκινήσει.</string>
     <string name="gesture_action_shutter">Κλείστρο</string>
     <string name="gesture_action_zoom">Μεγέθυνση</string>
     <string name="gesture_action_volume">Ένταση</string>
@@ -132,4 +134,7 @@
     <string name="camera_mode_photo">Φώτο</string>
     <string name="camera_mode_video">Βίντεο</string>
     <string name="camera_mode_qr">Σάρωση</string>
+    <string name="video_mirror_mode_off">Ανενεργός</string>
+    <string name="video_mirror_mode_on">Ενεργός</string>
+    <string name="video_mirror_mode_on_ffc_only">Στην μπροστινή κάμερα μόνο</string>
 </resources>
