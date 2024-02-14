@@ -72,6 +72,8 @@
     <string name="qr_dpp_description">Configure this device</string>
     <string name="qr_email_title">Send a new email</string>
     <string name="qr_email_content_description">Compose a new email to the specified emails</string>
+    <string name="qr_fido_title">Use passkey</string>
+    <string name="qr_fido_content_description">Handle this FIDO QR code</string>
     <string name="qr_geo_title">Open this location</string>
     <string name="qr_geo_content_description">Open this location</string>
     <string name="qr_isbn_title">Lookup this ISBN</string>
