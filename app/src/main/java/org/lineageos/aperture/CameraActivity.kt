@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+ * SPDX-FileCopyrightText: 2022-2024 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -837,6 +837,9 @@ open class CameraActivity : AppCompatActivity() {
         }
         lensSelectorLayout.onZoomRatioChangeCallback = {
             cameraController.setZoomRatio(it)
+        }
+        lensSelectorLayout.onResetZoomRatioCallback = {
+            resetZoom()
         }
 
         // Set capture preview callback
@@ -2442,32 +2445,6 @@ open class CameraActivity : AppCompatActivity() {
     }
 
     /**
-     * Zoom in by a power of 2.
-     */
-    private fun zoomIn() {
-        val acquired = zoomGestureMutex.tryLock()
-        if (!acquired) {
-            return
-        }
-
-        val zoomState = cameraController.zoomState.value ?: return
-
-        ValueAnimator.ofFloat(
-            zoomState.zoomRatio,
-            zoomState.zoomRatio.nextPowerOfTwo().takeUnless {
-                it > zoomState.maxZoomRatio
-            } ?: zoomState.maxZoomRatio
-        ).apply {
-            addUpdateListener {
-                cameraController.setZoomRatio(it.animatedValue as Float)
-            }
-            addListener(onEnd = {
-                zoomGestureMutex.unlock()
-            })
-        }.start()
-    }
-
-    /**
      * Show a toast warning the user that no camera is available and close the activity.
      */
     private fun noCamera() {
@@ -2478,9 +2455,11 @@ open class CameraActivity : AppCompatActivity() {
     }
 
     /**
-     * Zoom out by a power of 2.
+     * Apply the specified zoom smoothly. The value will be automatically clamped
+     * between min and max.
+     * @param zoomRatio The zoom ratio to apply
      */
-    private fun zoomOut() {
+    private fun smoothZoom(zoomRatio: Float) {
         val acquired = zoomGestureMutex.tryLock()
         if (!acquired) {
             return
@@ -2490,17 +2469,36 @@ open class CameraActivity : AppCompatActivity() {
 
         ValueAnimator.ofFloat(
             zoomState.zoomRatio,
-            zoomState.zoomRatio.previousPowerOfTwo().takeUnless {
-                it < zoomState.minZoomRatio
-            } ?: zoomState.minZoomRatio
+            zoomRatio.coerceIn(zoomState.minZoomRatio, zoomState.maxZoomRatio)
         ).apply {
             addUpdateListener {
                 cameraController.setZoomRatio(it.animatedValue as Float)
             }
-            addListener(onEnd = {
-                zoomGestureMutex.unlock()
-            })
+            addListener(
+                onEnd = {
+                    zoomGestureMutex.unlock()
+                }
+            )
         }.start()
+    }
+
+    /**
+     * Reset the zoom to 1.0x (value relative to the lens, not of the FOV).
+     */
+    private fun resetZoom() = smoothZoom(1f)
+
+    /**
+     * Zoom in by a power of 2.
+     */
+    private fun zoomIn() = cameraController.zoomState.value?.zoomRatio?.let {
+        smoothZoom(it.nextPowerOfTwo())
+    }
+
+    /**
+     * Zoom out by a power of 2.
+     */
+    private fun zoomOut() = cameraController.zoomState.value?.zoomRatio?.let {
+        smoothZoom(it.previousPowerOfTwo())
     }
 
     /**
