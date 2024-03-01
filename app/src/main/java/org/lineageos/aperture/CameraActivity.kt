@@ -836,7 +836,7 @@ open class CameraActivity : AppCompatActivity() {
             }
         }
         lensSelectorLayout.onZoomRatioChangeCallback = {
-            cameraController.setZoomRatio(it)
+            smoothZoom(it)
         }
         lensSelectorLayout.onResetZoomRatioCallback = {
             resetZoom()
