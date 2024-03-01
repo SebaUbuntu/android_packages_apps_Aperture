@@ -35,7 +35,6 @@ import android.view.GestureDetector
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.OrientationEventListener
-import android.view.ScaleGestureDetector
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
@@ -67,6 +66,7 @@ import androidx.camera.view.PreviewView
 import androidx.camera.view.ScreenFlashView
 import androidx.camera.view.onPinchToZoom
 import androidx.camera.view.video.AudioConfig
+import androidx.camera.viewfinder.core.ZoomGestureDetector
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.addListener
@@ -288,17 +288,15 @@ open class CameraActivity : AppCompatActivity() {
             }
         })
     }
-    private val scaleGestureDetector by lazy {
-        ScaleGestureDetector(this, object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
-            override fun onScale(detector: ScaleGestureDetector): Boolean {
+    private val zoomGestureDetector by lazy {
+        ZoomGestureDetector(this) { type, detector ->
+            if (type == ZoomGestureDetector.ZOOM_GESTURE_MOVE) {
                 cameraController.onPinchToZoom(detector.scaleFactor)
-
                 handler.removeMessages(MSG_ON_PINCH_TO_ZOOM)
                 handler.sendMessageDelayed(handler.obtainMessage(MSG_ON_PINCH_TO_ZOOM), 500)
-
-                return true
             }
-        })
+            true
+        }
     }
 
     private val handler = object : Handler(Looper.getMainLooper()) {
@@ -696,7 +694,7 @@ open class CameraActivity : AppCompatActivity() {
 
         // Observe manual focus
         viewFinder.setOnTouchListener { _, event ->
-            if (scaleGestureDetector.onTouchEvent(event) && scaleGestureDetector.isInProgress) {
+            if (zoomGestureDetector.onTouchEvent(event) && zoomGestureDetector.isInProgress) {
                 return@setOnTouchListener true
             }
             return@setOnTouchListener gestureDetector.onTouchEvent(event)
